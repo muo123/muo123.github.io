@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 雪国流明的博客</title><link>https://muo123.github.io/post/</link><description>Recent content in Posts on 雪国流明的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Mon, 02 Jun 2025 23:23:47 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</title><link>https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/</link><pubDate>Mon, 02 Jun 2025 23:23:47 +0800</pubDate><guid>https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/</guid><description>&lt;p>以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：&lt;/p>
+&lt;hr>
+&lt;h3 id="核心区别对比表">&lt;strong>核心区别对比表&lt;/strong>
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>特性&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Hugo&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Hexo&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Jekyll&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>开发语言&lt;/strong>&lt;/td>
+&lt;td>Go（单二进制文件）&lt;/td>
+&lt;td>Node.js&lt;/td>
+&lt;td>Ruby&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>构建速度&lt;/strong>&lt;/td>
+&lt;td>⚡ &lt;strong>极快&lt;/strong>（千页秒级）&lt;/td>
+&lt;td>🚀 快（依赖插件复杂度）&lt;/td>
+&lt;td>⏳ 较慢（大型项目可能需分钟级）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>GitHub Pages 支持&lt;/strong>&lt;/td>
+&lt;td>❌ 需本地构建后推送产物&lt;/td>
+&lt;td>❌ 需本地构建后推送产物&lt;/td>
+&lt;td>✅ &lt;strong>原生支持&lt;/strong>（自动构建）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>安装复杂度&lt;/strong>&lt;/td>
+&lt;td>★☆☆（无需环境，下载即用）&lt;/td>
+&lt;td>★★☆（需 Node.js 环境）&lt;/td>
+&lt;td>★★★（需 Ruby 环境及 Bundler）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>主题生态&lt;/strong>&lt;/td>
+&lt;td>丰富（&lt;a class="link" href="https://themes.gohugo.io/" target="_blank" rel="noopener"
+>Hugo Themes&lt;/a>）&lt;/td>
+&lt;td>极丰富（&lt;a class="link" href="https://hexo.io/themes/" target="_blank" rel="noopener"
+>Hexo Themes&lt;/a>）&lt;/td>
+&lt;td>成熟（&lt;a class="link" href="https://jekyllthemes.io/" target="_blank" rel="noopener"
+>Jekyll Themes&lt;/a>）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>插件扩展性&lt;/strong>&lt;/td>
+&lt;td>中等（内置短代码/部分插件）&lt;/td>
+&lt;td>✅ &lt;strong>极强&lt;/strong>（600+ 插件）&lt;/td>
+&lt;td>良好（Gem 插件）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>模板引擎&lt;/strong>&lt;/td>
+&lt;td>Go Templates（学习曲线陡）&lt;/td>
+&lt;td>EJS/Swig/Pug（灵活）&lt;/td>
+&lt;td>Liquid（易上手）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>内容管理&lt;/strong>&lt;/td>
+&lt;td>灵活（支持自定义内容类型）&lt;/td>
+&lt;td>标准 Markdown + Front Matter&lt;/td>
+&lt;td>标准 Markdown + Front Matter&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>适用人群&lt;/strong>&lt;/td>
+&lt;td>大型站点/效率优先者&lt;/td>
+&lt;td>前端开发者/插件爱好者&lt;/td>
+&lt;td>GitHub 新手/讨厌本地构建者&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="深度解析三大框架">&lt;strong>深度解析三大框架&lt;/strong>
+&lt;/h3>&lt;h4 id="1-hugo速度至上的极简主义">1. &lt;strong>Hugo：速度至上的极简主义&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>优势&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>无需依赖环境&lt;/strong>：单文件执行，解压即用，跨平台无兼容问题。&lt;/li>
+&lt;li>&lt;strong>极致构建速度&lt;/strong>：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。&lt;/li>
+&lt;li>&lt;strong>强类型内容模型&lt;/strong>：可自定义内容结构（如技术文档、作品集）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>劣势&lt;/strong>
+&lt;ul>
+&lt;li>Go Templates 语法较复杂（例如条件判断需写 &lt;code>{{ if eq .A .B }}&lt;/code>）。&lt;/li>
+&lt;li>插件生态弱于 Hexo，高级功能需手动开发。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>典型用户&lt;/strong>：技术博主、文档站点维护者、讨厌等待构建的人。&lt;/li>
+&lt;/ul>
+&lt;h4 id="2-hexo前端开发者的瑞士军刀">2. &lt;strong>Hexo：前端开发者的瑞士军刀&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>优势&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>插件驱动&lt;/strong>：支持图床优化（&lt;code>hexo-asset-image&lt;/code>）、SEO 增强（&lt;code>hexo-seo&lt;/code>）等深度定制。&lt;/li>
+&lt;li>&lt;strong>技术栈亲和&lt;/strong>：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。&lt;/li>
+&lt;li>&lt;strong>主题高度自由&lt;/strong>：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>劣势&lt;/strong>
+&lt;ul>
+&lt;li>插件过多可能导致构建缓慢（需谨慎选择插件）。&lt;/li>
+&lt;li>需熟悉 Node.js 开发环境（版本兼容问题常见）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>典型用户&lt;/strong>：前端工程师、需要深度定制的技术博主。&lt;/li>
+&lt;/ul>
+&lt;h4 id="3-jekyllgithub-亲儿子的零配置方案">3. &lt;strong>Jekyll：GitHub 亲儿子的零配置方案&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>优势&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>无缝 GitHub 集成&lt;/strong>：推送 Markdown 即自动发布，无需本地构建。&lt;/li>
+&lt;li>&lt;strong>低学习曲线&lt;/strong>：Liquid 模板类似自然语言（例：&lt;code>{% if page.title %}&lt;/code>）。&lt;/li>
+&lt;li>&lt;strong>官方维护保障&lt;/strong>：GitHub 官方支持，兼容性无忧。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>劣势&lt;/strong>
+&lt;ul>
+&lt;li>Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。&lt;/li>
+&lt;li>百篇文章以上构建显著变慢（&amp;gt;30秒）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>典型用户&lt;/strong>：写作优先的博主、非技术背景用户、小型项目快速上线。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="关键决策场景">&lt;strong>关键决策场景&lt;/strong>
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>你的需求&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>推荐框架&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>原因&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>纯写作/讨厌命令行&lt;/td>
+&lt;td>Jekyll&lt;/td>
+&lt;td>推送 Markdown 即发布，无需构建&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>博客规模大（&amp;gt;500篇文章）&lt;/td>
+&lt;td>Hugo&lt;/td>
+&lt;td>构建速度碾压对手，节省生命&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>前端开发者/爱折腾插件&lt;/td>
+&lt;td>Hexo&lt;/td>
+&lt;td>用 Node.js 生态定制功能（如 PWA 支持）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>需托管 GitHub 且追求稳定&lt;/td>
+&lt;td>Jekyll&lt;/td>
+&lt;td>官方支持，无构建失败风险&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>多语言站点（i18n）&lt;/td>
+&lt;td>Hugo&lt;/td>
+&lt;td>内置多语言支持，配置简单&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="终极选择建议">&lt;strong>终极选择建议&lt;/strong>
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>选 Hugo 如果&lt;/strong>：你追求效率至上，内容量巨大，或抗拒环境配置。&lt;/li>
+&lt;li>&lt;strong>选 Hexo 如果&lt;/strong>：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。&lt;/li>
+&lt;li>&lt;strong>选 Jekyll 如果&lt;/strong>：你希望完全依赖 GitHub 自动化，专注写作而非技术。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>💡 &lt;strong>部署提示&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>Hugo/Hexo 可用 GitHub Actions 自动化构建（&lt;a class="link" href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener"
+>示例脚本&lt;/a>）。&lt;/li>
+&lt;li>避免将 &lt;code>node_modules&lt;/code>/&lt;code>public&lt;/code> 推送到 Git 仓库（用 &lt;code>.gitignore&lt;/code> 过滤）。&lt;/li>
+&lt;/ul>&lt;/blockquote></description></item><item><title>Github Pages 搭建个人博客可供选择的框架有哪些</title><link>https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/</link><pubDate>Mon, 02 Jun 2025 22:52:19 +0800</pubDate><guid>https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/</guid><description>&lt;p>在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：&lt;/p>
+&lt;h2 id="-主流框架推荐">🎈 主流框架推荐
+&lt;/h2>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Jekyll&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>原生支持&lt;/strong> Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 &lt;code>_site&lt;/code> 目录。&lt;/li>
+&lt;li>&lt;strong>语言：&lt;/strong> Ruby&lt;/li>
+&lt;li>&lt;strong>特点：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>简单易上手：&lt;/strong> 主题、插件丰富，文档完善，社区庞大，非常适合初学者。&lt;/li>
+&lt;li>&lt;strong>约定优于配置：&lt;/strong> 遵循特定目录结构，很多功能开箱即用。&lt;/li>
+&lt;li>&lt;strong>Liquid 模板引擎：&lt;/strong> 灵活但学习曲线相对平缓。&lt;/li>
+&lt;li>&lt;strong>Markdown 支持：&lt;/strong> 内置支持，方便写作。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优势：&lt;/strong> 与 GitHub Pages 集成最无缝，部署最省心。&lt;/li>
+&lt;li>&lt;strong>劣势：&lt;/strong> 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Hugo&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong> Hugo。你需要&lt;strong>在本地构建&lt;/strong>网站（生成 &lt;code>public&lt;/code> 目录），然后将这个 &lt;code>public&lt;/code> 目录的内容推送到 GitHub 仓库（通常是 &lt;code>gh-pages&lt;/code> 分支或特定分支/docs 目录）。&lt;/li>
+&lt;li>&lt;strong>语言：&lt;/strong> Go (编译成单个二进制文件)&lt;/li>
+&lt;li>&lt;strong>特点：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>极速构建：&lt;/strong> 最大的优势！构建成千上万页面也只需几秒到十几秒。&lt;/li>
+&lt;li>&lt;strong>单二进制文件：&lt;/strong> 安装部署极其简单，无需复杂的语言环境。&lt;/li>
+&lt;li>&lt;strong>强大灵活：&lt;/strong> 内容组织方式灵活，模板功能强大（Go Templates）。&lt;/li>
+&lt;li>&lt;strong>主题丰富：&lt;/strong> 拥有非常庞大且活跃的主题生态系统。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优势：&lt;/strong> 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。&lt;/li>
+&lt;li>&lt;strong>劣势：&lt;/strong> Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Hexo&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong> Hexo。需要&lt;strong>本地构建&lt;/strong>（生成 &lt;code>public&lt;/code> 目录），然后推送 &lt;code>public&lt;/code> 目录内容。&lt;/li>
+&lt;li>&lt;strong>语言：&lt;/strong> Node.js&lt;/li>
+&lt;li>&lt;strong>特点：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>快速高效：&lt;/strong> 构建速度较快（虽然通常不及 Hugo）。&lt;/li>
+&lt;li>&lt;strong>插件驱动：&lt;/strong> 拥有海量的插件，功能扩展性极强。&lt;/li>
+&lt;li>&lt;strong>主题丰富：&lt;/strong> 主题数量众多，风格多样。&lt;/li>
+&lt;li>&lt;strong>面向博客优化：&lt;/strong> 对博客所需的标签、分类、归档等支持良好。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优势：&lt;/strong> 基于 Node.js，对前端开发者友好；插件生态强大，可定制性高。&lt;/li>
+&lt;li>&lt;strong>劣势：&lt;/strong> 需要 Node.js 环境；配置可能相对复杂一些。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>VuePress / VitePress&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong>。需要&lt;strong>本地构建&lt;/strong>，推送构建产物（通常是 &lt;code>.vuepress/dist&lt;/code> 或 &lt;code>.vitepress/dist&lt;/code>）。&lt;/li>
+&lt;li>&lt;strong>语言：&lt;/strong> Node.js (基于 Vue.js)&lt;/li>
+&lt;li>&lt;strong>特点：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>技术栈驱动：&lt;/strong> 专为技术文档设计，但对博客也非常适合，尤其适合熟悉 Vue.js 的开发者。&lt;/li>
+&lt;li>&lt;strong>Markdown 扩展强大：&lt;/strong> 可以在 Markdown 中直接使用 Vue 组件，实现高度交互性。&lt;/li>
+&lt;li>&lt;strong>默认主题优秀：&lt;/strong> 官方默认主题简洁美观，功能实用。&lt;/li>
+&lt;li>&lt;strong>开发体验好：&lt;/strong> 基于 Vite，启动和热更新速度极快。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优势：&lt;/strong> 技术文档和博客的完美结合；利用 Vue 组件系统实现高度定制；优秀的开发体验。&lt;/li>
+&lt;li>&lt;strong>劣势：&lt;/strong> 对不熟悉 Vue 的开发者有一定门槛；主题和插件生态相对 Jekyll/Hugo/Hexo 规模小些（但增长快）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Eleventy (11ty)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong>。需要&lt;strong>本地构建&lt;/strong>，推送构建产物（可配置）。&lt;/li>
+&lt;li>&lt;strong>语言：&lt;/strong> Node.js&lt;/li>
+&lt;li>&lt;strong>特点：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>极度灵活与简单：&lt;/strong> 零配置默认值，但可深度定制。支持多种模板语言（Liquid, Nunjucks, Handlebars, Markdown, HTML 等），你可以混用。&lt;/li>
+&lt;li>&lt;strong>轻量级：&lt;/strong> 框架本身非常精简，概念少。&lt;/li>
+&lt;li>&lt;strong>高性能：&lt;/strong> 构建速度很快。&lt;/li>
+&lt;li>&lt;strong>“无框架”框架：&lt;/strong> 更倾向于提供核心的静态生成能力，不强制特定的项目结构或数据模型。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优势：&lt;/strong> 极高的灵活性和自由度；学习曲线相对平缓（尤其如果你熟悉其中一种模板语言）；性能优异。&lt;/li>
+&lt;li>&lt;strong>劣势：&lt;/strong> 需要自己搭建更多东西（相比开箱即用的框架）；主题生态不如前几个成熟；需要 Node.js 环境。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Astro&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong>。需要&lt;strong>本地构建&lt;/strong>，推送构建产物（&lt;code>dist&lt;/code> 目录）。&lt;/li>
+&lt;li>&lt;strong>语言：&lt;/strong> Node.js (但组件理念独特)&lt;/li>
+&lt;li>&lt;strong>特点：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>岛屿架构：&lt;/strong> 核心理念！默认输出纯静态 HTML/CSS，但可以按需“激活”页面上的交互式组件（称为“岛屿”），大幅减少不必要的 JS。&lt;/li>
+&lt;li>&lt;strong>框架无关：&lt;/strong> 可以在 &lt;code>.astro&lt;/code> 组件中无缝使用 React, Vue, Svelte, Solid 等 UI 框架的组件。&lt;/li>
+&lt;li>&lt;strong>高性能：&lt;/strong> 非常注重输出站点的性能（速度、SEO）。&lt;/li>
+&lt;li>&lt;strong>内容优先：&lt;/strong> 对 Markdown/MDX 支持优秀，内置内容集合功能。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优势：&lt;/strong> 构建现代、高性能网站的最佳选择之一；独特的架构带来极佳的用户体验；强大的内容管理能力；灵活的组件系统。&lt;/li>
+&lt;li>&lt;strong>劣势：&lt;/strong> 概念较新，学习曲线相对陡峭；需要 Node.js 环境；生态还在快速发展中。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="-核心区别对比表">🔍 核心区别对比表
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">特性&lt;/th>
+&lt;th style="text-align: left">Jekyll&lt;/th>
+&lt;th style="text-align: left">Hugo&lt;/th>
+&lt;th style="text-align: left">Hexo&lt;/th>
+&lt;th style="text-align: left">VuePress/VitePress&lt;/th>
+&lt;th style="text-align: left">Eleventy (11ty)&lt;/th>
+&lt;th style="text-align: left">Astro&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>原生 GitHub Pages 支持&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">✅ &lt;strong>是&lt;/strong> (自动构建)&lt;/td>
+&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
+&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
+&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
+&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
+&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>开发语言&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Ruby&lt;/td>
+&lt;td style="text-align: left">Go (单二进制)&lt;/td>
+&lt;td style="text-align: left">Node.js&lt;/td>
+&lt;td style="text-align: left">Node.js (Vue)&lt;/td>
+&lt;td style="text-align: left">Node.js&lt;/td>
+&lt;td style="text-align: left">Node.js&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>最大优势&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">与 GitHub Pages 集成&lt;/td>
+&lt;td style="text-align: left">&lt;strong>极速构建&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">插件生态强大&lt;/td>
+&lt;td style="text-align: left">Markdown+Vue组件&lt;/td>
+&lt;td style="text-align: left">&lt;strong>灵活简单&lt;/strong>，多模板&lt;/td>
+&lt;td style="text-align: left">&lt;strong>岛屿架构&lt;/strong>，高性能&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>构建速度&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">较慢 (大型站点)&lt;/td>
+&lt;td style="text-align: left">⚡ &lt;strong>极快&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">快&lt;/td>
+&lt;td style="text-align: left">快 (VitePress 更快)&lt;/td>
+&lt;td style="text-align: left">快&lt;/td>
+&lt;td style="text-align: left">快&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>学习曲线&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">平缓&lt;/td>
+&lt;td style="text-align: left">中等 (Go模板)&lt;/td>
+&lt;td style="text-align: left">中等&lt;/td>
+&lt;td style="text-align: left">中等 (需Vue基础)&lt;/td>
+&lt;td style="text-align: left">平缓 (熟悉模板即可)&lt;/td>
+&lt;td style="text-align: left">较陡 (新概念)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>主题生态&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">非常丰富&lt;/td>
+&lt;td style="text-align: left">非常丰富&lt;/td>
+&lt;td style="text-align: left">非常丰富&lt;/td>
+&lt;td style="text-align: left">良好 (官方主题优秀)&lt;/td>
+&lt;td style="text-align: left">增长中&lt;/td>
+&lt;td style="text-align: left">增长迅速&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>插件/扩展性&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">良好&lt;/td>
+&lt;td style="text-align: left">良好 (短代码等)&lt;/td>
+&lt;td style="text-align: left">✅ &lt;strong>极好&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">良好&lt;/td>
+&lt;td style="text-align: left">良好 (通过配置/JS)&lt;/td>
+&lt;td style="text-align: left">良好 (集成框架能力强)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>灵活性/自由度&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">中等&lt;/td>
+&lt;td style="text-align: left">高&lt;/td>
+&lt;td style="text-align: left">高&lt;/td>
+&lt;td style="text-align: left">高 (Vue组件)&lt;/td>
+&lt;td style="text-align: left">✅ &lt;strong>极高&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">高&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>最适合人群&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">新手/GitHub集成优先&lt;/td>
+&lt;td style="text-align: left">讨厌等待/大型站点&lt;/td>
+&lt;td style="text-align: left">前端开发者/插件爱好者&lt;/td>
+&lt;td style="text-align: left">Vue开发者/技术文档&lt;/td>
+&lt;td style="text-align: left">追求简洁自由/多语言者&lt;/td>
+&lt;td style="text-align: left">性能控/现代框架使用者&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="-选择建议">📌 选择建议
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>追求最简单部署，不想本地构建：选 &lt;code>Jekyll&lt;/code>。&lt;/strong> GitHub 替你搞定一切，专注于写作。&lt;/li>
+&lt;li>&lt;strong>博客规模大或无法忍受慢速构建：选 &lt;code>Hugo&lt;/code>。&lt;/strong> 速度是王道，部署步骤也简单。&lt;/li>
+&lt;li>&lt;strong>前端开发者，喜欢丰富的插件和主题：选 &lt;code>Hexo&lt;/code>。&lt;/strong> Node.js 环境很熟悉，扩展性强。&lt;/li>
+&lt;li>&lt;strong>熟悉 Vue.js 或需要强交互/技术文档：选 &lt;code>VuePress&lt;/code> / &lt;code>VitePress&lt;/code>。&lt;/strong> Markdown + Vue 的组合非常强大，开发体验好。&lt;/li>
+&lt;li>&lt;strong>喜欢简洁、灵活、自由度高，不依赖特定框架：选 &lt;code>Eleventy&lt;/code>。&lt;/strong> 用你喜欢的模板语言，按你的方式组织。&lt;/li>
+&lt;li>&lt;strong>构建高性能、现代化网站，想用不同框架组件：选 &lt;code>Astro&lt;/code>。&lt;/strong> 岛屿架构带来卓越性能，未来感十足。&lt;/li>
+&lt;/ul>
+&lt;h2 id="-重要提示">💡 重要提示
+&lt;/h2>&lt;ol>
+&lt;li>&lt;strong>部署方式：&lt;/strong> 只有 Jekyll 享受 GitHub Pages 的原生构建支持。对于其他框架，你&lt;strong>必须&lt;/strong>在本地或通过 GitHub Actions 等 CI/CD 工具完成构建，然后将生成的静态文件（通常是 &lt;code>public&lt;/code>, &lt;code>dist&lt;/code>, &lt;code>_site&lt;/code>, &lt;code>docs&lt;/code> 等目录）推送到仓库的特定分支（如 &lt;code>gh-pages&lt;/code>）或主分支的特定目录（如 &lt;code>/docs&lt;/code>），并在仓库设置中指定源。&lt;/li>
+&lt;li>&lt;strong>GitHub Actions：&lt;/strong> 对于非 Jekyll 框架，强烈推荐使用 GitHub Actions 自动化构建和部署过程。这样你只需推送源代码，Actions 会自动执行构建并将生成的静态文件部署到 GitHub Pages。官方或社区通常提供现成的 Action 工作流。&lt;/li>
+&lt;li>&lt;strong>考虑熟悉度：&lt;/strong> 选择你或你的团队最熟悉的语言和技术的框架，会大大降低学习成本和开发效率。&lt;/li>
+&lt;li>&lt;strong>需求驱动：&lt;/strong> 明确你的博客需求（纯写作？需要复杂功能？需要极致性能？需要特定技术栈集成？），再根据需求选择最匹配的框架。&lt;/li>
+&lt;/ol>
+&lt;h2 id="-总结">🎯 总结
+&lt;/h2>&lt;p>GitHub Pages 为静态博客提供了优秀的托管平台。Jekyll 凭借其原生集成是&lt;strong>最省心&lt;/strong>的选择。Hugo 凭借&lt;strong>无与伦比的构建速度&lt;/strong>是大型站点或追求效率者的首选。Hexo 以其强大的&lt;strong>插件生态&lt;/strong>吸引 Node.js 开发者。VuePress/VitePress 是 &lt;strong>Vue 技术栈和文档需求&lt;/strong>的绝配。Eleventy 提供了&lt;strong>最大的灵活性&lt;/strong>和简洁性。Astro 则代表了&lt;strong>现代高性能 Web 开发&lt;/strong>的方向。&lt;/p>
+&lt;p>根据你的具体需求、技术偏好和对部署流程的接受程度，仔细权衡以上框架的特点，就能找到最适合你在 GitHub Pages 上搭建个人博客的工具！开始构建你的博客之旅吧！&lt;/p></description></item></channel></rss>
