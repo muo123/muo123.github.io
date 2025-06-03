@@ -1,19 +1,781 @@
-<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：\n🎈 主流框架推荐\rJekyll\n官方支持： GitHub Pages 原生支持 Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 _site 目录。 语言： Ruby 特点： 简单易上手： 主题、插件丰富，文档完善，社区庞大，非常适合初学者。 约定优于配置： 遵循特定目录结构，很多功能开箱即用。 Liquid 模板引擎： 灵活但学习曲线相对平缓。 Markdown 支持： 内置支持，方便写作。 优势： 与 GitHub Pages 集成最无缝，部署最省心。 劣势： 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。 Hugo\n官方支持： GitHub Pages 不原生支持 Hugo。你需要在本地构建网站（生成 public 目录），然后将这个 public 目录的内容推送到 GitHub 仓库（通常是 gh-pages 分支或特定分支/docs 目录）。 语言： Go (编译成单个二进制文件) 特点： 极速构建： 最大的优势！构建成千上万页面也只需几秒到十几秒。 单二进制文件： 安装部署极其简单，无需复杂的语言环境。 强大灵活： 内容组织方式灵活，模板功能强大（Go Templates）。 主题丰富： 拥有非常庞大且活跃的主题生态系统。 优势： 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。 劣势： Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。 Hexo\n"><title>Github Pages 搭建个人博客可供选择的框架有哪些</title><link rel=canonical href=https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/><link rel=stylesheet href=/scss/style.min.cfa5b1b0e78d61c00a14173992a1f3fa3b5c1b9fa34d023de959af564e7b19dd.css><meta property='og:title' content="Github Pages 搭建个人博客可供选择的框架有哪些"><meta property='og:description' content="在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：\n🎈 主流框架推荐\rJekyll\n官方支持： GitHub Pages 原生支持 Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 _site 目录。 语言： Ruby 特点： 简单易上手： 主题、插件丰富，文档完善，社区庞大，非常适合初学者。 约定优于配置： 遵循特定目录结构，很多功能开箱即用。 Liquid 模板引擎： 灵活但学习曲线相对平缓。 Markdown 支持： 内置支持，方便写作。 优势： 与 GitHub Pages 集成最无缝，部署最省心。 劣势： 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。 Hugo\n官方支持： GitHub Pages 不原生支持 Hugo。你需要在本地构建网站（生成 public 目录），然后将这个 public 目录的内容推送到 GitHub 仓库（通常是 gh-pages 分支或特定分支/docs 目录）。 语言： Go (编译成单个二进制文件) 特点： 极速构建： 最大的优势！构建成千上万页面也只需几秒到十几秒。 单二进制文件： 安装部署极其简单，无需复杂的语言环境。 强大灵活： 内容组织方式灵活，模板功能强大（Go Templates）。 主题丰富： 拥有非常庞大且活跃的主题生态系统。 优势： 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。 劣势： Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。 Hexo\n"><meta property='og:url' content='https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/'><meta property='og:site_name' content='雪国流明的博客'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:published_time' content='2025-06-02T22:52:19+08:00'><meta property='article:modified_time' content='2025-06-02T22:52:19+08:00'><meta name=twitter:title content="Github Pages 搭建个人博客可供选择的框架有哪些"><meta name=twitter:description content="在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：\n🎈 主流框架推荐\rJekyll\n官方支持： GitHub Pages 原生支持 Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 _site 目录。 语言： Ruby 特点： 简单易上手： 主题、插件丰富，文档完善，社区庞大，非常适合初学者。 约定优于配置： 遵循特定目录结构，很多功能开箱即用。 Liquid 模板引擎： 灵活但学习曲线相对平缓。 Markdown 支持： 内置支持，方便写作。 优势： 与 GitHub Pages 集成最无缝，部署最省心。 劣势： 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。 Hugo\n官方支持： GitHub Pages 不原生支持 Hugo。你需要在本地构建网站（生成 public 目录），然后将这个 public 目录的内容推送到 GitHub 仓库（通常是 gh-pages 分支或特定分支/docs 目录）。 语言： Go (编译成单个二进制文件) 特点： 极速构建： 最大的优势！构建成千上万页面也只需几秒到十几秒。 单二进制文件： 安装部署极其简单，无需复杂的语言环境。 强大灵活： 内容组织方式灵活，模板功能强大（Go Templates）。 主题丰富： 拥有非常庞大且活跃的主题生态系统。 优势： 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。 劣势： Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。 Hexo\n"><link rel="shortcut icon" href=/favicon.ico></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_5ebb0387c4e49f4b.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
-</a><span class=emoji>😶‍🌫️</span></figure><div class=site-meta><h1 class=site-name><a href=/>雪国流明的博客</a></h1><h2 class=site-description>心有猛虎，细嗅蔷薇</h2></div></header><ol class=menu-social><li><a href=https://github.com/muo123 target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
-<span>主页</span></a></li><li><a href=/%E5%85%B3%E4%BA%8E/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
-<span>关于</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-<span>归档</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
-<span>搜索</span></a></li><li><a href=/%E9%93%BE%E6%8E%A5/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
-<span>链接</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#-主流框架推荐>🎈 主流框架推荐</a></li><li><a href=#-核心区别对比表>🔍 核心区别对比表</a></li><li><a href=#-选择建议>📌 选择建议</a></li><li><a href=#-重要提示>💡 重要提示</a></li><li><a href=#-总结>🎯 总结</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E5%8D%9A%E5%AE%A2/>博客</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/>Github Pages 搭建个人博客可供选择的框架有哪些</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>Jun 02, 2025</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>阅读时长: 2 分钟</time></div></footer></div></header><section class=article-content><p>在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：</p><h2 id=-主流框架推荐>🎈 主流框架推荐</h2><ol><li><p><strong>Jekyll</strong></p><ul><li><strong>官方支持：</strong> GitHub Pages <strong>原生支持</strong> Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 <code>_site</code> 目录。</li><li><strong>语言：</strong> Ruby</li><li><strong>特点：</strong><ul><li><strong>简单易上手：</strong> 主题、插件丰富，文档完善，社区庞大，非常适合初学者。</li><li><strong>约定优于配置：</strong> 遵循特定目录结构，很多功能开箱即用。</li><li><strong>Liquid 模板引擎：</strong> 灵活但学习曲线相对平缓。</li><li><strong>Markdown 支持：</strong> 内置支持，方便写作。</li></ul></li><li><strong>优势：</strong> 与 GitHub Pages 集成最无缝，部署最省心。</li><li><strong>劣势：</strong> 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。</li></ul></li><li><p><strong>Hugo</strong></p><ul><li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong> Hugo。你需要<strong>在本地构建</strong>网站（生成 <code>public</code> 目录），然后将这个 <code>public</code> 目录的内容推送到 GitHub 仓库（通常是 <code>gh-pages</code> 分支或特定分支/docs 目录）。</li><li><strong>语言：</strong> Go (编译成单个二进制文件)</li><li><strong>特点：</strong><ul><li><strong>极速构建：</strong> 最大的优势！构建成千上万页面也只需几秒到十几秒。</li><li><strong>单二进制文件：</strong> 安装部署极其简单，无需复杂的语言环境。</li><li><strong>强大灵活：</strong> 内容组织方式灵活，模板功能强大（Go Templates）。</li><li><strong>主题丰富：</strong> 拥有非常庞大且活跃的主题生态系统。</li></ul></li><li><strong>优势：</strong> 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。</li><li><strong>劣势：</strong> Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。</li></ul></li><li><p><strong>Hexo</strong></p><ul><li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong> Hexo。需要<strong>本地构建</strong>（生成 <code>public</code> 目录），然后推送 <code>public</code> 目录内容。</li><li><strong>语言：</strong> Node.js</li><li><strong>特点：</strong><ul><li><strong>快速高效：</strong> 构建速度较快（虽然通常不及 Hugo）。</li><li><strong>插件驱动：</strong> 拥有海量的插件，功能扩展性极强。</li><li><strong>主题丰富：</strong> 主题数量众多，风格多样。</li><li><strong>面向博客优化：</strong> 对博客所需的标签、分类、归档等支持良好。</li></ul></li><li><strong>优势：</strong> 基于 Node.js，对前端开发者友好；插件生态强大，可定制性高。</li><li><strong>劣势：</strong> 需要 Node.js 环境；配置可能相对复杂一些。</li></ul></li><li><p><strong>VuePress / VitePress</strong></p><ul><li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong>。需要<strong>本地构建</strong>，推送构建产物（通常是 <code>.vuepress/dist</code> 或 <code>.vitepress/dist</code>）。</li><li><strong>语言：</strong> Node.js (基于 Vue.js)</li><li><strong>特点：</strong><ul><li><strong>技术栈驱动：</strong> 专为技术文档设计，但对博客也非常适合，尤其适合熟悉 Vue.js 的开发者。</li><li><strong>Markdown 扩展强大：</strong> 可以在 Markdown 中直接使用 Vue 组件，实现高度交互性。</li><li><strong>默认主题优秀：</strong> 官方默认主题简洁美观，功能实用。</li><li><strong>开发体验好：</strong> 基于 Vite，启动和热更新速度极快。</li></ul></li><li><strong>优势：</strong> 技术文档和博客的完美结合；利用 Vue 组件系统实现高度定制；优秀的开发体验。</li><li><strong>劣势：</strong> 对不熟悉 Vue 的开发者有一定门槛；主题和插件生态相对 Jekyll/Hugo/Hexo 规模小些（但增长快）。</li></ul></li><li><p><strong>Eleventy (11ty)</strong></p><ul><li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong>。需要<strong>本地构建</strong>，推送构建产物（可配置）。</li><li><strong>语言：</strong> Node.js</li><li><strong>特点：</strong><ul><li><strong>极度灵活与简单：</strong> 零配置默认值，但可深度定制。支持多种模板语言（Liquid, Nunjucks, Handlebars, Markdown, HTML 等），你可以混用。</li><li><strong>轻量级：</strong> 框架本身非常精简，概念少。</li><li><strong>高性能：</strong> 构建速度很快。</li><li><strong>“无框架”框架：</strong> 更倾向于提供核心的静态生成能力，不强制特定的项目结构或数据模型。</li></ul></li><li><strong>优势：</strong> 极高的灵活性和自由度；学习曲线相对平缓（尤其如果你熟悉其中一种模板语言）；性能优异。</li><li><strong>劣势：</strong> 需要自己搭建更多东西（相比开箱即用的框架）；主题生态不如前几个成熟；需要 Node.js 环境。</li></ul></li><li><p><strong>Astro</strong></p><ul><li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong>。需要<strong>本地构建</strong>，推送构建产物（<code>dist</code> 目录）。</li><li><strong>语言：</strong> Node.js (但组件理念独特)</li><li><strong>特点：</strong><ul><li><strong>岛屿架构：</strong> 核心理念！默认输出纯静态 HTML/CSS，但可以按需“激活”页面上的交互式组件（称为“岛屿”），大幅减少不必要的 JS。</li><li><strong>框架无关：</strong> 可以在 <code>.astro</code> 组件中无缝使用 React, Vue, Svelte, Solid 等 UI 框架的组件。</li><li><strong>高性能：</strong> 非常注重输出站点的性能（速度、SEO）。</li><li><strong>内容优先：</strong> 对 Markdown/MDX 支持优秀，内置内容集合功能。</li></ul></li><li><strong>优势：</strong> 构建现代、高性能网站的最佳选择之一；独特的架构带来极佳的用户体验；强大的内容管理能力；灵活的组件系统。</li><li><strong>劣势：</strong> 概念较新，学习曲线相对陡峭；需要 Node.js 环境；生态还在快速发展中。</li></ul></li></ol><h2 id=-核心区别对比表>🔍 核心区别对比表</h2><div class=table-wrapper><table><thead><tr><th style=text-align:left>特性</th><th style=text-align:left>Jekyll</th><th style=text-align:left>Hugo</th><th style=text-align:left>Hexo</th><th style=text-align:left>VuePress/VitePress</th><th style=text-align:left>Eleventy (11ty)</th><th style=text-align:left>Astro</th></tr></thead><tbody><tr><td style=text-align:left><strong>原生 GitHub Pages 支持</strong></td><td style=text-align:left>✅ <strong>是</strong> (自动构建)</td><td style=text-align:left>❌ 否 (需本地构建)</td><td style=text-align:left>❌ 否 (需本地构建)</td><td style=text-align:left>❌ 否 (需本地构建)</td><td style=text-align:left>❌ 否 (需本地构建)</td><td style=text-align:left>❌ 否 (需本地构建)</td></tr><tr><td style=text-align:left><strong>开发语言</strong></td><td style=text-align:left>Ruby</td><td style=text-align:left>Go (单二进制)</td><td style=text-align:left>Node.js</td><td style=text-align:left>Node.js (Vue)</td><td style=text-align:left>Node.js</td><td style=text-align:left>Node.js</td></tr><tr><td style=text-align:left><strong>最大优势</strong></td><td style=text-align:left>与 GitHub Pages 集成</td><td style=text-align:left><strong>极速构建</strong></td><td style=text-align:left>插件生态强大</td><td style=text-align:left>Markdown+Vue组件</td><td style=text-align:left><strong>灵活简单</strong>，多模板</td><td style=text-align:left><strong>岛屿架构</strong>，高性能</td></tr><tr><td style=text-align:left><strong>构建速度</strong></td><td style=text-align:left>较慢 (大型站点)</td><td style=text-align:left>⚡ <strong>极快</strong></td><td style=text-align:left>快</td><td style=text-align:left>快 (VitePress 更快)</td><td style=text-align:left>快</td><td style=text-align:left>快</td></tr><tr><td style=text-align:left><strong>学习曲线</strong></td><td style=text-align:left>平缓</td><td style=text-align:left>中等 (Go模板)</td><td style=text-align:left>中等</td><td style=text-align:left>中等 (需Vue基础)</td><td style=text-align:left>平缓 (熟悉模板即可)</td><td style=text-align:left>较陡 (新概念)</td></tr><tr><td style=text-align:left><strong>主题生态</strong></td><td style=text-align:left>非常丰富</td><td style=text-align:left>非常丰富</td><td style=text-align:left>非常丰富</td><td style=text-align:left>良好 (官方主题优秀)</td><td style=text-align:left>增长中</td><td style=text-align:left>增长迅速</td></tr><tr><td style=text-align:left><strong>插件/扩展性</strong></td><td style=text-align:left>良好</td><td style=text-align:left>良好 (短代码等)</td><td style=text-align:left>✅ <strong>极好</strong></td><td style=text-align:left>良好</td><td style=text-align:left>良好 (通过配置/JS)</td><td style=text-align:left>良好 (集成框架能力强)</td></tr><tr><td style=text-align:left><strong>灵活性/自由度</strong></td><td style=text-align:left>中等</td><td style=text-align:left>高</td><td style=text-align:left>高</td><td style=text-align:left>高 (Vue组件)</td><td style=text-align:left>✅ <strong>极高</strong></td><td style=text-align:left>高</td></tr><tr><td style=text-align:left><strong>最适合人群</strong></td><td style=text-align:left>新手/GitHub集成优先</td><td style=text-align:left>讨厌等待/大型站点</td><td style=text-align:left>前端开发者/插件爱好者</td><td style=text-align:left>Vue开发者/技术文档</td><td style=text-align:left>追求简洁自由/多语言者</td><td style=text-align:left>性能控/现代框架使用者</td></tr></tbody></table></div><h2 id=-选择建议>📌 选择建议</h2><ul><li><strong>追求最简单部署，不想本地构建：选 <code>Jekyll</code>。</strong> GitHub 替你搞定一切，专注于写作。</li><li><strong>博客规模大或无法忍受慢速构建：选 <code>Hugo</code>。</strong> 速度是王道，部署步骤也简单。</li><li><strong>前端开发者，喜欢丰富的插件和主题：选 <code>Hexo</code>。</strong> Node.js 环境很熟悉，扩展性强。</li><li><strong>熟悉 Vue.js 或需要强交互/技术文档：选 <code>VuePress</code> / <code>VitePress</code>。</strong> Markdown + Vue 的组合非常强大，开发体验好。</li><li><strong>喜欢简洁、灵活、自由度高，不依赖特定框架：选 <code>Eleventy</code>。</strong> 用你喜欢的模板语言，按你的方式组织。</li><li><strong>构建高性能、现代化网站，想用不同框架组件：选 <code>Astro</code>。</strong> 岛屿架构带来卓越性能，未来感十足。</li></ul><h2 id=-重要提示>💡 重要提示</h2><ol><li><strong>部署方式：</strong> 只有 Jekyll 享受 GitHub Pages 的原生构建支持。对于其他框架，你<strong>必须</strong>在本地或通过 GitHub Actions 等 CI/CD 工具完成构建，然后将生成的静态文件（通常是 <code>public</code>, <code>dist</code>, <code>_site</code>, <code>docs</code> 等目录）推送到仓库的特定分支（如 <code>gh-pages</code>）或主分支的特定目录（如 <code>/docs</code>），并在仓库设置中指定源。</li><li><strong>GitHub Actions：</strong> 对于非 Jekyll 框架，强烈推荐使用 GitHub Actions 自动化构建和部署过程。这样你只需推送源代码，Actions 会自动执行构建并将生成的静态文件部署到 GitHub Pages。官方或社区通常提供现成的 Action 工作流。</li><li><strong>考虑熟悉度：</strong> 选择你或你的团队最熟悉的语言和技术的框架，会大大降低学习成本和开发效率。</li><li><strong>需求驱动：</strong> 明确你的博客需求（纯写作？需要复杂功能？需要极致性能？需要特定技术栈集成？），再根据需求选择最匹配的框架。</li></ol><h2 id=-总结>🎯 总结</h2><p>GitHub Pages 为静态博客提供了优秀的托管平台。Jekyll 凭借其原生集成是<strong>最省心</strong>的选择。Hugo 凭借<strong>无与伦比的构建速度</strong>是大型站点或追求效率者的首选。Hexo 以其强大的<strong>插件生态</strong>吸引 Node.js 开发者。VuePress/VitePress 是 <strong>Vue 技术栈和文档需求</strong>的绝配。Eleventy 提供了<strong>最大的灵活性</strong>和简洁性。Astro 则代表了<strong>现代高性能 Web 开发</strong>的方向。</p><p>根据你的具体需求、技术偏好和对部署流程的接受程度，仔细权衡以上框架的特点，就能找到最适合你在 GitHub Pages 上搭建个人博客的工具！开始构建你的博客之旅吧！</p></section><footer class=article-footer><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
-<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/><div class=article-details><h2 class=article-title>博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//hugo-theme-stack.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
-2025 muo123</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-<button class="pswp__button pswp__button--share" title=Share></button>
-<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-</button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：\n🎈 主流框架推荐 Jekyll\n官方支持： GitHub Pages 原生支持 Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 _site 目录。 语言： Ruby 特点： 简单易上手： 主题、插件丰富，文档完善，社区庞大，非常适合初学者。 约定优于配置： 遵循特定目录结构，很多功能开箱即用。 Liquid 模板引擎： 灵活但学习曲线相对平缓。 Markdown 支持： 内置支持，方便写作。 优势： 与 GitHub Pages 集成最无缝，部署最省心。 劣势： 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。 Hugo\n官方支持： GitHub Pages 不原生支持 Hugo。你需要在本地构建网站（生成 public 目录），然后将这个 public 目录的内容推送到 GitHub 仓库（通常是 gh-pages 分支或特定分支/docs 目录）。 语言： Go (编译成单个二进制文件) 特点： 极速构建： 最大的优势！构建成千上万页面也只需几秒到十几秒。 单二进制文件： 安装部署极其简单，无需复杂的语言环境。 强大灵活： 内容组织方式灵活，模板功能强大（Go Templates）。 主题丰富： 拥有非常庞大且活跃的主题生态系统。 优势： 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。 劣势： Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。 Hexo\n">
+<title>Github Pages 搭建个人博客可供选择的框架有哪些</title>
+
+<link rel='canonical' href='https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/'>
+
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Github Pages 搭建个人博客可供选择的框架有哪些">
+<meta property='og:description' content="在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：\n🎈 主流框架推荐 Jekyll\n官方支持： GitHub Pages 原生支持 Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 _site 目录。 语言： Ruby 特点： 简单易上手： 主题、插件丰富，文档完善，社区庞大，非常适合初学者。 约定优于配置： 遵循特定目录结构，很多功能开箱即用。 Liquid 模板引擎： 灵活但学习曲线相对平缓。 Markdown 支持： 内置支持，方便写作。 优势： 与 GitHub Pages 集成最无缝，部署最省心。 劣势： 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。 Hugo\n官方支持： GitHub Pages 不原生支持 Hugo。你需要在本地构建网站（生成 public 目录），然后将这个 public 目录的内容推送到 GitHub 仓库（通常是 gh-pages 分支或特定分支/docs 目录）。 语言： Go (编译成单个二进制文件) 特点： 极速构建： 最大的优势！构建成千上万页面也只需几秒到十几秒。 单二进制文件： 安装部署极其简单，无需复杂的语言环境。 强大灵活： 内容组织方式灵活，模板功能强大（Go Templates）。 主题丰富： 拥有非常庞大且活跃的主题生态系统。 优势： 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。 劣势： Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。 Hexo\n">
+<meta property='og:url' content='https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/'>
+<meta property='og:site_name' content='雪国流明的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-02T22:52:19&#43;08:00'/><meta property='article:modified_time' content='2025-06-02T22:52:19&#43;08:00'/><meta property='og:image' content='https://tc.z.wiki/autoupload/20250603/sjGQ/1085X637/image.png' />
+<meta name="twitter:title" content="Github Pages 搭建个人博客可供选择的框架有哪些">
+<meta name="twitter:description" content="在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：\n🎈 主流框架推荐 Jekyll\n官方支持： GitHub Pages 原生支持 Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 _site 目录。 语言： Ruby 特点： 简单易上手： 主题、插件丰富，文档完善，社区庞大，非常适合初学者。 约定优于配置： 遵循特定目录结构，很多功能开箱即用。 Liquid 模板引擎： 灵活但学习曲线相对平缓。 Markdown 支持： 内置支持，方便写作。 优势： 与 GitHub Pages 集成最无缝，部署最省心。 劣势： 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。 Hugo\n官方支持： GitHub Pages 不原生支持 Hugo。你需要在本地构建网站（生成 public 目录），然后将这个 public 目录的内容推送到 GitHub 仓库（通常是 gh-pages 分支或特定分支/docs 目录）。 语言： Go (编译成单个二进制文件) 特点： 极速构建： 最大的优势！构建成千上万页面也只需几秒到十几秒。 单二进制文件： 安装部署极其简单，无需复杂的语言环境。 强大灵活： 内容组织方式灵活，模板功能强大（Go Templates）。 主题丰富： 拥有非常庞大且活跃的主题生态系统。 优势： 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。 劣势： Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。 Hexo\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://tc.z.wiki/autoupload/20250603/sjGQ/1085X637/image.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_5ebb0387c4e49f4b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😶‍🌫️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">雪国流明的博客</a></h1>
+            <h2 class="site-description">心有猛虎，细嗅蔷薇</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/muo123'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#-主流框架推荐">🎈 主流框架推荐</a></li>
+    <li><a href="#-核心区别对比表">🔍 核心区别对比表</a></li>
+    <li><a href="#-选择建议">📌 选择建议</a></li>
+    <li><a href="#-重要提示">💡 重要提示</a></li>
+    <li><a href="#-总结">🎯 总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/">
+                
+                    <img src="https://tc.z.wiki/autoupload/20250603/sjGQ/1085X637/image.png" loading="lazy" alt="Featured image of post Github Pages 搭建个人博客可供选择的框架有哪些" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%8D%9A%E5%AE%A2/" >
+                博客
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/">Github Pages 搭建个人博客可供选择的框架有哪些</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 02, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 2 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：</p>
+<h2 id="-主流框架推荐">🎈 主流框架推荐
+</h2><ol>
+<li>
+<p><strong>Jekyll</strong></p>
+<ul>
+<li><strong>官方支持：</strong> GitHub Pages <strong>原生支持</strong> Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 <code>_site</code> 目录。</li>
+<li><strong>语言：</strong> Ruby</li>
+<li><strong>特点：</strong>
+<ul>
+<li><strong>简单易上手：</strong> 主题、插件丰富，文档完善，社区庞大，非常适合初学者。</li>
+<li><strong>约定优于配置：</strong> 遵循特定目录结构，很多功能开箱即用。</li>
+<li><strong>Liquid 模板引擎：</strong> 灵活但学习曲线相对平缓。</li>
+<li><strong>Markdown 支持：</strong> 内置支持，方便写作。</li>
+</ul>
+</li>
+<li><strong>优势：</strong> 与 GitHub Pages 集成最无缝，部署最省心。</li>
+<li><strong>劣势：</strong> 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。</li>
+</ul>
+</li>
+<li>
+<p><strong>Hugo</strong></p>
+<ul>
+<li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong> Hugo。你需要<strong>在本地构建</strong>网站（生成 <code>public</code> 目录），然后将这个 <code>public</code> 目录的内容推送到 GitHub 仓库（通常是 <code>gh-pages</code> 分支或特定分支/docs 目录）。</li>
+<li><strong>语言：</strong> Go (编译成单个二进制文件)</li>
+<li><strong>特点：</strong>
+<ul>
+<li><strong>极速构建：</strong> 最大的优势！构建成千上万页面也只需几秒到十几秒。</li>
+<li><strong>单二进制文件：</strong> 安装部署极其简单，无需复杂的语言环境。</li>
+<li><strong>强大灵活：</strong> 内容组织方式灵活，模板功能强大（Go Templates）。</li>
+<li><strong>主题丰富：</strong> 拥有非常庞大且活跃的主题生态系统。</li>
+</ul>
+</li>
+<li><strong>优势：</strong> 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。</li>
+<li><strong>劣势：</strong> Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。</li>
+</ul>
+</li>
+<li>
+<p><strong>Hexo</strong></p>
+<ul>
+<li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong> Hexo。需要<strong>本地构建</strong>（生成 <code>public</code> 目录），然后推送 <code>public</code> 目录内容。</li>
+<li><strong>语言：</strong> Node.js</li>
+<li><strong>特点：</strong>
+<ul>
+<li><strong>快速高效：</strong> 构建速度较快（虽然通常不及 Hugo）。</li>
+<li><strong>插件驱动：</strong> 拥有海量的插件，功能扩展性极强。</li>
+<li><strong>主题丰富：</strong> 主题数量众多，风格多样。</li>
+<li><strong>面向博客优化：</strong> 对博客所需的标签、分类、归档等支持良好。</li>
+</ul>
+</li>
+<li><strong>优势：</strong> 基于 Node.js，对前端开发者友好；插件生态强大，可定制性高。</li>
+<li><strong>劣势：</strong> 需要 Node.js 环境；配置可能相对复杂一些。</li>
+</ul>
+</li>
+<li>
+<p><strong>VuePress / VitePress</strong></p>
+<ul>
+<li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong>。需要<strong>本地构建</strong>，推送构建产物（通常是 <code>.vuepress/dist</code> 或 <code>.vitepress/dist</code>）。</li>
+<li><strong>语言：</strong> Node.js (基于 Vue.js)</li>
+<li><strong>特点：</strong>
+<ul>
+<li><strong>技术栈驱动：</strong> 专为技术文档设计，但对博客也非常适合，尤其适合熟悉 Vue.js 的开发者。</li>
+<li><strong>Markdown 扩展强大：</strong> 可以在 Markdown 中直接使用 Vue 组件，实现高度交互性。</li>
+<li><strong>默认主题优秀：</strong> 官方默认主题简洁美观，功能实用。</li>
+<li><strong>开发体验好：</strong> 基于 Vite，启动和热更新速度极快。</li>
+</ul>
+</li>
+<li><strong>优势：</strong> 技术文档和博客的完美结合；利用 Vue 组件系统实现高度定制；优秀的开发体验。</li>
+<li><strong>劣势：</strong> 对不熟悉 Vue 的开发者有一定门槛；主题和插件生态相对 Jekyll/Hugo/Hexo 规模小些（但增长快）。</li>
+</ul>
+</li>
+<li>
+<p><strong>Eleventy (11ty)</strong></p>
+<ul>
+<li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong>。需要<strong>本地构建</strong>，推送构建产物（可配置）。</li>
+<li><strong>语言：</strong> Node.js</li>
+<li><strong>特点：</strong>
+<ul>
+<li><strong>极度灵活与简单：</strong> 零配置默认值，但可深度定制。支持多种模板语言（Liquid, Nunjucks, Handlebars, Markdown, HTML 等），你可以混用。</li>
+<li><strong>轻量级：</strong> 框架本身非常精简，概念少。</li>
+<li><strong>高性能：</strong> 构建速度很快。</li>
+<li><strong>“无框架”框架：</strong> 更倾向于提供核心的静态生成能力，不强制特定的项目结构或数据模型。</li>
+</ul>
+</li>
+<li><strong>优势：</strong> 极高的灵活性和自由度；学习曲线相对平缓（尤其如果你熟悉其中一种模板语言）；性能优异。</li>
+<li><strong>劣势：</strong> 需要自己搭建更多东西（相比开箱即用的框架）；主题生态不如前几个成熟；需要 Node.js 环境。</li>
+</ul>
+</li>
+<li>
+<p><strong>Astro</strong></p>
+<ul>
+<li><strong>官方支持：</strong> GitHub Pages <strong>不原生支持</strong>。需要<strong>本地构建</strong>，推送构建产物（<code>dist</code> 目录）。</li>
+<li><strong>语言：</strong> Node.js (但组件理念独特)</li>
+<li><strong>特点：</strong>
+<ul>
+<li><strong>岛屿架构：</strong> 核心理念！默认输出纯静态 HTML/CSS，但可以按需“激活”页面上的交互式组件（称为“岛屿”），大幅减少不必要的 JS。</li>
+<li><strong>框架无关：</strong> 可以在 <code>.astro</code> 组件中无缝使用 React, Vue, Svelte, Solid 等 UI 框架的组件。</li>
+<li><strong>高性能：</strong> 非常注重输出站点的性能（速度、SEO）。</li>
+<li><strong>内容优先：</strong> 对 Markdown/MDX 支持优秀，内置内容集合功能。</li>
+</ul>
+</li>
+<li><strong>优势：</strong> 构建现代、高性能网站的最佳选择之一；独特的架构带来极佳的用户体验；强大的内容管理能力；灵活的组件系统。</li>
+<li><strong>劣势：</strong> 概念较新，学习曲线相对陡峭；需要 Node.js 环境；生态还在快速发展中。</li>
+</ul>
+</li>
+</ol>
+<h2 id="-核心区别对比表">🔍 核心区别对比表
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">特性</th>
+          <th style="text-align: left">Jekyll</th>
+          <th style="text-align: left">Hugo</th>
+          <th style="text-align: left">Hexo</th>
+          <th style="text-align: left">VuePress/VitePress</th>
+          <th style="text-align: left">Eleventy (11ty)</th>
+          <th style="text-align: left">Astro</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>原生 GitHub Pages 支持</strong></td>
+          <td style="text-align: left">✅ <strong>是</strong> (自动构建)</td>
+          <td style="text-align: left">❌ 否 (需本地构建)</td>
+          <td style="text-align: left">❌ 否 (需本地构建)</td>
+          <td style="text-align: left">❌ 否 (需本地构建)</td>
+          <td style="text-align: left">❌ 否 (需本地构建)</td>
+          <td style="text-align: left">❌ 否 (需本地构建)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>开发语言</strong></td>
+          <td style="text-align: left">Ruby</td>
+          <td style="text-align: left">Go (单二进制)</td>
+          <td style="text-align: left">Node.js</td>
+          <td style="text-align: left">Node.js (Vue)</td>
+          <td style="text-align: left">Node.js</td>
+          <td style="text-align: left">Node.js</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>最大优势</strong></td>
+          <td style="text-align: left">与 GitHub Pages 集成</td>
+          <td style="text-align: left"><strong>极速构建</strong></td>
+          <td style="text-align: left">插件生态强大</td>
+          <td style="text-align: left">Markdown+Vue组件</td>
+          <td style="text-align: left"><strong>灵活简单</strong>，多模板</td>
+          <td style="text-align: left"><strong>岛屿架构</strong>，高性能</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>构建速度</strong></td>
+          <td style="text-align: left">较慢 (大型站点)</td>
+          <td style="text-align: left">⚡ <strong>极快</strong></td>
+          <td style="text-align: left">快</td>
+          <td style="text-align: left">快 (VitePress 更快)</td>
+          <td style="text-align: left">快</td>
+          <td style="text-align: left">快</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>学习曲线</strong></td>
+          <td style="text-align: left">平缓</td>
+          <td style="text-align: left">中等 (Go模板)</td>
+          <td style="text-align: left">中等</td>
+          <td style="text-align: left">中等 (需Vue基础)</td>
+          <td style="text-align: left">平缓 (熟悉模板即可)</td>
+          <td style="text-align: left">较陡 (新概念)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主题生态</strong></td>
+          <td style="text-align: left">非常丰富</td>
+          <td style="text-align: left">非常丰富</td>
+          <td style="text-align: left">非常丰富</td>
+          <td style="text-align: left">良好 (官方主题优秀)</td>
+          <td style="text-align: left">增长中</td>
+          <td style="text-align: left">增长迅速</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>插件/扩展性</strong></td>
+          <td style="text-align: left">良好</td>
+          <td style="text-align: left">良好 (短代码等)</td>
+          <td style="text-align: left">✅ <strong>极好</strong></td>
+          <td style="text-align: left">良好</td>
+          <td style="text-align: left">良好 (通过配置/JS)</td>
+          <td style="text-align: left">良好 (集成框架能力强)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>灵活性/自由度</strong></td>
+          <td style="text-align: left">中等</td>
+          <td style="text-align: left">高</td>
+          <td style="text-align: left">高</td>
+          <td style="text-align: left">高 (Vue组件)</td>
+          <td style="text-align: left">✅ <strong>极高</strong></td>
+          <td style="text-align: left">高</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>最适合人群</strong></td>
+          <td style="text-align: left">新手/GitHub集成优先</td>
+          <td style="text-align: left">讨厌等待/大型站点</td>
+          <td style="text-align: left">前端开发者/插件爱好者</td>
+          <td style="text-align: left">Vue开发者/技术文档</td>
+          <td style="text-align: left">追求简洁自由/多语言者</td>
+          <td style="text-align: left">性能控/现代框架使用者</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="-选择建议">📌 选择建议
+</h2><ul>
+<li><strong>追求最简单部署，不想本地构建：选 <code>Jekyll</code>。</strong> GitHub 替你搞定一切，专注于写作。</li>
+<li><strong>博客规模大或无法忍受慢速构建：选 <code>Hugo</code>。</strong> 速度是王道，部署步骤也简单。</li>
+<li><strong>前端开发者，喜欢丰富的插件和主题：选 <code>Hexo</code>。</strong> Node.js 环境很熟悉，扩展性强。</li>
+<li><strong>熟悉 Vue.js 或需要强交互/技术文档：选 <code>VuePress</code> / <code>VitePress</code>。</strong> Markdown + Vue 的组合非常强大，开发体验好。</li>
+<li><strong>喜欢简洁、灵活、自由度高，不依赖特定框架：选 <code>Eleventy</code>。</strong> 用你喜欢的模板语言，按你的方式组织。</li>
+<li><strong>构建高性能、现代化网站，想用不同框架组件：选 <code>Astro</code>。</strong> 岛屿架构带来卓越性能，未来感十足。</li>
+</ul>
+<h2 id="-重要提示">💡 重要提示
+</h2><ol>
+<li><strong>部署方式：</strong> 只有 Jekyll 享受 GitHub Pages 的原生构建支持。对于其他框架，你<strong>必须</strong>在本地或通过 GitHub Actions 等 CI/CD 工具完成构建，然后将生成的静态文件（通常是 <code>public</code>, <code>dist</code>, <code>_site</code>, <code>docs</code> 等目录）推送到仓库的特定分支（如 <code>gh-pages</code>）或主分支的特定目录（如 <code>/docs</code>），并在仓库设置中指定源。</li>
+<li><strong>GitHub Actions：</strong> 对于非 Jekyll 框架，强烈推荐使用 GitHub Actions 自动化构建和部署过程。这样你只需推送源代码，Actions 会自动执行构建并将生成的静态文件部署到 GitHub Pages。官方或社区通常提供现成的 Action 工作流。</li>
+<li><strong>考虑熟悉度：</strong> 选择你或你的团队最熟悉的语言和技术的框架，会大大降低学习成本和开发效率。</li>
+<li><strong>需求驱动：</strong> 明确你的博客需求（纯写作？需要复杂功能？需要极致性能？需要特定技术栈集成？），再根据需求选择最匹配的框架。</li>
+</ol>
+<h2 id="-总结">🎯 总结
+</h2><p>GitHub Pages 为静态博客提供了优秀的托管平台。Jekyll 凭借其原生集成是<strong>最省心</strong>的选择。Hugo 凭借<strong>无与伦比的构建速度</strong>是大型站点或追求效率者的首选。Hexo 以其强大的<strong>插件生态</strong>吸引 Node.js 开发者。VuePress/VitePress 是 <strong>Vue 技术栈和文档需求</strong>的绝配。Eleventy 提供了<strong>最大的灵活性</strong>和简洁性。Astro 则代表了<strong>现代高性能 Web 开发</strong>的方向。</p>
+<p>根据你的具体需求、技术偏好和对部署流程的接受程度，仔细权衡以上框架的特点，就能找到最适合你在 GitHub Pages 上搭建个人博客的工具！开始构建你的博客之旅吧！</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://tc.z.wiki/autoupload/20250603/5th1/848X557/image.png" loading="lazy" data-key="" data-hash="https://tc.z.wiki/autoupload/20250603/5th1/848X557/image.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 muo123
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

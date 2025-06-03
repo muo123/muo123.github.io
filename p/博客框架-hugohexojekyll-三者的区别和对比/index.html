@@ -1,19 +1,745 @@
-<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：\n核心区别对比表\r特性 Hugo Hexo Jekyll 开发语言 Go（单二进制文件） Node.js Ruby 构建速度 ⚡ 极快（千页秒级） 🚀 快（依赖插件复杂度） ⏳ 较慢（大型项目可能需分钟级） GitHub Pages 支持 ❌ 需本地构建后推送产物 ❌ 需本地构建后推送产物 ✅ 原生支持（自动构建） 安装复杂度 ★☆☆（无需环境，下载即用） ★★☆（需 Node.js 环境） ★★★（需 Ruby 环境及 Bundler） 主题生态 丰富（Hugo Themes） 极丰富（Hexo Themes） 成熟（Jekyll Themes） 插件扩展性 中等（内置短代码/部分插件） ✅ 极强（600+ 插件） 良好（Gem 插件） 模板引擎 Go Templates（学习曲线陡） EJS/Swig/Pug（灵活） Liquid（易上手） 内容管理 灵活（支持自定义内容类型） 标准 Markdown + Front Matter 标准 Markdown + Front Matter 适用人群 大型站点/效率优先者 前端开发者/插件爱好者 GitHub 新手/讨厌本地构建者 深度解析三大框架\r1. Hugo：速度至上的极简主义\r优势 无需依赖环境：单文件执行，解压即用，跨平台无兼容问题。 极致构建速度：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。 强类型内容模型：可自定义内容结构（如技术文档、作品集）。 劣势 Go Templates 语法较复杂（例如条件判断需写 {{ if eq .A .B }}）。 插件生态弱于 Hexo，高级功能需手动开发。 典型用户：技术博主、文档站点维护者、讨厌等待构建的人。 2. Hexo：前端开发者的瑞士军刀\r优势 插件驱动：支持图床优化（hexo-asset-image）、SEO 增强（hexo-seo）等深度定制。 技术栈亲和：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。 主题高度自由：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。 劣势 插件过多可能导致构建缓慢（需谨慎选择插件）。 需熟悉 Node.js 开发环境（版本兼容问题常见）。 典型用户：前端工程师、需要深度定制的技术博主。 3. Jekyll：GitHub 亲儿子的零配置方案\r优势 无缝 GitHub 集成：推送 Markdown 即自动发布，无需本地构建。 低学习曲线：Liquid 模板类似自然语言（例：{% if page.title %}）。 官方维护保障：GitHub 官方支持，兼容性无忧。 劣势 Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。 百篇文章以上构建显著变慢（>30秒）。 典型用户：写作优先的博主、非技术背景用户、小型项目快速上线。 关键决策场景\r你的需求 推荐框架 原因 纯写作/讨厌命令行 Jekyll 推送 Markdown 即发布，无需构建 博客规模大（>500篇文章） Hugo 构建速度碾压对手，节省生命 前端开发者/爱折腾插件 Hexo 用 Node.js 生态定制功能（如 PWA 支持） 需托管 GitHub 且追求稳定 Jekyll 官方支持，无构建失败风险 多语言站点（i18n） Hugo 内置多语言支持，配置简单 终极选择建议\r选 Hugo 如果：你追求效率至上，内容量巨大，或抗拒环境配置。 选 Hexo 如果：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。 选 Jekyll 如果：你希望完全依赖 GitHub 自动化，专注写作而非技术。 💡 部署提示：\n"><title>博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</title><link rel=canonical href=https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/><link rel=stylesheet href=/scss/style.min.cfa5b1b0e78d61c00a14173992a1f3fa3b5c1b9fa34d023de959af564e7b19dd.css><meta property='og:title' content="博客框架 Hugo，Hexo，Jekyll 三者的区别和对比"><meta property='og:description' content="以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：\n核心区别对比表\r特性 Hugo Hexo Jekyll 开发语言 Go（单二进制文件） Node.js Ruby 构建速度 ⚡ 极快（千页秒级） 🚀 快（依赖插件复杂度） ⏳ 较慢（大型项目可能需分钟级） GitHub Pages 支持 ❌ 需本地构建后推送产物 ❌ 需本地构建后推送产物 ✅ 原生支持（自动构建） 安装复杂度 ★☆☆（无需环境，下载即用） ★★☆（需 Node.js 环境） ★★★（需 Ruby 环境及 Bundler） 主题生态 丰富（Hugo Themes） 极丰富（Hexo Themes） 成熟（Jekyll Themes） 插件扩展性 中等（内置短代码/部分插件） ✅ 极强（600+ 插件） 良好（Gem 插件） 模板引擎 Go Templates（学习曲线陡） EJS/Swig/Pug（灵活） Liquid（易上手） 内容管理 灵活（支持自定义内容类型） 标准 Markdown + Front Matter 标准 Markdown + Front Matter 适用人群 大型站点/效率优先者 前端开发者/插件爱好者 GitHub 新手/讨厌本地构建者 深度解析三大框架\r1. Hugo：速度至上的极简主义\r优势 无需依赖环境：单文件执行，解压即用，跨平台无兼容问题。 极致构建速度：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。 强类型内容模型：可自定义内容结构（如技术文档、作品集）。 劣势 Go Templates 语法较复杂（例如条件判断需写 {{ if eq .A .B }}）。 插件生态弱于 Hexo，高级功能需手动开发。 典型用户：技术博主、文档站点维护者、讨厌等待构建的人。 2. Hexo：前端开发者的瑞士军刀\r优势 插件驱动：支持图床优化（hexo-asset-image）、SEO 增强（hexo-seo）等深度定制。 技术栈亲和：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。 主题高度自由：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。 劣势 插件过多可能导致构建缓慢（需谨慎选择插件）。 需熟悉 Node.js 开发环境（版本兼容问题常见）。 典型用户：前端工程师、需要深度定制的技术博主。 3. Jekyll：GitHub 亲儿子的零配置方案\r优势 无缝 GitHub 集成：推送 Markdown 即自动发布，无需本地构建。 低学习曲线：Liquid 模板类似自然语言（例：{% if page.title %}）。 官方维护保障：GitHub 官方支持，兼容性无忧。 劣势 Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。 百篇文章以上构建显著变慢（>30秒）。 典型用户：写作优先的博主、非技术背景用户、小型项目快速上线。 关键决策场景\r你的需求 推荐框架 原因 纯写作/讨厌命令行 Jekyll 推送 Markdown 即发布，无需构建 博客规模大（>500篇文章） Hugo 构建速度碾压对手，节省生命 前端开发者/爱折腾插件 Hexo 用 Node.js 生态定制功能（如 PWA 支持） 需托管 GitHub 且追求稳定 Jekyll 官方支持，无构建失败风险 多语言站点（i18n） Hugo 内置多语言支持，配置简单 终极选择建议\r选 Hugo 如果：你追求效率至上，内容量巨大，或抗拒环境配置。 选 Hexo 如果：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。 选 Jekyll 如果：你希望完全依赖 GitHub 自动化，专注写作而非技术。 💡 部署提示：\n"><meta property='og:url' content='https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/'><meta property='og:site_name' content='雪国流明的博客'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:published_time' content='2025-06-02T23:23:47+08:00'><meta property='article:modified_time' content='2025-06-02T23:23:47+08:00'><meta name=twitter:title content="博客框架 Hugo，Hexo，Jekyll 三者的区别和对比"><meta name=twitter:description content="以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：\n核心区别对比表\r特性 Hugo Hexo Jekyll 开发语言 Go（单二进制文件） Node.js Ruby 构建速度 ⚡ 极快（千页秒级） 🚀 快（依赖插件复杂度） ⏳ 较慢（大型项目可能需分钟级） GitHub Pages 支持 ❌ 需本地构建后推送产物 ❌ 需本地构建后推送产物 ✅ 原生支持（自动构建） 安装复杂度 ★☆☆（无需环境，下载即用） ★★☆（需 Node.js 环境） ★★★（需 Ruby 环境及 Bundler） 主题生态 丰富（Hugo Themes） 极丰富（Hexo Themes） 成熟（Jekyll Themes） 插件扩展性 中等（内置短代码/部分插件） ✅ 极强（600+ 插件） 良好（Gem 插件） 模板引擎 Go Templates（学习曲线陡） EJS/Swig/Pug（灵活） Liquid（易上手） 内容管理 灵活（支持自定义内容类型） 标准 Markdown + Front Matter 标准 Markdown + Front Matter 适用人群 大型站点/效率优先者 前端开发者/插件爱好者 GitHub 新手/讨厌本地构建者 深度解析三大框架\r1. Hugo：速度至上的极简主义\r优势 无需依赖环境：单文件执行，解压即用，跨平台无兼容问题。 极致构建速度：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。 强类型内容模型：可自定义内容结构（如技术文档、作品集）。 劣势 Go Templates 语法较复杂（例如条件判断需写 {{ if eq .A .B }}）。 插件生态弱于 Hexo，高级功能需手动开发。 典型用户：技术博主、文档站点维护者、讨厌等待构建的人。 2. Hexo：前端开发者的瑞士军刀\r优势 插件驱动：支持图床优化（hexo-asset-image）、SEO 增强（hexo-seo）等深度定制。 技术栈亲和：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。 主题高度自由：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。 劣势 插件过多可能导致构建缓慢（需谨慎选择插件）。 需熟悉 Node.js 开发环境（版本兼容问题常见）。 典型用户：前端工程师、需要深度定制的技术博主。 3. Jekyll：GitHub 亲儿子的零配置方案\r优势 无缝 GitHub 集成：推送 Markdown 即自动发布，无需本地构建。 低学习曲线：Liquid 模板类似自然语言（例：{% if page.title %}）。 官方维护保障：GitHub 官方支持，兼容性无忧。 劣势 Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。 百篇文章以上构建显著变慢（>30秒）。 典型用户：写作优先的博主、非技术背景用户、小型项目快速上线。 关键决策场景\r你的需求 推荐框架 原因 纯写作/讨厌命令行 Jekyll 推送 Markdown 即发布，无需构建 博客规模大（>500篇文章） Hugo 构建速度碾压对手，节省生命 前端开发者/爱折腾插件 Hexo 用 Node.js 生态定制功能（如 PWA 支持） 需托管 GitHub 且追求稳定 Jekyll 官方支持，无构建失败风险 多语言站点（i18n） Hugo 内置多语言支持，配置简单 终极选择建议\r选 Hugo 如果：你追求效率至上，内容量巨大，或抗拒环境配置。 选 Hexo 如果：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。 选 Jekyll 如果：你希望完全依赖 GitHub 自动化，专注写作而非技术。 💡 部署提示：\n"><link rel="shortcut icon" href=/favicon.ico></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_5ebb0387c4e49f4b.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
-</a><span class=emoji>😶‍🌫️</span></figure><div class=site-meta><h1 class=site-name><a href=/>雪国流明的博客</a></h1><h2 class=site-description>心有猛虎，细嗅蔷薇</h2></div></header><ol class=menu-social><li><a href=https://github.com/muo123 target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
-<span>主页</span></a></li><li><a href=/%E5%85%B3%E4%BA%8E/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
-<span>关于</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-<span>归档</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
-<span>搜索</span></a></li><li><a href=/%E9%93%BE%E6%8E%A5/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
-<span>链接</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><ol><li><a href=#核心区别对比表><strong>核心区别对比表</strong></a></li><li><a href=#深度解析三大框架><strong>深度解析三大框架</strong></a><ol><li><a href=#1-hugo速度至上的极简主义>1. <strong>Hugo：速度至上的极简主义</strong></a></li><li><a href=#2-hexo前端开发者的瑞士军刀>2. <strong>Hexo：前端开发者的瑞士军刀</strong></a></li><li><a href=#3-jekyllgithub-亲儿子的零配置方案>3. <strong>Jekyll：GitHub 亲儿子的零配置方案</strong></a></li></ol></li><li><a href=#关键决策场景><strong>关键决策场景</strong></a></li><li><a href=#终极选择建议><strong>终极选择建议</strong></a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E5%8D%9A%E5%AE%A2/>博客</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/>博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>Jun 02, 2025</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>阅读时长: 1 分钟</time></div></footer></div></header><section class=article-content><p>以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：</p><hr><h3 id=核心区别对比表><strong>核心区别对比表</strong></h3><div class=table-wrapper><table><thead><tr><th><strong>特性</strong></th><th><strong>Hugo</strong></th><th><strong>Hexo</strong></th><th><strong>Jekyll</strong></th></tr></thead><tbody><tr><td><strong>开发语言</strong></td><td>Go（单二进制文件）</td><td>Node.js</td><td>Ruby</td></tr><tr><td><strong>构建速度</strong></td><td>⚡ <strong>极快</strong>（千页秒级）</td><td>🚀 快（依赖插件复杂度）</td><td>⏳ 较慢（大型项目可能需分钟级）</td></tr><tr><td><strong>GitHub Pages 支持</strong></td><td>❌ 需本地构建后推送产物</td><td>❌ 需本地构建后推送产物</td><td>✅ <strong>原生支持</strong>（自动构建）</td></tr><tr><td><strong>安装复杂度</strong></td><td>★☆☆（无需环境，下载即用）</td><td>★★☆（需 Node.js 环境）</td><td>★★★（需 Ruby 环境及 Bundler）</td></tr><tr><td><strong>主题生态</strong></td><td>丰富（<a class=link href=https://themes.gohugo.io/ target=_blank rel=noopener>Hugo Themes</a>）</td><td>极丰富（<a class=link href=https://hexo.io/themes/ target=_blank rel=noopener>Hexo Themes</a>）</td><td>成熟（<a class=link href=https://jekyllthemes.io/ target=_blank rel=noopener>Jekyll Themes</a>）</td></tr><tr><td><strong>插件扩展性</strong></td><td>中等（内置短代码/部分插件）</td><td>✅ <strong>极强</strong>（600+ 插件）</td><td>良好（Gem 插件）</td></tr><tr><td><strong>模板引擎</strong></td><td>Go Templates（学习曲线陡）</td><td>EJS/Swig/Pug（灵活）</td><td>Liquid（易上手）</td></tr><tr><td><strong>内容管理</strong></td><td>灵活（支持自定义内容类型）</td><td>标准 Markdown + Front Matter</td><td>标准 Markdown + Front Matter</td></tr><tr><td><strong>适用人群</strong></td><td>大型站点/效率优先者</td><td>前端开发者/插件爱好者</td><td>GitHub 新手/讨厌本地构建者</td></tr></tbody></table></div><hr><h3 id=深度解析三大框架><strong>深度解析三大框架</strong></h3><h4 id=1-hugo速度至上的极简主义>1. <strong>Hugo：速度至上的极简主义</strong></h4><ul><li><strong>优势</strong><ul><li><strong>无需依赖环境</strong>：单文件执行，解压即用，跨平台无兼容问题。</li><li><strong>极致构建速度</strong>：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。</li><li><strong>强类型内容模型</strong>：可自定义内容结构（如技术文档、作品集）。</li></ul></li><li><strong>劣势</strong><ul><li>Go Templates 语法较复杂（例如条件判断需写 <code>{{ if eq .A .B }}</code>）。</li><li>插件生态弱于 Hexo，高级功能需手动开发。</li></ul></li><li><strong>典型用户</strong>：技术博主、文档站点维护者、讨厌等待构建的人。</li></ul><h4 id=2-hexo前端开发者的瑞士军刀>2. <strong>Hexo：前端开发者的瑞士军刀</strong></h4><ul><li><strong>优势</strong><ul><li><strong>插件驱动</strong>：支持图床优化（<code>hexo-asset-image</code>）、SEO 增强（<code>hexo-seo</code>）等深度定制。</li><li><strong>技术栈亲和</strong>：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。</li><li><strong>主题高度自由</strong>：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。</li></ul></li><li><strong>劣势</strong><ul><li>插件过多可能导致构建缓慢（需谨慎选择插件）。</li><li>需熟悉 Node.js 开发环境（版本兼容问题常见）。</li></ul></li><li><strong>典型用户</strong>：前端工程师、需要深度定制的技术博主。</li></ul><h4 id=3-jekyllgithub-亲儿子的零配置方案>3. <strong>Jekyll：GitHub 亲儿子的零配置方案</strong></h4><ul><li><strong>优势</strong><ul><li><strong>无缝 GitHub 集成</strong>：推送 Markdown 即自动发布，无需本地构建。</li><li><strong>低学习曲线</strong>：Liquid 模板类似自然语言（例：<code>{% if page.title %}</code>）。</li><li><strong>官方维护保障</strong>：GitHub 官方支持，兼容性无忧。</li></ul></li><li><strong>劣势</strong><ul><li>Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。</li><li>百篇文章以上构建显著变慢（>30秒）。</li></ul></li><li><strong>典型用户</strong>：写作优先的博主、非技术背景用户、小型项目快速上线。</li></ul><hr><h3 id=关键决策场景><strong>关键决策场景</strong></h3><div class=table-wrapper><table><thead><tr><th><strong>你的需求</strong></th><th><strong>推荐框架</strong></th><th><strong>原因</strong></th></tr></thead><tbody><tr><td>纯写作/讨厌命令行</td><td>Jekyll</td><td>推送 Markdown 即发布，无需构建</td></tr><tr><td>博客规模大（>500篇文章）</td><td>Hugo</td><td>构建速度碾压对手，节省生命</td></tr><tr><td>前端开发者/爱折腾插件</td><td>Hexo</td><td>用 Node.js 生态定制功能（如 PWA 支持）</td></tr><tr><td>需托管 GitHub 且追求稳定</td><td>Jekyll</td><td>官方支持，无构建失败风险</td></tr><tr><td>多语言站点（i18n）</td><td>Hugo</td><td>内置多语言支持，配置简单</td></tr></tbody></table></div><hr><h3 id=终极选择建议><strong>终极选择建议</strong></h3><ul><li><strong>选 Hugo 如果</strong>：你追求效率至上，内容量巨大，或抗拒环境配置。</li><li><strong>选 Hexo 如果</strong>：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。</li><li><strong>选 Jekyll 如果</strong>：你希望完全依赖 GitHub 自动化，专注写作而非技术。</li></ul><blockquote><p>💡 <strong>部署提示</strong>：</p><ul><li>Hugo/Hexo 可用 GitHub Actions 自动化构建（<a class=link href=https://github.com/peaceiris/actions-hugo target=_blank rel=noopener>示例脚本</a>）。</li><li>避免将 <code>node_modules</code>/<code>public</code> 推送到 Git 仓库（用 <code>.gitignore</code> 过滤）。</li></ul></blockquote></section><footer class=article-footer><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
-<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/><div class=article-details><h2 class=article-title>Github Pages 搭建个人博客可供选择的框架有哪些</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//hugo-theme-stack.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
-2025 muo123</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-<button class="pswp__button pswp__button--share" title=Share></button>
-<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-</button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：\n核心区别对比表 特性 Hugo Hexo Jekyll 开发语言 Go（单二进制文件） Node.js Ruby 构建速度 ⚡ 极快（千页秒级） 🚀 快（依赖插件复杂度） ⏳ 较慢（大型项目可能需分钟级） GitHub Pages 支持 ❌ 需本地构建后推送产物 ❌ 需本地构建后推送产物 ✅ 原生支持（自动构建） 安装复杂度 ★☆☆（无需环境，下载即用） ★★☆（需 Node.js 环境） ★★★（需 Ruby 环境及 Bundler） 主题生态 丰富（Hugo Themes） 极丰富（Hexo Themes） 成熟（Jekyll Themes） 插件扩展性 中等（内置短代码/部分插件） ✅ 极强（600+ 插件） 良好（Gem 插件） 模板引擎 Go Templates（学习曲线陡） EJS/Swig/Pug（灵活） Liquid（易上手） 内容管理 灵活（支持自定义内容类型） 标准 Markdown + Front Matter 标准 Markdown + Front Matter 适用人群 大型站点/效率优先者 前端开发者/插件爱好者 GitHub 新手/讨厌本地构建者 深度解析三大框架 1. Hugo：速度至上的极简主义 优势 无需依赖环境：单文件执行，解压即用，跨平台无兼容问题。 极致构建速度：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。 强类型内容模型：可自定义内容结构（如技术文档、作品集）。 劣势 Go Templates 语法较复杂（例如条件判断需写 {{ if eq .A .B }}）。 插件生态弱于 Hexo，高级功能需手动开发。 典型用户：技术博主、文档站点维护者、讨厌等待构建的人。 2. Hexo：前端开发者的瑞士军刀 优势 插件驱动：支持图床优化（hexo-asset-image）、SEO 增强（hexo-seo）等深度定制。 技术栈亲和：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。 主题高度自由：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。 劣势 插件过多可能导致构建缓慢（需谨慎选择插件）。 需熟悉 Node.js 开发环境（版本兼容问题常见）。 典型用户：前端工程师、需要深度定制的技术博主。 3. Jekyll：GitHub 亲儿子的零配置方案 优势 无缝 GitHub 集成：推送 Markdown 即自动发布，无需本地构建。 低学习曲线：Liquid 模板类似自然语言（例：{% if page.title %}）。 官方维护保障：GitHub 官方支持，兼容性无忧。 劣势 Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。 百篇文章以上构建显著变慢（&gt;30秒）。 典型用户：写作优先的博主、非技术背景用户、小型项目快速上线。 关键决策场景 你的需求 推荐框架 原因 纯写作/讨厌命令行 Jekyll 推送 Markdown 即发布，无需构建 博客规模大（&gt;500篇文章） Hugo 构建速度碾压对手，节省生命 前端开发者/爱折腾插件 Hexo 用 Node.js 生态定制功能（如 PWA 支持） 需托管 GitHub 且追求稳定 Jekyll 官方支持，无构建失败风险 多语言站点（i18n） Hugo 内置多语言支持，配置简单 终极选择建议 选 Hugo 如果：你追求效率至上，内容量巨大，或抗拒环境配置。 选 Hexo 如果：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。 选 Jekyll 如果：你希望完全依赖 GitHub 自动化，专注写作而非技术。 💡 部署提示：\n">
+<title>博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</title>
+
+<link rel='canonical' href='https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/'>
+
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="博客框架 Hugo，Hexo，Jekyll 三者的区别和对比">
+<meta property='og:description' content="以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：\n核心区别对比表 特性 Hugo Hexo Jekyll 开发语言 Go（单二进制文件） Node.js Ruby 构建速度 ⚡ 极快（千页秒级） 🚀 快（依赖插件复杂度） ⏳ 较慢（大型项目可能需分钟级） GitHub Pages 支持 ❌ 需本地构建后推送产物 ❌ 需本地构建后推送产物 ✅ 原生支持（自动构建） 安装复杂度 ★☆☆（无需环境，下载即用） ★★☆（需 Node.js 环境） ★★★（需 Ruby 环境及 Bundler） 主题生态 丰富（Hugo Themes） 极丰富（Hexo Themes） 成熟（Jekyll Themes） 插件扩展性 中等（内置短代码/部分插件） ✅ 极强（600+ 插件） 良好（Gem 插件） 模板引擎 Go Templates（学习曲线陡） EJS/Swig/Pug（灵活） Liquid（易上手） 内容管理 灵活（支持自定义内容类型） 标准 Markdown + Front Matter 标准 Markdown + Front Matter 适用人群 大型站点/效率优先者 前端开发者/插件爱好者 GitHub 新手/讨厌本地构建者 深度解析三大框架 1. Hugo：速度至上的极简主义 优势 无需依赖环境：单文件执行，解压即用，跨平台无兼容问题。 极致构建速度：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。 强类型内容模型：可自定义内容结构（如技术文档、作品集）。 劣势 Go Templates 语法较复杂（例如条件判断需写 {{ if eq .A .B }}）。 插件生态弱于 Hexo，高级功能需手动开发。 典型用户：技术博主、文档站点维护者、讨厌等待构建的人。 2. Hexo：前端开发者的瑞士军刀 优势 插件驱动：支持图床优化（hexo-asset-image）、SEO 增强（hexo-seo）等深度定制。 技术栈亲和：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。 主题高度自由：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。 劣势 插件过多可能导致构建缓慢（需谨慎选择插件）。 需熟悉 Node.js 开发环境（版本兼容问题常见）。 典型用户：前端工程师、需要深度定制的技术博主。 3. Jekyll：GitHub 亲儿子的零配置方案 优势 无缝 GitHub 集成：推送 Markdown 即自动发布，无需本地构建。 低学习曲线：Liquid 模板类似自然语言（例：{% if page.title %}）。 官方维护保障：GitHub 官方支持，兼容性无忧。 劣势 Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。 百篇文章以上构建显著变慢（&gt;30秒）。 典型用户：写作优先的博主、非技术背景用户、小型项目快速上线。 关键决策场景 你的需求 推荐框架 原因 纯写作/讨厌命令行 Jekyll 推送 Markdown 即发布，无需构建 博客规模大（&gt;500篇文章） Hugo 构建速度碾压对手，节省生命 前端开发者/爱折腾插件 Hexo 用 Node.js 生态定制功能（如 PWA 支持） 需托管 GitHub 且追求稳定 Jekyll 官方支持，无构建失败风险 多语言站点（i18n） Hugo 内置多语言支持，配置简单 终极选择建议 选 Hugo 如果：你追求效率至上，内容量巨大，或抗拒环境配置。 选 Hexo 如果：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。 选 Jekyll 如果：你希望完全依赖 GitHub 自动化，专注写作而非技术。 💡 部署提示：\n">
+<meta property='og:url' content='https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/'>
+<meta property='og:site_name' content='雪国流明的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-02T23:23:47&#43;08:00'/><meta property='article:modified_time' content='2025-06-02T23:23:47&#43;08:00'/><meta property='og:image' content='https://tc.z.wiki/autoupload/20250603/5th1/848X557/image.png' />
+<meta name="twitter:title" content="博客框架 Hugo，Hexo，Jekyll 三者的区别和对比">
+<meta name="twitter:description" content="以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：\n核心区别对比表 特性 Hugo Hexo Jekyll 开发语言 Go（单二进制文件） Node.js Ruby 构建速度 ⚡ 极快（千页秒级） 🚀 快（依赖插件复杂度） ⏳ 较慢（大型项目可能需分钟级） GitHub Pages 支持 ❌ 需本地构建后推送产物 ❌ 需本地构建后推送产物 ✅ 原生支持（自动构建） 安装复杂度 ★☆☆（无需环境，下载即用） ★★☆（需 Node.js 环境） ★★★（需 Ruby 环境及 Bundler） 主题生态 丰富（Hugo Themes） 极丰富（Hexo Themes） 成熟（Jekyll Themes） 插件扩展性 中等（内置短代码/部分插件） ✅ 极强（600+ 插件） 良好（Gem 插件） 模板引擎 Go Templates（学习曲线陡） EJS/Swig/Pug（灵活） Liquid（易上手） 内容管理 灵活（支持自定义内容类型） 标准 Markdown + Front Matter 标准 Markdown + Front Matter 适用人群 大型站点/效率优先者 前端开发者/插件爱好者 GitHub 新手/讨厌本地构建者 深度解析三大框架 1. Hugo：速度至上的极简主义 优势 无需依赖环境：单文件执行，解压即用，跨平台无兼容问题。 极致构建速度：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。 强类型内容模型：可自定义内容结构（如技术文档、作品集）。 劣势 Go Templates 语法较复杂（例如条件判断需写 {{ if eq .A .B }}）。 插件生态弱于 Hexo，高级功能需手动开发。 典型用户：技术博主、文档站点维护者、讨厌等待构建的人。 2. Hexo：前端开发者的瑞士军刀 优势 插件驱动：支持图床优化（hexo-asset-image）、SEO 增强（hexo-seo）等深度定制。 技术栈亲和：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。 主题高度自由：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。 劣势 插件过多可能导致构建缓慢（需谨慎选择插件）。 需熟悉 Node.js 开发环境（版本兼容问题常见）。 典型用户：前端工程师、需要深度定制的技术博主。 3. Jekyll：GitHub 亲儿子的零配置方案 优势 无缝 GitHub 集成：推送 Markdown 即自动发布，无需本地构建。 低学习曲线：Liquid 模板类似自然语言（例：{% if page.title %}）。 官方维护保障：GitHub 官方支持，兼容性无忧。 劣势 Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。 百篇文章以上构建显著变慢（&gt;30秒）。 典型用户：写作优先的博主、非技术背景用户、小型项目快速上线。 关键决策场景 你的需求 推荐框架 原因 纯写作/讨厌命令行 Jekyll 推送 Markdown 即发布，无需构建 博客规模大（&gt;500篇文章） Hugo 构建速度碾压对手，节省生命 前端开发者/爱折腾插件 Hexo 用 Node.js 生态定制功能（如 PWA 支持） 需托管 GitHub 且追求稳定 Jekyll 官方支持，无构建失败风险 多语言站点（i18n） Hugo 内置多语言支持，配置简单 终极选择建议 选 Hugo 如果：你追求效率至上，内容量巨大，或抗拒环境配置。 选 Hexo 如果：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。 选 Jekyll 如果：你希望完全依赖 GitHub 自动化，专注写作而非技术。 💡 部署提示：\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://tc.z.wiki/autoupload/20250603/5th1/848X557/image.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_5ebb0387c4e49f4b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😶‍🌫️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">雪国流明的博客</a></h1>
+            <h2 class="site-description">心有猛虎，细嗅蔷薇</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/muo123'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#核心区别对比表"><strong>核心区别对比表</strong></a></li>
+        <li><a href="#深度解析三大框架"><strong>深度解析三大框架</strong></a>
+          <ol>
+            <li><a href="#1-hugo速度至上的极简主义">1. <strong>Hugo：速度至上的极简主义</strong></a></li>
+            <li><a href="#2-hexo前端开发者的瑞士军刀">2. <strong>Hexo：前端开发者的瑞士军刀</strong></a></li>
+            <li><a href="#3-jekyllgithub-亲儿子的零配置方案">3. <strong>Jekyll：GitHub 亲儿子的零配置方案</strong></a></li>
+          </ol>
+        </li>
+        <li><a href="#关键决策场景"><strong>关键决策场景</strong></a></li>
+        <li><a href="#终极选择建议"><strong>终极选择建议</strong></a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/">
+                
+                    <img src="https://tc.z.wiki/autoupload/20250603/5th1/848X557/image.png" loading="lazy" alt="Featured image of post 博客框架 Hugo，Hexo，Jekyll 三者的区别和对比" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%8D%9A%E5%AE%A2/" >
+                博客
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/">博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 02, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：</p>
+<hr>
+<h3 id="核心区别对比表"><strong>核心区别对比表</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>特性</strong></th>
+          <th><strong>Hugo</strong></th>
+          <th><strong>Hexo</strong></th>
+          <th><strong>Jekyll</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>开发语言</strong></td>
+          <td>Go（单二进制文件）</td>
+          <td>Node.js</td>
+          <td>Ruby</td>
+      </tr>
+      <tr>
+          <td><strong>构建速度</strong></td>
+          <td>⚡ <strong>极快</strong>（千页秒级）</td>
+          <td>🚀 快（依赖插件复杂度）</td>
+          <td>⏳ 较慢（大型项目可能需分钟级）</td>
+      </tr>
+      <tr>
+          <td><strong>GitHub Pages 支持</strong></td>
+          <td>❌ 需本地构建后推送产物</td>
+          <td>❌ 需本地构建后推送产物</td>
+          <td>✅ <strong>原生支持</strong>（自动构建）</td>
+      </tr>
+      <tr>
+          <td><strong>安装复杂度</strong></td>
+          <td>★☆☆（无需环境，下载即用）</td>
+          <td>★★☆（需 Node.js 环境）</td>
+          <td>★★★（需 Ruby 环境及 Bundler）</td>
+      </tr>
+      <tr>
+          <td><strong>主题生态</strong></td>
+          <td>丰富（<a class="link" href="https://themes.gohugo.io/"  target="_blank" rel="noopener"
+    >Hugo Themes</a>）</td>
+          <td>极丰富（<a class="link" href="https://hexo.io/themes/"  target="_blank" rel="noopener"
+    >Hexo Themes</a>）</td>
+          <td>成熟（<a class="link" href="https://jekyllthemes.io/"  target="_blank" rel="noopener"
+    >Jekyll Themes</a>）</td>
+      </tr>
+      <tr>
+          <td><strong>插件扩展性</strong></td>
+          <td>中等（内置短代码/部分插件）</td>
+          <td>✅ <strong>极强</strong>（600+ 插件）</td>
+          <td>良好（Gem 插件）</td>
+      </tr>
+      <tr>
+          <td><strong>模板引擎</strong></td>
+          <td>Go Templates（学习曲线陡）</td>
+          <td>EJS/Swig/Pug（灵活）</td>
+          <td>Liquid（易上手）</td>
+      </tr>
+      <tr>
+          <td><strong>内容管理</strong></td>
+          <td>灵活（支持自定义内容类型）</td>
+          <td>标准 Markdown + Front Matter</td>
+          <td>标准 Markdown + Front Matter</td>
+      </tr>
+      <tr>
+          <td><strong>适用人群</strong></td>
+          <td>大型站点/效率优先者</td>
+          <td>前端开发者/插件爱好者</td>
+          <td>GitHub 新手/讨厌本地构建者</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="深度解析三大框架"><strong>深度解析三大框架</strong>
+</h3><h4 id="1-hugo速度至上的极简主义">1. <strong>Hugo：速度至上的极简主义</strong>
+</h4><ul>
+<li><strong>优势</strong>
+<ul>
+<li><strong>无需依赖环境</strong>：单文件执行，解压即用，跨平台无兼容问题。</li>
+<li><strong>极致构建速度</strong>：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。</li>
+<li><strong>强类型内容模型</strong>：可自定义内容结构（如技术文档、作品集）。</li>
+</ul>
+</li>
+<li><strong>劣势</strong>
+<ul>
+<li>Go Templates 语法较复杂（例如条件判断需写 <code>{{ if eq .A .B }}</code>）。</li>
+<li>插件生态弱于 Hexo，高级功能需手动开发。</li>
+</ul>
+</li>
+<li><strong>典型用户</strong>：技术博主、文档站点维护者、讨厌等待构建的人。</li>
+</ul>
+<h4 id="2-hexo前端开发者的瑞士军刀">2. <strong>Hexo：前端开发者的瑞士军刀</strong>
+</h4><ul>
+<li><strong>优势</strong>
+<ul>
+<li><strong>插件驱动</strong>：支持图床优化（<code>hexo-asset-image</code>）、SEO 增强（<code>hexo-seo</code>）等深度定制。</li>
+<li><strong>技术栈亲和</strong>：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。</li>
+<li><strong>主题高度自由</strong>：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。</li>
+</ul>
+</li>
+<li><strong>劣势</strong>
+<ul>
+<li>插件过多可能导致构建缓慢（需谨慎选择插件）。</li>
+<li>需熟悉 Node.js 开发环境（版本兼容问题常见）。</li>
+</ul>
+</li>
+<li><strong>典型用户</strong>：前端工程师、需要深度定制的技术博主。</li>
+</ul>
+<h4 id="3-jekyllgithub-亲儿子的零配置方案">3. <strong>Jekyll：GitHub 亲儿子的零配置方案</strong>
+</h4><ul>
+<li><strong>优势</strong>
+<ul>
+<li><strong>无缝 GitHub 集成</strong>：推送 Markdown 即自动发布，无需本地构建。</li>
+<li><strong>低学习曲线</strong>：Liquid 模板类似自然语言（例：<code>{% if page.title %}</code>）。</li>
+<li><strong>官方维护保障</strong>：GitHub 官方支持，兼容性无忧。</li>
+</ul>
+</li>
+<li><strong>劣势</strong>
+<ul>
+<li>Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。</li>
+<li>百篇文章以上构建显著变慢（&gt;30秒）。</li>
+</ul>
+</li>
+<li><strong>典型用户</strong>：写作优先的博主、非技术背景用户、小型项目快速上线。</li>
+</ul>
+<hr>
+<h3 id="关键决策场景"><strong>关键决策场景</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>你的需求</strong></th>
+          <th><strong>推荐框架</strong></th>
+          <th><strong>原因</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>纯写作/讨厌命令行</td>
+          <td>Jekyll</td>
+          <td>推送 Markdown 即发布，无需构建</td>
+      </tr>
+      <tr>
+          <td>博客规模大（&gt;500篇文章）</td>
+          <td>Hugo</td>
+          <td>构建速度碾压对手，节省生命</td>
+      </tr>
+      <tr>
+          <td>前端开发者/爱折腾插件</td>
+          <td>Hexo</td>
+          <td>用 Node.js 生态定制功能（如 PWA 支持）</td>
+      </tr>
+      <tr>
+          <td>需托管 GitHub 且追求稳定</td>
+          <td>Jekyll</td>
+          <td>官方支持，无构建失败风险</td>
+      </tr>
+      <tr>
+          <td>多语言站点（i18n）</td>
+          <td>Hugo</td>
+          <td>内置多语言支持，配置简单</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="终极选择建议"><strong>终极选择建议</strong>
+</h3><ul>
+<li><strong>选 Hugo 如果</strong>：你追求效率至上，内容量巨大，或抗拒环境配置。</li>
+<li><strong>选 Hexo 如果</strong>：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。</li>
+<li><strong>选 Jekyll 如果</strong>：你希望完全依赖 GitHub 自动化，专注写作而非技术。</li>
+</ul>
+<blockquote>
+<p>💡 <strong>部署提示</strong>：</p>
+<ul>
+<li>Hugo/Hexo 可用 GitHub Actions 自动化构建（<a class="link" href="https://github.com/peaceiris/actions-hugo"  target="_blank" rel="noopener"
+    >示例脚本</a>）。</li>
+<li>避免将 <code>node_modules</code>/<code>public</code> 推送到 Git 仓库（用 <code>.gitignore</code> 过滤）。</li>
+</ul></blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://tc.z.wiki/autoupload/20250603/sjGQ/1085X637/image.png" loading="lazy" data-key="" data-hash="https://tc.z.wiki/autoupload/20250603/sjGQ/1085X637/image.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Github Pages 搭建个人博客可供选择的框架有哪些</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 muo123
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

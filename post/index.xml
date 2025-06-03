@@ -1,398 +1,919 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 雪国流明的博客</title><link>https://muo123.github.io/post/</link><description>Recent content in Posts on 雪国流明的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Mon, 02 Jun 2025 23:23:47 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</title><link>https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/</link><pubDate>Mon, 02 Jun 2025 23:23:47 +0800</pubDate><guid>https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/</guid><description>&lt;p>以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：&lt;/p>
-&lt;hr>
-&lt;h3 id="核心区别对比表">&lt;strong>核心区别对比表&lt;/strong>
-&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;strong>特性&lt;/strong>&lt;/th>
-&lt;th>&lt;strong>Hugo&lt;/strong>&lt;/th>
-&lt;th>&lt;strong>Hexo&lt;/strong>&lt;/th>
-&lt;th>&lt;strong>Jekyll&lt;/strong>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>开发语言&lt;/strong>&lt;/td>
-&lt;td>Go（单二进制文件）&lt;/td>
-&lt;td>Node.js&lt;/td>
-&lt;td>Ruby&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>构建速度&lt;/strong>&lt;/td>
-&lt;td>⚡ &lt;strong>极快&lt;/strong>（千页秒级）&lt;/td>
-&lt;td>🚀 快（依赖插件复杂度）&lt;/td>
-&lt;td>⏳ 较慢（大型项目可能需分钟级）&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>GitHub Pages 支持&lt;/strong>&lt;/td>
-&lt;td>❌ 需本地构建后推送产物&lt;/td>
-&lt;td>❌ 需本地构建后推送产物&lt;/td>
-&lt;td>✅ &lt;strong>原生支持&lt;/strong>（自动构建）&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>安装复杂度&lt;/strong>&lt;/td>
-&lt;td>★☆☆（无需环境，下载即用）&lt;/td>
-&lt;td>★★☆（需 Node.js 环境）&lt;/td>
-&lt;td>★★★（需 Ruby 环境及 Bundler）&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>主题生态&lt;/strong>&lt;/td>
-&lt;td>丰富（&lt;a class="link" href="https://themes.gohugo.io/" target="_blank" rel="noopener"
->Hugo Themes&lt;/a>）&lt;/td>
-&lt;td>极丰富（&lt;a class="link" href="https://hexo.io/themes/" target="_blank" rel="noopener"
->Hexo Themes&lt;/a>）&lt;/td>
-&lt;td>成熟（&lt;a class="link" href="https://jekyllthemes.io/" target="_blank" rel="noopener"
->Jekyll Themes&lt;/a>）&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>插件扩展性&lt;/strong>&lt;/td>
-&lt;td>中等（内置短代码/部分插件）&lt;/td>
-&lt;td>✅ &lt;strong>极强&lt;/strong>（600+ 插件）&lt;/td>
-&lt;td>良好（Gem 插件）&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>模板引擎&lt;/strong>&lt;/td>
-&lt;td>Go Templates（学习曲线陡）&lt;/td>
-&lt;td>EJS/Swig/Pug（灵活）&lt;/td>
-&lt;td>Liquid（易上手）&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>内容管理&lt;/strong>&lt;/td>
-&lt;td>灵活（支持自定义内容类型）&lt;/td>
-&lt;td>标准 Markdown + Front Matter&lt;/td>
-&lt;td>标准 Markdown + Front Matter&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>适用人群&lt;/strong>&lt;/td>
-&lt;td>大型站点/效率优先者&lt;/td>
-&lt;td>前端开发者/插件爱好者&lt;/td>
-&lt;td>GitHub 新手/讨厌本地构建者&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;hr>
-&lt;h3 id="深度解析三大框架">&lt;strong>深度解析三大框架&lt;/strong>
-&lt;/h3>&lt;h4 id="1-hugo速度至上的极简主义">1. &lt;strong>Hugo：速度至上的极简主义&lt;/strong>
-&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>优势&lt;/strong>
-&lt;ul>
-&lt;li>&lt;strong>无需依赖环境&lt;/strong>：单文件执行，解压即用，跨平台无兼容问题。&lt;/li>
-&lt;li>&lt;strong>极致构建速度&lt;/strong>：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。&lt;/li>
-&lt;li>&lt;strong>强类型内容模型&lt;/strong>：可自定义内容结构（如技术文档、作品集）。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>劣势&lt;/strong>
-&lt;ul>
-&lt;li>Go Templates 语法较复杂（例如条件判断需写 &lt;code>{{ if eq .A .B }}&lt;/code>）。&lt;/li>
-&lt;li>插件生态弱于 Hexo，高级功能需手动开发。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>典型用户&lt;/strong>：技术博主、文档站点维护者、讨厌等待构建的人。&lt;/li>
-&lt;/ul>
-&lt;h4 id="2-hexo前端开发者的瑞士军刀">2. &lt;strong>Hexo：前端开发者的瑞士军刀&lt;/strong>
-&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>优势&lt;/strong>
-&lt;ul>
-&lt;li>&lt;strong>插件驱动&lt;/strong>：支持图床优化（&lt;code>hexo-asset-image&lt;/code>）、SEO 增强（&lt;code>hexo-seo&lt;/code>）等深度定制。&lt;/li>
-&lt;li>&lt;strong>技术栈亲和&lt;/strong>：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。&lt;/li>
-&lt;li>&lt;strong>主题高度自由&lt;/strong>：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>劣势&lt;/strong>
-&lt;ul>
-&lt;li>插件过多可能导致构建缓慢（需谨慎选择插件）。&lt;/li>
-&lt;li>需熟悉 Node.js 开发环境（版本兼容问题常见）。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>典型用户&lt;/strong>：前端工程师、需要深度定制的技术博主。&lt;/li>
-&lt;/ul>
-&lt;h4 id="3-jekyllgithub-亲儿子的零配置方案">3. &lt;strong>Jekyll：GitHub 亲儿子的零配置方案&lt;/strong>
-&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>优势&lt;/strong>
-&lt;ul>
-&lt;li>&lt;strong>无缝 GitHub 集成&lt;/strong>：推送 Markdown 即自动发布，无需本地构建。&lt;/li>
-&lt;li>&lt;strong>低学习曲线&lt;/strong>：Liquid 模板类似自然语言（例：&lt;code>{% if page.title %}&lt;/code>）。&lt;/li>
-&lt;li>&lt;strong>官方维护保障&lt;/strong>：GitHub 官方支持，兼容性无忧。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>劣势&lt;/strong>
-&lt;ul>
-&lt;li>Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。&lt;/li>
-&lt;li>百篇文章以上构建显著变慢（&amp;gt;30秒）。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>典型用户&lt;/strong>：写作优先的博主、非技术背景用户、小型项目快速上线。&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3 id="关键决策场景">&lt;strong>关键决策场景&lt;/strong>
-&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;strong>你的需求&lt;/strong>&lt;/th>
-&lt;th>&lt;strong>推荐框架&lt;/strong>&lt;/th>
-&lt;th>&lt;strong>原因&lt;/strong>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>纯写作/讨厌命令行&lt;/td>
-&lt;td>Jekyll&lt;/td>
-&lt;td>推送 Markdown 即发布，无需构建&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>博客规模大（&amp;gt;500篇文章）&lt;/td>
-&lt;td>Hugo&lt;/td>
-&lt;td>构建速度碾压对手，节省生命&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>前端开发者/爱折腾插件&lt;/td>
-&lt;td>Hexo&lt;/td>
-&lt;td>用 Node.js 生态定制功能（如 PWA 支持）&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>需托管 GitHub 且追求稳定&lt;/td>
-&lt;td>Jekyll&lt;/td>
-&lt;td>官方支持，无构建失败风险&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>多语言站点（i18n）&lt;/td>
-&lt;td>Hugo&lt;/td>
-&lt;td>内置多语言支持，配置简单&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;hr>
-&lt;h3 id="终极选择建议">&lt;strong>终极选择建议&lt;/strong>
-&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>选 Hugo 如果&lt;/strong>：你追求效率至上，内容量巨大，或抗拒环境配置。&lt;/li>
-&lt;li>&lt;strong>选 Hexo 如果&lt;/strong>：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。&lt;/li>
-&lt;li>&lt;strong>选 Jekyll 如果&lt;/strong>：你希望完全依赖 GitHub 自动化，专注写作而非技术。&lt;/li>
-&lt;/ul>
-&lt;blockquote>
-&lt;p>💡 &lt;strong>部署提示&lt;/strong>：&lt;/p>
-&lt;ul>
-&lt;li>Hugo/Hexo 可用 GitHub Actions 自动化构建（&lt;a class="link" href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener"
->示例脚本&lt;/a>）。&lt;/li>
-&lt;li>避免将 &lt;code>node_modules&lt;/code>/&lt;code>public&lt;/code> 推送到 Git 仓库（用 &lt;code>.gitignore&lt;/code> 过滤）。&lt;/li>
-&lt;/ul>&lt;/blockquote></description></item><item><title>Github Pages 搭建个人博客可供选择的框架有哪些</title><link>https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/</link><pubDate>Mon, 02 Jun 2025 22:52:19 +0800</pubDate><guid>https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/</guid><description>&lt;p>在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：&lt;/p>
-&lt;h2 id="-主流框架推荐">🎈 主流框架推荐
-&lt;/h2>&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Jekyll&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>原生支持&lt;/strong> Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 &lt;code>_site&lt;/code> 目录。&lt;/li>
-&lt;li>&lt;strong>语言：&lt;/strong> Ruby&lt;/li>
-&lt;li>&lt;strong>特点：&lt;/strong>
-&lt;ul>
-&lt;li>&lt;strong>简单易上手：&lt;/strong> 主题、插件丰富，文档完善，社区庞大，非常适合初学者。&lt;/li>
-&lt;li>&lt;strong>约定优于配置：&lt;/strong> 遵循特定目录结构，很多功能开箱即用。&lt;/li>
-&lt;li>&lt;strong>Liquid 模板引擎：&lt;/strong> 灵活但学习曲线相对平缓。&lt;/li>
-&lt;li>&lt;strong>Markdown 支持：&lt;/strong> 内置支持，方便写作。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>优势：&lt;/strong> 与 GitHub Pages 集成最无缝，部署最省心。&lt;/li>
-&lt;li>&lt;strong>劣势：&lt;/strong> 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Hugo&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong> Hugo。你需要&lt;strong>在本地构建&lt;/strong>网站（生成 &lt;code>public&lt;/code> 目录），然后将这个 &lt;code>public&lt;/code> 目录的内容推送到 GitHub 仓库（通常是 &lt;code>gh-pages&lt;/code> 分支或特定分支/docs 目录）。&lt;/li>
-&lt;li>&lt;strong>语言：&lt;/strong> Go (编译成单个二进制文件)&lt;/li>
-&lt;li>&lt;strong>特点：&lt;/strong>
-&lt;ul>
-&lt;li>&lt;strong>极速构建：&lt;/strong> 最大的优势！构建成千上万页面也只需几秒到十几秒。&lt;/li>
-&lt;li>&lt;strong>单二进制文件：&lt;/strong> 安装部署极其简单，无需复杂的语言环境。&lt;/li>
-&lt;li>&lt;strong>强大灵活：&lt;/strong> 内容组织方式灵活，模板功能强大（Go Templates）。&lt;/li>
-&lt;li>&lt;strong>主题丰富：&lt;/strong> 拥有非常庞大且活跃的主题生态系统。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>优势：&lt;/strong> 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。&lt;/li>
-&lt;li>&lt;strong>劣势：&lt;/strong> Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Hexo&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong> Hexo。需要&lt;strong>本地构建&lt;/strong>（生成 &lt;code>public&lt;/code> 目录），然后推送 &lt;code>public&lt;/code> 目录内容。&lt;/li>
-&lt;li>&lt;strong>语言：&lt;/strong> Node.js&lt;/li>
-&lt;li>&lt;strong>特点：&lt;/strong>
-&lt;ul>
-&lt;li>&lt;strong>快速高效：&lt;/strong> 构建速度较快（虽然通常不及 Hugo）。&lt;/li>
-&lt;li>&lt;strong>插件驱动：&lt;/strong> 拥有海量的插件，功能扩展性极强。&lt;/li>
-&lt;li>&lt;strong>主题丰富：&lt;/strong> 主题数量众多，风格多样。&lt;/li>
-&lt;li>&lt;strong>面向博客优化：&lt;/strong> 对博客所需的标签、分类、归档等支持良好。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>优势：&lt;/strong> 基于 Node.js，对前端开发者友好；插件生态强大，可定制性高。&lt;/li>
-&lt;li>&lt;strong>劣势：&lt;/strong> 需要 Node.js 环境；配置可能相对复杂一些。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>VuePress / VitePress&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong>。需要&lt;strong>本地构建&lt;/strong>，推送构建产物（通常是 &lt;code>.vuepress/dist&lt;/code> 或 &lt;code>.vitepress/dist&lt;/code>）。&lt;/li>
-&lt;li>&lt;strong>语言：&lt;/strong> Node.js (基于 Vue.js)&lt;/li>
-&lt;li>&lt;strong>特点：&lt;/strong>
-&lt;ul>
-&lt;li>&lt;strong>技术栈驱动：&lt;/strong> 专为技术文档设计，但对博客也非常适合，尤其适合熟悉 Vue.js 的开发者。&lt;/li>
-&lt;li>&lt;strong>Markdown 扩展强大：&lt;/strong> 可以在 Markdown 中直接使用 Vue 组件，实现高度交互性。&lt;/li>
-&lt;li>&lt;strong>默认主题优秀：&lt;/strong> 官方默认主题简洁美观，功能实用。&lt;/li>
-&lt;li>&lt;strong>开发体验好：&lt;/strong> 基于 Vite，启动和热更新速度极快。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>优势：&lt;/strong> 技术文档和博客的完美结合；利用 Vue 组件系统实现高度定制；优秀的开发体验。&lt;/li>
-&lt;li>&lt;strong>劣势：&lt;/strong> 对不熟悉 Vue 的开发者有一定门槛；主题和插件生态相对 Jekyll/Hugo/Hexo 规模小些（但增长快）。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Eleventy (11ty)&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong>。需要&lt;strong>本地构建&lt;/strong>，推送构建产物（可配置）。&lt;/li>
-&lt;li>&lt;strong>语言：&lt;/strong> Node.js&lt;/li>
-&lt;li>&lt;strong>特点：&lt;/strong>
-&lt;ul>
-&lt;li>&lt;strong>极度灵活与简单：&lt;/strong> 零配置默认值，但可深度定制。支持多种模板语言（Liquid, Nunjucks, Handlebars, Markdown, HTML 等），你可以混用。&lt;/li>
-&lt;li>&lt;strong>轻量级：&lt;/strong> 框架本身非常精简，概念少。&lt;/li>
-&lt;li>&lt;strong>高性能：&lt;/strong> 构建速度很快。&lt;/li>
-&lt;li>&lt;strong>“无框架”框架：&lt;/strong> 更倾向于提供核心的静态生成能力，不强制特定的项目结构或数据模型。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>优势：&lt;/strong> 极高的灵活性和自由度；学习曲线相对平缓（尤其如果你熟悉其中一种模板语言）；性能优异。&lt;/li>
-&lt;li>&lt;strong>劣势：&lt;/strong> 需要自己搭建更多东西（相比开箱即用的框架）；主题生态不如前几个成熟；需要 Node.js 环境。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Astro&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>官方支持：&lt;/strong> GitHub Pages &lt;strong>不原生支持&lt;/strong>。需要&lt;strong>本地构建&lt;/strong>，推送构建产物（&lt;code>dist&lt;/code> 目录）。&lt;/li>
-&lt;li>&lt;strong>语言：&lt;/strong> Node.js (但组件理念独特)&lt;/li>
-&lt;li>&lt;strong>特点：&lt;/strong>
-&lt;ul>
-&lt;li>&lt;strong>岛屿架构：&lt;/strong> 核心理念！默认输出纯静态 HTML/CSS，但可以按需“激活”页面上的交互式组件（称为“岛屿”），大幅减少不必要的 JS。&lt;/li>
-&lt;li>&lt;strong>框架无关：&lt;/strong> 可以在 &lt;code>.astro&lt;/code> 组件中无缝使用 React, Vue, Svelte, Solid 等 UI 框架的组件。&lt;/li>
-&lt;li>&lt;strong>高性能：&lt;/strong> 非常注重输出站点的性能（速度、SEO）。&lt;/li>
-&lt;li>&lt;strong>内容优先：&lt;/strong> 对 Markdown/MDX 支持优秀，内置内容集合功能。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>优势：&lt;/strong> 构建现代、高性能网站的最佳选择之一；独特的架构带来极佳的用户体验；强大的内容管理能力；灵活的组件系统。&lt;/li>
-&lt;li>&lt;strong>劣势：&lt;/strong> 概念较新，学习曲线相对陡峭；需要 Node.js 环境；生态还在快速发展中。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h2 id="-核心区别对比表">🔍 核心区别对比表
-&lt;/h2>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align: left">特性&lt;/th>
-&lt;th style="text-align: left">Jekyll&lt;/th>
-&lt;th style="text-align: left">Hugo&lt;/th>
-&lt;th style="text-align: left">Hexo&lt;/th>
-&lt;th style="text-align: left">VuePress/VitePress&lt;/th>
-&lt;th style="text-align: left">Eleventy (11ty)&lt;/th>
-&lt;th style="text-align: left">Astro&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>原生 GitHub Pages 支持&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">✅ &lt;strong>是&lt;/strong> (自动构建)&lt;/td>
-&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
-&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
-&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
-&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
-&lt;td style="text-align: left">❌ 否 (需本地构建)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>开发语言&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Ruby&lt;/td>
-&lt;td style="text-align: left">Go (单二进制)&lt;/td>
-&lt;td style="text-align: left">Node.js&lt;/td>
-&lt;td style="text-align: left">Node.js (Vue)&lt;/td>
-&lt;td style="text-align: left">Node.js&lt;/td>
-&lt;td style="text-align: left">Node.js&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>最大优势&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">与 GitHub Pages 集成&lt;/td>
-&lt;td style="text-align: left">&lt;strong>极速构建&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">插件生态强大&lt;/td>
-&lt;td style="text-align: left">Markdown+Vue组件&lt;/td>
-&lt;td style="text-align: left">&lt;strong>灵活简单&lt;/strong>，多模板&lt;/td>
-&lt;td style="text-align: left">&lt;strong>岛屿架构&lt;/strong>，高性能&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>构建速度&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">较慢 (大型站点)&lt;/td>
-&lt;td style="text-align: left">⚡ &lt;strong>极快&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">快&lt;/td>
-&lt;td style="text-align: left">快 (VitePress 更快)&lt;/td>
-&lt;td style="text-align: left">快&lt;/td>
-&lt;td style="text-align: left">快&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>学习曲线&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">平缓&lt;/td>
-&lt;td style="text-align: left">中等 (Go模板)&lt;/td>
-&lt;td style="text-align: left">中等&lt;/td>
-&lt;td style="text-align: left">中等 (需Vue基础)&lt;/td>
-&lt;td style="text-align: left">平缓 (熟悉模板即可)&lt;/td>
-&lt;td style="text-align: left">较陡 (新概念)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>主题生态&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">非常丰富&lt;/td>
-&lt;td style="text-align: left">非常丰富&lt;/td>
-&lt;td style="text-align: left">非常丰富&lt;/td>
-&lt;td style="text-align: left">良好 (官方主题优秀)&lt;/td>
-&lt;td style="text-align: left">增长中&lt;/td>
-&lt;td style="text-align: left">增长迅速&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>插件/扩展性&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">良好&lt;/td>
-&lt;td style="text-align: left">良好 (短代码等)&lt;/td>
-&lt;td style="text-align: left">✅ &lt;strong>极好&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">良好&lt;/td>
-&lt;td style="text-align: left">良好 (通过配置/JS)&lt;/td>
-&lt;td style="text-align: left">良好 (集成框架能力强)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>灵活性/自由度&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">中等&lt;/td>
-&lt;td style="text-align: left">高&lt;/td>
-&lt;td style="text-align: left">高&lt;/td>
-&lt;td style="text-align: left">高 (Vue组件)&lt;/td>
-&lt;td style="text-align: left">✅ &lt;strong>极高&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">高&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>最适合人群&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">新手/GitHub集成优先&lt;/td>
-&lt;td style="text-align: left">讨厌等待/大型站点&lt;/td>
-&lt;td style="text-align: left">前端开发者/插件爱好者&lt;/td>
-&lt;td style="text-align: left">Vue开发者/技术文档&lt;/td>
-&lt;td style="text-align: left">追求简洁自由/多语言者&lt;/td>
-&lt;td style="text-align: left">性能控/现代框架使用者&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="-选择建议">📌 选择建议
-&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>追求最简单部署，不想本地构建：选 &lt;code>Jekyll&lt;/code>。&lt;/strong> GitHub 替你搞定一切，专注于写作。&lt;/li>
-&lt;li>&lt;strong>博客规模大或无法忍受慢速构建：选 &lt;code>Hugo&lt;/code>。&lt;/strong> 速度是王道，部署步骤也简单。&lt;/li>
-&lt;li>&lt;strong>前端开发者，喜欢丰富的插件和主题：选 &lt;code>Hexo&lt;/code>。&lt;/strong> Node.js 环境很熟悉，扩展性强。&lt;/li>
-&lt;li>&lt;strong>熟悉 Vue.js 或需要强交互/技术文档：选 &lt;code>VuePress&lt;/code> / &lt;code>VitePress&lt;/code>。&lt;/strong> Markdown + Vue 的组合非常强大，开发体验好。&lt;/li>
-&lt;li>&lt;strong>喜欢简洁、灵活、自由度高，不依赖特定框架：选 &lt;code>Eleventy&lt;/code>。&lt;/strong> 用你喜欢的模板语言，按你的方式组织。&lt;/li>
-&lt;li>&lt;strong>构建高性能、现代化网站，想用不同框架组件：选 &lt;code>Astro&lt;/code>。&lt;/strong> 岛屿架构带来卓越性能，未来感十足。&lt;/li>
-&lt;/ul>
-&lt;h2 id="-重要提示">💡 重要提示
-&lt;/h2>&lt;ol>
-&lt;li>&lt;strong>部署方式：&lt;/strong> 只有 Jekyll 享受 GitHub Pages 的原生构建支持。对于其他框架，你&lt;strong>必须&lt;/strong>在本地或通过 GitHub Actions 等 CI/CD 工具完成构建，然后将生成的静态文件（通常是 &lt;code>public&lt;/code>, &lt;code>dist&lt;/code>, &lt;code>_site&lt;/code>, &lt;code>docs&lt;/code> 等目录）推送到仓库的特定分支（如 &lt;code>gh-pages&lt;/code>）或主分支的特定目录（如 &lt;code>/docs&lt;/code>），并在仓库设置中指定源。&lt;/li>
-&lt;li>&lt;strong>GitHub Actions：&lt;/strong> 对于非 Jekyll 框架，强烈推荐使用 GitHub Actions 自动化构建和部署过程。这样你只需推送源代码，Actions 会自动执行构建并将生成的静态文件部署到 GitHub Pages。官方或社区通常提供现成的 Action 工作流。&lt;/li>
-&lt;li>&lt;strong>考虑熟悉度：&lt;/strong> 选择你或你的团队最熟悉的语言和技术的框架，会大大降低学习成本和开发效率。&lt;/li>
-&lt;li>&lt;strong>需求驱动：&lt;/strong> 明确你的博客需求（纯写作？需要复杂功能？需要极致性能？需要特定技术栈集成？），再根据需求选择最匹配的框架。&lt;/li>
-&lt;/ol>
-&lt;h2 id="-总结">🎯 总结
-&lt;/h2>&lt;p>GitHub Pages 为静态博客提供了优秀的托管平台。Jekyll 凭借其原生集成是&lt;strong>最省心&lt;/strong>的选择。Hugo 凭借&lt;strong>无与伦比的构建速度&lt;/strong>是大型站点或追求效率者的首选。Hexo 以其强大的&lt;strong>插件生态&lt;/strong>吸引 Node.js 开发者。VuePress/VitePress 是 &lt;strong>Vue 技术栈和文档需求&lt;/strong>的绝配。Eleventy 提供了&lt;strong>最大的灵活性&lt;/strong>和简洁性。Astro 则代表了&lt;strong>现代高性能 Web 开发&lt;/strong>的方向。&lt;/p>
-&lt;p>根据你的具体需求、技术偏好和对部署流程的接受程度，仔细权衡以上框架的特点，就能找到最适合你在 GitHub Pages 上搭建个人博客的工具！开始构建你的博客之旅吧！&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on 雪国流明的博客</title>
+        <link>https://muo123.github.io/post/</link>
+        <description>Recent content in Posts on 雪国流明的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>muo123</copyright>
+        <lastBuildDate>Tue, 03 Jun 2025 11:02:43 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>博客搭建</title>
+        <link>https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+        <pubDate>Tue, 03 Jun 2025 11:02:43 +0800</pubDate>
+        
+        <guid>https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;p&gt;以下是 &lt;strong&gt;Hugo + GitHub Pages 博客搭建全流程指南&lt;/strong&gt;，从环境配置到自动化部署，附详细代码和避坑提示：&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;一环境准备--windows-&#34;&gt;一、环境准备 ( Windows )
+&lt;/h3&gt;&lt;h4 id=&#34;1-安装-git&#34;&gt;1. 安装 Git
+&lt;/h4&gt;&lt;p&gt;下载地址：https://git-scm.cn/&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;去 Git 官网下载对应版本，如无意外选择 x64 版本安装即可&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装成功后可以在开始菜单栏看到 Git 文件夹以及相关 Git 工具
+&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/e7iD/590X241/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;590X241/image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;验证安装 (Git Bash)
+&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/BnfP/572X146/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;572X146/image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;2-安装-hugo&#34;&gt;2. 安装 Hugo
+&lt;/h4&gt;&lt;p&gt;下载地址： &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gohugoio/hugo/releases&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载 Hugo 扩展版（支持 Sass/SCSS）
+(选 hugo_extended_*.zip)
+&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/C09T/878X261/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;878X261/image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压到 D:\Hugo 并将路径加入系统环境变量 PATH
+&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/RX8J/702X242/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;702X242/image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;验证安装
+&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/4eTG/718X216/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;718X216/image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;3-创建本地-git-仓库&#34;&gt;3. 创建本地 Git 仓库
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目。在任意文件夹（图例为 D 盘）打开控制台，并输入指令 &lt;code&gt;hugo new site xxx(你的项目名)&lt;/code&gt;
+&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/snZg/850X422/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;850X422/image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;初始化本地仓库。切换至当前目录，并运行 &lt;code&gt;git init&lt;/code&gt; 指令
+&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/DSpp/561X215/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;561X215/image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行服务。切换至该目录，并输入指令 &lt;code&gt;hugo server&lt;/code&gt;，网址输入&lt;code&gt;localhost:1313&lt;/code&gt;，此时由于没有主题内容，显示 page not found，在控制台输入&lt;code&gt;Ctrl + C&lt;/code&gt;即可关闭服务
+&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/2Fhs/1087X555/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;1087X555/image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;二项目配置&#34;&gt;二、项目配置
+&lt;/h3&gt;&lt;h4 id=&#34;1-添加主题以-stack-为例&#34;&gt;1. 添加主题（以 &lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stack&lt;/a&gt; 为例）
+&lt;/h4&gt;&lt;p&gt;可以选择从官网下载，选择喜欢的主题并下载压缩包，解压到 &lt;code&gt;themes&lt;/code&gt; 文件夹&lt;/p&gt;
+&lt;p&gt;官网地址：https://themes.gohugo.io/&lt;/p&gt;
+&lt;p&gt;或者使用 git 指令下载对应主题&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 将主题添加为 Git 子模块（避免直接复制文件）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git submodule add https://github.com/CaiJimmy/hugo-theme-stack.git themes/hugo-theme-stack
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/j4Rp/565X219/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;565X219/image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2-基础配置&#34;&gt;2. 基础配置
+&lt;/h4&gt;&lt;p&gt;个人编写 &lt;code&gt;hugo.toml&lt;/code&gt; 比较耗费时间，下载的主题文件夹中一般包含网站实例 &lt;code&gt;exampleSite&lt;/code&gt;，可以将里面的 &lt;code&gt;content&lt;/code&gt; 文件夹和 &lt;code&gt;hugo.yaml&lt;/code&gt; 配置文件拷贝到当前目录，并覆盖博客目录相关文件。覆盖目录文件后，可能出现兼容性报错，此时需要删除 &lt;code&gt;Content/post/rich-content&lt;/code&gt;。另外，相关语言配置项根据需要进行合理修改&lt;/p&gt;
+&lt;h4 id=&#34;3-创建第一篇文章&#34;&gt;3. 创建第一篇文章
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new posts/hello.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;编辑 &lt;code&gt;content/posts/hello-world.md&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;date = &amp;#39;2025-06-02T22:12:41+08:00&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;draft = true
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title = &amp;#39;Hello&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;this is a test
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;三本地预览&#34;&gt;三、本地预览
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo server -D  &lt;span class=&#34;c1&#34;&gt;# -D 包含草稿&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;访问 &lt;code&gt;https://localhost:1313&lt;/code&gt; 实时预览&lt;/p&gt;
+&lt;h2 id=&#34;1653x872imagepng&#34;&gt;&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/HNrK/1653X872/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;1653X872/image.png&#34;
+	
+	
+&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;四部署到-github-pages&#34;&gt;四、部署到 GitHub Pages
+&lt;/h3&gt;&lt;h4 id=&#34;方案一手动部署适合初学者&#34;&gt;方案一：手动部署（适合初学者）
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 1. 构建静态文件（生成到 public 目录）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo --minify
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2. 创建 GitHub 仓库：&amp;lt;你的用户名&amp;gt;.github.io&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 3. 第一次推送代码之前需要进行如下配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global user.name &lt;span class=&#34;s2&#34;&gt;&amp;#34;你的 GitHub 用户名&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global user.email &lt;span class=&#34;s2&#34;&gt;&amp;#34;你注册 GitHub 的邮箱&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 4. 将 public 目录推送到仓库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; public
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git remote add origin git@Github.com:&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;需要设置ssh&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt;&amp;gt;&amp;gt; 或者使用指令 git remote add origin https://github.com/&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;Initial deploy&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push -u origin main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;方案二自动化部署推荐使用-github-actions&#34;&gt;方案二：自动化部署（推荐！使用 GitHub Actions）
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;创建新仓库&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;创建一个用来储存所有博客文件的新仓库，权限设置为&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;前往&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Settings&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Developer&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Settings&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Personal&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;access&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tokens&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;点击&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;“&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Generate&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;token&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;classic&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;”&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;创建一个&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;token&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，并勾选&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;和&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;workflow&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;选项&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;复制&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;token&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，前往新仓库的&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Settings&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Secrets&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;variables&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Actions&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，点击&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;repository&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;secret&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;将&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;token&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;保存在仓库的环境变量中。&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;博客项目根目录创建 &lt;code&gt;.github/workflows/deploy.yml&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;blog deploy&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;on&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;push&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;branches&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;main  &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;jobs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;deploy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;runs-on&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;ubuntu-latest	&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;steps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;uses&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;actions/checkout@v4	&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;with&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;submodules&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;fetch-depth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Setup Hugo	&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;uses&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;peaceiris/actions-hugo@v3	&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;with&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;hugo-version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;latest&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;	
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;extended&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Build&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;hugo -D&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Deploy&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;uses&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;peaceiris/actions-gh-pages@v4	&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;with&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;external_repository&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;xxx/xxx.github.io	# 自己的GitHub pages仓库&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;personal_token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;${{ secrets.你的token变量名 }}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;publish_dir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;./public	&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;publish_branch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;main	&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;可以在目录创建 &lt;code&gt;.gitignore&lt;/code&gt; 文件，避免提交部分文件，例如&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;resources
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.hugo_build.lock
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;推送代码到 GitHub&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;Add workflow&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git remote add origin git@Github.com:&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;需要设置ssh&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt;&amp;gt;&amp;gt; 或者使用指令 git remote add origin https://github.com/&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push -u origin main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;五访问与优化&#34;&gt;五、访问与优化
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;访问地址&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;https://&amp;lt;用户名&amp;gt;.github.io&lt;/code&gt; (首次部署需等待 1-2 分钟)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;自定义域名（可选）&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在项目根目录添加 &lt;code&gt;static/CNAME&lt;/code&gt; 文件，内容为域名：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;blog.yourdomain.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;DNS 添加 CNAME 记录指向 &lt;code&gt;&amp;lt;用户名&amp;gt;.github.io&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;强制 HTTPS&lt;/strong&gt;&lt;br&gt;
+在 GitHub Pages 设置中勾选 &lt;strong&gt;Enforce HTTPS&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;六常用命令速查&#34;&gt;六、常用命令速查
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;命令&lt;/th&gt;
+          &lt;th&gt;作用&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;hugo new posts/标题.md&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;新建文章&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;hugo server -D&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;启动本地服务器（含草稿）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;hugo --minify&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;构建优化后的静态文件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;git submodule update --remote&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;更新主题&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;七避坑指南&#34;&gt;七、避坑指南
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;主题无法加载&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;确保使用 &lt;code&gt;git submodule&lt;/code&gt; 添加主题&lt;/li&gt;
+&lt;li&gt;在 Actions 中启用 &lt;code&gt;submodules: recursive&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;构建失败&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;检查 &lt;code&gt;.github/workflows/deploy.yml&lt;/code&gt; 中的 Hugo 版本是否匹配&lt;/li&gt;
+&lt;li&gt;确保使用 &lt;code&gt;extended&lt;/code&gt; 版本（如果主题需要 SCSS）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;中文乱码&lt;/strong&gt;&lt;br&gt;
+在文章 Front Matter 中明确指定编码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;utf-8&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;自定义布局&lt;/strong&gt;&lt;br&gt;
+复制主题文件到本地覆盖（避免直接修改主题）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp themes/stack/layouts/_default/single.html layouts/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;效果预览&#34;&gt;效果预览
+&lt;/h3&gt;&lt;p&gt;完成部署后，你将获得：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;⚡ 基于 Hugo 的极速静态博客&lt;/li&gt;
+&lt;li&gt;🤖 自动化 Git 工作流（提交即发布）&lt;/li&gt;
+&lt;li&gt;📱 响应式主题适配移动端&lt;/li&gt;
+&lt;li&gt;🔒 免费 HTTPS 支持&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;立即开始你的博客之旅吧！升级方案可添加：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Algolia 搜索（&lt;a class=&#34;link&#34; href=&#34;https://github.com/replicatedhq/hugo-algolia&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;hugo-algolia&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;Utterances 评论系统（GitHub Issue 驱动）&lt;/li&gt;
+&lt;li&gt;流量统计（Google Analytics/Umami）&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</title>
+        <link>https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/</link>
+        <pubDate>Mon, 02 Jun 2025 23:23:47 +0800</pubDate>
+        
+        <guid>https://muo123.github.io/p/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/</guid>
+        <description>&lt;img src="https://tc.z.wiki/autoupload/20250603/5th1/848X557/image.png" alt="Featured image of post 博客框架 Hugo，Hexo，Jekyll 三者的区别和对比" /&gt;&lt;p&gt;以下是 Hugo、Hexo 和 Jekyll 三大主流静态博客框架的详细对比，从核心特性到适用场景的全方位分析，帮助你快速选择最适合的工具：&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;核心区别对比表&#34;&gt;&lt;strong&gt;核心区别对比表&lt;/strong&gt;
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;Hugo&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;Hexo&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;Jekyll&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;开发语言&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Go（单二进制文件）&lt;/td&gt;
+          &lt;td&gt;Node.js&lt;/td&gt;
+          &lt;td&gt;Ruby&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;构建速度&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;⚡ &lt;strong&gt;极快&lt;/strong&gt;（千页秒级）&lt;/td&gt;
+          &lt;td&gt;🚀 快（依赖插件复杂度）&lt;/td&gt;
+          &lt;td&gt;⏳ 较慢（大型项目可能需分钟级）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;GitHub Pages 支持&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;❌ 需本地构建后推送产物&lt;/td&gt;
+          &lt;td&gt;❌ 需本地构建后推送产物&lt;/td&gt;
+          &lt;td&gt;✅ &lt;strong&gt;原生支持&lt;/strong&gt;（自动构建）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;安装复杂度&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;★☆☆（无需环境，下载即用）&lt;/td&gt;
+          &lt;td&gt;★★☆（需 Node.js 环境）&lt;/td&gt;
+          &lt;td&gt;★★★（需 Ruby 环境及 Bundler）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;主题生态&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;丰富（&lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo Themes&lt;/a&gt;）&lt;/td&gt;
+          &lt;td&gt;极丰富（&lt;a class=&#34;link&#34; href=&#34;https://hexo.io/themes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hexo Themes&lt;/a&gt;）&lt;/td&gt;
+          &lt;td&gt;成熟（&lt;a class=&#34;link&#34; href=&#34;https://jekyllthemes.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Jekyll Themes&lt;/a&gt;）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;插件扩展性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;中等（内置短代码/部分插件）&lt;/td&gt;
+          &lt;td&gt;✅ &lt;strong&gt;极强&lt;/strong&gt;（600+ 插件）&lt;/td&gt;
+          &lt;td&gt;良好（Gem 插件）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;模板引擎&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Go Templates（学习曲线陡）&lt;/td&gt;
+          &lt;td&gt;EJS/Swig/Pug（灵活）&lt;/td&gt;
+          &lt;td&gt;Liquid（易上手）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;内容管理&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;灵活（支持自定义内容类型）&lt;/td&gt;
+          &lt;td&gt;标准 Markdown + Front Matter&lt;/td&gt;
+          &lt;td&gt;标准 Markdown + Front Matter&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;适用人群&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;大型站点/效率优先者&lt;/td&gt;
+          &lt;td&gt;前端开发者/插件爱好者&lt;/td&gt;
+          &lt;td&gt;GitHub 新手/讨厌本地构建者&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;深度解析三大框架&#34;&gt;&lt;strong&gt;深度解析三大框架&lt;/strong&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;1-hugo速度至上的极简主义&#34;&gt;1. &lt;strong&gt;Hugo：速度至上的极简主义&lt;/strong&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;优势&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;无需依赖环境&lt;/strong&gt;：单文件执行，解压即用，跨平台无兼容问题。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;极致构建速度&lt;/strong&gt;：千篇文章构建仅需 2-5 秒，适合频繁更新的大型博客。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;强类型内容模型&lt;/strong&gt;：可自定义内容结构（如技术文档、作品集）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;劣势&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Go Templates 语法较复杂（例如条件判断需写 &lt;code&gt;{{ if eq .A .B }}&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;插件生态弱于 Hexo，高级功能需手动开发。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;典型用户&lt;/strong&gt;：技术博主、文档站点维护者、讨厌等待构建的人。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-hexo前端开发者的瑞士军刀&#34;&gt;2. &lt;strong&gt;Hexo：前端开发者的瑞士军刀&lt;/strong&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;优势&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;插件驱动&lt;/strong&gt;：支持图床优化（&lt;code&gt;hexo-asset-image&lt;/code&gt;）、SEO 增强（&lt;code&gt;hexo-seo&lt;/code&gt;）等深度定制。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;技术栈亲和&lt;/strong&gt;：基于 Node.js，前端开发者可无缝接入 Webpack/Babel 等工具。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主题高度自由&lt;/strong&gt;：可修改主题源码，自由度远超 Hugo/Jekyll 的主题配置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;劣势&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;插件过多可能导致构建缓慢（需谨慎选择插件）。&lt;/li&gt;
+&lt;li&gt;需熟悉 Node.js 开发环境（版本兼容问题常见）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;典型用户&lt;/strong&gt;：前端工程师、需要深度定制的技术博主。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-jekyllgithub-亲儿子的零配置方案&#34;&gt;3. &lt;strong&gt;Jekyll：GitHub 亲儿子的零配置方案&lt;/strong&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;优势&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;无缝 GitHub 集成&lt;/strong&gt;：推送 Markdown 即自动发布，无需本地构建。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;低学习曲线&lt;/strong&gt;：Liquid 模板类似自然语言（例：&lt;code&gt;{% if page.title %}&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;官方维护保障&lt;/strong&gt;：GitHub 官方支持，兼容性无忧。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;劣势&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Ruby 环境在 Windows 易出错（需 RubyInstaller + DevKit）。&lt;/li&gt;
+&lt;li&gt;百篇文章以上构建显著变慢（&amp;gt;30秒）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;典型用户&lt;/strong&gt;：写作优先的博主、非技术背景用户、小型项目快速上线。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;关键决策场景&#34;&gt;&lt;strong&gt;关键决策场景&lt;/strong&gt;
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;你的需求&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;推荐框架&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;原因&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;纯写作/讨厌命令行&lt;/td&gt;
+          &lt;td&gt;Jekyll&lt;/td&gt;
+          &lt;td&gt;推送 Markdown 即发布，无需构建&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;博客规模大（&amp;gt;500篇文章）&lt;/td&gt;
+          &lt;td&gt;Hugo&lt;/td&gt;
+          &lt;td&gt;构建速度碾压对手，节省生命&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;前端开发者/爱折腾插件&lt;/td&gt;
+          &lt;td&gt;Hexo&lt;/td&gt;
+          &lt;td&gt;用 Node.js 生态定制功能（如 PWA 支持）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;需托管 GitHub 且追求稳定&lt;/td&gt;
+          &lt;td&gt;Jekyll&lt;/td&gt;
+          &lt;td&gt;官方支持，无构建失败风险&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;多语言站点（i18n）&lt;/td&gt;
+          &lt;td&gt;Hugo&lt;/td&gt;
+          &lt;td&gt;内置多语言支持，配置简单&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;终极选择建议&#34;&gt;&lt;strong&gt;终极选择建议&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;选 Hugo 如果&lt;/strong&gt;：你追求效率至上，内容量巨大，或抗拒环境配置。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选 Hexo 如果&lt;/strong&gt;：你是前端开发者，需要插件拓展功能（如 Algolia 搜索）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选 Jekyll 如果&lt;/strong&gt;：你希望完全依赖 GitHub 自动化，专注写作而非技术。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 &lt;strong&gt;部署提示&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hugo/Hexo 可用 GitHub Actions 自动化构建（&lt;a class=&#34;link&#34; href=&#34;https://github.com/peaceiris/actions-hugo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;示例脚本&lt;/a&gt;）。&lt;/li&gt;
+&lt;li&gt;避免将 &lt;code&gt;node_modules&lt;/code&gt;/&lt;code&gt;public&lt;/code&gt; 推送到 Git 仓库（用 &lt;code&gt;.gitignore&lt;/code&gt; 过滤）。&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>Github Pages 搭建个人博客可供选择的框架有哪些</title>
+        <link>https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/</link>
+        <pubDate>Mon, 02 Jun 2025 22:52:19 +0800</pubDate>
+        
+        <guid>https://muo123.github.io/p/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/</guid>
+        <description>&lt;img src="https://tc.z.wiki/autoupload/20250603/sjGQ/1085X637/image.png" alt="Featured image of post Github Pages 搭建个人博客可供选择的框架有哪些" /&gt;&lt;p&gt;在 GitHub Pages 上搭建个人博客是极佳的选择（免费、稳定、易用），而选择合适的静态网站生成框架至关重要。以下是主流且与 GitHub Pages 配合良好的框架，以及它们之间的核心区别：&lt;/p&gt;
+&lt;h2 id=&#34;-主流框架推荐&#34;&gt;🎈 主流框架推荐
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Jekyll&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;官方支持：&lt;/strong&gt; GitHub Pages &lt;strong&gt;原生支持&lt;/strong&gt; Jekyll。这意味着你只需将 Jekyll 源文件推送到仓库，GitHub 会自动为你构建网站。无需本地构建或上传 &lt;code&gt;_site&lt;/code&gt; 目录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语言：&lt;/strong&gt; Ruby&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;特点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;简单易上手：&lt;/strong&gt; 主题、插件丰富，文档完善，社区庞大，非常适合初学者。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;约定优于配置：&lt;/strong&gt; 遵循特定目录结构，很多功能开箱即用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Liquid 模板引擎：&lt;/strong&gt; 灵活但学习曲线相对平缓。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Markdown 支持：&lt;/strong&gt; 内置支持，方便写作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优势：&lt;/strong&gt; 与 GitHub Pages 集成最无缝，部署最省心。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;劣势：&lt;/strong&gt; 构建速度在大型站点上相对较慢；需要 Ruby 环境进行本地开发。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hugo&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;官方支持：&lt;/strong&gt; GitHub Pages &lt;strong&gt;不原生支持&lt;/strong&gt; Hugo。你需要&lt;strong&gt;在本地构建&lt;/strong&gt;网站（生成 &lt;code&gt;public&lt;/code&gt; 目录），然后将这个 &lt;code&gt;public&lt;/code&gt; 目录的内容推送到 GitHub 仓库（通常是 &lt;code&gt;gh-pages&lt;/code&gt; 分支或特定分支/docs 目录）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语言：&lt;/strong&gt; Go (编译成单个二进制文件)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;特点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;极速构建：&lt;/strong&gt; 最大的优势！构建成千上万页面也只需几秒到十几秒。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;单二进制文件：&lt;/strong&gt; 安装部署极其简单，无需复杂的语言环境。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;强大灵活：&lt;/strong&gt; 内容组织方式灵活，模板功能强大（Go Templates）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主题丰富：&lt;/strong&gt; 拥有非常庞大且活跃的主题生态系统。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优势：&lt;/strong&gt; 无与伦比的构建速度，本地开发体验极佳，部署简单（虽然需要本地构建）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;劣势：&lt;/strong&gt; Go Templates 学习曲线可能比 Liquid 稍陡；需要手动构建后部署到 GitHub Pages。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hexo&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;官方支持：&lt;/strong&gt; GitHub Pages &lt;strong&gt;不原生支持&lt;/strong&gt; Hexo。需要&lt;strong&gt;本地构建&lt;/strong&gt;（生成 &lt;code&gt;public&lt;/code&gt; 目录），然后推送 &lt;code&gt;public&lt;/code&gt; 目录内容。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语言：&lt;/strong&gt; Node.js&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;特点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;快速高效：&lt;/strong&gt; 构建速度较快（虽然通常不及 Hugo）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;插件驱动：&lt;/strong&gt; 拥有海量的插件，功能扩展性极强。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主题丰富：&lt;/strong&gt; 主题数量众多，风格多样。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;面向博客优化：&lt;/strong&gt; 对博客所需的标签、分类、归档等支持良好。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优势：&lt;/strong&gt; 基于 Node.js，对前端开发者友好；插件生态强大，可定制性高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;劣势：&lt;/strong&gt; 需要 Node.js 环境；配置可能相对复杂一些。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;VuePress / VitePress&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;官方支持：&lt;/strong&gt; GitHub Pages &lt;strong&gt;不原生支持&lt;/strong&gt;。需要&lt;strong&gt;本地构建&lt;/strong&gt;，推送构建产物（通常是 &lt;code&gt;.vuepress/dist&lt;/code&gt; 或 &lt;code&gt;.vitepress/dist&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语言：&lt;/strong&gt; Node.js (基于 Vue.js)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;特点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;技术栈驱动：&lt;/strong&gt; 专为技术文档设计，但对博客也非常适合，尤其适合熟悉 Vue.js 的开发者。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Markdown 扩展强大：&lt;/strong&gt; 可以在 Markdown 中直接使用 Vue 组件，实现高度交互性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;默认主题优秀：&lt;/strong&gt; 官方默认主题简洁美观，功能实用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开发体验好：&lt;/strong&gt; 基于 Vite，启动和热更新速度极快。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优势：&lt;/strong&gt; 技术文档和博客的完美结合；利用 Vue 组件系统实现高度定制；优秀的开发体验。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;劣势：&lt;/strong&gt; 对不熟悉 Vue 的开发者有一定门槛；主题和插件生态相对 Jekyll/Hugo/Hexo 规模小些（但增长快）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Eleventy (11ty)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;官方支持：&lt;/strong&gt; GitHub Pages &lt;strong&gt;不原生支持&lt;/strong&gt;。需要&lt;strong&gt;本地构建&lt;/strong&gt;，推送构建产物（可配置）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语言：&lt;/strong&gt; Node.js&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;特点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;极度灵活与简单：&lt;/strong&gt; 零配置默认值，但可深度定制。支持多种模板语言（Liquid, Nunjucks, Handlebars, Markdown, HTML 等），你可以混用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;轻量级：&lt;/strong&gt; 框架本身非常精简，概念少。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高性能：&lt;/strong&gt; 构建速度很快。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;“无框架”框架：&lt;/strong&gt; 更倾向于提供核心的静态生成能力，不强制特定的项目结构或数据模型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优势：&lt;/strong&gt; 极高的灵活性和自由度；学习曲线相对平缓（尤其如果你熟悉其中一种模板语言）；性能优异。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;劣势：&lt;/strong&gt; 需要自己搭建更多东西（相比开箱即用的框架）；主题生态不如前几个成熟；需要 Node.js 环境。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Astro&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;官方支持：&lt;/strong&gt; GitHub Pages &lt;strong&gt;不原生支持&lt;/strong&gt;。需要&lt;strong&gt;本地构建&lt;/strong&gt;，推送构建产物（&lt;code&gt;dist&lt;/code&gt; 目录）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语言：&lt;/strong&gt; Node.js (但组件理念独特)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;特点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;岛屿架构：&lt;/strong&gt; 核心理念！默认输出纯静态 HTML/CSS，但可以按需“激活”页面上的交互式组件（称为“岛屿”），大幅减少不必要的 JS。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;框架无关：&lt;/strong&gt; 可以在 &lt;code&gt;.astro&lt;/code&gt; 组件中无缝使用 React, Vue, Svelte, Solid 等 UI 框架的组件。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高性能：&lt;/strong&gt; 非常注重输出站点的性能（速度、SEO）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内容优先：&lt;/strong&gt; 对 Markdown/MDX 支持优秀，内置内容集合功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优势：&lt;/strong&gt; 构建现代、高性能网站的最佳选择之一；独特的架构带来极佳的用户体验；强大的内容管理能力；灵活的组件系统。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;劣势：&lt;/strong&gt; 概念较新，学习曲线相对陡峭；需要 Node.js 环境；生态还在快速发展中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;-核心区别对比表&#34;&gt;🔍 核心区别对比表
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;特性&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Jekyll&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Hugo&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Hexo&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;VuePress/VitePress&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Eleventy (11ty)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Astro&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;原生 GitHub Pages 支持&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;✅ &lt;strong&gt;是&lt;/strong&gt; (自动构建)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;❌ 否 (需本地构建)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;❌ 否 (需本地构建)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;❌ 否 (需本地构建)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;❌ 否 (需本地构建)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;❌ 否 (需本地构建)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;开发语言&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Ruby&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Go (单二进制)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Node.js&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Node.js (Vue)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Node.js&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Node.js&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;最大优势&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;与 GitHub Pages 集成&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;极速构建&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;插件生态强大&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Markdown+Vue组件&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;灵活简单&lt;/strong&gt;，多模板&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;岛屿架构&lt;/strong&gt;，高性能&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;构建速度&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;较慢 (大型站点)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;⚡ &lt;strong&gt;极快&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;快&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;快 (VitePress 更快)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;快&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;快&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;学习曲线&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;平缓&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;中等 (Go模板)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;中等&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;中等 (需Vue基础)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;平缓 (熟悉模板即可)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;较陡 (新概念)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;主题生态&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;非常丰富&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;非常丰富&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;非常丰富&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;良好 (官方主题优秀)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;增长中&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;增长迅速&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;插件/扩展性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;良好&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;良好 (短代码等)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;✅ &lt;strong&gt;极好&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;良好&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;良好 (通过配置/JS)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;良好 (集成框架能力强)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;灵活性/自由度&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;中等&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;高&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;高&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;高 (Vue组件)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;✅ &lt;strong&gt;极高&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;高&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;最适合人群&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;新手/GitHub集成优先&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;讨厌等待/大型站点&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;前端开发者/插件爱好者&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Vue开发者/技术文档&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;追求简洁自由/多语言者&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;性能控/现代框架使用者&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;-选择建议&#34;&gt;📌 选择建议
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;追求最简单部署，不想本地构建：选 &lt;code&gt;Jekyll&lt;/code&gt;。&lt;/strong&gt; GitHub 替你搞定一切，专注于写作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;博客规模大或无法忍受慢速构建：选 &lt;code&gt;Hugo&lt;/code&gt;。&lt;/strong&gt; 速度是王道，部署步骤也简单。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前端开发者，喜欢丰富的插件和主题：选 &lt;code&gt;Hexo&lt;/code&gt;。&lt;/strong&gt; Node.js 环境很熟悉，扩展性强。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;熟悉 Vue.js 或需要强交互/技术文档：选 &lt;code&gt;VuePress&lt;/code&gt; / &lt;code&gt;VitePress&lt;/code&gt;。&lt;/strong&gt; Markdown + Vue 的组合非常强大，开发体验好。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;喜欢简洁、灵活、自由度高，不依赖特定框架：选 &lt;code&gt;Eleventy&lt;/code&gt;。&lt;/strong&gt; 用你喜欢的模板语言，按你的方式组织。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;构建高性能、现代化网站，想用不同框架组件：选 &lt;code&gt;Astro&lt;/code&gt;。&lt;/strong&gt; 岛屿架构带来卓越性能，未来感十足。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;-重要提示&#34;&gt;💡 重要提示
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;部署方式：&lt;/strong&gt; 只有 Jekyll 享受 GitHub Pages 的原生构建支持。对于其他框架，你&lt;strong&gt;必须&lt;/strong&gt;在本地或通过 GitHub Actions 等 CI/CD 工具完成构建，然后将生成的静态文件（通常是 &lt;code&gt;public&lt;/code&gt;, &lt;code&gt;dist&lt;/code&gt;, &lt;code&gt;_site&lt;/code&gt;, &lt;code&gt;docs&lt;/code&gt; 等目录）推送到仓库的特定分支（如 &lt;code&gt;gh-pages&lt;/code&gt;）或主分支的特定目录（如 &lt;code&gt;/docs&lt;/code&gt;），并在仓库设置中指定源。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub Actions：&lt;/strong&gt; 对于非 Jekyll 框架，强烈推荐使用 GitHub Actions 自动化构建和部署过程。这样你只需推送源代码，Actions 会自动执行构建并将生成的静态文件部署到 GitHub Pages。官方或社区通常提供现成的 Action 工作流。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;考虑熟悉度：&lt;/strong&gt; 选择你或你的团队最熟悉的语言和技术的框架，会大大降低学习成本和开发效率。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;需求驱动：&lt;/strong&gt; 明确你的博客需求（纯写作？需要复杂功能？需要极致性能？需要特定技术栈集成？），再根据需求选择最匹配的框架。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;-总结&#34;&gt;🎯 总结
+&lt;/h2&gt;&lt;p&gt;GitHub Pages 为静态博客提供了优秀的托管平台。Jekyll 凭借其原生集成是&lt;strong&gt;最省心&lt;/strong&gt;的选择。Hugo 凭借&lt;strong&gt;无与伦比的构建速度&lt;/strong&gt;是大型站点或追求效率者的首选。Hexo 以其强大的&lt;strong&gt;插件生态&lt;/strong&gt;吸引 Node.js 开发者。VuePress/VitePress 是 &lt;strong&gt;Vue 技术栈和文档需求&lt;/strong&gt;的绝配。Eleventy 提供了&lt;strong&gt;最大的灵活性&lt;/strong&gt;和简洁性。Astro 则代表了&lt;strong&gt;现代高性能 Web 开发&lt;/strong&gt;的方向。&lt;/p&gt;
+&lt;p&gt;根据你的具体需求、技术偏好和对部署流程的接受程度，仔细权衡以上框架的特点，就能找到最适合你在 GitHub Pages 上搭建个人博客的工具！开始构建你的博客之旅吧！&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
