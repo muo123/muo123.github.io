@@ -7,10 +7,18 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>muo123</copyright>
-        <lastBuildDate>Mon, 02 Jun 2025 23:23:47 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 03 Jun 2025 11:02:43 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo</title>
+        <link>https://muo123.github.io/categories/hugo/</link>
+        <pubDate>Tue, 03 Jun 2025 11:02:43 +0800</pubDate>
+        
+        <guid>https://muo123.github.io/categories/hugo/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>博客</title>
         <link>https://muo123.github.io/categories/%E5%8D%9A%E5%AE%A2/</link>
-        <pubDate>Mon, 02 Jun 2025 23:23:47 +0800</pubDate>
+        <pubDate>Tue, 03 Jun 2025 11:02:43 +0800</pubDate>
         
         <guid>https://muo123.github.io/categories/%E5%8D%9A%E5%AE%A2/</guid>
         <description></description>
