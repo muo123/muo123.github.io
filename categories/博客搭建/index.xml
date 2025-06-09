@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>博客 on 雪国流明的博客</title>
-        <link>https://muo123.github.io/categories/%E5%8D%9A%E5%AE%A2/</link>
-        <description>Recent content in 博客 on 雪国流明的博客</description>
+        <title>博客搭建 on 雪国流明的博客</title>
+        <link>https://muo123.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+        <description>Recent content in 博客搭建 on 雪国流明的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>muo123</copyright>
-        <lastBuildDate>Tue, 03 Jun 2025 11:02:43 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Hugo &#43; Github Pages博客搭建</title>
-        <link>https://muo123.github.io/p/hugo--github-pages%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+        <lastBuildDate>Tue, 03 Jun 2025 11:02:43 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo &#43; Github Pages 博客搭建</title>
+        <link>https://muo123.github.io/p/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Tue, 03 Jun 2025 11:02:43 +0800</pubDate>
         
-        <guid>https://muo123.github.io/p/hugo--github-pages%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://tc.z.wiki/autoupload/20250603/UrPE/1602X637/image.png" alt="Featured image of post Hugo &#43; Github Pages博客搭建" /&gt;&lt;p&gt;以下是 &lt;strong&gt;Hugo + GitHub Pages 博客搭建全流程指南&lt;/strong&gt;，从环境配置到自动化部署，附详细代码和避坑提示：&lt;/p&gt;
+        <guid>https://muo123.github.io/p/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;img src="https://tc.z.wiki/autoupload/20250603/UrPE/1602X637/image.png" alt="Featured image of post Hugo &#43; Github Pages 博客搭建" /&gt;&lt;p&gt;以下是 &lt;strong&gt;Hugo + GitHub Pages 博客搭建全流程指南&lt;/strong&gt;，从环境配置到自动化部署，附详细代码和避坑提示：&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;一环境准备--windows-&#34;&gt;一、环境准备 ( Windows )
 &lt;/h3&gt;&lt;h4 id=&#34;1-安装-git&#34;&gt;1. 安装 Git
