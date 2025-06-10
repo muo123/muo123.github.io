@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="深入了解MVC架构">
 <meta property='og:description' content="本文将深入探讨 MVC (Model-View-Controller) 架构模式，特别是在 iOS开发 中的实现、优缺点和演变。\nMVC 的核心思想：职责分离\nMVC 的核心目标是将应用程序的逻辑划分为三个清晰的角色，每个角色有明确的职责，从而降低代码的耦合度，提高可维护性和可测试性。\n1 2 3 4 5 6 7 8 9 MyFeature/ ├── Model/ │ ├── User.swift // 数据模型 │ └── DataService.swift // 网络/数据库服务 ├── View/ │ ├── ProfileView.swift // 自定义视图 │ └── ProfileCell.swift // TableView单元格 └── Controller/ └── ProfileViewController.swift // 视图控制器 经典 MVC 理论模型 经典 MVC 数据流示意图\n用户 (User) 与 视图 (View) 交互（如点击按钮）。 View 将用户事件传递给 控制器 (Controller)。 Controller 处理逻辑： 更新 模型 (Model) 数据（如保存用户输入）。 从 Model 读取数据（如查询数据库）。 Model 数据变更后通知 Controller（通过观察者模式等）。 Controller 将新数据传递给 View。 View 根据数据更新界面，反馈给用户。 ✅ 理想情况：各层职责分离，数据流清晰。\n❌ iOS 现实：Controller 常过度承担逻辑，导致臃肿。\n">
 <meta property='og:url' content='https://muo123.github.io/p/%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3mvc%E6%9E%B6%E6%9E%84/'>
-<meta property='og:site_name' content='雪国流明的博客'>
+<meta property='og:site_name' content='雪国流明'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-09T21:11:31&#43;08:00'/><meta property='article:modified_time' content='2025-06-09T21:11:31&#43;08:00'/><meta property='og:image' content='https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250609/sDey/743X194/image.png' />
 <meta name="twitter:title" content="深入了解MVC架构">
 <meta name="twitter:description" content="本文将深入探讨 MVC (Model-View-Controller) 架构模式，特别是在 iOS开发 中的实现、优缺点和演变。\nMVC 的核心思想：职责分离\nMVC 的核心目标是将应用程序的逻辑划分为三个清晰的角色，每个角色有明确的职责，从而降低代码的耦合度，提高可维护性和可测试性。\n1 2 3 4 5 6 7 8 9 MyFeature/ ├── Model/ │ ├── User.swift // 数据模型 │ └── DataService.swift // 网络/数据库服务 ├── View/ │ ├── ProfileView.swift // 自定义视图 │ └── ProfileCell.swift // TableView单元格 └── Controller/ └── ProfileViewController.swift // 视图控制器 经典 MVC 理论模型 经典 MVC 数据流示意图\n用户 (User) 与 视图 (View) 交互（如点击按钮）。 View 将用户事件传递给 控制器 (Controller)。 Controller 处理逻辑： 更新 模型 (Model) 数据（如保存用户输入）。 从 Model 读取数据（如查询数据库）。 Model 数据变更后通知 Controller（通过观察者模式等）。 Controller 将新数据传递给 View。 View 根据数据更新界面，反馈给用户。 ✅ 理想情况：各层职责分离，数据流清晰。\n❌ iOS 现实：Controller 常过度承担逻辑，导致臃肿。\n"><meta name="twitter:card" content="summary_large_image">
@@ -72,7 +72,7 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">雪国流明的博客</a></h1>
+            <h1 class="site-name"><a href="/">雪国流明</a></h1>
             <h2 class="site-description">心有猛虎，细嗅蔷薇</h2>
         </div>
     </header><ol class="menu-social">
