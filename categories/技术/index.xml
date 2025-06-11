@@ -7,7 +7,189 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>muo123</copyright>
-        <lastBuildDate>Tue, 10 Jun 2025 19:54:08 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 11 Jun 2025 19:43:34 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于 Yaml、Toml、Json 三种数据格式比较</title>
+        <link>https://muo123.github.io/articles/%E5%85%B3%E4%BA%8E-yamltomljson-%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E6%AF%94%E8%BE%83/</link>
+        <pubDate>Wed, 11 Jun 2025 19:43:34 +0800</pubDate>
+        
+        <guid>https://muo123.github.io/articles/%E5%85%B3%E4%BA%8E-yamltomljson-%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E6%AF%94%E8%BE%83/</guid>
+        <description>&lt;p&gt;TOML、YAML 和 JSON 都是流行的数据序列化格式，用于存储和交换结构化数据，尤其在配置文件中非常常见。它们各有优缺点，适用于不同的场景。下面是它们的详细比较：&lt;/p&gt;
+&lt;h2 id=&#34;核心特性概述&#34;&gt;核心特性概述
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JSON (JavaScript Object Notation)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;起源：&lt;/strong&gt; 源自 JavaScript，但现在是语言无关的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设计理念：&lt;/strong&gt; 简洁、轻量、易于机器解析和生成，最初主要用于网络数据交换。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语法：&lt;/strong&gt; 基于键值对和嵌套结构。使用大括号 &lt;code&gt;{}&lt;/code&gt; 表示对象，方括号 &lt;code&gt;[]&lt;/code&gt; 表示数组。键必须用双引号 &lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt; 包裹，字符串值也必须用双引号 &lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt; 包裹。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据类型：&lt;/strong&gt; 字符串、数字、布尔值 (&lt;code&gt;true&lt;/code&gt;/&lt;code&gt;false&lt;/code&gt;)、&lt;code&gt;null&lt;/code&gt;、对象、数组。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可读性：&lt;/strong&gt; 对人类相对友好，但嵌套深时括号匹配可能降低可读性。严格的引号和逗号要求有时显得冗余。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注释：&lt;/strong&gt; &lt;strong&gt;不支持注释！&lt;/strong&gt; 这是 JSON 在配置文件场景下的最大短板。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全性：&lt;/strong&gt; 相对安全，解析器通常只处理数据，不执行代码（但要注意 &lt;code&gt;eval()&lt;/code&gt; 的危险用法）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工具支持：&lt;/strong&gt; 几乎所有编程语言都有成熟、高性能的原生或第三方解析/序列化库。是 Web API 的事实标准。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;典型应用：&lt;/strong&gt; Web API 请求/响应、NoSQL 数据库（如 MongoDB）、前端配置（如 &lt;code&gt;package.json&lt;/code&gt;）、简单数据存储。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;YAML (YAML Ain&amp;rsquo;t Markup Language)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;起源：&lt;/strong&gt; 设计目标是比 XML 更人性化，比 JSON 更强大。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设计理念：&lt;/strong&gt; 强调&lt;strong&gt;人类可读性&lt;/strong&gt;和&lt;strong&gt;数据表达能力&lt;/strong&gt;。目标是成为一种对所有编程任务都友好的数据格式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语法：&lt;/strong&gt; 使用&lt;strong&gt;缩进&lt;/strong&gt;(通常是空格)来表示层级关系。结构清晰，类似大纲。键值对用冒号 &lt;code&gt;:&lt;/code&gt; 分隔。支持流式风格（类似 JSON）和块式风格（基于缩进）。字符串通常不需要引号（除非包含特殊字符）。支持锚点 (&lt;code&gt;&amp;amp;&lt;/code&gt;) 和别名 (&lt;code&gt;*&lt;/code&gt;) 实现引用复用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据类型：&lt;/strong&gt; 在 JSON 基础上扩展，支持更丰富的标量类型（日期、时间戳、复数、null 的不同表示等）、更灵活的集合类型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可读性：&lt;/strong&gt; &lt;strong&gt;非常高&lt;/strong&gt;。简洁的缩进结构、无需引号的字符串、支持多行字符串使其看起来像自然文档。注释用 &lt;code&gt;#&lt;/code&gt; 开头。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注释：&lt;/strong&gt; &lt;strong&gt;支持注释&lt;/strong&gt; (&lt;code&gt;# 这是一个注释&lt;/code&gt;)。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全性：&lt;/strong&gt; &lt;strong&gt;潜在风险较高！&lt;/strong&gt; 某些语言的 YAML 解析器默认支持反序列化任意类（如 Python 的 PyYAML &lt;code&gt;FullLoader&lt;/code&gt;），可能导致代码执行漏洞（如 &lt;code&gt;!!python/object&lt;/code&gt; 标签）。&lt;strong&gt;使用时务必使用安全加载器（如 &lt;code&gt;SafeLoader&lt;/code&gt;）并禁用不安全特性。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工具支持：&lt;/strong&gt; 主流语言都有库支持，但解析器实现可能更复杂（尤其处理缩进、隐式类型转换时），性能通常比 JSON 解析器稍差。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;典型应用：&lt;/strong&gt; 复杂配置文件（如 Kubernetes manifests, Docker Compose, Ansible Playbooks, CI/CD pipelines）、数据序列化（强调可读性时）、文档模板。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TOML (Tom&amp;rsquo;s Obvious, Minimal Language)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;起源：&lt;/strong&gt; 由 GitHub 联合创始人 Tom Preston-Werner 创建，旨在成为一个比 INI 文件更强大但比 YAML 更简单的配置文件格式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设计理念：&lt;/strong&gt; &lt;strong&gt;明确性&lt;/strong&gt;和&lt;strong&gt;最小化歧义&lt;/strong&gt;。目标是成为一种明显、无歧义的配置文件格式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语法：&lt;/strong&gt; 类似 INI 文件，但有更严格和强大的定义。主要结构是键值对 &lt;code&gt;key = &amp;quot;value&amp;quot;&lt;/code&gt; 和表（节）&lt;code&gt;[table_name]&lt;/code&gt;。表可以嵌套 &lt;code&gt;[parent.child]&lt;/code&gt;。支持数组 &lt;code&gt;[...]&lt;/code&gt; 和内联表 &lt;code&gt;{...}&lt;/code&gt;。键和基本字符串通常不需要引号（除非包含特殊字符或空格）。日期时间是一等公民。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据类型：&lt;/strong&gt; 字符串、整数、浮点数、布尔值、日期时间（带时区）、数组、内联表（相当于对象）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可读性：&lt;/strong&gt; &lt;strong&gt;非常高&lt;/strong&gt;。对于键值对和表结构非常直观清晰，尤其适合扁平和中等嵌套深度的配置。结构非常明显。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注释：&lt;/strong&gt; &lt;strong&gt;支持注释&lt;/strong&gt; (&lt;code&gt;# 这是一个注释&lt;/code&gt;)。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全性：&lt;/strong&gt; &lt;strong&gt;高&lt;/strong&gt;。语法简单明确，解析器通常只处理数据，没有执行代码的机制。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工具支持：&lt;/strong&gt; 主流语言都有良好的库支持。解析器相对简单，性能通常很好。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;典型应用：&lt;/strong&gt; 应用程序配置文件（如 Rust 的 &lt;code&gt;Cargo.toml&lt;/code&gt;, Python 的 &lt;code&gt;pyproject.toml&lt;/code&gt;）、需要明确性和简单性的场景、替代 INI 文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;关键维度对比表&#34;&gt;关键维度对比表
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;特性&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;JSON&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;YAML&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;TOML&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;设计目标&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;数据交换 (简洁, 机器友好)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;数据序列化 (强大, 人类友好)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;配置文件 (明确, 最小歧义)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;可读性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;中等 (括号多, 引号多)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;非常高&lt;/strong&gt; (缩进, 少引号, 像文档)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;非常高&lt;/strong&gt; (键值对清晰, 表结构)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;语法&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;括号 &lt;code&gt;{} []&lt;/code&gt;, 严格引号&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;缩进&lt;/strong&gt; (空格), 冒号 &lt;code&gt;:&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;等号 &lt;code&gt;=&lt;/code&gt;, 表 &lt;code&gt;[...]&lt;/code&gt;, 点号 &lt;code&gt;.&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;数据类型&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;基础 (字符串, 数字, 布尔, null, 对象, 数组)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;丰富&lt;/strong&gt; (基础 + 日期, 时间, 引用, 自定义标量等)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;基础 + &lt;strong&gt;日期时间&lt;/strong&gt; + 内联表&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;注释&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;❌ 不支持&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;✅ 支持&lt;/strong&gt; (&lt;code&gt;#&lt;/code&gt;)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;✅ 支持&lt;/strong&gt; (&lt;code&gt;#&lt;/code&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;复杂性/强大性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;简单&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;非常强大/复杂&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;中等 (比 JSON 强, 比 YAML 简单)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;安全性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;高 (通常只解析数据)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;⚠️ 需谨慎&lt;/strong&gt; (默认可能不安全)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;高 (只解析数据)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;解析性能&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;通常最高&lt;/strong&gt; (库高度优化)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;通常较低 (语法复杂)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;通常高 (语法相对简单)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;工具支持&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;无处不在&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;广泛&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;广泛 (尤其在较新生态)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;典型场景&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;API, Web 数据交换, 简单配置&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;复杂配置&lt;/strong&gt; (K8s, Ansible), 文档&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;应用配置&lt;/strong&gt; (Cargo, pip), 替代 INI&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;主要优势&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;通用性, 速度, Web 标准&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;可读性, 表达能力, 复杂结构&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;可读性, 明确性, 安全性, 简单配置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;主要劣势&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;无注释, 冗余引号, 嵌套深时难读&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;缩进错误, 安全性风险, 过度复杂&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;嵌套深时不如 YAML 优雅&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;如何选择&#34;&gt;如何选择？
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择 JSON 如果：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你需要&lt;strong&gt;最大化的互操作性和通用性&lt;/strong&gt;（尤其是在 Web API 和前后端通信中）。&lt;/li&gt;
+&lt;li&gt;你非常注重&lt;strong&gt;解析性能&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;你的数据结构相对简单或嵌套不深。&lt;/li&gt;
+&lt;li&gt;注释不是必需（或者你可以通过其他方式变通）。&lt;/li&gt;
+&lt;li&gt;你处于一个以 JavaScript/Web 为中心的环境。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择 YAML 如果：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;人类可读性和可写性&lt;/strong&gt;是你的最高优先级（配置文件需要经常手动编辑）。&lt;/li&gt;
+&lt;li&gt;你的配置&lt;strong&gt;非常复杂&lt;/strong&gt;，有深度嵌套、大量重复结构（可用锚点/别名）、需要多行字符串等。&lt;/li&gt;
+&lt;li&gt;你需要&lt;strong&gt;丰富的原生数据类型&lt;/strong&gt;（尤其是日期时间）。&lt;/li&gt;
+&lt;li&gt;你&lt;strong&gt;需要注释&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;你使用的工具链（如 Kubernetes, Ansible, GitLab CI）&lt;strong&gt;原生支持或强制使用 YAML&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;⚠️ 重要提示：&lt;/strong&gt; 务必使用安全加载方式并了解潜在风险！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择 TOML 如果：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你的主要需求是&lt;strong&gt;清晰、明确的配置文件&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;你追求&lt;strong&gt;高可读性&lt;/strong&gt;，但觉得 YAML 的缩进规则有时容易出错或过于灵活。&lt;/li&gt;
+&lt;li&gt;你需要一个&lt;strong&gt;比 INI 强大得多&lt;/strong&gt;的格式。&lt;/li&gt;
+&lt;li&gt;你&lt;strong&gt;需要注释&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;你重视&lt;strong&gt;安全性&lt;/strong&gt;和&lt;strong&gt;简单性&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;你使用的语言/工具（如 Rust/Cargo, Python/pip/Poetry）&lt;strong&gt;推荐或默认使用 TOML&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;你的配置结构以&lt;strong&gt;键值对和表为主&lt;/strong&gt;，嵌套深度适中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JSON:&lt;/strong&gt; 数据交换之王，性能好，通用性强，无注释是硬伤。&lt;strong&gt;选它用于机器间的数据传递（尤其是 Web）。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;YAML:&lt;/strong&gt; 人类可读性巅峰，表达能力极强，适合复杂配置，但语法复杂且有安全风险需注意。&lt;strong&gt;选它用于需要高可读性和强大表达力的复杂配置（如 DevOps 工具链）。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TOML:&lt;/strong&gt; 配置文件的“金发姑娘”（刚刚好），明确、易读、安全、支持注释，在扁平和中等嵌套配置中表现最佳。&lt;strong&gt;选它用于应用程序的配置文件（尤其是较新生态的项目）。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最终选择取决于你的具体需求：是更侧重机器处理、通用性（JSON），还是人类编辑、表达能力（YAML），或是配置的明确性、安全性、简洁性（TOML）。了解它们的差异有助于你在不同场景下做出最佳选择。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>详细了解 SQL</title>
         <link>https://muo123.github.io/articles/%E8%AF%A6%E7%BB%86%E4%BA%86%E8%A7%A3-sql/</link>
         <pubDate>Tue, 10 Jun 2025 19:54:08 +0800</pubDate>

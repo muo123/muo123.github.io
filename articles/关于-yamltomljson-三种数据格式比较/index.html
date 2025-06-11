@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="TOML、YAML 和 JSON 都是流行的数据序列化格式，用于存储和交换结构化数据，尤其在配置文件中非常常见。它们各有优缺点，适用于不同的场景。下面是它们的详细比较：\n">
+<title>关于 Yaml、Toml、Json 三种数据格式比较</title>
+
+<link rel='canonical' href='https://muo123.github.io/articles/%E5%85%B3%E4%BA%8E-yamltomljson-%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E6%AF%94%E8%BE%83/'>
+
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="关于 Yaml、Toml、Json 三种数据格式比较">
+<meta property='og:description' content="TOML、YAML 和 JSON 都是流行的数据序列化格式，用于存储和交换结构化数据，尤其在配置文件中非常常见。它们各有优缺点，适用于不同的场景。下面是它们的详细比较：\n">
+<meta property='og:url' content='https://muo123.github.io/articles/%E5%85%B3%E4%BA%8E-yamltomljson-%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E6%AF%94%E8%BE%83/'>
+<meta property='og:site_name' content='雪国流明'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Yaml' /><meta property='article:tag' content='Toml' /><meta property='article:tag' content='Json' /><meta property='article:published_time' content='2025-06-11T19:43:34&#43;08:00'/><meta property='article:modified_time' content='2025-06-11T19:43:34&#43;08:00'/>
+<meta name="twitter:title" content="关于 Yaml、Toml、Json 三种数据格式比较">
+<meta name="twitter:description" content="TOML、YAML 和 JSON 都是流行的数据序列化格式，用于存储和交换结构化数据，尤其在配置文件中非常常见。它们各有优缺点，适用于不同的场景。下面是它们的详细比较：\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_5ebb0387c4e49f4b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🧐</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">雪国流明</a></h1>
+            <h2 class="site-description">心有猛虎，细嗅蔷薇</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/muo123'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#核心特性概述">核心特性概述</a></li>
+    <li><a href="#关键维度对比表">关键维度对比表</a></li>
+    <li><a href="#如何选择">如何选择？</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%8A%80%E6%9C%AF/" >
+                技术
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/articles/%E5%85%B3%E4%BA%8E-yamltomljson-%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E6%AF%94%E8%BE%83/">关于 Yaml、Toml、Json 三种数据格式比较</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 11, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>TOML、YAML 和 JSON 都是流行的数据序列化格式，用于存储和交换结构化数据，尤其在配置文件中非常常见。它们各有优缺点，适用于不同的场景。下面是它们的详细比较：</p>
+<h2 id="核心特性概述">核心特性概述
+</h2><ol>
+<li>
+<p><strong>JSON (JavaScript Object Notation)</strong></p>
+<ul>
+<li><strong>起源：</strong> 源自 JavaScript，但现在是语言无关的。</li>
+<li><strong>设计理念：</strong> 简洁、轻量、易于机器解析和生成，最初主要用于网络数据交换。</li>
+<li><strong>语法：</strong> 基于键值对和嵌套结构。使用大括号 <code>{}</code> 表示对象，方括号 <code>[]</code> 表示数组。键必须用双引号 <code>&quot;&quot;</code> 包裹，字符串值也必须用双引号 <code>&quot;&quot;</code> 包裹。</li>
+<li><strong>数据类型：</strong> 字符串、数字、布尔值 (<code>true</code>/<code>false</code>)、<code>null</code>、对象、数组。</li>
+<li><strong>可读性：</strong> 对人类相对友好，但嵌套深时括号匹配可能降低可读性。严格的引号和逗号要求有时显得冗余。</li>
+<li><strong>注释：</strong> <strong>不支持注释！</strong> 这是 JSON 在配置文件场景下的最大短板。</li>
+<li><strong>安全性：</strong> 相对安全，解析器通常只处理数据，不执行代码（但要注意 <code>eval()</code> 的危险用法）。</li>
+<li><strong>工具支持：</strong> 几乎所有编程语言都有成熟、高性能的原生或第三方解析/序列化库。是 Web API 的事实标准。</li>
+<li><strong>典型应用：</strong> Web API 请求/响应、NoSQL 数据库（如 MongoDB）、前端配置（如 <code>package.json</code>）、简单数据存储。</li>
+</ul>
+</li>
+<li>
+<p><strong>YAML (YAML Ain&rsquo;t Markup Language)</strong></p>
+<ul>
+<li><strong>起源：</strong> 设计目标是比 XML 更人性化，比 JSON 更强大。</li>
+<li><strong>设计理念：</strong> 强调<strong>人类可读性</strong>和<strong>数据表达能力</strong>。目标是成为一种对所有编程任务都友好的数据格式。</li>
+<li><strong>语法：</strong> 使用<strong>缩进</strong>(通常是空格)来表示层级关系。结构清晰，类似大纲。键值对用冒号 <code>:</code> 分隔。支持流式风格（类似 JSON）和块式风格（基于缩进）。字符串通常不需要引号（除非包含特殊字符）。支持锚点 (<code>&amp;</code>) 和别名 (<code>*</code>) 实现引用复用。</li>
+<li><strong>数据类型：</strong> 在 JSON 基础上扩展，支持更丰富的标量类型（日期、时间戳、复数、null 的不同表示等）、更灵活的集合类型。</li>
+<li><strong>可读性：</strong> <strong>非常高</strong>。简洁的缩进结构、无需引号的字符串、支持多行字符串使其看起来像自然文档。注释用 <code>#</code> 开头。</li>
+<li><strong>注释：</strong> <strong>支持注释</strong> (<code># 这是一个注释</code>)。</li>
+<li><strong>安全性：</strong> <strong>潜在风险较高！</strong> 某些语言的 YAML 解析器默认支持反序列化任意类（如 Python 的 PyYAML <code>FullLoader</code>），可能导致代码执行漏洞（如 <code>!!python/object</code> 标签）。<strong>使用时务必使用安全加载器（如 <code>SafeLoader</code>）并禁用不安全特性。</strong></li>
+<li><strong>工具支持：</strong> 主流语言都有库支持，但解析器实现可能更复杂（尤其处理缩进、隐式类型转换时），性能通常比 JSON 解析器稍差。</li>
+<li><strong>典型应用：</strong> 复杂配置文件（如 Kubernetes manifests, Docker Compose, Ansible Playbooks, CI/CD pipelines）、数据序列化（强调可读性时）、文档模板。</li>
+</ul>
+</li>
+<li>
+<p><strong>TOML (Tom&rsquo;s Obvious, Minimal Language)</strong></p>
+<ul>
+<li><strong>起源：</strong> 由 GitHub 联合创始人 Tom Preston-Werner 创建，旨在成为一个比 INI 文件更强大但比 YAML 更简单的配置文件格式。</li>
+<li><strong>设计理念：</strong> <strong>明确性</strong>和<strong>最小化歧义</strong>。目标是成为一种明显、无歧义的配置文件格式。</li>
+<li><strong>语法：</strong> 类似 INI 文件，但有更严格和强大的定义。主要结构是键值对 <code>key = &quot;value&quot;</code> 和表（节）<code>[table_name]</code>。表可以嵌套 <code>[parent.child]</code>。支持数组 <code>[...]</code> 和内联表 <code>{...}</code>。键和基本字符串通常不需要引号（除非包含特殊字符或空格）。日期时间是一等公民。</li>
+<li><strong>数据类型：</strong> 字符串、整数、浮点数、布尔值、日期时间（带时区）、数组、内联表（相当于对象）。</li>
+<li><strong>可读性：</strong> <strong>非常高</strong>。对于键值对和表结构非常直观清晰，尤其适合扁平和中等嵌套深度的配置。结构非常明显。</li>
+<li><strong>注释：</strong> <strong>支持注释</strong> (<code># 这是一个注释</code>)。</li>
+<li><strong>安全性：</strong> <strong>高</strong>。语法简单明确，解析器通常只处理数据，没有执行代码的机制。</li>
+<li><strong>工具支持：</strong> 主流语言都有良好的库支持。解析器相对简单，性能通常很好。</li>
+<li><strong>典型应用：</strong> 应用程序配置文件（如 Rust 的 <code>Cargo.toml</code>, Python 的 <code>pyproject.toml</code>）、需要明确性和简单性的场景、替代 INI 文件。</li>
+</ul>
+</li>
+</ol>
+<h2 id="关键维度对比表">关键维度对比表
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">特性</th>
+          <th style="text-align: left">JSON</th>
+          <th style="text-align: left">YAML</th>
+          <th style="text-align: left">TOML</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>设计目标</strong></td>
+          <td style="text-align: left">数据交换 (简洁, 机器友好)</td>
+          <td style="text-align: left">数据序列化 (强大, 人类友好)</td>
+          <td style="text-align: left">配置文件 (明确, 最小歧义)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>可读性</strong></td>
+          <td style="text-align: left">中等 (括号多, 引号多)</td>
+          <td style="text-align: left"><strong>非常高</strong> (缩进, 少引号, 像文档)</td>
+          <td style="text-align: left"><strong>非常高</strong> (键值对清晰, 表结构)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>语法</strong></td>
+          <td style="text-align: left">括号 <code>{} []</code>, 严格引号</td>
+          <td style="text-align: left"><strong>缩进</strong> (空格), 冒号 <code>:</code></td>
+          <td style="text-align: left">等号 <code>=</code>, 表 <code>[...]</code>, 点号 <code>.</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>数据类型</strong></td>
+          <td style="text-align: left">基础 (字符串, 数字, 布尔, null, 对象, 数组)</td>
+          <td style="text-align: left"><strong>丰富</strong> (基础 + 日期, 时间, 引用, 自定义标量等)</td>
+          <td style="text-align: left">基础 + <strong>日期时间</strong> + 内联表</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>注释</strong></td>
+          <td style="text-align: left"><strong>❌ 不支持</strong></td>
+          <td style="text-align: left"><strong>✅ 支持</strong> (<code>#</code>)</td>
+          <td style="text-align: left"><strong>✅ 支持</strong> (<code>#</code>)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>复杂性/强大性</strong></td>
+          <td style="text-align: left">简单</td>
+          <td style="text-align: left"><strong>非常强大/复杂</strong></td>
+          <td style="text-align: left">中等 (比 JSON 强, 比 YAML 简单)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>安全性</strong></td>
+          <td style="text-align: left">高 (通常只解析数据)</td>
+          <td style="text-align: left"><strong>⚠️ 需谨慎</strong> (默认可能不安全)</td>
+          <td style="text-align: left">高 (只解析数据)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>解析性能</strong></td>
+          <td style="text-align: left"><strong>通常最高</strong> (库高度优化)</td>
+          <td style="text-align: left">通常较低 (语法复杂)</td>
+          <td style="text-align: left">通常高 (语法相对简单)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>工具支持</strong></td>
+          <td style="text-align: left"><strong>无处不在</strong></td>
+          <td style="text-align: left">广泛</td>
+          <td style="text-align: left">广泛 (尤其在较新生态)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>典型场景</strong></td>
+          <td style="text-align: left">API, Web 数据交换, 简单配置</td>
+          <td style="text-align: left"><strong>复杂配置</strong> (K8s, Ansible), 文档</td>
+          <td style="text-align: left"><strong>应用配置</strong> (Cargo, pip), 替代 INI</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主要优势</strong></td>
+          <td style="text-align: left">通用性, 速度, Web 标准</td>
+          <td style="text-align: left">可读性, 表达能力, 复杂结构</td>
+          <td style="text-align: left">可读性, 明确性, 安全性, 简单配置</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主要劣势</strong></td>
+          <td style="text-align: left">无注释, 冗余引号, 嵌套深时难读</td>
+          <td style="text-align: left">缩进错误, 安全性风险, 过度复杂</td>
+          <td style="text-align: left">嵌套深时不如 YAML 优雅</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="如何选择">如何选择？
+</h2><ol>
+<li>
+<p><strong>选择 JSON 如果：</strong></p>
+<ul>
+<li>你需要<strong>最大化的互操作性和通用性</strong>（尤其是在 Web API 和前后端通信中）。</li>
+<li>你非常注重<strong>解析性能</strong>。</li>
+<li>你的数据结构相对简单或嵌套不深。</li>
+<li>注释不是必需（或者你可以通过其他方式变通）。</li>
+<li>你处于一个以 JavaScript/Web 为中心的环境。</li>
+</ul>
+</li>
+<li>
+<p><strong>选择 YAML 如果：</strong></p>
+<ul>
+<li><strong>人类可读性和可写性</strong>是你的最高优先级（配置文件需要经常手动编辑）。</li>
+<li>你的配置<strong>非常复杂</strong>，有深度嵌套、大量重复结构（可用锚点/别名）、需要多行字符串等。</li>
+<li>你需要<strong>丰富的原生数据类型</strong>（尤其是日期时间）。</li>
+<li>你<strong>需要注释</strong>。</li>
+<li>你使用的工具链（如 Kubernetes, Ansible, GitLab CI）<strong>原生支持或强制使用 YAML</strong>。</li>
+<li><strong>⚠️ 重要提示：</strong> 务必使用安全加载方式并了解潜在风险！</li>
+</ul>
+</li>
+<li>
+<p><strong>选择 TOML 如果：</strong></p>
+<ul>
+<li>你的主要需求是<strong>清晰、明确的配置文件</strong>。</li>
+<li>你追求<strong>高可读性</strong>，但觉得 YAML 的缩进规则有时容易出错或过于灵活。</li>
+<li>你需要一个<strong>比 INI 强大得多</strong>的格式。</li>
+<li>你<strong>需要注释</strong>。</li>
+<li>你重视<strong>安全性</strong>和<strong>简单性</strong>。</li>
+<li>你使用的语言/工具（如 Rust/Cargo, Python/pip/Poetry）<strong>推荐或默认使用 TOML</strong>。</li>
+<li>你的配置结构以<strong>键值对和表为主</strong>，嵌套深度适中。</li>
+</ul>
+</li>
+</ol>
+<h2 id="总结">总结
+</h2><ul>
+<li><strong>JSON:</strong> 数据交换之王，性能好，通用性强，无注释是硬伤。<strong>选它用于机器间的数据传递（尤其是 Web）。</strong></li>
+<li><strong>YAML:</strong> 人类可读性巅峰，表达能力极强，适合复杂配置，但语法复杂且有安全风险需注意。<strong>选它用于需要高可读性和强大表达力的复杂配置（如 DevOps 工具链）。</strong></li>
+<li><strong>TOML:</strong> 配置文件的“金发姑娘”（刚刚好），明确、易读、安全、支持注释，在扁平和中等嵌套配置中表现最佳。<strong>选它用于应用程序的配置文件（尤其是较新生态的项目）。</strong></li>
+</ul>
+<p>最终选择取决于你的具体需求：是更侧重机器处理、通用性（JSON），还是人类编辑、表达能力（YAML），或是配置的明确性、安全性、简洁性（TOML）。了解它们的差异有助于你在不同场景下做出最佳选择。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/yaml/">Yaml</a>
+        
+            <a href="/tags/toml/">Toml</a>
+        
+            <a href="/tags/json/">Json</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 muo123
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+        
+        
+    </body>
+</html>
