@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="以下是 Hugo + GitHub Pages 博客搭建全流程指南，从环境配置到自动化部署，附详细代码和避坑提示：\n一、环境准备 ( Windows ) 1. 安装 Git 下载地址：https://git-scm.cn/\n">
+<title>Hugo &#43; Github Pages 博客搭建</title>
+
+<link rel='canonical' href='https://muo123.github.io/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Hugo + Github Pages 博客搭建">
+<meta property='og:description' content="以下是 Hugo + GitHub Pages 博客搭建全流程指南，从环境配置到自动化部署，附详细代码和避坑提示：\n一、环境准备 ( Windows ) 1. 安装 Git 下载地址：https://git-scm.cn/\n">
+<meta property='og:url' content='https://muo123.github.io/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/'>
+<meta property='og:site_name' content='雪国流明'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='博客搭建' /><meta property='article:published_time' content='2025-06-03T11:02:43&#43;08:00'/><meta property='article:modified_time' content='2025-06-03T11:02:43&#43;08:00'/><meta property='og:image' content='https://tc.z.wiki/autoupload/20250603/UrPE/1602X637/image.png' />
+<meta name="twitter:title" content="Hugo + Github Pages 博客搭建">
+<meta name="twitter:description" content="以下是 Hugo + GitHub Pages 博客搭建全流程指南，从环境配置到自动化部署，附详细代码和避坑提示：\n一、环境准备 ( Windows ) 1. 安装 Git 下载地址：https://git-scm.cn/\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://tc.z.wiki/autoupload/20250603/UrPE/1602X637/image.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_5ebb0387c4e49f4b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😶‍🌫️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">雪国流明</a></h1>
+            <h2 class="site-description">心有猛虎，细嗅蔷薇</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/muo123'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#一环境准备--windows-">一、环境准备 ( Windows )</a>
+          <ol>
+            <li><a href="#1-安装-git">1. 安装 Git</a></li>
+            <li><a href="#2-安装-hugo">2. 安装 Hugo</a></li>
+            <li><a href="#3-创建本地项目">3. 创建本地项目</a></li>
+          </ol>
+        </li>
+        <li><a href="#二项目配置">二、项目配置</a>
+          <ol>
+            <li><a href="#1-添加主题以-stack-为例">1. 添加主题（以 <a href="https://github.com/CaiJimmy/hugo-theme-stack">Stack</a> 为例）</a></li>
+            <li><a href="#2-基础配置">2. 基础配置</a></li>
+            <li><a href="#3-创建第一篇文章">3. 创建第一篇文章</a></li>
+          </ol>
+        </li>
+        <li><a href="#三本地预览">三、本地预览</a></li>
+        <li><a href="#四部署到-github-pages">四、部署到 GitHub Pages</a>
+          <ol>
+            <li><a href="#方案一手动部署适合初学者">方案一：手动部署（适合初学者）</a></li>
+            <li><a href="#方案二自动化部署推荐使用-github-actions">方案二：自动化部署（推荐！使用 GitHub Actions）</a></li>
+          </ol>
+        </li>
+        <li><a href="#五访问与优化">五、访问与优化</a></li>
+        <li><a href="#六常用命令速查">六、常用命令速查</a></li>
+        <li><a href="#七避坑指南">七、避坑指南</a></li>
+        <li><a href="#效果预览">效果预览</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+                
+                    <img src="https://tc.z.wiki/autoupload/20250603/UrPE/1602X637/image.png" loading="lazy" alt="Featured image of post Hugo &#43; Github Pages 博客搭建" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%95%99%E7%A8%8B/" >
+                教程
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hugo &#43; Github Pages 博客搭建</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 03, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 4 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>以下是 <strong>Hugo + GitHub Pages 博客搭建全流程指南</strong>，从环境配置到自动化部署，附详细代码和避坑提示：</p>
+<hr>
+<h3 id="一环境准备--windows-">一、环境准备 ( Windows )
+</h3><h4 id="1-安装-git">1. 安装 Git
+</h4><p>下载地址：https://git-scm.cn/</p>
+<ol>
+<li>
+<p>去 Git 官网下载对应版本，如无意外选择 x64 版本安装即可</p>
+</li>
+<li>
+<p>安装成功后可以在开始菜单栏看到 Git 文件夹以及相关 Git 工具
+<img src="https://tc.z.wiki/autoupload/20250602/e7iD/590X241/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="590X241/image.png"
+	
+	
+></p>
+</li>
+</ol>
+<h4 id="2-安装-hugo">2. 安装 Hugo
+</h4><p>下载地址： <a class="link" href="https://github.com/gohugoio/hugo/releases"  target="_blank" rel="noopener"
+    >https://github.com/gohugoio/hugo/releases</a></p>
+<ol>
+<li>
+<p>下载 Hugo 扩展版（支持 Sass/SCSS）
+(选 hugo_extended_*.zip)
+<img src="https://tc.z.wiki/autoupload/20250602/C09T/878X261/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="878X261/image.png"
+	
+	
+></p>
+</li>
+<li>
+<p>解压到 D:\Hugo 并将路径加入系统环境变量 PATH
+<img src="https://tc.z.wiki/autoupload/20250602/RX8J/702X242/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="702X242/image.png"
+	
+	
+></p>
+</li>
+</ol>
+<h4 id="3-创建本地项目">3. 创建本地项目
+</h4><ol>
+<li>
+<p>创建项目。在任意文件夹（图例为 D 盘）打开控制台，并输入指令 <code>hugo new site xxx(你的项目名)</code>
+<img src="https://tc.z.wiki/autoupload/20250602/snZg/850X422/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="850X422/image.png"
+	
+	
+></p>
+</li>
+<li>
+<p>运行服务。切换至该目录，并输入指令 <code>hugo server</code>，网址输入<code>localhost:1313</code>，此时由于没有主题内容，显示 page not found，在控制台输入<code>Ctrl + C</code>即可关闭服务
+<img src="https://tc.z.wiki/autoupload/20250602/2Fhs/1087X555/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="1087X555/image.png"
+	
+	
+></p>
+</li>
+</ol>
+<hr>
+<h3 id="二项目配置">二、项目配置
+</h3><h4 id="1-添加主题以-stack-为例">1. 添加主题（以 <a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack"  target="_blank" rel="noopener"
+    >Stack</a> 为例）
+</h4><p>可以选择从官网下载，选择喜欢的主题并下载压缩包，解压到 <code>themes</code> 文件夹</p>
+<p>官网地址：https://themes.gohugo.io/</p>
+<p>或者使用 git 指令下载对应主题</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#78787e"># 将主题添加为 Git 子模块（避免直接复制文件）</span>
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/CaiJimmy/hugo-theme-stack.git themes/hugo-theme-stack
+</span></span></code></pre></div><p><img src="https://tc.z.wiki/autoupload/20250602/j4Rp/565X219/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="565X219/image.png"
+	
+	
+></p>
+<h4 id="2-基础配置">2. 基础配置
+</h4><p>个人编写 <code>hugo.toml</code> 比较耗费时间，下载的主题文件夹中一般包含网站实例 <code>exampleSite</code>，可以将里面的 <code>content</code> 文件夹和 <code>hugo.yaml</code> 配置文件拷贝到当前目录，并覆盖博客目录相关文件。覆盖目录文件后，可能出现兼容性报错，此时需要删除 <code>Content/post/rich-content</code>。另外，相关语言配置项根据需要进行合理修改</p>
+<h4 id="3-创建第一篇文章">3. 创建第一篇文章
+</h4><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new posts/hello.md
+</span></span></code></pre></div><p>编辑 <code>content/posts/hello-world.md</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>+++
+</span></span><span style="display:flex;"><span>date = &#39;2025-06-02T22:12:41+08:00&#39;
+</span></span><span style="display:flex;"><span>draft = true
+</span></span><span style="display:flex;"><span>title = &#39;Hello&#39;
+</span></span><span style="display:flex;"><span>+++
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>this is a test
+</span></span></code></pre></div><h3 id="三本地预览">三、本地预览
+</h3><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server -D  <span style="color:#78787e"># -D 包含草稿</span>
+</span></span></code></pre></div><p>访问 <code>https://localhost:1313</code> 实时预览</p>
+<p><img src="https://tc.z.wiki/autoupload/20250602/HNrK/1653X872/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="1653X872/image.png"
+	
+	
+></p>
+<hr>
+<h3 id="四部署到-github-pages">四、部署到 GitHub Pages
+</h3><h4 id="方案一手动部署适合初学者">方案一：手动部署（适合初学者）
+</h4><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#78787e"># 1. 构建静态文件（生成到 public 目录）</span>
+</span></span><span style="display:flex;"><span>hugo --minify
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># 2. 创建 GitHub 仓库：&lt;你的用户名&gt;.github.io</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># 3. 第一次推送代码之前需要进行如下配置</span>
+</span></span><span style="display:flex;"><span>git config --global user.name <span style="color:#5af78e">&#34;你的 GitHub 用户名&#34;</span>
+</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#5af78e">&#34;你注册 GitHub 的邮箱&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># 4. 将 public 目录推送到仓库</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">cd</span> public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git remote add origin git@Github.com:&lt;用户名&gt;/&lt;用户名&gt;.github.io.git <span style="color:#ff6ac1">(</span>需要设置ssh<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; 或者使用指令 git remote add origin https://github.com/&lt;用户名&gt;/&lt;用户名&gt;.github.io.git 
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#5af78e">&#34;Initial deploy&#34;</span>
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span></code></pre></div><h4 id="方案二自动化部署推荐使用-github-actions">方案二：自动化部署（推荐！使用 GitHub Actions）
+</h4><ol>
+<li><strong>创建新仓库</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;</span> <span style="color:#ff5c57">创建一个用来储存所有博客文件的新仓库，权限设置为</span> <span style="color:#ff6ac1">`</span>private<span style="color:#ff6ac1">`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;</span> <span style="color:#ff5c57">前往</span> Settings<span style="color:#ff6ac1">/</span>Developer Settings<span style="color:#ff6ac1">/</span>Personal access tokens , <span style="color:#ff5c57">点击</span> <span style="color:#ff5c57">“</span>Generate new <span style="color:#57c7ff">token</span> (classic)<span style="color:#ff5c57">”</span> <span style="color:#ff5c57">创建一个</span> token<span style="color:#ff5c57">，并勾选</span> repo <span style="color:#ff5c57">和</span> workflow <span style="color:#ff5c57">选项</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;</span> <span style="color:#ff5c57">复制</span> token<span style="color:#ff5c57">，前往新仓库的</span> Settings<span style="color:#ff6ac1">/</span>Secrets <span style="color:#ff6ac1">and</span> variables<span style="color:#ff6ac1">/</span>Actions<span style="color:#ff5c57">，点击</span> New repository secret <span style="color:#ff5c57">将</span> token <span style="color:#ff5c57">保存在仓库的环境变量中。</span>
+</span></span></code></pre></div><ol start="2">
+<li><strong>博客项目根目录创建 <code>.github/workflows/deploy.yml</code></strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">name</span>: blog deploy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">branches</span>:
+</span></span><span style="display:flex;"><span>      - main  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">runs-on</span>: ubuntu-latest	
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">uses</span>: actions/checkout@v4	
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">submodules</span>: <span style="color:#ff6ac1">true</span> 
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">fetch-depth</span>: <span style="color:#ff9f43">0</span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">name</span>: Setup Hugo	
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">uses</span>: peaceiris/actions-hugo@v3	
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">hugo-version</span>: <span style="color:#5af78e">&#39;latest&#39;</span>	
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">extended</span>: <span style="color:#ff6ac1">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">name</span>: Build
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">run</span>: hugo -D
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">name</span>: Deploy
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">uses</span>: peaceiris/actions-gh-pages@v4	
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">external_repository</span>: xxx/xxx.github.io	# 自己的GitHub pages仓库
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">personal_token</span>: ${{ secrets.你的token变量名 }}
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">publish_dir</span>: ./public	
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">publish_branch</span>: main	
+</span></span></code></pre></div><p>可以在目录创建 <code>.gitignore</code> 文件，避免提交部分文件，例如</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public
+</span></span><span style="display:flex;"><span>resources
+</span></span><span style="display:flex;"><span>.hugo_build.lock
+</span></span></code></pre></div><ol start="3">
+<li><strong>推送代码到 GitHub</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#5af78e">&#34;Add workflow&#34;</span>
+</span></span><span style="display:flex;"><span>git remote add origin git@Github.com:&lt;用户名&gt;/&lt;用户名&gt;.github.io.git <span style="color:#ff6ac1">(</span>需要设置ssh<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; 或者使用指令 git remote add origin https://github.com/&lt;用户名&gt;/&lt;用户名&gt;.github.io.git 
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span></code></pre></div><h3 id="五访问与优化">五、访问与优化
+</h3><ol>
+<li>
+<p><strong>访问地址</strong><br>
+<code>https://&lt;用户名&gt;.github.io</code> (首次部署需等待 1-2 分钟)</p>
+</li>
+<li>
+<p><strong>自定义域名（可选）</strong></p>
+<ul>
+<li>在项目根目录添加 <code>static/CNAME</code> 文件，内容为域名：
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>blog.yourdomain.com
+</span></span></code></pre></div></li>
+<li>DNS 添加 CNAME 记录指向 <code>&lt;用户名&gt;.github.io</code></li>
+</ul>
+</li>
+<li>
+<p><strong>强制 HTTPS</strong><br>
+在 GitHub Pages 设置中勾选 <strong>Enforce HTTPS</strong></p>
+</li>
+</ol>
+<hr>
+<h3 id="六常用命令速查">六、常用命令速查
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>作用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>hugo new posts/标题.md</code></td>
+          <td>新建文章</td>
+      </tr>
+      <tr>
+          <td><code>hugo server -D</code></td>
+          <td>启动本地服务器（含草稿）</td>
+      </tr>
+      <tr>
+          <td><code>hugo --minify</code></td>
+          <td>构建优化后的静态文件</td>
+      </tr>
+      <tr>
+          <td><code>git submodule update --remote</code></td>
+          <td>更新主题</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="七避坑指南">七、避坑指南
+</h3><ol>
+<li>
+<p><strong>主题无法加载</strong></p>
+<ul>
+<li>确保使用 <code>git submodule</code> 添加主题</li>
+<li>在 Actions 中启用 <code>submodules: recursive</code></li>
+</ul>
+</li>
+<li>
+<p><strong>构建失败</strong></p>
+<ul>
+<li>检查 <code>.github/workflows/deploy.yml</code> 中的 Hugo 版本是否匹配</li>
+<li>确保使用 <code>extended</code> 版本（如果主题需要 SCSS）</li>
+</ul>
+</li>
+<li>
+<p><strong>中文乱码</strong><br>
+在文章 Front Matter 中明确指定编码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">charset</span>: utf-8
+</span></span></code></pre></div></li>
+<li>
+<p><strong>自定义布局</strong><br>
+复制主题文件到本地覆盖（避免直接修改主题）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp themes/stack/layouts/_default/single.html layouts/
+</span></span></code></pre></div></li>
+</ol>
+<hr>
+<h3 id="效果预览">效果预览
+</h3><p>完成部署后，你将获得：</p>
+<ul>
+<li>⚡ 基于 Hugo 的极速静态博客</li>
+<li>🤖 自动化 Git 工作流（提交即发布）</li>
+<li>📱 响应式主题适配移动端</li>
+<li>🔒 免费 HTTPS 支持</li>
+</ul>
+<p>立即开始你的博客之旅吧！升级方案可添加：</p>
+<ul>
+<li>Algolia 搜索（<a class="link" href="https://github.com/replicatedhq/hugo-algolia"  target="_blank" rel="noopener"
+    >hugo-algolia</a>）</li>
+<li>Utterances 评论系统（GitHub Issue 驱动）</li>
+<li>流量统计（Google Analytics/Umami）</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+            <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250610/O17b/1045X478/image.png" loading="lazy" data-key="" data-hash="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250610/O17b/1045X478/image.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">怎么给 Hugo 添加 Mermaid</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/articles/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6-hugohexojekyll-%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AF%B9%E6%AF%94/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://tc.z.wiki/autoupload/20250603/5th1/848X557/image.png" loading="lazy" data-key="" data-hash="https://tc.z.wiki/autoupload/20250603/5th1/848X557/image.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">博客框架 Hugo，Hexo，Jekyll 三者的区别和对比</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/articles/github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%AF%E4%BE%9B%E9%80%89%E6%8B%A9%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://tc.z.wiki/autoupload/20250603/sjGQ/1085X637/image.png" loading="lazy" data-key="" data-hash="https://tc.z.wiki/autoupload/20250603/sjGQ/1085X637/image.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Github Pages 搭建个人博客可供选择的框架有哪些</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 muo123
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+        
+        
+    </body>
+</html>
