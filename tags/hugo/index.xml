@@ -130,7 +130,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; provider = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;waline&amp;#39;&lt;/span&gt;  
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    [params.comments.waline]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    serverURL = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;https://your-domain.vercel.app&amp;#39;&lt;/span&gt;,  &lt;span style=&#34;color:#78787e&#34;&gt;## 填上你的评论系统网址&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    serverURL = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;https://your-domain.vercel.app&amp;#39;&lt;/span&gt;,  &lt;span style=&#34;color:#78787e&#34;&gt;## 填上你的评论系统网址，即 Domains 下的网址&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lang = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;zh-CN&amp;#39;&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    comment = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt;  &lt;span style=&#34;color:#78787e&#34;&gt;## 开启评论计数&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pageview = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#78787e&#34;&gt;## 开启阅读计数&lt;/span&gt;
