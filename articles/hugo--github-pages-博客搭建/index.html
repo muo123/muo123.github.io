@@ -353,6 +353,19 @@
                 </time>
             </div>
         
+        <div>
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+            <time class="article-pageview">
+                阅读量：<span class="waline-pageview-count" data-path="/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">0</span>
+            </time>
+        </div>
+
+        <div>
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-message"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9h8" /><path d="M8 13h6" /><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z" /></svg>
+            <time class="article-comment">
+                评论数：<span class="waline-comment-count" data-path="/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">0</span>
+            </time>
+        </div>
     </footer>
     
 
@@ -705,7 +718,26 @@
             
                 
 <article class="has-image">
-    <a href="/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid/">
+    <a href="/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/UeEL/1285X601/image.png" loading="lazy" data-key="" data-hash="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/UeEL/1285X601/image.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">怎么给 Hugo 添加 Waline 评论系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid-%E5%9B%BE%E8%A1%A8%E6%94%AF%E6%8C%81/">
         
         
             <div class="article-image">
@@ -716,7 +748,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">怎么给 Hugo 添加 Mermaid</h2>
+            <h2 class="article-title">怎么给 Hugo 添加 Mermaid 图表支持</h2>
         </div>
     </a>
 </article>
@@ -767,27 +799,23 @@
      
     
         
-    <div class="disqus-container">
-    
-</div>
-
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
 <style>
-    .disqus-container {
+    .waline-container {
         background-color: var(--card-background);
         border-radius: var(--card-border-radius);
         box-shadow: var(--shadow-l1);
         padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
     }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"comment":true,"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":false,"imageUploader":false,"lang":"zh-CN","locale":{"admin":"Admin","placeholder":null},"pageview":true,"reaction":false,"requiredMeta":["name"],"search":false,"serverURL":"https://waline-pipyeemst-muo123s-projects.vercel.app"});
 </script>
 
     

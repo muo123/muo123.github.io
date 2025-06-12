@@ -7,7 +7,162 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>muo123</copyright>
-        <lastBuildDate>Wed, 11 Jun 2025 19:43:34 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 12 Jun 2025 16:34:37 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>怎么给 Hugo 添加 Waline 评论系统</title>
+        <link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link>
+        <pubDate>Thu, 12 Jun 2025 16:34:37 +0800</pubDate>
+        
+        <guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/UeEL/1285X601/image.png" alt="Featured image of post 怎么给 Hugo 添加 Waline 评论系统" /&gt;&lt;p&gt;在 Hugo 中添加 Waline 评论系统需要以下步骤：&lt;/p&gt;
+&lt;h3 id=&#34;1-leancloud-设置数据库&#34;&gt;1. &lt;strong&gt;LeanCloud 设置（数据库）&lt;/strong&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://console.leancloud.app/login&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;登录&lt;/a&gt; 或 &lt;a class=&#34;link&#34; href=&#34;https://console.leancloud.app/register&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;注册&lt;/a&gt; LeanCloud 国际版 并进入 &lt;a class=&#34;link&#34; href=&#34;https://console.leancloud.app/apps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;控制台&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击左上角 &lt;a class=&#34;link&#34; href=&#34;https://console.leancloud.app/apps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;创建应用&lt;/a&gt; 并起一个你喜欢的名字 (请选择免费的开发版):
+&lt;img src=&#34;https://waline.js.org/assets/leancloud-1-CucZPnJ0.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;创建应用&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入应用，选择左下角的 &lt;code&gt;设置 &amp;gt; 应用 Key&lt;/code&gt;。你可以看到你的 &lt;code&gt;APP ID&lt;/code&gt;,&lt;code&gt;APP Key&lt;/code&gt;和 &lt;code&gt;Master Key&lt;/code&gt;。请记录它们，以便后续使用。
+&lt;img src=&#34;https://waline.js.org/assets/leancloud-2-C9bCeSu_.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ID 和 Key&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-部署-waline-服务端&#34;&gt;2. &lt;strong&gt;部署 Waline 服务端&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;首先需要一个 Waline 后端服务（支持 Vercel/Cloudflare/Docker 等）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 &lt;a class=&#34;link&#34; href=&#34;https://vercel.com/new/clone?repository-url=https://github.com/walinejs/waline/tree/main/example&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vercel 一键部署&lt;/a&gt;（推荐）&lt;/li&gt;
+&lt;li&gt;输入一个你喜欢的 Vercel 项目名称并点击 &lt;code&gt;Create&lt;/code&gt; 继续:
+&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/WLY2/804X584/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;804X584/image.png&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;此时 Vercel 会基于 Waline 模板帮助你新建并初始化仓库，仓库名为你之前输入的项目名。一两分钟后部署成功，此时点击 &lt;code&gt;Continue to Dashboard&lt;/code&gt; 可以跳转到应用的控制台。
+&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/Iyas/749X850/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;749X850/image.png&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;点击顶部的 &lt;code&gt;Settings - Environment Variables&lt;/code&gt; 进入环境变量配置页，并创建三个环境变量 &lt;code&gt;LEAN_ID&lt;/code&gt;, &lt;code&gt;LEAN_KEY&lt;/code&gt; 和 &lt;code&gt;LEAN_MASTER_KEY&lt;/code&gt; 。它们的值分别对应上一步在 LeanCloud 中获得的 &lt;code&gt;APP ID&lt;/code&gt;, &lt;code&gt;APP KEY&lt;/code&gt;, &lt;code&gt;Master Key&lt;/code&gt;，填入后保存。
+&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/VVHX/837X665/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;837X665/image.png&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;环境变量配置完成之后点击顶部的 &lt;code&gt;Deployments&lt;/code&gt; 点击顶部最新的一次部署右侧的 &lt;code&gt;Redeploy&lt;/code&gt; 按钮进行重新部署。该步骤是为了让刚才设置的环境变量生效。
+&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/lqPE/923X664/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;923X664/image.png&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;此时会跳转到 &lt;code&gt;Overview&lt;/code&gt; 界面开始部署，等待片刻后 &lt;code&gt;SStatus&lt;/code&gt; 会变成 &lt;code&gt;Ready&lt;/code&gt;。此时请点击 &lt;code&gt;Visit&lt;/code&gt; ，即可跳转到部署好的网站地址，此地址即为你的服务端地址。
+&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/qBop/843X398/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;843X398/image.png&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3-配置参数stack-主题&#34;&gt;3. &lt;strong&gt;配置参数（Stack 主题）&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;由于 Stack 主题中包含 Waline 评论设置，因此直接在 &lt;code&gt;hugo.toml&lt;/code&gt; 中添加全局配置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[params.comments]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; enabled = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; provider = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;waline&amp;#39;&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    [params.comments.waline]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    serverURL = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;https://your-domain.vercel.app&amp;#39;&lt;/span&gt;,  &lt;span style=&#34;color:#78787e&#34;&gt;## 填上你的评论系统网址&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lang = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;zh-CN&amp;#39;&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    requiredMeta = [&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;email&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;4-添加阅读量统计和评论数统计可选&#34;&gt;4. &lt;strong&gt;添加阅读量统计和评论数统计（可选）&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;修改配置&lt;code&gt;hugo.toml&lt;/code&gt;，添加阅读量统计和评论数统计：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[params.comments]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; enabled = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; provider = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;waline&amp;#39;&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    [params.comments.waline]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    serverURL = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;https://your-domain.vercel.app&amp;#39;&lt;/span&gt;,  &lt;span style=&#34;color:#78787e&#34;&gt;## 填上你的评论系统网址&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lang = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;zh-CN&amp;#39;&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    comment = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt;  &lt;span style=&#34;color:#78787e&#34;&gt;## 开启评论计数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pageview = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#78787e&#34;&gt;## 开启阅读计数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    requiredMeta = [&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;email&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改文章模板&lt;code&gt;layouts/partials/article/components/details.html&lt;/code&gt;，在&lt;code&gt;&amp;lt;footer&amp;gt;&lt;/code&gt;标签中添加如下代码片段：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ partial &amp;#34;helper/icon&amp;#34; &amp;#34;eye&amp;#34; }}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;time&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;article-pageview&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        阅读量：&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;waline-pageview-count&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;data-path&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;{{ .RelPermalink }}&amp;#34;&lt;/span&gt;&amp;gt;0&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;span&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;time&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ partial &amp;#34;helper/icon&amp;#34; &amp;#34;message&amp;#34; }}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;time&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;article-comment&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        评论数：&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;waline-comment-count&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;data-path&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;{{.RelPermalink}}&amp;#34;&lt;/span&gt;&amp;gt;0&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;span&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;time&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt; ：需要在 &lt;code&gt;assets/icons&lt;/code&gt; 中添加对应图标，相应图标可以在网站下载 &lt;a class=&#34;link&#34; href=&#34;https://tabler.io/icons&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://tabler.io/icons&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;5-本地测试--部署&#34;&gt;5. &lt;strong&gt;本地测试 &amp;amp; 部署&lt;/strong&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;本地启动 Hugo：&lt;code&gt;hugo server&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;检查评论框是否正常加载&lt;/li&gt;
+&lt;li&gt;部署到生产环境：&lt;code&gt;hugo&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
         <title>关于 Yaml、Toml、Json 三种数据格式的比较</title>
         <link>https://muo123.github.io/articles/%E5%85%B3%E4%BA%8E-yamltomljson-%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83/</link>
         <pubDate>Wed, 11 Jun 2025 19:43:34 +0800</pubDate>
@@ -398,12 +553,12 @@
 </description>
         </item>
         <item>
-        <title>怎么给 Hugo 添加 Mermaid</title>
-        <link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid/</link>
+        <title>怎么给 Hugo 添加 Mermaid 图表支持</title>
+        <link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid-%E5%9B%BE%E8%A1%A8%E6%94%AF%E6%8C%81/</link>
         <pubDate>Tue, 10 Jun 2025 13:17:52 +0800</pubDate>
         
-        <guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid/</guid>
-        <description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250610/O17b/1045X478/image.png" alt="Featured image of post 怎么给 Hugo 添加 Mermaid" /&gt;&lt;p&gt;Hugo 没有为 Mermaid 图标提供内置模板，查阅 Hugo 文档发现在 Hugo 中添加 Mermaid 支持可以通过以下步骤实现：&lt;/p&gt;
+        <guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid-%E5%9B%BE%E8%A1%A8%E6%94%AF%E6%8C%81/</guid>
+        <description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250610/O17b/1045X478/image.png" alt="Featured image of post 怎么给 Hugo 添加 Mermaid 图表支持" /&gt;&lt;p&gt;Hugo 没有为 Mermaid 图标提供内置模板，查阅 Hugo 文档发现在 Hugo 中添加 Mermaid 支持可以通过以下步骤实现：&lt;/p&gt;
 &lt;h3 id=&#34;创建渲染钩子文件&#34;&gt;&lt;strong&gt;创建渲染钩子文件&lt;/strong&gt;
 &lt;/h3&gt;&lt;p&gt;在项目目录中新建文件：&lt;br&gt;
 &lt;code&gt;layouts/_default/_markup/render-codeblock-mermaid.html&lt;/code&gt;&lt;br&gt;
