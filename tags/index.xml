@@ -7,12 +7,20 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>muo123</copyright>
-        <lastBuildDate>Thu, 12 Jun 2025 16:34:37 +0800</lastBuildDate><atom:link href="https://muo123.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 13 Jun 2025 01:25:38 +0000</lastBuildDate><atom:link href="https://muo123.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo</title>
         <link>https://muo123.github.io/tags/hugo/</link>
-        <pubDate>Thu, 12 Jun 2025 16:34:37 +0800</pubDate>
+        <pubDate>Fri, 13 Jun 2025 09:14:14 +0800</pubDate>
         
         <guid>https://muo123.github.io/tags/hugo/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>博客搭建</title>
+        <link>https://muo123.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+        <pubDate>Fri, 13 Jun 2025 09:14:14 +0800</pubDate>
+        
+        <guid>https://muo123.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
         <description></description>
         </item>
         <item>
@@ -21,14 +29,6 @@
         <pubDate>Thu, 12 Jun 2025 16:34:37 +0800</pubDate>
         
         <guid>https://muo123.github.io/tags/waline/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>博客搭建</title>
-        <link>https://muo123.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
-        <pubDate>Thu, 12 Jun 2025 16:34:37 +0800</pubDate>
-        
-        <guid>https://muo123.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
         <description></description>
         </item>
         <item>

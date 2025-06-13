@@ -7,7 +7,35 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>muo123</copyright>
-        <lastBuildDate>Thu, 12 Jun 2025 16:34:37 +0800</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 13 Jun 2025 01:25:38 +0000</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo 怎么显示北京时间，并添加文章修改时间</title>
+        <link>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</link>
+        <pubDate>Fri, 13 Jun 2025 09:14:14 +0800</pubDate>
+        
+        <guid>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</guid>
+        <description>&lt;p&gt;在 Hugo 中显示北京时间并添加文章修改时间，可以通过以下方式实现：&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;步骤&#34;&gt;步骤：
+&lt;/h3&gt;&lt;h4 id=&#34;配置站点时区&#34;&gt;&lt;strong&gt;配置站点时区&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;在 &lt;code&gt;hugo.toml&lt;/code&gt; 中设置时区为 &lt;code&gt;Asia/Shanghai&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;timeZone = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;Asia/Shanghai&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;修改时间格式&#34;&gt;&lt;strong&gt;修改时间格式&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;在 &lt;code&gt;hugo.toml&lt;/code&gt; 中修改 &lt;code&gt;dateFormat&lt;/code&gt; 字段&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[params.dateFormat]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;published = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;2006-01-02&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lastUpdated = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;2006-01-02 15:04 MST&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;添加文章最后修改时间&#34;&gt;&lt;strong&gt;添加文章最后修改时间&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;在文章的首部字段中添加 &lt;code&gt;lastmod&lt;/code&gt; 字段：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;title&lt;/span&gt;: &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;文章标题&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;date&lt;/span&gt;: 2023-10-01T08:00:00&lt;span style=&#34;color:#ff9f43&#34;&gt;+08&lt;/span&gt;:&lt;span style=&#34;color:#ff9f43&#34;&gt;00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;lastmod&lt;/span&gt;: 2023-10-05T14:30:00&lt;span style=&#34;color:#ff9f43&#34;&gt;+08&lt;/span&gt;:&lt;span style=&#34;color:#ff9f43&#34;&gt;00&lt;/span&gt;  &lt;span style=&#34;color:#78787e&#34;&gt;# 手动指定修改时间&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或者在 &lt;code&gt;hugo.toml&lt;/code&gt; 中设置 &lt;code&gt;frontmatter&lt;/code&gt; 如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# 文件修改时间配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[frontmatter]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lastmod = [&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;:fileModTime&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;lastmod&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>怎么给 Hugo 添加 Waline 评论系统</title>
         <link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link>
         <pubDate>Thu, 12 Jun 2025 16:34:37 +0800</pubDate>
