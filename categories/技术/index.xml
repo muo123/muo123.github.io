@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术 on 雪国流明</title><link>https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/</link><description>Recent content in 技术 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Fri, 13 Jun 2025 11:34:44 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo 怎么显示北京时间，并添加文章修改时间</title><link>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</link><pubDate>Fri, 13 Jun 2025 09:14:14 +0800</pubDate><guid>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</guid><description>&lt;p>在 Hugo 中显示北京时间并添加文章修改时间，可以通过以下方式实现：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术 on 雪国流明</title><link>https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/</link><description>Recent content in 技术 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Fri, 13 Jun 2025 12:08:43 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo 怎么显示北京时间，并添加文章修改时间</title><link>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</link><pubDate>Fri, 13 Jun 2025 09:14:14 +0800</pubDate><guid>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</guid><description>&lt;p>在 Hugo 中显示北京时间并添加文章修改时间，可以通过以下方式实现：&lt;/p>
 &lt;hr>
 &lt;h3 id="步骤">步骤：
 &lt;/h3>&lt;h4 id="配置站点时区">&lt;strong>配置站点时区&lt;/strong>
@@ -35,6 +35,17 @@ alt="718X47/image.png"
 loading="lazy"
 alt="711X53/image.png"
 >&lt;/p>
+&lt;p>可能出现文章日期一致或者不能正确显示正确修改时间，需要修改 Github Action 配置文件 &lt;code>.github\worflows\deploy.yaml&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">steps&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff6ac1">name&lt;/span>: Checkout
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">uses&lt;/span>: actions/checkout@v4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">with&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">submodules&lt;/span>: &lt;span style="color:#ff6ac1">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">fetch-depth&lt;/span>: &lt;span style="color:#ff9f43">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff6ac1">name&lt;/span>: Disable quotePath &lt;span style="color:#78787e"># 关闭 core.uotePath 属性&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">run&lt;/span>: git config --global core.quotePath false
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>当文件名包含中文时，会使得 Git 对文件路径名称进行转义处理，导致无法正确获取 &lt;code>GitInfo&lt;/code> 变量信息，将 &lt;code>core.quotePath&lt;/code> 设置为 &lt;code>false&lt;/code> 即可解决。&lt;/p>
 &lt;hr></description></item><item><title>关于 Yaml、Toml、Json 三种数据格式的比较</title><link>https://muo123.github.io/articles/%E5%85%B3%E4%BA%8E-yamltomljson-%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83/</link><pubDate>Wed, 11 Jun 2025 19:43:34 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%85%B3%E4%BA%8E-yamltomljson-%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83/</guid><description>&lt;p>TOML、YAML 和 JSON 都是流行的数据序列化格式，用于存储和交换结构化数据，尤其在配置文件中非常常见。它们各有优缺点，适用于不同的场景。下面是它们的详细比较：&lt;/p>
 &lt;h2 id="核心特性概述">核心特性概述
 &lt;/h2>&lt;ol>
