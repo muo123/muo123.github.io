@@ -1,529 +1,407 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>教程 on 雪国流明</title>
-        <link>https://muo123.github.io/categories/%E6%95%99%E7%A8%8B/</link>
-        <description>Recent content in 教程 on 雪国流明</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
-        <copyright>muo123</copyright>
-        <lastBuildDate>Fri, 13 Jun 2025 02:11:12 +0000</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>怎么给 Hugo 添加 Waline 评论系统</title>
-        <link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link>
-        <pubDate>Thu, 12 Jun 2025 16:34:37 +0800</pubDate>
-        
-        <guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</guid>
-        <description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/UeEL/1285X601/image.png" alt="Featured image of post 怎么给 Hugo 添加 Waline 评论系统" /&gt;&lt;p&gt;在 Hugo 中添加 Waline 评论系统需要以下步骤：&lt;/p&gt;
-&lt;h3 id=&#34;1-leancloud-设置数据库&#34;&gt;1. &lt;strong&gt;LeanCloud 设置（数据库）&lt;/strong&gt;
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://console.leancloud.app/login&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;登录&lt;/a&gt; 或 &lt;a class=&#34;link&#34; href=&#34;https://console.leancloud.app/register&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;注册&lt;/a&gt; LeanCloud 国际版 并进入 &lt;a class=&#34;link&#34; href=&#34;https://console.leancloud.app/apps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;控制台&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;点击左上角 &lt;a class=&#34;link&#34; href=&#34;https://console.leancloud.app/apps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;创建应用&lt;/a&gt; 并起一个你喜欢的名字 (请选择免费的开发版):
-&lt;img src=&#34;https://waline.js.org/assets/leancloud-1-CucZPnJ0.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;创建应用&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;进入应用，选择左下角的 &lt;code&gt;设置 &amp;gt; 应用 Key&lt;/code&gt;。你可以看到你的 &lt;code&gt;APP ID&lt;/code&gt;,&lt;code&gt;APP Key&lt;/code&gt;和 &lt;code&gt;Master Key&lt;/code&gt;。请记录它们，以便后续使用。
-&lt;img src=&#34;https://waline.js.org/assets/leancloud-2-C9bCeSu_.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;ID 和 Key&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;2-部署-waline-服务端&#34;&gt;2. &lt;strong&gt;部署 Waline 服务端&lt;/strong&gt;
-&lt;/h3&gt;&lt;p&gt;首先需要一个 Waline 后端服务（支持 Vercel/Cloudflare/Docker 等）：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;使用 &lt;a class=&#34;link&#34; href=&#34;https://vercel.com/new/clone?repository-url=https://github.com/walinejs/waline/tree/main/example&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Vercel 一键部署&lt;/a&gt;（推荐）&lt;/li&gt;
-&lt;li&gt;输入一个你喜欢的 Vercel 项目名称并点击 &lt;code&gt;Create&lt;/code&gt; 继续:
-&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/WLY2/804X584/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;804X584/image.png&#34;
-	
-	
-&gt;&lt;/li&gt;
-&lt;li&gt;此时 Vercel 会基于 Waline 模板帮助你新建并初始化仓库，仓库名为你之前输入的项目名。一两分钟后部署成功，此时点击 &lt;code&gt;Continue to Dashboard&lt;/code&gt; 可以跳转到应用的控制台。
-&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/Iyas/749X850/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;749X850/image.png&#34;
-	
-	
-&gt;&lt;/li&gt;
-&lt;li&gt;点击顶部的 &lt;code&gt;Settings - Environment Variables&lt;/code&gt; 进入环境变量配置页，并创建三个环境变量 &lt;code&gt;LEAN_ID&lt;/code&gt;, &lt;code&gt;LEAN_KEY&lt;/code&gt; 和 &lt;code&gt;LEAN_MASTER_KEY&lt;/code&gt; 。它们的值分别对应上一步在 LeanCloud 中获得的 &lt;code&gt;APP ID&lt;/code&gt;, &lt;code&gt;APP KEY&lt;/code&gt;, &lt;code&gt;Master Key&lt;/code&gt;，填入后保存。
-&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/VVHX/837X665/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;837X665/image.png&#34;
-	
-	
-&gt;&lt;/li&gt;
-&lt;li&gt;环境变量配置完成之后点击顶部的 &lt;code&gt;Deployments&lt;/code&gt; 点击顶部最新的一次部署右侧的 &lt;code&gt;Redeploy&lt;/code&gt; 按钮进行重新部署。该步骤是为了让刚才设置的环境变量生效。
-&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/lqPE/923X664/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;923X664/image.png&#34;
-	
-	
-&gt;&lt;/li&gt;
-&lt;li&gt;此时会跳转到 &lt;code&gt;Overview&lt;/code&gt; 界面开始部署，等待片刻后 &lt;code&gt;SStatus&lt;/code&gt; 会变成 &lt;code&gt;Ready&lt;/code&gt;。此时请点击 &lt;code&gt;Visit&lt;/code&gt; ，即可跳转到部署好的网站地址
-&lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/qBop/843X398/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;843X398/image.png&#34;
-	
-	
-&gt;&lt;/li&gt;
-&lt;li&gt;部署完成后，请访问 &lt;code&gt;&amp;lt;serverURL&amp;gt;/ui/register&lt;/code&gt; 进行注册，首个注册的人会被设定成管理员。管理员登陆后，即可看到评论管理界面。在这里可以修改、标记或删除评论。用户也可通过评论框注册账号，登陆后会跳转到自己的档案页。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;3-配置参数stack-主题&#34;&gt;3. &lt;strong&gt;配置参数（Stack 主题）&lt;/strong&gt;
-&lt;/h3&gt;&lt;p&gt;由于 Stack 主题中包含 Waline 评论设置，因此直接在 &lt;code&gt;hugo.toml&lt;/code&gt; 中添加全局配置：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[params.comments]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; enabled = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; provider = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;waline&amp;#39;&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    [params.comments.waline]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    serverURL = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;https://your-domain.vercel.app&amp;#39;&lt;/span&gt;,  &lt;span style=&#34;color:#78787e&#34;&gt;## 填上 Domains 下的网址&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lang = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;zh-CN&amp;#39;&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    requiredMeta = [&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;email&amp;#34;&lt;/span&gt;]
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h3 id=&#34;4-添加阅读量统计和评论数统计可选&#34;&gt;4. &lt;strong&gt;添加阅读量统计和评论数统计（可选）&lt;/strong&gt;
-&lt;/h3&gt;&lt;p&gt;修改配置&lt;code&gt;hugo.toml&lt;/code&gt;，添加阅读量统计和评论数统计：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[params.comments]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; enabled = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; provider = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;waline&amp;#39;&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    [params.comments.waline]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    serverURL = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;https://your-domain.vercel.app&amp;#39;&lt;/span&gt;,  &lt;span style=&#34;color:#78787e&#34;&gt;## 填上 Domains 下的网址&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lang = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;zh-CN&amp;#39;&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    comment = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt;  &lt;span style=&#34;color:#78787e&#34;&gt;## 开启评论计数&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pageview = &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#78787e&#34;&gt;## 开启阅读计数&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    requiredMeta = [&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;email&amp;#34;&lt;/span&gt;]
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改文章模板&lt;code&gt;layouts/partials/article/components/details.html&lt;/code&gt;，在&lt;code&gt;&amp;lt;footer&amp;gt;&lt;/code&gt;标签中添加如下代码片段：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;div&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ partial &amp;#34;helper/icon&amp;#34; &amp;#34;eye&amp;#34; }}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;time&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;article-pageview&amp;#34;&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        阅读量：&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;waline-pageview-count&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;data-path&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;{{ .RelPermalink }}&amp;#34;&lt;/span&gt;&amp;gt;0&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;span&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;time&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;div&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;div&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ partial &amp;#34;helper/icon&amp;#34; &amp;#34;message&amp;#34; }}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;time&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;article-comment&amp;#34;&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        评论数：&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;waline-comment-count&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;data-path&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;{{.RelPermalink}}&amp;#34;&lt;/span&gt;&amp;gt;0&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;span&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;time&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;div&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt; ：需要在 &lt;code&gt;assets/icons&lt;/code&gt; 中添加对应图标，相应图标可以在网站下载 &lt;a class=&#34;link&#34; href=&#34;https://tabler.io/icons&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://tabler.io/icons&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;5-本地测试--部署&#34;&gt;5. &lt;strong&gt;本地测试 &amp;amp; 部署&lt;/strong&gt;
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;本地启动 Hugo：&lt;code&gt;hugo server&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;检查评论框是否正常加载&lt;/li&gt;
-&lt;li&gt;部署到生产环境：&lt;code&gt;hugo&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
-        <title>怎么给 Hugo 添加 Mermaid 图表支持</title>
-        <link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid-%E5%9B%BE%E8%A1%A8%E6%94%AF%E6%8C%81/</link>
-        <pubDate>Tue, 10 Jun 2025 13:17:52 +0800</pubDate>
-        
-        <guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid-%E5%9B%BE%E8%A1%A8%E6%94%AF%E6%8C%81/</guid>
-        <description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250610/O17b/1045X478/image.png" alt="Featured image of post 怎么给 Hugo 添加 Mermaid 图表支持" /&gt;&lt;p&gt;Hugo 没有为 Mermaid 图标提供内置模板，查阅 Hugo 文档发现在 Hugo 中添加 Mermaid 支持可以通过以下步骤实现：&lt;/p&gt;
-&lt;h3 id=&#34;创建渲染钩子文件&#34;&gt;&lt;strong&gt;创建渲染钩子文件&lt;/strong&gt;
-&lt;/h3&gt;&lt;p&gt;在项目目录中新建文件：&lt;br&gt;
-&lt;code&gt;layouts/_default/_markup/render-codeblock-mermaid.html&lt;/code&gt;&lt;br&gt;
-内容如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;pre&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;mermaid&amp;#34;&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ .Inner | htmlEscape | safeHTML }}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;pre&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{ .Page.Store.Set &amp;#34;hasMermaid&amp;#34; true }}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;添加-mermaid-初始化脚本&#34;&gt;&lt;strong&gt;添加 Mermaid 初始化脚本&lt;/strong&gt;
-&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;layouts/_default/baseof.html&lt;/code&gt; 文件的底部添加（注意需要在&lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt;标签之前）：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{ if .Store.Get &amp;#34;hasMermaid&amp;#34; }}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;module&amp;#34;&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;import&lt;/span&gt; mermaid from &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs&amp;#39;&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        mermaid.initialize({ startOnLoad&lt;span style=&#34;color:#ff6ac1&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt; });
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;script&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{ end }}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h3 id=&#34;验证使用&#34;&gt;验证使用
-&lt;/h3&gt;&lt;p&gt;创建测试内容 &lt;code&gt;content/post/demo.md&lt;/code&gt;：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;```mermaid
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sequenceDiagram
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    participant Alice
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    participant Bob
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Alice-&amp;gt;&amp;gt;John: Hello John, how are you?
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    loop Healthcheck
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        John-&amp;gt;&amp;gt;John: Fight against hypochondria
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    end
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Note right of John: Rational thoughts &amp;lt;br/&amp;gt;prevail!
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    John--&amp;gt;&amp;gt;Alice: Great!
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    John-&amp;gt;&amp;gt;Bob: How about you?
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Bob--&amp;gt;&amp;gt;John: Jolly good!
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;```
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;实现效果如下所示：&lt;/p&gt;
-&lt;pre class=&#34;mermaid&#34;&gt;
-  sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice-&amp;gt;&amp;gt;John: Hello John, how are you?
-    loop Healthcheck
-        John-&amp;gt;&amp;gt;John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts &amp;lt;br/&amp;gt;prevail!
-    John--&amp;gt;&amp;gt;Alice: Great!
-    John-&amp;gt;&amp;gt;Bob: How about you?
-    Bob--&amp;gt;&amp;gt;John: Jolly good!
-&lt;/pre&gt;
-&lt;p&gt;完成以上步骤后，Hugo 站点即可支持 Mermaid 图表渲染。&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Hugo &#43; Github Pages 博客搭建</title>
-        <link>https://muo123.github.io/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
-        <pubDate>Tue, 03 Jun 2025 11:02:43 +0800</pubDate>
-        
-        <guid>https://muo123.github.io/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://tc.z.wiki/autoupload/20250603/UrPE/1602X637/image.png" alt="Featured image of post Hugo &#43; Github Pages 博客搭建" /&gt;&lt;p&gt;以下是 &lt;strong&gt;Hugo + GitHub Pages 博客搭建全流程指南&lt;/strong&gt;，从环境配置到自动化部署，附详细代码和避坑提示：&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;一环境准备--windows-&#34;&gt;一、环境准备 ( Windows )
-&lt;/h3&gt;&lt;h4 id=&#34;1-安装-git&#34;&gt;1. 安装 Git
-&lt;/h4&gt;&lt;p&gt;下载地址：https://git-scm.cn/&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;去 Git 官网下载对应版本，如无意外选择 x64 版本安装即可&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;安装成功后可以在开始菜单栏看到 Git 文件夹以及相关 Git 工具
-&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/e7iD/590X241/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;590X241/image.png&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;2-安装-hugo&#34;&gt;2. 安装 Hugo
-&lt;/h4&gt;&lt;p&gt;下载地址： &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/gohugoio/hugo/releases&lt;/a&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;下载 Hugo 扩展版（支持 Sass/SCSS）
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>教程 on 雪国流明</title><link>https://muo123.github.io/categories/%E6%95%99%E7%A8%8B/</link><description>Recent content in 教程 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>怎么给 Hugo 添加 Waline 评论系统</title><link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link><pubDate>Thu, 12 Jun 2025 16:34:37 +0800</pubDate><guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/UeEL/1285X601/image.png" alt="Featured image of post 怎么给 Hugo 添加 Waline 评论系统" />&lt;p>在 Hugo 中添加 Waline 评论系统需要以下步骤：&lt;/p>
+&lt;h3 id="1-leancloud-设置数据库">1. &lt;strong>LeanCloud 设置（数据库）&lt;/strong>
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;a class="link" href="https://console.leancloud.app/login" target="_blank" rel="noopener"
+>登录&lt;/a> 或 &lt;a class="link" href="https://console.leancloud.app/register" target="_blank" rel="noopener"
+>注册&lt;/a> LeanCloud 国际版 并进入 &lt;a class="link" href="https://console.leancloud.app/apps" target="_blank" rel="noopener"
+>控制台&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>点击左上角 &lt;a class="link" href="https://console.leancloud.app/apps" target="_blank" rel="noopener"
+>创建应用&lt;/a> 并起一个你喜欢的名字 (请选择免费的开发版):
+&lt;img src="https://waline.js.org/assets/leancloud-1-CucZPnJ0.png"
+loading="lazy"
+alt="创建应用"
+>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>进入应用，选择左下角的 &lt;code>设置 &amp;gt; 应用 Key&lt;/code>。你可以看到你的 &lt;code>APP ID&lt;/code>,&lt;code>APP Key&lt;/code>和 &lt;code>Master Key&lt;/code>。请记录它们，以便后续使用。
+&lt;img src="https://waline.js.org/assets/leancloud-2-C9bCeSu_.png"
+loading="lazy"
+alt="ID 和 Key"
+>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="2-部署-waline-服务端">2. &lt;strong>部署 Waline 服务端&lt;/strong>
+&lt;/h3>&lt;p>首先需要一个 Waline 后端服务（支持 Vercel/Cloudflare/Docker 等）：&lt;/p>
+&lt;ol>
+&lt;li>使用 &lt;a class="link" href="https://vercel.com/new/clone?repository-url=https://github.com/walinejs/waline/tree/main/example" target="_blank" rel="noopener"
+>Vercel 一键部署&lt;/a>（推荐）&lt;/li>
+&lt;li>输入一个你喜欢的 Vercel 项目名称并点击 &lt;code>Create&lt;/code> 继续:
+&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/WLY2/804X584/image.png"
+loading="lazy"
+alt="804X584/image.png"
+>&lt;/li>
+&lt;li>此时 Vercel 会基于 Waline 模板帮助你新建并初始化仓库，仓库名为你之前输入的项目名。一两分钟后部署成功，此时点击 &lt;code>Continue to Dashboard&lt;/code> 可以跳转到应用的控制台。
+&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/Iyas/749X850/image.png"
+loading="lazy"
+alt="749X850/image.png"
+>&lt;/li>
+&lt;li>点击顶部的 &lt;code>Settings - Environment Variables&lt;/code> 进入环境变量配置页，并创建三个环境变量 &lt;code>LEAN_ID&lt;/code>, &lt;code>LEAN_KEY&lt;/code> 和 &lt;code>LEAN_MASTER_KEY&lt;/code> 。它们的值分别对应上一步在 LeanCloud 中获得的 &lt;code>APP ID&lt;/code>, &lt;code>APP KEY&lt;/code>, &lt;code>Master Key&lt;/code>，填入后保存。
+&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/VVHX/837X665/image.png"
+loading="lazy"
+alt="837X665/image.png"
+>&lt;/li>
+&lt;li>环境变量配置完成之后点击顶部的 &lt;code>Deployments&lt;/code> 点击顶部最新的一次部署右侧的 &lt;code>Redeploy&lt;/code> 按钮进行重新部署。该步骤是为了让刚才设置的环境变量生效。
+&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/lqPE/923X664/image.png"
+loading="lazy"
+alt="923X664/image.png"
+>&lt;/li>
+&lt;li>此时会跳转到 &lt;code>Overview&lt;/code> 界面开始部署，等待片刻后 &lt;code>SStatus&lt;/code> 会变成 &lt;code>Ready&lt;/code>。此时请点击 &lt;code>Visit&lt;/code> ，即可跳转到部署好的网站地址
+&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250612/qBop/843X398/image.png"
+loading="lazy"
+alt="843X398/image.png"
+>&lt;/li>
+&lt;li>部署完成后，请访问 &lt;code>&amp;lt;serverURL&amp;gt;/ui/register&lt;/code> 进行注册，首个注册的人会被设定成管理员。管理员登陆后，即可看到评论管理界面。在这里可以修改、标记或删除评论。用户也可通过评论框注册账号，登陆后会跳转到自己的档案页。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="3-配置参数stack-主题">3. &lt;strong>配置参数（Stack 主题）&lt;/strong>
+&lt;/h3>&lt;p>由于 Stack 主题中包含 Waline 评论设置，因此直接在 &lt;code>hugo.toml&lt;/code> 中添加全局配置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>[params.comments]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> enabled = &lt;span style="color:#ff6ac1">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> provider = &lt;span style="color:#5af78e">&amp;#39;waline&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [params.comments.waline]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> serverURL = &lt;span style="color:#5af78e">&amp;#39;https://your-domain.vercel.app&amp;#39;&lt;/span>, &lt;span style="color:#78787e">## 填上 Domains 下的网址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lang = &lt;span style="color:#5af78e">&amp;#39;zh-CN&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> requiredMeta = [&lt;span style="color:#5af78e">&amp;#34;name&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;email&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="4-添加阅读量统计和评论数统计可选">4. &lt;strong>添加阅读量统计和评论数统计（可选）&lt;/strong>
+&lt;/h3>&lt;p>修改配置&lt;code>hugo.toml&lt;/code>，添加阅读量统计和评论数统计：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>[params.comments]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> enabled = &lt;span style="color:#ff6ac1">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> provider = &lt;span style="color:#5af78e">&amp;#39;waline&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [params.comments.waline]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> serverURL = &lt;span style="color:#5af78e">&amp;#39;https://your-domain.vercel.app&amp;#39;&lt;/span>, &lt;span style="color:#78787e">## 填上 Domains 下的网址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lang = &lt;span style="color:#5af78e">&amp;#39;zh-CN&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> comment = &lt;span style="color:#ff6ac1">true&lt;/span> &lt;span style="color:#78787e">## 开启评论计数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pageview = &lt;span style="color:#ff6ac1">true&lt;/span> &lt;span style="color:#78787e">## 开启阅读计数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> requiredMeta = [&lt;span style="color:#5af78e">&amp;#34;name&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;email&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改文章模板&lt;code>layouts/partials/article/components/details.html&lt;/code>，在&lt;code>&amp;lt;footer&amp;gt;&lt;/code>标签中添加如下代码片段：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ partial &amp;#34;helper/icon&amp;#34; &amp;#34;eye&amp;#34; }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">time&lt;/span> &lt;span style="color:#57c7ff">class&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;article-pageview&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 阅读量：&amp;lt;&lt;span style="color:#ff6ac1">span&lt;/span> &lt;span style="color:#57c7ff">class&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;waline-pageview-count&amp;#34;&lt;/span> &lt;span style="color:#57c7ff">data-path&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;{{ .RelPermalink }}&amp;#34;&lt;/span>&amp;gt;0&amp;lt;/&lt;span style="color:#ff6ac1">span&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#ff6ac1">time&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ partial &amp;#34;helper/icon&amp;#34; &amp;#34;message&amp;#34; }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">time&lt;/span> &lt;span style="color:#57c7ff">class&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;article-comment&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 评论数：&amp;lt;&lt;span style="color:#ff6ac1">span&lt;/span> &lt;span style="color:#57c7ff">class&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;waline-comment-count&amp;#34;&lt;/span> &lt;span style="color:#57c7ff">data-path&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;{{.RelPermalink}}&amp;#34;&lt;/span>&amp;gt;0&amp;lt;/&lt;span style="color:#ff6ac1">span&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#ff6ac1">time&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>&lt;strong>注意&lt;/strong> ：需要在 &lt;code>assets/icons&lt;/code> 中添加对应图标，相应图标可以在网站下载 &lt;a class="link" href="https://tabler.io/icons" target="_blank" rel="noopener"
+>https://tabler.io/icons&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h3 id="5-本地测试--部署">5. &lt;strong>本地测试 &amp;amp; 部署&lt;/strong>
+&lt;/h3>&lt;ol>
+&lt;li>本地启动 Hugo：&lt;code>hugo server&lt;/code>&lt;/li>
+&lt;li>检查评论框是否正常加载&lt;/li>
+&lt;li>部署到生产环境：&lt;code>hugo&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;hr></description></item><item><title>怎么给 Hugo 添加 Mermaid 图表支持</title><link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid-%E5%9B%BE%E8%A1%A8%E6%94%AF%E6%8C%81/</link><pubDate>Tue, 10 Jun 2025 13:17:52 +0800</pubDate><guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E7%BB%99-hugo-%E6%B7%BB%E5%8A%A0-mermaid-%E5%9B%BE%E8%A1%A8%E6%94%AF%E6%8C%81/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250610/O17b/1045X478/image.png" alt="Featured image of post 怎么给 Hugo 添加 Mermaid 图表支持" />&lt;p>Hugo 没有为 Mermaid 图标提供内置模板，查阅 Hugo 文档发现在 Hugo 中添加 Mermaid 支持可以通过以下步骤实现：&lt;/p>
+&lt;h3 id="创建渲染钩子文件">&lt;strong>创建渲染钩子文件&lt;/strong>
+&lt;/h3>&lt;p>在项目目录中新建文件：&lt;br>
+&lt;code>layouts/_default/_markup/render-codeblock-mermaid.html&lt;/code>&lt;br>
+内容如下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#ff6ac1">pre&lt;/span> &lt;span style="color:#57c7ff">class&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;mermaid&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ .Inner | htmlEscape | safeHTML }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#ff6ac1">pre&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{ .Page.Store.Set &amp;#34;hasMermaid&amp;#34; true }}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="添加-mermaid-初始化脚本">&lt;strong>添加 Mermaid 初始化脚本&lt;/strong>
+&lt;/h3>&lt;p>在 &lt;code>layouts/_default/baseof.html&lt;/code> 文件的底部添加（注意需要在&lt;code>&amp;lt;/body&amp;gt;&lt;/code>标签之前）：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>{{ if .Store.Get &amp;#34;hasMermaid&amp;#34; }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">script&lt;/span> &lt;span style="color:#57c7ff">type&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;module&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">import&lt;/span> mermaid from &lt;span style="color:#5af78e">&amp;#39;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mermaid.initialize({ startOnLoad&lt;span style="color:#ff6ac1">:&lt;/span> &lt;span style="color:#ff6ac1">true&lt;/span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#ff6ac1">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{ end }}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="验证使用">验证使用
+&lt;/h3>&lt;p>创建测试内容 &lt;code>content/post/demo.md&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>```mermaid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sequenceDiagram
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> participant Alice
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> participant Bob
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Alice-&amp;gt;&amp;gt;John: Hello John, how are you?
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> loop Healthcheck
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> John-&amp;gt;&amp;gt;John: Fight against hypochondria
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> end
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Note right of John: Rational thoughts &amp;lt;br/&amp;gt;prevail!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> John--&amp;gt;&amp;gt;Alice: Great!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> John-&amp;gt;&amp;gt;Bob: How about you?
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Bob--&amp;gt;&amp;gt;John: Jolly good!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>```
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>实现效果如下所示：&lt;/p>
+&lt;pre class="mermaid">
+sequenceDiagram
+participant Alice
+participant Bob
+Alice-&amp;gt;&amp;gt;John: Hello John, how are you?
+loop Healthcheck
+John-&amp;gt;&amp;gt;John: Fight against hypochondria
+end
+Note right of John: Rational thoughts &amp;lt;br/&amp;gt;prevail!
+John--&amp;gt;&amp;gt;Alice: Great!
+John-&amp;gt;&amp;gt;Bob: How about you?
+Bob--&amp;gt;&amp;gt;John: Jolly good!
+&lt;/pre>
+&lt;p>完成以上步骤后，Hugo 站点即可支持 Mermaid 图表渲染。&lt;/p></description></item><item><title>Hugo + Github Pages 博客搭建</title><link>https://muo123.github.io/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Tue, 03 Jun 2025 11:02:43 +0800</pubDate><guid>https://muo123.github.io/articles/hugo--github-pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/20250603/UrPE/1602X637/image.png" alt="Featured image of post Hugo + Github Pages 博客搭建" />&lt;p>以下是 &lt;strong>Hugo + GitHub Pages 博客搭建全流程指南&lt;/strong>，从环境配置到自动化部署，附详细代码和避坑提示：&lt;/p>
+&lt;hr>
+&lt;h3 id="一环境准备--windows-">一、环境准备 ( Windows )
+&lt;/h3>&lt;h4 id="1-安装-git">1. 安装 Git
+&lt;/h4>&lt;p>下载地址：https://git-scm.cn/&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>去 Git 官网下载对应版本，如无意外选择 x64 版本安装即可&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>安装成功后可以在开始菜单栏看到 Git 文件夹以及相关 Git 工具
+&lt;img src="https://tc.z.wiki/autoupload/20250602/e7iD/590X241/image.png"
+loading="lazy"
+alt="590X241/image.png"
+>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="2-安装-hugo">2. 安装 Hugo
+&lt;/h4>&lt;p>下载地址： &lt;a class="link" href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener"
+>https://github.com/gohugoio/hugo/releases&lt;/a>&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>下载 Hugo 扩展版（支持 Sass/SCSS）
 (选 hugo_extended_*.zip)
-&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/C09T/878X261/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;878X261/image.png&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;解压到 D:\Hugo 并将路径加入系统环境变量 PATH
-&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/RX8J/702X242/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;702X242/image.png&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;3-创建本地项目&#34;&gt;3. 创建本地项目
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;创建项目。在任意文件夹（图例为 D 盘）打开控制台，并输入指令 &lt;code&gt;hugo new site xxx(你的项目名)&lt;/code&gt;
-&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/snZg/850X422/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;850X422/image.png&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;运行服务。切换至该目录，并输入指令 &lt;code&gt;hugo server&lt;/code&gt;，网址输入&lt;code&gt;localhost:1313&lt;/code&gt;，此时由于没有主题内容，显示 page not found，在控制台输入&lt;code&gt;Ctrl + C&lt;/code&gt;即可关闭服务
-&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/2Fhs/1087X555/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;1087X555/image.png&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;二项目配置&#34;&gt;二、项目配置
-&lt;/h3&gt;&lt;h4 id=&#34;1-添加主题以-stack-为例&#34;&gt;1. 添加主题（以 &lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Stack&lt;/a&gt; 为例）
-&lt;/h4&gt;&lt;p&gt;可以选择从官网下载，选择喜欢的主题并下载压缩包，解压到 &lt;code&gt;themes&lt;/code&gt; 文件夹&lt;/p&gt;
-&lt;p&gt;官网地址：https://themes.gohugo.io/&lt;/p&gt;
-&lt;p&gt;或者使用 git 指令下载对应主题&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# 将主题添加为 Git 子模块（避免直接复制文件）&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git submodule add https://github.com/CaiJimmy/hugo-theme-stack.git themes/hugo-theme-stack
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/j4Rp/565X219/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;565X219/image.png&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h4 id=&#34;2-基础配置&#34;&gt;2. 基础配置
-&lt;/h4&gt;&lt;p&gt;个人编写 &lt;code&gt;hugo.toml&lt;/code&gt; 比较耗费时间，下载的主题文件夹中一般包含网站实例 &lt;code&gt;exampleSite&lt;/code&gt;，可以将里面的 &lt;code&gt;content&lt;/code&gt; 文件夹和 &lt;code&gt;hugo.yaml&lt;/code&gt; 配置文件拷贝到当前目录，并覆盖博客目录相关文件。覆盖目录文件后，可能出现兼容性报错，此时需要删除 &lt;code&gt;Content/post/rich-content&lt;/code&gt;。另外，相关语言配置项根据需要进行合理修改&lt;/p&gt;
-&lt;h4 id=&#34;3-创建第一篇文章&#34;&gt;3. 创建第一篇文章
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new posts/hello.md
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编辑 &lt;code&gt;content/posts/hello-world.md&lt;/code&gt;：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+++
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;date = &amp;#39;2025-06-02T22:12:41+08:00&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;draft = true
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;title = &amp;#39;Hello&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+++
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;this is a test
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;三本地预览&#34;&gt;三、本地预览
-&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo server -D  &lt;span style=&#34;color:#78787e&#34;&gt;# -D 包含草稿&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;访问 &lt;code&gt;https://localhost:1313&lt;/code&gt; 实时预览&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tc.z.wiki/autoupload/20250602/HNrK/1653X872/image.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;1653X872/image.png&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;四部署到-github-pages&#34;&gt;四、部署到 GitHub Pages
-&lt;/h3&gt;&lt;h4 id=&#34;方案一手动部署适合初学者&#34;&gt;方案一：手动部署（适合初学者）
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# 1. 构建静态文件（生成到 public 目录）&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo --minify
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# 2. 创建 GitHub 仓库：&amp;lt;你的用户名&amp;gt;.github.io&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# 3. 第一次推送代码之前需要进行如下配置&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.name &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;你的 GitHub 用户名&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.email &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;你注册 GitHub 的邮箱&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# 4. 将 public 目录推送到仓库&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;cd&lt;/span&gt; public
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git init
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git remote add origin git@Github.com:&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git &lt;span style=&#34;color:#ff6ac1&#34;&gt;(&lt;/span&gt;需要设置ssh&lt;span style=&#34;color:#ff6ac1&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; 或者使用指令 git remote add origin https://github.com/&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Initial deploy&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push -u origin main
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;方案二自动化部署推荐使用-github-actions&#34;&gt;方案二：自动化部署（推荐！使用 GitHub Actions）
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;创建新仓库&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;创建一个用来储存所有博客文件的新仓库，权限设置为&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;`&lt;/span&gt;private&lt;span style=&#34;color:#ff6ac1&#34;&gt;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;前往&lt;/span&gt; Settings&lt;span style=&#34;color:#ff6ac1&#34;&gt;/&lt;/span&gt;Developer Settings&lt;span style=&#34;color:#ff6ac1&#34;&gt;/&lt;/span&gt;Personal access tokens , &lt;span style=&#34;color:#ff5c57&#34;&gt;点击&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;“&lt;/span&gt;Generate new &lt;span style=&#34;color:#57c7ff&#34;&gt;token&lt;/span&gt; (classic)&lt;span style=&#34;color:#ff5c57&#34;&gt;”&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;创建一个&lt;/span&gt; token&lt;span style=&#34;color:#ff5c57&#34;&gt;，并勾选&lt;/span&gt; repo &lt;span style=&#34;color:#ff5c57&#34;&gt;和&lt;/span&gt; workflow &lt;span style=&#34;color:#ff5c57&#34;&gt;选项&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;复制&lt;/span&gt; token&lt;span style=&#34;color:#ff5c57&#34;&gt;，前往新仓库的&lt;/span&gt; Settings&lt;span style=&#34;color:#ff6ac1&#34;&gt;/&lt;/span&gt;Secrets &lt;span style=&#34;color:#ff6ac1&#34;&gt;and&lt;/span&gt; variables&lt;span style=&#34;color:#ff6ac1&#34;&gt;/&lt;/span&gt;Actions&lt;span style=&#34;color:#ff5c57&#34;&gt;，点击&lt;/span&gt; New repository secret &lt;span style=&#34;color:#ff5c57&#34;&gt;将&lt;/span&gt; token &lt;span style=&#34;color:#ff5c57&#34;&gt;保存在仓库的环境变量中。&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;strong&gt;博客项目根目录创建 &lt;code&gt;.github/workflows/deploy.yml&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;name&lt;/span&gt;: blog deploy
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;on&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;push&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;branches&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - main  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;jobs&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;deploy&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;runs-on&lt;/span&gt;: ubuntu-latest	
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;steps&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ff6ac1&#34;&gt;uses&lt;/span&gt;: actions/checkout@v4	
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;with&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff6ac1&#34;&gt;submodules&lt;/span&gt;: &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff6ac1&#34;&gt;fetch-depth&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;0&lt;/span&gt;    
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ff6ac1&#34;&gt;name&lt;/span&gt;: Setup Hugo	
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;uses&lt;/span&gt;: peaceiris/actions-hugo@v3	
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;with&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff6ac1&#34;&gt;hugo-version&lt;/span&gt;: &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;latest&amp;#39;&lt;/span&gt;	
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff6ac1&#34;&gt;extended&lt;/span&gt;: &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ff6ac1&#34;&gt;name&lt;/span&gt;: Build
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;run&lt;/span&gt;: hugo -D
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ff6ac1&#34;&gt;name&lt;/span&gt;: Deploy
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;uses&lt;/span&gt;: peaceiris/actions-gh-pages@v4	
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;with&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff6ac1&#34;&gt;external_repository&lt;/span&gt;: xxx/xxx.github.io	# 自己的GitHub pages仓库
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff6ac1&#34;&gt;personal_token&lt;/span&gt;: ${{ secrets.你的token变量名 }}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff6ac1&#34;&gt;publish_dir&lt;/span&gt;: ./public	
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff6ac1&#34;&gt;publish_branch&lt;/span&gt;: main	
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以在目录创建 &lt;code&gt;.gitignore&lt;/code&gt; 文件，避免提交部分文件，例如&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;public
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;resources
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.hugo_build.lock
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;strong&gt;推送代码到 GitHub&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git init
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Add workflow&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git remote add origin git@Github.com:&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git &lt;span style=&#34;color:#ff6ac1&#34;&gt;(&lt;/span&gt;需要设置ssh&lt;span style=&#34;color:#ff6ac1&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; 或者使用指令 git remote add origin https://github.com/&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push -u origin main
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;五访问与优化&#34;&gt;五、访问与优化
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;访问地址&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;https://&amp;lt;用户名&amp;gt;.github.io&lt;/code&gt; (首次部署需等待 1-2 分钟)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;自定义域名（可选）&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在项目根目录添加 &lt;code&gt;static/CNAME&lt;/code&gt; 文件，内容为域名：
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;blog.yourdomain.com
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;DNS 添加 CNAME 记录指向 &lt;code&gt;&amp;lt;用户名&amp;gt;.github.io&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;强制 HTTPS&lt;/strong&gt;&lt;br&gt;
-在 GitHub Pages 设置中勾选 &lt;strong&gt;Enforce HTTPS&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;六常用命令速查&#34;&gt;六、常用命令速查
-&lt;/h3&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;命令&lt;/th&gt;
-          &lt;th&gt;作用&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;hugo new posts/标题.md&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;新建文章&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;hugo server -D&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;启动本地服务器（含草稿）&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;hugo --minify&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;构建优化后的静态文件&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;git submodule update --remote&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;更新主题&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;七避坑指南&#34;&gt;七、避坑指南
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;主题无法加载&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;确保使用 &lt;code&gt;git submodule&lt;/code&gt; 添加主题&lt;/li&gt;
-&lt;li&gt;在 Actions 中启用 &lt;code&gt;submodules: recursive&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;构建失败&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;检查 &lt;code&gt;.github/workflows/deploy.yml&lt;/code&gt; 中的 Hugo 版本是否匹配&lt;/li&gt;
-&lt;li&gt;确保使用 &lt;code&gt;extended&lt;/code&gt; 版本（如果主题需要 SCSS）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;中文乱码&lt;/strong&gt;&lt;br&gt;
-在文章 Front Matter 中明确指定编码：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;charset&lt;/span&gt;: utf-8
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;自定义布局&lt;/strong&gt;&lt;br&gt;
-复制主题文件到本地覆盖（避免直接修改主题）：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp themes/stack/layouts/_default/single.html layouts/
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;效果预览&#34;&gt;效果预览
-&lt;/h3&gt;&lt;p&gt;完成部署后，你将获得：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;⚡ 基于 Hugo 的极速静态博客&lt;/li&gt;
-&lt;li&gt;🤖 自动化 Git 工作流（提交即发布）&lt;/li&gt;
-&lt;li&gt;📱 响应式主题适配移动端&lt;/li&gt;
-&lt;li&gt;🔒 免费 HTTPS 支持&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;立即开始你的博客之旅吧！升级方案可添加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Algolia 搜索（&lt;a class=&#34;link&#34; href=&#34;https://github.com/replicatedhq/hugo-algolia&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;hugo-algolia&lt;/a&gt;）&lt;/li&gt;
-&lt;li&gt;Utterances 评论系统（GitHub Issue 驱动）&lt;/li&gt;
-&lt;li&gt;流量统计（Google Analytics/Umami）&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        
-    </channel>
-</rss>
+&lt;img src="https://tc.z.wiki/autoupload/20250602/C09T/878X261/image.png"
+loading="lazy"
+alt="878X261/image.png"
+>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>解压到 D:\Hugo 并将路径加入系统环境变量 PATH
+&lt;img src="https://tc.z.wiki/autoupload/20250602/RX8J/702X242/image.png"
+loading="lazy"
+alt="702X242/image.png"
+>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="3-创建本地项目">3. 创建本地项目
+&lt;/h4>&lt;ol>
+&lt;li>
+&lt;p>创建项目。在任意文件夹（图例为 D 盘）打开控制台，并输入指令 &lt;code>hugo new site xxx(你的项目名)&lt;/code>
+&lt;img src="https://tc.z.wiki/autoupload/20250602/snZg/850X422/image.png"
+loading="lazy"
+alt="850X422/image.png"
+>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>运行服务。切换至该目录，并输入指令 &lt;code>hugo server&lt;/code>，网址输入&lt;code>localhost:1313&lt;/code>，此时由于没有主题内容，显示 page not found，在控制台输入&lt;code>Ctrl + C&lt;/code>即可关闭服务
+&lt;img src="https://tc.z.wiki/autoupload/20250602/2Fhs/1087X555/image.png"
+loading="lazy"
+alt="1087X555/image.png"
+>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="二项目配置">二、项目配置
+&lt;/h3>&lt;h4 id="1-添加主题以-stack-为例">1. 添加主题（以 &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+>Stack&lt;/a> 为例）
+&lt;/h4>&lt;p>可以选择从官网下载，选择喜欢的主题并下载压缩包，解压到 &lt;code>themes&lt;/code> 文件夹&lt;/p>
+&lt;p>官网地址：https://themes.gohugo.io/&lt;/p>
+&lt;p>或者使用 git 指令下载对应主题&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 将主题添加为 Git 子模块（避免直接复制文件）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule add https://github.com/CaiJimmy/hugo-theme-stack.git themes/hugo-theme-stack
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://tc.z.wiki/autoupload/20250602/j4Rp/565X219/image.png"
+loading="lazy"
+alt="565X219/image.png"
+>&lt;/p>
+&lt;h4 id="2-基础配置">2. 基础配置
+&lt;/h4>&lt;p>个人编写 &lt;code>hugo.toml&lt;/code> 比较耗费时间，下载的主题文件夹中一般包含网站实例 &lt;code>exampleSite&lt;/code>，可以将里面的 &lt;code>content&lt;/code> 文件夹和 &lt;code>hugo.yaml&lt;/code> 配置文件拷贝到当前目录，并覆盖博客目录相关文件。覆盖目录文件后，可能出现兼容性报错，此时需要删除 &lt;code>Content/post/rich-content&lt;/code>。另外，相关语言配置项根据需要进行合理修改&lt;/p>
+&lt;h4 id="3-创建第一篇文章">3. 创建第一篇文章
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo new posts/hello.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编辑 &lt;code>content/posts/hello-world.md&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-markdown" data-lang="markdown">&lt;span style="display:flex;">&lt;span>+++
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>date = &amp;#39;2025-06-02T22:12:41+08:00&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>draft = true
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>title = &amp;#39;Hello&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+++
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>this is a test
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="三本地预览">三、本地预览
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo server -D &lt;span style="color:#78787e"># -D 包含草稿&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>访问 &lt;code>https://localhost:1313&lt;/code> 实时预览&lt;/p>
+&lt;p>&lt;img src="https://tc.z.wiki/autoupload/20250602/HNrK/1653X872/image.png"
+loading="lazy"
+alt="1653X872/image.png"
+>&lt;/p>
+&lt;hr>
+&lt;h3 id="四部署到-github-pages">四、部署到 GitHub Pages
+&lt;/h3>&lt;h4 id="方案一手动部署适合初学者">方案一：手动部署（适合初学者）
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 1. 构建静态文件（生成到 public 目录）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo --minify
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 2. 创建 GitHub 仓库：&amp;lt;你的用户名&amp;gt;.github.io&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 3. 第一次推送代码之前需要进行如下配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git config --global user.name &lt;span style="color:#5af78e">&amp;#34;你的 GitHub 用户名&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git config --global user.email &lt;span style="color:#5af78e">&amp;#34;你注册 GitHub 的邮箱&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 4. 将 public 目录推送到仓库&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">cd&lt;/span> public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git remote add origin git@Github.com:&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git &lt;span style="color:#ff6ac1">(&lt;/span>需要设置ssh&lt;span style="color:#ff6ac1">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;gt;&amp;gt;&amp;gt; 或者使用指令 git remote add origin https://github.com/&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="color:#5af78e">&amp;#34;Initial deploy&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git push -u origin main
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="方案二自动化部署推荐使用-github-actions">方案二：自动化部署（推荐！使用 GitHub Actions）
+&lt;/h4>&lt;ol>
+&lt;li>&lt;strong>创建新仓库&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-mysql" data-lang="mysql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> &lt;span style="color:#ff5c57">创建一个用来储存所有博客文件的新仓库，权限设置为&lt;/span> &lt;span style="color:#ff6ac1">`&lt;/span>private&lt;span style="color:#ff6ac1">`&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> &lt;span style="color:#ff5c57">前往&lt;/span> Settings&lt;span style="color:#ff6ac1">/&lt;/span>Developer Settings&lt;span style="color:#ff6ac1">/&lt;/span>Personal access tokens , &lt;span style="color:#ff5c57">点击&lt;/span> &lt;span style="color:#ff5c57">“&lt;/span>Generate new &lt;span style="color:#57c7ff">token&lt;/span> (classic)&lt;span style="color:#ff5c57">”&lt;/span> &lt;span style="color:#ff5c57">创建一个&lt;/span> token&lt;span style="color:#ff5c57">，并勾选&lt;/span> repo &lt;span style="color:#ff5c57">和&lt;/span> workflow &lt;span style="color:#ff5c57">选项&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> &lt;span style="color:#ff5c57">复制&lt;/span> token&lt;span style="color:#ff5c57">，前往新仓库的&lt;/span> Settings&lt;span style="color:#ff6ac1">/&lt;/span>Secrets &lt;span style="color:#ff6ac1">and&lt;/span> variables&lt;span style="color:#ff6ac1">/&lt;/span>Actions&lt;span style="color:#ff5c57">，点击&lt;/span> New repository secret &lt;span style="color:#ff5c57">将&lt;/span> token &lt;span style="color:#ff5c57">保存在仓库的环境变量中。&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>&lt;strong>博客项目根目录创建 &lt;code>.github/workflows/deploy.yml&lt;/code>&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">name&lt;/span>: blog deploy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">on&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">push&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">branches&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - main
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">jobs&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">deploy&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">runs-on&lt;/span>: ubuntu-latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">steps&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff6ac1">uses&lt;/span>: actions/checkout@v4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">with&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">submodules&lt;/span>: &lt;span style="color:#ff6ac1">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">fetch-depth&lt;/span>: &lt;span style="color:#ff9f43">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff6ac1">name&lt;/span>: Setup Hugo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">uses&lt;/span>: peaceiris/actions-hugo@v3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">with&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">hugo-version&lt;/span>: &lt;span style="color:#5af78e">&amp;#39;latest&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">extended&lt;/span>: &lt;span style="color:#ff6ac1">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff6ac1">name&lt;/span>: Build
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">run&lt;/span>: hugo -D
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff6ac1">name&lt;/span>: Deploy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">uses&lt;/span>: peaceiris/actions-gh-pages@v4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">with&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">external_repository&lt;/span>: xxx/xxx.github.io # 自己的GitHub pages仓库
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">personal_token&lt;/span>: ${{ secrets.你的token变量名 }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">publish_dir&lt;/span>: ./public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">publish_branch&lt;/span>: main
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以在目录创建 &lt;code>.gitignore&lt;/code> 文件，避免提交部分文件，例如&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>resources
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.hugo_build.lock
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>&lt;strong>推送代码到 GitHub&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="color:#5af78e">&amp;#34;Add workflow&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git remote add origin git@Github.com:&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git &lt;span style="color:#ff6ac1">(&lt;/span>需要设置ssh&lt;span style="color:#ff6ac1">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;gt;&amp;gt;&amp;gt; 或者使用指令 git remote add origin https://github.com/&amp;lt;用户名&amp;gt;/&amp;lt;用户名&amp;gt;.github.io.git
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git push -u origin main
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="五访问与优化">五、访问与优化
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>访问地址&lt;/strong>&lt;br>
+&lt;code>https://&amp;lt;用户名&amp;gt;.github.io&lt;/code> (首次部署需等待 1-2 分钟)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>自定义域名（可选）&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>在项目根目录添加 &lt;code>static/CNAME&lt;/code> 文件，内容为域名：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>blog.yourdomain.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>DNS 添加 CNAME 记录指向 &lt;code>&amp;lt;用户名&amp;gt;.github.io&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>强制 HTTPS&lt;/strong>&lt;br>
+在 GitHub Pages 设置中勾选 &lt;strong>Enforce HTTPS&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="六常用命令速查">六、常用命令速查
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>命令&lt;/th>
+&lt;th>作用&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>hugo new posts/标题.md&lt;/code>&lt;/td>
+&lt;td>新建文章&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>hugo server -D&lt;/code>&lt;/td>
+&lt;td>启动本地服务器（含草稿）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>hugo --minify&lt;/code>&lt;/td>
+&lt;td>构建优化后的静态文件&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>git submodule update --remote&lt;/code>&lt;/td>
+&lt;td>更新主题&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="七避坑指南">七、避坑指南
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>主题无法加载&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>确保使用 &lt;code>git submodule&lt;/code> 添加主题&lt;/li>
+&lt;li>在 Actions 中启用 &lt;code>submodules: recursive&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>构建失败&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>检查 &lt;code>.github/workflows/deploy.yml&lt;/code> 中的 Hugo 版本是否匹配&lt;/li>
+&lt;li>确保使用 &lt;code>extended&lt;/code> 版本（如果主题需要 SCSS）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>中文乱码&lt;/strong>&lt;br>
+在文章 Front Matter 中明确指定编码：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">charset&lt;/span>: utf-8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>自定义布局&lt;/strong>&lt;br>
+复制主题文件到本地覆盖（避免直接修改主题）：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cp themes/stack/layouts/_default/single.html layouts/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="效果预览">效果预览
+&lt;/h3>&lt;p>完成部署后，你将获得：&lt;/p>
+&lt;ul>
+&lt;li>⚡ 基于 Hugo 的极速静态博客&lt;/li>
+&lt;li>🤖 自动化 Git 工作流（提交即发布）&lt;/li>
+&lt;li>📱 响应式主题适配移动端&lt;/li>
+&lt;li>🔒 免费 HTTPS 支持&lt;/li>
+&lt;/ul>
+&lt;p>立即开始你的博客之旅吧！升级方案可添加：&lt;/p>
+&lt;ul>
+&lt;li>Algolia 搜索（&lt;a class="link" href="https://github.com/replicatedhq/hugo-algolia" target="_blank" rel="noopener"
+>hugo-algolia&lt;/a>）&lt;/li>
+&lt;li>Utterances 评论系统（GitHub Issue 驱动）&lt;/li>
+&lt;li>流量统计（Google Analytics/Umami）&lt;/li>
+&lt;/ul></description></item></channel></rss>
