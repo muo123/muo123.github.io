@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>雪国流明</title><link>https://muo123.github.io/</link><description>Recent content on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Fri, 13 Jun 2025 11:09:04 +0800</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo 怎么显示北京时间，并添加文章修改时间</title><link>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</link><pubDate>Fri, 13 Jun 2025 09:14:14 +0800</pubDate><guid>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</guid><description>&lt;p>在 Hugo 中显示北京时间并添加文章修改时间，可以通过以下方式实现：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>雪国流明</title><link>https://muo123.github.io/</link><description>Recent content on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Fri, 13 Jun 2025 11:22:20 +0800</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo 怎么显示北京时间，并添加文章修改时间</title><link>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</link><pubDate>Fri, 13 Jun 2025 09:14:14 +0800</pubDate><guid>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</guid><description>&lt;p>在 Hugo 中显示北京时间并添加文章修改时间，可以通过以下方式实现：&lt;/p>
 &lt;hr>
 &lt;h3 id="步骤">步骤：
 &lt;/h3>&lt;h4 id="配置站点时区">&lt;strong>配置站点时区&lt;/strong>
 &lt;/h4>&lt;p>在 &lt;code>hugo.toml&lt;/code> 中设置时区为 &lt;code>Asia/Shanghai&lt;/code>：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>timeZone = &lt;span style="color:#5af78e">&amp;#39;Asia/Shanghai&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>改变部署网站的时区&lt;code>/.github/workflows/deploy.yaml&lt;/code>，根据自己网站调整，下面演示的是部署网站为 Ubuntu 的设置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">deploy&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">runs-on&lt;/span>: ubuntu-latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">env&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">TZ&lt;/span>: Asia/Shanghai &lt;span style="color:#78787e"># 修改&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="修改时间格式">&lt;strong>修改时间格式&lt;/strong>
 &lt;/h4>&lt;p>在 &lt;code>hugo.toml&lt;/code> 中修改 &lt;code>dateFormat&lt;/code> 字段&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>[params.dateFormat]
@@ -24,7 +29,7 @@ alt="718X47/image.png"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 文件修改时间配置&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[frontmatter]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lastmod = [&lt;span style="color:#5af78e">&amp;#34;:git&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;lastmod&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>lastmod = [&lt;span style="color:#5af78e">&amp;#39;lastmod&amp;#39;&lt;/span>, &lt;span style="color:#5af78e">&amp;#39;:git&amp;#39;&lt;/span>, &lt;span style="color:#5af78e">&amp;#39;:fileModTime&amp;#39;&lt;/span>, &lt;span style="color:#5af78e">&amp;#39;date&amp;#39;&lt;/span>, &lt;span style="color:#5af78e">&amp;#39;publishDate&amp;#39;&lt;/span>]
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>最终效果如下：
 &lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250613/9bQn/711X53/image.png"
 loading="lazy"
