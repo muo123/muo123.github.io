@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>muo123</copyright>
-        <lastBuildDate>Fri, 13 Jun 2025 01:35:42 +0000</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 13 Jun 2025 01:36:24 +0000</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo 怎么显示北京时间，并添加文章修改时间</title>
         <link>https://muo123.github.io/articles/hugo-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/</link>
         <pubDate>Fri, 13 Jun 2025 09:14:14 +0800</pubDate>
@@ -22,8 +22,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;修改时间格式&#34;&gt;&lt;strong&gt;修改时间格式&lt;/strong&gt;
 &lt;/h4&gt;&lt;p&gt;在 &lt;code&gt;hugo.toml&lt;/code&gt; 中修改 &lt;code&gt;dateFormat&lt;/code&gt; 字段&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[params.dateFormat]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;published = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;2006-01-02&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lastUpdated = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;2006-01-02 15:04 MST&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;published = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;2006/01/02&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lastUpdated = &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;2006/01/02 15:04 MST&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;文章时间呈现效果如下
 &lt;img src=&#34;https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250613/ugFq/718X47/image.png&#34;
 	
