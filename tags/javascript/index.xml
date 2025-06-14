@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Javascript on 雪国流明</title><link>https://muo123.github.io/tags/javascript/</link><description>Recent content in Javascript on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Sat, 14 Jun 2025 14:57:24 +0800</lastBuildDate><atom:link href="https://muo123.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>Javasript 环境搭建</title><link>https://muo123.github.io/articles/javasript-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Sat, 14 Jun 2025 14:12:49 +0800</pubDate><guid>https://muo123.github.io/articles/javasript-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250614/jFCO/915X336/image.png" alt="Featured image of post Javasript 环境搭建" />&lt;p>在JavaScript开发中，环境搭建取决于你的开发目标（前端、后端或全栈）。以下是详细的环境搭建指南：&lt;/p>
+&lt;hr>
+&lt;h3 id="一基础工具安装">&lt;strong>一、基础工具安装&lt;/strong>
+&lt;/h3>&lt;h4 id="1-nodejs-环境后端构建工具必需">1. &lt;strong>Node.js 环境&lt;/strong>（后端/构建工具必需）
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>下载&lt;/strong>：访问 &lt;a class="link" href="https://nodejs.org" target="_blank" rel="noopener"
+>Node.js 官网&lt;/a>&lt;/li>
+&lt;li>&lt;strong>安装&lt;/strong>：
+&lt;ul>
+&lt;li>推荐选择 &lt;strong>LTS&lt;/strong>（长期支持版）&lt;/li>
+&lt;li>安装时勾选 &lt;code>npm package manager&lt;/code>（Node 自带 npm）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>验证安装&lt;/strong>：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>node -v &lt;span style="color:#78787e"># 查看 Node 版本（需 v18+）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm -v &lt;span style="color:#78787e"># 查看 npm 版本&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h4 id="2-代码编辑器推荐">2. &lt;strong>代码编辑器&lt;/strong>（推荐）
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>VS Code&lt;/strong>（免费且强大）：
+&lt;ul>
+&lt;li>下载地址：&lt;a class="link" href="https://code.visualstudio.com" target="_blank" rel="noopener"
+>https://code.visualstudio.com&lt;/a>&lt;/li>
+&lt;li>必装插件：
+&lt;ul>
+&lt;li>&lt;strong>ESLint&lt;/strong>（代码规范检查）&lt;/li>
+&lt;li>&lt;strong>Prettier&lt;/strong>（代码格式化）&lt;/li>
+&lt;li>&lt;strong>Live Server&lt;/strong>（前端实时热更新）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="二前端开发环境">&lt;strong>二、前端开发环境&lt;/strong>
+&lt;/h3>&lt;h4 id="1-创建项目">1. &lt;strong>创建项目&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir my-app
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">cd&lt;/span> my-app
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm init -y &lt;span style="color:#78787e"># 生成 package.json&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2-安装基础依赖">2. &lt;strong>安装基础依赖&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm install vite --save-dev &lt;span style="color:#78787e"># 推荐构建工具（替代 Webpack）&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="3-项目结构">3. &lt;strong>项目结构&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>my-app/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── node_modules/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── src/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ ├── index.js # JS 入口文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── index.html # HTML 入口
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── package.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── vite.config.js # Vite 配置文件
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="4-启动开发服务器">4. &lt;strong>启动开发服务器&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// package.json
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#5af78e">&amp;#34;scripts&amp;#34;&lt;/span>&lt;span style="color:#ff5c57">:&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">&amp;#34;dev&amp;#34;&lt;/span>: &lt;span style="color:#5af78e">&amp;#34;vite&amp;#34;&lt;/span> &lt;span style="color:#78787e">// 启动开发服务器
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm run dev &lt;span style="color:#78787e"># 访问 http://localhost:5173&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="三后端开发环境nodejs">&lt;strong>三、后端开发环境（Node.js）&lt;/strong>
+&lt;/h3>&lt;h4 id="1-初始化项目">1. &lt;strong>初始化项目&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir my-server
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">cd&lt;/span> my-server
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm init -y
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2-安装-express示例框架">2. &lt;strong>安装 Express（示例框架）&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm install express
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="3-创建入口文件">3. &lt;strong>创建入口文件&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// server.js
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#ff6ac1">const&lt;/span> express &lt;span style="color:#ff6ac1">=&lt;/span> require(&lt;span style="color:#5af78e">&amp;#39;express&amp;#39;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">const&lt;/span> app &lt;span style="color:#ff6ac1">=&lt;/span> express();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">const&lt;/span> port &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">3000&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>app.get(&lt;span style="color:#5af78e">&amp;#39;/&amp;#39;&lt;/span>, (req, res) =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res.send(&lt;span style="color:#5af78e">&amp;#39;Hello World!&amp;#39;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>app.listen(port, () =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> console.log(&lt;span style="color:#5af78e">`Server running at http://localhost:&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>port&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">`&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="4-启动服务器">4. &lt;strong>启动服务器&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// package.json
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#5af78e">&amp;#34;scripts&amp;#34;&lt;/span>&lt;span style="color:#ff5c57">:&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">&amp;#34;start&amp;#34;&lt;/span>: &lt;span style="color:#5af78e">&amp;#34;node server.js&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm start &lt;span style="color:#78787e"># 访问 http://localhost:3000&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="四进阶工具">&lt;strong>四、进阶工具&lt;/strong>
+&lt;/h3>&lt;h4 id="1-包管理加速">1. &lt;strong>包管理加速&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>使用国内镜像：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm config &lt;span style="color:#ff5c57">set&lt;/span> registry https://registry.npmmirror.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>或使用更快的 &lt;strong>pnpm&lt;/strong>：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm install -g pnpm &lt;span style="color:#78787e"># 安装 pnpm&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pnpm create vite &lt;span style="color:#78787e"># 用 pnpm 创建项目&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h4 id="2-版本控制">2. &lt;strong>版本控制&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>安装 Git：&lt;a class="link" href="https://git-scm.com" target="_blank" rel="noopener"
+>https://git-scm.com&lt;/a>&lt;/li>
+&lt;li>初始化仓库：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="color:#5af78e">&amp;#34;Initial commit&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h4 id="3-浏览器调试">3. &lt;strong>浏览器调试&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>Chrome 开发者工具：按 &lt;code>F12&lt;/code> 打开&lt;/li>
+&lt;li>Node.js 调试：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>node --inspect server.js &lt;span style="color:#78787e"># 通过 Chrome 访问 chrome://inspect&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="五环境验证">&lt;strong>五、环境验证&lt;/strong>
+&lt;/h3>&lt;h4 id="前端示例vite--react">前端示例（Vite + React）
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm create vite@latest my-react-app -- --template react
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">cd&lt;/span> my-react-app
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm install
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm run dev
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="后端示例express-api">后端示例（Express API）
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl http://localhost:3000 &lt;span style="color:#78787e"># 应返回 &amp;#34;Hello World!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="常见问题解决">&lt;strong>常见问题解决&lt;/strong>
+&lt;/h3>&lt;ol>
+&lt;li>&lt;strong>权限错误&lt;/strong>（Mac/Linux）：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo chown -R &lt;span style="color:#ff5c57">$USER&lt;/span> /usr/local/lib/node_modules
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;strong>端口占用&lt;/strong>：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>lsof -i :3000 &lt;span style="color:#78787e"># 查看占用进程&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">kill&lt;/span> -9 &amp;lt;PID&amp;gt; &lt;span style="color:#78787e"># 结束进程&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;strong>依赖安装失败&lt;/strong>：
+&lt;ul>
+&lt;li>删除 &lt;code>node_modules&lt;/code> 和 &lt;code>package-lock.json&lt;/code>&lt;/li>
+&lt;li>重新执行 &lt;code>npm install&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>提示：现代项目推荐使用 &lt;strong>Vite&lt;/strong>（前端）和 &lt;strong>Express&lt;/strong>/&lt;strong>Koa&lt;/strong>（后端）组合，兼顾速度和轻量。&lt;/p>&lt;/blockquote></description></item></channel></rss>
