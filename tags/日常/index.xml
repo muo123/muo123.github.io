@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>日常 on 雪国流明</title><link>https://muo123.github.io/tags/%E6%97%A5%E5%B8%B8/</link><description>Recent content in 日常 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Sun, 15 Jun 2025 21:09:48 +0800</lastBuildDate><atom:link href="https://muo123.github.io/tags/%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>怎么写简历</title><link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E5%86%99%E7%AE%80%E5%8E%86/</link><pubDate>Sun, 15 Jun 2025 21:01:47 +0800</pubDate><guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E5%86%99%E7%AE%80%E5%8E%86/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250615/4Mck/773X299/image.png" alt="Featured image of post 怎么写简历" />&lt;p>一份优秀的计算机应聘简历是获得面试机会的关键！它需要&lt;strong>清晰、简洁、精准地展示你的技术能力、项目经验和与目标岗位的匹配度&lt;/strong>。以下是如何撰写一份出色的计算机简历的指南：&lt;/p>
+&lt;h2 id="核心原则">核心原则
+&lt;/h2>&lt;ol>
+&lt;li>&lt;strong>针对性强：&lt;/strong> 针对每个申请的职位进行定制，突出与该职位要求最相关的技能和经验。&lt;/li>
+&lt;li>&lt;strong>结果导向：&lt;/strong> 用&lt;strong>量化&lt;/strong>的结果和&lt;strong>具体&lt;/strong>的成就来证明你的能力，避免模糊的描述。&lt;/li>
+&lt;li>&lt;strong>清晰易读：&lt;/strong> 排版专业、简洁，使用清晰的分段和标题（如项目符号），方便招聘经理快速扫描关键信息。&lt;strong>一页纸最佳&lt;/strong>（除非经验非常丰富）。&lt;/li>
+&lt;li>&lt;strong>技术为王：&lt;/strong> 技术技能是核心，必须清晰、准确地列出。&lt;/li>
+&lt;li>&lt;strong>诚实可信：&lt;/strong> 只写你真正掌握并能讨论的技能和经验。&lt;/li>
+&lt;/ol>
+&lt;h2 id="简历结构-建议顺序">简历结构 (建议顺序)
+&lt;/h2>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>个人信息 (Contact Information)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>姓名&lt;/li>
+&lt;li>电话号码&lt;/li>
+&lt;li>专业邮箱地址（避免使用不正式或滑稽的邮箱名）&lt;/li>
+&lt;li>LinkedIn个人主页链接（可选，但强烈建议保持更新）&lt;/li>
+&lt;li>GitHub个人主页链接（&lt;strong>强烈推荐&lt;/strong>！展示你的代码和项目）&lt;/li>
+&lt;li>技术博客或个人网站链接（可选，如果有高质量内容）&lt;/li>
+&lt;li>&lt;strong>一般不需要：&lt;/strong> 照片、年龄、性别、婚姻状况、详细住址（城市即可）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>求职意向/个人总结 (Objective / Summary) - 可选但推荐&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Objective (目标)：&lt;/strong> 适合应届生或转行者，简明扼要说明你申请的职位和职业目标（1-2句话）。&lt;/li>
+&lt;li>&lt;strong>Summary (总结)：&lt;/strong> 适合有经验者，用3-5句话概括你的核心优势、关键技能、相关经验年限以及你能为公司带来的价值。&lt;strong>紧扣目标职位要求&lt;/strong>。&lt;/li>
+&lt;li>&lt;strong>例子（应届生 - Objective）：&lt;/strong> “积极进取的计算机科学应届毕业生，寻求软件开发工程师职位，希望将在校项目中的Java、Python开发经验和算法知识应用于解决实际问题。”&lt;/li>
+&lt;li>&lt;strong>例子（有经验者 - Summary）：&lt;/strong> “拥有5年全栈开发经验的软件工程师，精通Java Spring Boot后端开发和React前端框架。擅长设计和实现高并发、可扩展的微服务架构（使用Docker/Kubernetes），成功优化系统性能提升30%。寻求在贵公司高级软件工程师职位上贡献技术专长和项目管理能力。”&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>技术技能 (Technical Skills) - 重中之重！&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>分门别类清晰列出&lt;/strong>，让招聘者一眼看到你的技术栈。这是简历的“硬通货”。&lt;/li>
+&lt;li>&lt;strong>常见分类：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>编程语言：&lt;/strong> Python, Java, C++, JavaScript, Go, Rust, SQL, TypeScript, HTML/CSS 等。&lt;strong>按熟练程度排序（精通 &amp;gt; 熟悉 &amp;gt; 了解）。&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>框架与库：&lt;/strong> React, Angular, Vue.js, Spring Boot, Django, Flask, .NET Core, TensorFlow, PyTorch, pandas, NumPy 等。&lt;/li>
+&lt;li>&lt;strong>数据库：&lt;/strong> MySQL, PostgreSQL, MongoDB, Redis, Oracle, SQL Server, Cassandra 等。&lt;/li>
+&lt;li>&lt;strong>工具与平台：&lt;/strong> Git, Docker, Kubernetes, Jenkins, AWS, Azure, GCP, Linux/Unix, Shell Scripting, JIRA, Confluence, Ansible, Terraform 等。&lt;/li>
+&lt;li>&lt;strong>方法论/概念：&lt;/strong> 面向对象编程 (OOP), 设计模式, RESTful APIs, 微服务, 敏捷开发 (Scrum/Kanban), 测试驱动开发 (TDD), CI/CD, 数据结构与算法, 分布式系统, 网络安全基础 等。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>诚实评估熟练度：&lt;/strong> 区分“精通”、“熟悉”、“了解”。面试官很可能会深挖你标记为“精通”的技能。&lt;/li>
+&lt;li>&lt;strong>优先放置与目标职位最相关的技能。&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>项目经验 (Projects / Experience) - 简历的核心价值区！&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>这是证明你技术能力和解决问题能力的关键部分。&lt;/li>
+&lt;li>&lt;strong>按时间倒序排列&lt;/strong>（最近的在前）。&lt;/li>
+&lt;li>&lt;strong>每个项目/经历包含：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>项目名称：&lt;/strong> 清晰、具体。&lt;/li>
+&lt;li>&lt;strong>你的角色：&lt;/strong> 如“核心开发人员”、“项目负责人”、“后端开发实习生”。&lt;/li>
+&lt;li>&lt;strong>时间范围：&lt;/strong> 起止年月。&lt;/li>
+&lt;li>&lt;strong>技术栈：&lt;/strong> 列出该项目中使用的主要技术（与“技术技能”部分呼应）。&lt;/li>
+&lt;li>&lt;strong>项目描述与成就 (最重要！)：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>STAR原则 (情境、任务、行动、结果)：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>情境 (Situation):&lt;/strong> 项目的背景/目标是什么？（一句话）&lt;/li>
+&lt;li>&lt;strong>任务 (Task):&lt;/strong> 你负责的具体任务/挑战是什么？&lt;/li>
+&lt;li>&lt;strong>行动 (Action):&lt;/strong> &lt;strong>你具体做了什么？&lt;/strong> 使用了哪些技术？如何设计/实现的？&lt;strong>重点突出你的技术贡献和决策过程。&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>结果 (Result):&lt;/strong> &lt;strong>取得了什么可量化的成果？&lt;/strong> 对项目/团队/公司有何积极影响？&lt;strong>尽可能量化！&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>量化成果举例：&lt;/strong>
+&lt;ul>
+&lt;li>“使用Redis缓存优化数据库查询，将API响应时间平均降低40%。”&lt;/li>
+&lt;li>“设计并实现了基于Spring Security的认证授权模块，提升了系统安全性。”&lt;/li>
+&lt;li>“独立开发了XX功能模块，用户使用率提升25%。”&lt;/li>
+&lt;li>“重构了XX服务代码，代码可维护性评分提高，Bug率降低15%。”&lt;/li>
+&lt;li>“参与团队完成了XX系统从单体架构到微服务架构的迁移。”&lt;/li>
+&lt;li>“编写自动化测试脚本（使用PyTest/Selenium），覆盖率达到85%，减少回归测试时间50%。”&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>区分工作项目和课外项目/开源贡献：&lt;/strong>
+&lt;ul>
+&lt;li>工作项目：重点强调你在公司环境中的职责、贡献和商业影响。&lt;/li>
+&lt;li>课外项目/开源贡献：&lt;strong>非常重要！&lt;/strong> 尤其对于应届生和经验较少者。展示你的技术热情、主动学习能力和解决问题的能力。同样遵循STAR原则描述。确保GitHub链接可访问且项目README清晰。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>精选项目：&lt;/strong> 不要堆砌所有项目，选择&lt;strong>最能体现目标职位所需能力、技术栈最相关、成果最突出&lt;/strong>的2-5个项目详细描述。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>工作经历 (Work Experience) - 如果适用&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>如果项目经验部分已经详细描述了工作中的项目，这部分可以简洁一些，重点放在公司、职位、在职时间、总体职责和团队贡献上。&lt;/li>
+&lt;li>如果项目经验独立列出，这部分可以更侧重职责概述和关键成就（同样量化）。&lt;/li>
+&lt;li>同样&lt;strong>倒序排列&lt;/strong>。&lt;/li>
+&lt;li>&lt;strong>包含：&lt;/strong> 公司名称、职位、在职时间（年月）、地点（可选）。&lt;/li>
+&lt;li>&lt;strong>职责与成就：&lt;/strong> 用简练的要点描述你的核心职责和主要成就，强调与目标职位相关的部分。可以引用项目经验部分的关键成就。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>教育背景 (Education)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>学校名称、学位（如：工学学士/计算机科学）、专业、就读时间（年月）、地点。&lt;/li>
+&lt;li>&lt;strong>应届生/经验少者：&lt;/strong>
+&lt;ul>
+&lt;li>列出相关核心课程（如：数据结构、算法、操作系统、计算机网络、数据库原理、软件工程等）。&lt;/li>
+&lt;li>列出高GPA（如：GPA：3.8/4.0）。&lt;/li>
+&lt;li>列出获得的奖学金、荣誉（如：校级优秀毕业生、ACM竞赛奖项）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>经验丰富者：&lt;/strong> 可简化为学校、学位、专业、时间。除非是顶尖名校或与研究领域高度相关，否则课程和GPA通常可以省略。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>其他 (可选)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>奖项荣誉：&lt;/strong> 如技术竞赛奖项（ACM ICPC, Kaggle等）、优秀员工奖、重要奖学金等。&lt;/li>
+&lt;li>&lt;strong>证书：&lt;/strong> 与目标职位高度相关的专业认证（如：AWS Certified Solutions Architect, Google Cloud Professional Developer, Kubernetes相关认证等）。&lt;strong>不要堆砌无关证书。&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>语言能力：&lt;/strong> 如果职位有要求或你的语言能力突出。&lt;/li>
+&lt;li>&lt;strong>开源贡献：&lt;/strong> 如果贡献显著，可以在项目经验或此处单独列出。&lt;/li>
+&lt;li>&lt;strong>社区参与：&lt;/strong> 如技术社区组织者、技术演讲经历等。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="格式与排版要点">格式与排版要点
+&lt;/h2>&lt;ol>
+&lt;li>&lt;strong>文件格式：&lt;/strong> &lt;strong>务必保存为PDF格式！&lt;/strong> 避免Word在不同设备上格式错乱。&lt;/li>
+&lt;li>&lt;strong>命名规范：&lt;/strong> &lt;code>你的姓名_应聘职位_简历.pdf&lt;/code> （例如：&lt;code>张三_Java后端开发工程师_简历.pdf&lt;/code>）。&lt;/li>
+&lt;li>&lt;strong>字体与字号：&lt;/strong> 使用专业易读的字体（如Arial, Calibri, Times New Roman）。标题字号稍大（如12-14pt），正文（如10-11pt）。保持全文一致。&lt;/li>
+&lt;li>&lt;strong>留白：&lt;/strong> 有足够的页边距和行间距，避免拥挤。&lt;/li>
+&lt;li>&lt;strong>长度：&lt;/strong> &lt;strong>应届生/初级：一页。&lt;/strong> 中级/高级：一页为主，经验非常丰富且相关可两页，但第二页内容必须非常扎实。&lt;strong>超过两页通常不利。&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>语法与拼写：&lt;/strong> &lt;strong>零容忍！&lt;/strong> 务必反复检查，最好请他人帮忙校对。拼写和语法错误会极大损害专业形象。&lt;/li>
+&lt;li>&lt;strong>真实性：&lt;/strong> 绝对不要造假！面试中很容易被识破。&lt;/li>
+&lt;/ol>
+&lt;h2 id="针对不同背景的侧重点">针对不同背景的侧重点
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>应届毕业生：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>教育背景&lt;/strong>和&lt;strong>项目经验&lt;/strong>是核心。课程项目、个人项目、实习经历、竞赛经历尤为重要。&lt;/li>
+&lt;li>强调&lt;strong>基础扎实&lt;/strong>（数据结构、算法、操作系统等）。&lt;/li>
+&lt;li>展示&lt;strong>学习能力&lt;/strong>和&lt;strong>技术热情&lt;/strong>（通过项目、GitHub、博客体现）。&lt;/li>
+&lt;li>如果实习经历与目标职位强相关，可放在工作经历部分。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>初级开发者 (1-3年经验)：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>项目经验&lt;/strong>和&lt;strong>技术技能&lt;/strong>是核心。详细描述工作中承担的具体任务和技术贡献。&lt;/li>
+&lt;li>开始强调&lt;strong>解决问题能力&lt;/strong>、&lt;strong>协作能力&lt;/strong>（在项目描述中体现）。&lt;/li>
+&lt;li>量化成果更加重要。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>中高级开发者/专家：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>项目经验&lt;/strong>（突出复杂系统的设计、架构、性能优化、技术决策、领导力）和&lt;strong>技术深度/广度&lt;/strong>是核心。&lt;/li>
+&lt;li>强调&lt;strong>架构设计能力&lt;/strong>、&lt;strong>技术影响力&lt;/strong>（如指导他人、技术选型、推动最佳实践）、&lt;strong>业务理解&lt;/strong>和&lt;strong>成果影响力&lt;/strong>。&lt;/li>
+&lt;li>可以适当增加项目或职责的&lt;strong>战略层面&lt;/strong>描述。&lt;/li>
+&lt;li>开源贡献、技术社区影响力是强有力的加分项。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="最后的重要步骤">最后的重要步骤
+&lt;/h2>&lt;ol>
+&lt;li>&lt;strong>定制化！定制化！定制化！&lt;/strong> 每次投递前，仔细研究目标职位的&lt;strong>职位描述 (Job Description, JD)&lt;/strong>。找出关键词（技术要求、职责描述、软技能要求），然后调整你的简历：
+&lt;ul>
+&lt;li>在“技术技能”部分突出JD中强调的技能。&lt;/li>
+&lt;li>在“项目经验/工作经历”描述中，使用JD中的关键词，并选择最能体现JD要求能力的项目进行详细描述。&lt;/li>
+&lt;li>调整“求职意向/个人总结”以匹配该职位的核心要求。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>善用关键词：&lt;/strong> ATS系统会扫描简历关键词。确保包含JD中的关键技术术语（编程语言、框架、工具等）。&lt;/li>
+&lt;li>&lt;strong>准备作品集：&lt;/strong> 确保你的GitHub链接有效，重要项目的README清晰专业。个人网站/博客内容要有价值。&lt;/li>
+&lt;li>&lt;strong>寻求反馈：&lt;/strong> 在最终投递前，请有经验的学长学姐、导师、同行或职业顾问帮忙审阅简历，提供修改意见。&lt;/li>
+&lt;li>&lt;strong>持续更新：&lt;/strong> 每完成一个重要项目、学习一项新技能或获得新成就，及时更新简历。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>总结：&lt;/strong> 一份优秀的计算机简历是精心打磨的结果。它不仅是经历的罗列，更是你技术能力、解决问题能力和职业价值的&lt;strong>精准营销文案&lt;/strong>。遵循以上原则，认真定制，突出亮点和量化成果，你就能在众多求职者中脱颖而出，赢得宝贵的面试机会！祝你求职顺利！&lt;/p></description></item></channel></rss>
