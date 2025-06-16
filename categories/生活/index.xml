@@ -1,4 +1,213 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>生活 on 雪国流明</title><link>https://muo123.github.io/categories/%E7%94%9F%E6%B4%BB/</link><description>Recent content in 生活 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Sun, 15 Jun 2025 21:09:48 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>怎么写简历</title><link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E5%86%99%E7%AE%80%E5%8E%86/</link><pubDate>Sun, 15 Jun 2025 21:01:47 +0800</pubDate><guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E5%86%99%E7%AE%80%E5%8E%86/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250615/4Mck/773X299/image.png" alt="Featured image of post 怎么写简历" />&lt;p>一份优秀的计算机应聘简历是获得面试机会的关键！它需要&lt;strong>清晰、简洁、精准地展示你的技术能力、项目经验和与目标岗位的匹配度&lt;/strong>。以下是如何撰写一份出色的计算机简历的指南：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>生活 on 雪国流明</title><link>https://muo123.github.io/categories/%E7%94%9F%E6%B4%BB/</link><description>Recent content in 生活 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Mon, 16 Jun 2025 21:31:14 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>简单了解 U3D 开发</title><link>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-u3d-%E5%BC%80%E5%8F%91/</link><pubDate>Mon, 16 Jun 2025 21:26:42 +0800</pubDate><guid>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-u3d-%E5%BC%80%E5%8F%91/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250616/bFMa/956X438/image.png" alt="Featured image of post 简单了解 U3D 开发" />&lt;p>Unity3D（U3D）开发工程师是&lt;strong>专注于使用Unity引擎构建交互式实时内容的开发者&lt;/strong>，覆盖游戏、工业仿真、AR/VR、元宇宙等场景。以下是详细解析：&lt;/p>
+&lt;hr>
+&lt;h3 id="一核心职责做什么">&lt;strong>一、核心职责（做什么？）&lt;/strong>
+&lt;/h3>&lt;h4 id="1-内容开发全流程">&lt;strong>1. 内容开发全流程&lt;/strong>
+&lt;/h4>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>环节&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>具体任务&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>系统架构&lt;/strong>&lt;/td>
+&lt;td>设计模块化代码框架（如MVC）、制定资源加载策略（Addressables）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>功能实现&lt;/strong>&lt;/td>
+&lt;td>编写C#脚本控制角色移动/战斗逻辑、UI交互（UGUI/NGUI）、动画状态机（Animator）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>性能优化&lt;/strong>&lt;/td>
+&lt;td>降低DrawCall（合批）、内存管理（GC优化）、Shader调优（减少Overdraw）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>跨平台适配&lt;/strong>&lt;/td>
+&lt;td>解决Android/iOS/PC/主机平台的兼容性问题（如触屏操作转手柄控制）。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="2-协同工作流">&lt;strong>2. 协同工作流&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>与美术协作&lt;/strong>：优化模型导入设置（网格压缩/LOD）、编写Shader实现特效需求。&lt;/li>
+&lt;li>&lt;strong>与策划对接&lt;/strong>：配置技能数值表（Excel/JSON）、搭建关卡编辑器工具。&lt;/li>
+&lt;li>&lt;strong>与后端联调&lt;/strong>：接入网络模块（Photon/ Socket.IO）、处理协议数据反序列化。&lt;/li>
+&lt;/ul>
+&lt;h4 id="3-技术攻关">&lt;strong>3. 技术攻关&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>解决复杂物理交互（如布娃娃系统Ragdoll）。&lt;/li>
+&lt;li>实现高级渲染效果（URP/HDRP管线配置、屏幕后处理SSAO）。&lt;/li>
+&lt;li>开发编辑器扩展工具（提升策划配置效率）。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="二能力要求需要什么">&lt;strong>二、能力要求（需要什么？）&lt;/strong>
+&lt;/h3>&lt;h4 id="硬技能">&lt;strong>硬技能&lt;/strong>
+&lt;/h4>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>技术方向&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>关键能力&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Unity引擎&lt;/strong>&lt;/td>
+&lt;td>精通Scene管理、Prefab系统、Timeline动画、粒子系统、NavMesh寻路。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>编程基础&lt;/strong>&lt;/td>
+&lt;td>熟练C#（委托/事件/协程）、数据结构（四叉树碰撞检测）、设计模式（单例/观察者）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>图形学基础&lt;/strong>&lt;/td>
+&lt;td>理解渲染管线、Shader编写（ShaderLab/HLSL）、光照模型（PBR工作流）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>性能调优&lt;/strong>&lt;/td>
+&lt;td>使用Profiler定位瓶颈、内存泄漏检测（Memory Snapshot）、AssetBundle管理。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>跨平台开发&lt;/strong>&lt;/td>
+&lt;td>熟悉各平台SDK接入（微信小游戏、Steam SDK）、热更新方案（ILRuntime/HybridCLR）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>数学能力&lt;/strong>&lt;/td>
+&lt;td>线性代数（矩阵变换）、3D空间运算（点乘/叉乘）、贝塞尔曲线应用。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="软技能">&lt;strong>软技能&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>技术审美&lt;/strong>：判断美术资源性能开销（如粒子特效数量对帧率的影响）。&lt;/li>
+&lt;li>&lt;strong>问题拆解&lt;/strong>：将策划天马行空的需求（“实现黑洞吞噬效果”）转化为可执行技术方案。&lt;/li>
+&lt;li>&lt;strong>抗压能力&lt;/strong>：应对版本Deadline前的紧急Bug修复（如iOS闪退问题）。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="三典型工作场景示例">&lt;strong>三、典型工作场景示例&lt;/strong>
+&lt;/h3>&lt;ol>
+&lt;li>&lt;strong>战斗系统开发&lt;/strong>&lt;br>
+→ 用状态机实现角色连招：普攻第3击触发暴击，受击时播放硬直动画并计算伤害数值。&lt;/li>
+&lt;li>&lt;strong>开放世界优化&lt;/strong>&lt;br>
+→ 设计动态加载方案：根据玩家坐标异步加载地形分块，卸载视野外场景降低内存占用。&lt;/li>
+&lt;li>&lt;strong>移动端适配&lt;/strong>&lt;br>
+→ 针对低端机：关闭实时阴影、降低分辨率缩放比例（0.7x），保障30帧流畅运行。&lt;/li>
+&lt;li>&lt;strong>编辑器工具开发&lt;/strong>&lt;br>
+→ 为策划制作对话系统插件：拖拽配置分支选项，自动生成脚本绑定事件。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="四岗位细分方向">&lt;strong>四、岗位细分方向&lt;/strong>
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>领域&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>技术侧重点&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>代表产品&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>手游开发&lt;/strong>&lt;/td>
+&lt;td>强性能优化（包体&amp;lt;100MB）、SDK接入（支付/广告）、反外挂机制。&lt;/td>
+&lt;td>《原神》《王者荣耀》&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>主机/PC游戏&lt;/strong>&lt;/td>
+&lt;td>追求高画质（HDRP管线）、物理模拟（Havok）、多人同步（帧同步/状态同步）。&lt;/td>
+&lt;td>《永劫无间》《黑神话》&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>AR/VR&lt;/strong>&lt;/td>
+&lt;td>空间定位（ARKit/ARCore）、手柄交互、防眩晕设计（帧率&amp;gt;90fps）。&lt;/td>
+&lt;td>VR教育/工业维修模拟&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>工业仿真&lt;/strong>&lt;/td>
+&lt;td>物理引擎精度（布料/流体）、CAD模型导入、数据可视化。&lt;/td>
+&lt;td>汽车装配培训系统&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>元宇宙应用&lt;/strong>&lt;/td>
+&lt;td>实时音视频（WebRTC）、Avatar系统、UGC内容编辑器。&lt;/td>
+&lt;td>虚拟社交平台&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="五入行与晋升路径">&lt;strong>五、入行与晋升路径&lt;/strong>
+&lt;/h3>&lt;h4 id="入门要求">&lt;strong>入门要求&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>学历&lt;/strong>：计算机/数字媒体相关专业（能力＞学历，作品集是关键）。&lt;/li>
+&lt;li>&lt;strong>必备技能&lt;/strong>：
+&lt;ul>
+&lt;li>独立完成小型Demo（如3D跑酷游戏）&lt;/li>
+&lt;li>掌握Unity基础工作流（场景搭建-脚本编写-打包发布）&lt;/li>
+&lt;li>理解面向对象编程（OOP）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>加分项&lt;/strong>：
+&lt;ul>
+&lt;li>GitHub开源项目贡献&lt;/li>
+&lt;li>Asset Store上架工具&lt;/li>
+&lt;li>游戏开发比赛奖项（如Game Jam）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="职业发展">&lt;strong>职业发展&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>技术纵深&lt;/strong>：&lt;br>
+初级开发 → 技术专家（图形/物理/网络方向） → 主程 → 技术总监&lt;/li>
+&lt;li>&lt;strong>横向拓展&lt;/strong>：&lt;br>
+→ 转技术美术（TA）：衔接程序与美术，专攻Shader/工具链&lt;br>
+→ 转独立开发者：Steam发布个人游戏&lt;br>
+→ 转引擎开发（Unity源码改造）&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="六薪资参考2025年国内">&lt;strong>六、薪资参考（2025年国内）&lt;/strong>
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>层级&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>年薪范围&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>能力标签&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>初级（0-2年）&lt;/td>
+&lt;td>12万-20万&lt;/td>
+&lt;td>实现基础功能/UGUI开发/简单优化&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>中级（3-5年）&lt;/td>
+&lt;td>25万-45万&lt;/td>
+&lt;td>架构模块化代码/Shader编写/跨平台适配&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>资深（5年+）&lt;/td>
+&lt;td>50万-100万+&lt;/td>
+&lt;td>主导大型项目/定制渲染管线/自研引擎插件&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="行业趋势与挑战">&lt;strong>行业趋势与挑战&lt;/strong>
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>技术融合&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>AIGC应用&lt;/strong>：用AI生成NPC对话/3D模型贴图（Unity Muse工具链）。&lt;/li>
+&lt;li>&lt;strong>云游戏&lt;/strong>：适应Unity云分发方案（减少端侧计算压力）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>核心挑战&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>碎片化适配&lt;/strong>：安卓设备性能差异导致“低端机卡顿，高端机发热”。&lt;/li>
+&lt;li>&lt;strong>内容同质化&lt;/strong>：快速复用Asset Store资源导致游戏玩法雷同。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>🎮 &lt;strong>核心竞争力&lt;/strong>：&lt;strong>在技术限制与创意需求间找到平衡点&lt;/strong>——用最优方案实现“策划想要的炫酷效果”且不炸掉玩家的手机。&lt;/p>&lt;/blockquote></description></item><item><title>怎么写简历</title><link>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E5%86%99%E7%AE%80%E5%8E%86/</link><pubDate>Sun, 15 Jun 2025 21:01:47 +0800</pubDate><guid>https://muo123.github.io/articles/%E6%80%8E%E4%B9%88%E5%86%99%E7%AE%80%E5%8E%86/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250615/4Mck/773X299/image.png" alt="Featured image of post 怎么写简历" />&lt;p>一份优秀的计算机应聘简历是获得面试机会的关键！它需要&lt;strong>清晰、简洁、精准地展示你的技术能力、项目经验和与目标岗位的匹配度&lt;/strong>。以下是如何撰写一份出色的计算机简历的指南：&lt;/p>
 &lt;h2 id="核心原则">核心原则
 &lt;/h2>&lt;ol>
 &lt;li>&lt;strong>针对性强：&lt;/strong> 针对每个申请的职位进行定制，突出与该职位要求最相关的技能和经验。&lt;/li>
