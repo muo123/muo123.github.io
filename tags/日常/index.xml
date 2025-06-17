@@ -1,4 +1,196 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>日常 on 雪国流明</title><link>https://muo123.github.io/tags/%E6%97%A5%E5%B8%B8/</link><description>Recent content in 日常 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Mon, 16 Jun 2025 21:31:14 +0800</lastBuildDate><atom:link href="https://muo123.github.io/tags/%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>简单了解 U3D 开发</title><link>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-u3d-%E5%BC%80%E5%8F%91/</link><pubDate>Mon, 16 Jun 2025 21:26:42 +0800</pubDate><guid>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-u3d-%E5%BC%80%E5%8F%91/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250616/bFMa/956X438/image.png" alt="Featured image of post 简单了解 U3D 开发" />&lt;p>Unity3D（U3D）开发工程师是&lt;strong>专注于使用Unity引擎构建交互式实时内容的开发者&lt;/strong>，覆盖游戏、工业仿真、AR/VR、元宇宙等场景。以下是详细解析：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>日常 on 雪国流明</title><link>https://muo123.github.io/tags/%E6%97%A5%E5%B8%B8/</link><description>Recent content in 日常 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Tue, 17 Jun 2025 09:06:01 +0800</lastBuildDate><atom:link href="https://muo123.github.io/tags/%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>简单了解游戏策划</title><link>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92/</link><pubDate>Tue, 17 Jun 2025 09:02:15 +0800</pubDate><guid>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250617/HPJo/776X385/image.png" alt="Featured image of post 简单了解游戏策划" />&lt;p>游戏策划是游戏开发的核心环节，负责从概念构思到产品落地的全流程设计，其工作直接影响游戏的可玩性、市场表现及用户体验。以下从流程、技能、职责及行业要求四个维度展开详细介绍：&lt;/p>
+&lt;hr>
+&lt;h3 id="-一游戏策划的核心流程">🎮 一、游戏策划的核心流程
+&lt;/h3>&lt;p>游戏策划遵循结构化开发流程，确保项目有序推进：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>项目启动与策划&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>市场调研&lt;/strong>：分析市场趋势、竞品动态及目标用户需求，确定游戏定位与可行性。&lt;/li>
+&lt;li>&lt;strong>立项与规划&lt;/strong>：明确核心玩法、商业目标及资源预算，输出策划草案。&lt;/li>
+&lt;li>&lt;strong>团队组建&lt;/strong>：根据项目需求配置策划、程序、美术等角色。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>内容设计阶段&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>世界观与角色设定&lt;/strong>：构建故事背景、角色性格及技能体系，增强叙事沉浸感。&lt;/li>
+&lt;li>&lt;strong>系统与关卡设计&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;em>核心玩法&lt;/em>：设计战斗、经济、成长等核心机制。&lt;/li>
+&lt;li>&lt;em>关卡设计&lt;/em>：规划地图布局、难度曲线及奖励机制，提升玩家挑战性。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>UI/UX设计&lt;/strong>：优化界面交互与视觉引导，确保操作流畅性。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>开发与测试&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>技术实现&lt;/strong>：协同程序团队搭建引擎架构，完成功能模块开发。&lt;/li>
+&lt;li>&lt;strong>多轮测试&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;em>功能测试&lt;/em>：修复逻辑漏洞与程序BUG。&lt;/li>
+&lt;li>&lt;em>平衡性测试&lt;/em>：调整数值（如伤害值、经济系统），避免玩家体验失衡。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>运营与迭代&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>上线推广&lt;/strong>：通过社交媒体、广告投放等渠道触达目标用户。&lt;/li>
+&lt;li>&lt;strong>数据分析&lt;/strong>：监控用户留存、付费率等指标，驱动版本更新与内容扩展。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>以下表格概括了游戏开发各阶段的关键任务和输出文档：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>开发阶段&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>核心任务&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>关键输出文档&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>项目启动&lt;/strong>&lt;/td>
+&lt;td>市场分析、目标用户定位、可行性评估&lt;/td>
+&lt;td>立项报告、市场调研分析&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>内容设计&lt;/strong>&lt;/td>
+&lt;td>世界观构建、角色设定、核心玩法设计&lt;/td>
+&lt;td>游戏设计文档(GDD)、关卡设计文档&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>开发实现&lt;/strong>&lt;/td>
+&lt;td>程序架构搭建、美术资源制作、音效集成&lt;/td>
+&lt;td>技术规格文档、美术风格指南&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>测试调优&lt;/strong>&lt;/td>
+&lt;td>功能测试、平衡性调整、用户体验优化&lt;/td>
+&lt;td>测试报告、迭代方案&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>运营维护&lt;/strong>&lt;/td>
+&lt;td>版本更新、数据分析、社区管理&lt;/td>
+&lt;td>运营策略、用户反馈报告&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="-二游戏策划师的必备技能体系">🔧 二、游戏策划师的必备技能体系
+&lt;/h3>&lt;p>成功策划师需复合型能力，涵盖设计、技术及管理三大维度：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>设计能力&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>游戏机制设计&lt;/strong>：精通玩法规则、数值平衡（如技能冷却公式、经济模型）。&lt;/li>
+&lt;li>&lt;strong>叙事与审美&lt;/strong>：构建连贯剧情，具备美术鉴赏力以指导视觉风格。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>技术理解&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>引擎基础&lt;/strong>：熟悉Unity/Unreal等引擎逻辑，能与程序员高效沟通技术方案。&lt;/li>
+&lt;li>&lt;strong>数据分析&lt;/strong>：通过用户行为数据优化设计（如关卡通过率分析）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>软技能&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>跨团队协作&lt;/strong>：协调程序、美术、测试等多部门资源，推动项目进度。&lt;/li>
+&lt;li>&lt;strong>成本控制&lt;/strong>：评估开发周期与资源消耗，避免项目超支。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>市场与用户洞察&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>玩家心理学&lt;/strong>：理解玩家动机（如成就、社交需求），设计成瘾性循环。&lt;/li>
+&lt;li>&lt;strong>趋势敏感度&lt;/strong>：跟踪新兴玩法（如开放世界、 Roguelike），保持创新竞争力。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>以下表格总结了游戏策划师所需的核心技能与能力要求：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>技能类别&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>具体能力&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>应用场景&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>核心设计能力&lt;/strong>&lt;/td>
+&lt;td>游戏机制设计、数值平衡、叙事构建&lt;/td>
+&lt;td>制定核心玩法、角色成长体系、故事情节&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>技术理解&lt;/strong>&lt;/td>
+&lt;td>引擎基础、编程概念、工具使用&lt;/td>
+&lt;td>与程序员协作、原型开发、技术可行性评估&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>软技能&lt;/strong>&lt;/td>
+&lt;td>跨部门协作、成本评估、敏捷应变&lt;/td>
+&lt;td>资源协调、项目进度管理、需求变更处理&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>市场与用户&lt;/strong>&lt;/td>
+&lt;td>玩家心理分析、数据驱动决策、趋势洞察&lt;/td>
+&lt;td>用户画像构建、留存优化、玩法创新&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="-三职责与工作内容">📝 三、职责与工作内容
+&lt;/h3>&lt;p>策划师贯穿游戏全生命周期，具体职责包括：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>架构设计&lt;/strong>：编写游戏设计文档（GDD），定义核心玩法与系统框架。&lt;/li>
+&lt;li>&lt;strong>内容生产&lt;/strong>：
+&lt;ul>
+&lt;li>设计任务线、剧情分支及NPC对话脚本。&lt;/li>
+&lt;li>规划关卡结构，结合难度曲线与奖励反馈。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>资源协调&lt;/strong>：
+&lt;ul>
+&lt;li>预估美术、程序资源需求，制定开发排期。&lt;/li>
+&lt;li>主导版本迭代，基于测试反馈调整设计。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>市场适配&lt;/strong>：
+&lt;ul>
+&lt;li>本地化调整（如文化符号适配），提升区域用户接受度。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="-四行业招聘要求与发展路径">📊 四、行业招聘要求与发展路径
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>任职门槛&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>学历&lt;/strong>：本科及以上，计算机、设计或心理学专业优先。&lt;/li>
+&lt;li>&lt;strong>技能&lt;/strong>：熟练使用Visio/PowerPoint撰写文档，掌握基础编程知识。&lt;/li>
+&lt;li>&lt;strong>经验&lt;/strong>：1-3年经验，有成功项目案例者更具竞争力。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>职业进阶&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>纵向发展&lt;/strong>：执行策划→主策划→制作人，负责更大规模项目。&lt;/li>
+&lt;li>&lt;strong>横向拓展&lt;/strong>：转型产品经理或独立开发者，延伸至泛娱乐领域。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="-总结">💎 总结
+&lt;/h3>&lt;p>游戏策划是技术与艺术的结合体，需以&lt;strong>玩家体验为核心&lt;/strong>，通过系统化设计将创意转化为可落地的产品。随着行业竞争加剧，策划师除掌握基础技能外，还需具备&lt;strong>数据思维、跨界协作及快速学习&lt;/strong>能力，方能在玩法创新与商业价值间找到平衡点。未来，随着AI工具普及（如自动生成关卡），策划角色将更聚焦于“人性化设计”，深化情感化叙事与社交体验。&lt;/p></description></item><item><title>简单了解 U3D 开发</title><link>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-u3d-%E5%BC%80%E5%8F%91/</link><pubDate>Mon, 16 Jun 2025 21:26:42 +0800</pubDate><guid>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-u3d-%E5%BC%80%E5%8F%91/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250616/bFMa/956X438/image.png" alt="Featured image of post 简单了解 U3D 开发" />&lt;p>Unity3D（U3D）开发工程师是&lt;strong>专注于使用Unity引擎构建交互式实时内容的开发者&lt;/strong>，覆盖游戏、工业仿真、AR/VR、元宇宙等场景。以下是详细解析：&lt;/p>
 &lt;hr>
 &lt;h3 id="一核心职责做什么">&lt;strong>一、核心职责（做什么？）&lt;/strong>
 &lt;/h3>&lt;h4 id="1-内容开发全流程">&lt;strong>1. 内容开发全流程&lt;/strong>
