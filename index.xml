@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>雪国流明</title><link>https://muo123.github.io/</link><description>Recent content on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Fri, 20 Jun 2025 18:40:22 +0800</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>应聘者与 HR 沟通有哪些要点</title><link>https://muo123.github.io/articles/%E5%BA%94%E8%81%98%E8%80%85%E4%B8%8E-hr-%E6%B2%9F%E9%80%9A%E6%9C%89%E5%93%AA%E4%BA%9B%E8%A6%81%E7%82%B9/</link><pubDate>Fri, 20 Jun 2025 18:34:49 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%BA%94%E8%81%98%E8%80%85%E4%B8%8E-hr-%E6%B2%9F%E9%80%9A%E6%9C%89%E5%93%AA%E4%BA%9B%E8%A6%81%E7%82%B9/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250620/vWXV/1920X1080/image.png" alt="Featured image of post 应聘者与 HR 沟通有哪些要点" />&lt;p>作为应聘者与HR沟通时，每一次对话都是展示你专业素养、了解公司真相的宝贵机会。你需要像侦探一样敏锐，像外交官一样得体。以下是你需要重点关注的内容及沟通建议：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>雪国流明</title><link>https://muo123.github.io/</link><description>Recent content on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Sat, 21 Jun 2025 19:28:32 +0800</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>判断质数 C++ 实现</title><link>https://muo123.github.io/articles/%E5%88%A4%E6%96%AD%E8%B4%A8%E6%95%B0-c-%E5%AE%9E%E7%8E%B0/</link><pubDate>Sat, 21 Jun 2025 18:59:18 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%88%A4%E6%96%AD%E8%B4%A8%E6%95%B0-c-%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>要判断一个数是否为质数，可以遵循以下思路：质数是大于1且只能被1和自身整除的自然数。算法关键在于高效地检查该数是否有除1和自身外的其他因数。&lt;/p>
+&lt;h3 id="算法思路">算法思路
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>处理边界情况&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>若数字小于2，则不是质数（质数定义要求大于1）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>检查奇数因子&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>只需检查从2开始的奇数因子。&lt;/li>
+&lt;li>检查范围上限为 $\sqrt{n}$（数学原理：若 $n$ 有因子 $a$，则必有因子 $b = n/a$，其中一个因子必小于等于 $\sqrt{n}$。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="时间复杂度">时间复杂度
+&lt;/h3>&lt;ul>
+&lt;li>最优情况：$O(1)$（如偶数或小质数）。&lt;/li>
+&lt;li>最坏情况：$O(\sqrt{n})$（需遍历到 $\sqrt{n}$。&lt;/li>
+&lt;/ul>
+&lt;h3 id="c-代码实现">C++ 代码实现
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">bool&lt;/span> &lt;span style="color:#57c7ff">is_prime&lt;/span>(&lt;span style="color:#9aedfe">int&lt;/span> n) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span>(n &lt;span style="color:#ff6ac1">&amp;lt;&lt;/span> &lt;span style="color:#ff9f43">2&lt;/span>) &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff5c57">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">for&lt;/span>(&lt;span style="color:#9aedfe">int&lt;/span> i &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">2&lt;/span>; i &lt;span style="color:#ff6ac1">&amp;lt;=&lt;/span> n&lt;span style="color:#ff6ac1">/&lt;/span>i; i&lt;span style="color:#ff6ac1">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span>(n &lt;span style="color:#ff6ac1">%&lt;/span> i &lt;span style="color:#ff6ac1">==&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>) &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff5c57">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff5c57">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="代码解释">代码解释
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>边界处理&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>n &amp;lt; 2&lt;/code>：直接返回 &lt;code>false&lt;/code>。&lt;/li>
+&lt;li>&lt;code>n == 2&lt;/code>：唯一偶质数，返回 &lt;code>true&lt;/code>。&lt;/li>
+&lt;li>&lt;code>n % 2 == 0&lt;/code>：除2外的偶数均不是质数。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>因子检查&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>计算上限&lt;/strong>：&lt;code>i &amp;lt;= n/i&lt;/code> 确保覆盖所有可能因子。&lt;/li>
+&lt;li>&lt;strong>找到因子&lt;/strong>：若整除成立，则 &lt;code>n&lt;/code> 不是质数。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>返回结果&lt;/strong>：若循环结束未找到因子，则 &lt;code>n&lt;/code> 是质数。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="示例测试">示例测试
+&lt;/h3>&lt;ul>
+&lt;li>&lt;code>isPrime(2) → true&lt;/code>&lt;/li>
+&lt;li>&lt;code>isPrime(17) → true&lt;/code>&lt;/li>
+&lt;li>&lt;code>isPrime(9) → false&lt;/code>&lt;/li>
+&lt;li>&lt;code>isPrime(1) → false&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>此算法平衡了效率与简洁性，适用于大多数场景。对于极大数字（如密码学应用），可采用更高级算法（如Miller-Rabin测试）。&lt;/p></description></item><item><title>应聘者与 HR 沟通有哪些要点</title><link>https://muo123.github.io/articles/%E5%BA%94%E8%81%98%E8%80%85%E4%B8%8E-hr-%E6%B2%9F%E9%80%9A%E6%9C%89%E5%93%AA%E4%BA%9B%E8%A6%81%E7%82%B9/</link><pubDate>Fri, 20 Jun 2025 18:34:49 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%BA%94%E8%81%98%E8%80%85%E4%B8%8E-hr-%E6%B2%9F%E9%80%9A%E6%9C%89%E5%93%AA%E4%BA%9B%E8%A6%81%E7%82%B9/</guid><description>&lt;img src="https://tc.z.wiki/autoupload/LLDBPtgBr9Urin7-1d1Bk_nFSiw33MlPagvUIGEPh-ayl5f0KlZfm6UsKj-HyTuv/20250620/vWXV/1920X1080/image.png" alt="Featured image of post 应聘者与 HR 沟通有哪些要点" />&lt;p>作为应聘者与HR沟通时，每一次对话都是展示你专业素养、了解公司真相的宝贵机会。你需要像侦探一样敏锐，像外交官一样得体。以下是你需要重点关注的内容及沟通建议：&lt;/p>
 &lt;h2 id="-一核心信息确认与澄清">🔍 一、核心信息确认与澄清
 &lt;/h2>&lt;ol>
 &lt;li>
