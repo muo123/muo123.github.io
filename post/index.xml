@@ -1,4 +1,166 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 雪国流明</title><link>https://muo123.github.io/post/</link><description>Recent content in Posts on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Sun, 22 Jun 2025 19:31:53 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 中怎么给 map 自定义比较规则</title><link>https://muo123.github.io/articles/c-%E4%B8%AD%E6%80%8E%E4%B9%88%E7%BB%99-map-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</link><pubDate>Sun, 22 Jun 2025 19:29:57 +0800</pubDate><guid>https://muo123.github.io/articles/c-%E4%B8%AD%E6%80%8E%E4%B9%88%E7%BB%99-map-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</guid><description>&lt;p>在 C++ 中，&lt;code>std::map&lt;/code> 默认使用 &lt;code>std::less&amp;lt;Key&amp;gt;&lt;/code> 进行排序（升序）。若需自定义排序规则，可通过以下三种方式实现：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 雪国流明</title><link>https://muo123.github.io/post/</link><description>Recent content in Posts on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Sun, 22 Jun 2025 19:55:47 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>快速排序C++实现</title><link>https://muo123.github.io/articles/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fc-%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 22 Jun 2025 19:51:01 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fc-%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>快速排序（Quick Sort）是一种高效的排序算法，采用分治法（Divide and Conquer）策略。它的基本思想是：选择一个基准元素（pivot），通过一趟排序将待排序的数据分割成独立的两部分，其中一部分的所有元素都比基准元素小，另一部分的所有元素都比基准元素大，然后再按此方法对这两部分数据分别进行快速排序，整个过程递归进行，直到整个数据变成有序序列。&lt;/p>
+&lt;h3 id="算法步骤">算法步骤：
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>选择基准（Pivot Selection）&lt;/strong>：从数组中选择一个元素作为基准（pivot）。选择方式有多种，例如可以选择第一个元素、最后一个元素、中间元素或随机元素。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>分区（Partitioning）&lt;/strong>：重新排列数组，使得所有小于基准的元素都放在基准前面，所有大于基准的元素都放在基准后面（相等的数可以到任一边）。在这个分区结束之后，该基准就处于数组的中间位置。这个称为分区操作。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>递归排序（Recursion）&lt;/strong>：递归地将小于基准元素的子数组和大于基准元素的子数组排序。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="算法实现">算法实现
+&lt;/h3>&lt;h4 id="核心思路">核心思路
+&lt;/h4>&lt;ol>
+&lt;li>&lt;strong>基准选择&lt;/strong>：选择中间元素作为基准值（&lt;code>x = a[l + r &amp;gt;&amp;gt; 1]&lt;/code>）&lt;/li>
+&lt;li>&lt;strong>双指针扫描&lt;/strong>：使用左右指针&lt;code>i&lt;/code>和&lt;code>j&lt;/code>分别从两端向中间扫描&lt;/li>
+&lt;li>&lt;strong>元素交换&lt;/strong>：交换不符合分区规则的逆序对&lt;/li>
+&lt;li>&lt;strong>递归分区&lt;/strong>：将数组分成两个子数组递归处理&lt;/li>
+&lt;/ol>
+&lt;h4 id="代码逐行解析">代码逐行解析
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">void&lt;/span> &lt;span style="color:#57c7ff">quick_sort&lt;/span>(&lt;span style="color:#9aedfe">int&lt;/span> a[], &lt;span style="color:#9aedfe">int&lt;/span> l, &lt;span style="color:#9aedfe">int&lt;/span> r) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span>(l &lt;span style="color:#ff6ac1">&amp;gt;=&lt;/span> r) &lt;span style="color:#ff6ac1">return&lt;/span>; &lt;span style="color:#78787e">// 递归终止条件：子数组长度≤1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 初始化指针（扩大边界）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span> i &lt;span style="color:#ff6ac1">=&lt;/span> l&lt;span style="color:#ff6ac1">-&lt;/span>&lt;span style="color:#ff9f43">1&lt;/span>, j &lt;span style="color:#ff6ac1">=&lt;/span> r&lt;span style="color:#ff6ac1">+&lt;/span>&lt;span style="color:#ff9f43">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 选择中间元素作为基准（位运算等价于(l+r)/2）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span> x &lt;span style="color:#ff6ac1">=&lt;/span> a[l&lt;span style="color:#ff6ac1">+&lt;/span>r&lt;span style="color:#ff6ac1">&amp;gt;&amp;gt;&lt;/span>&lt;span style="color:#ff9f43">1&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">while&lt;/span>(i &lt;span style="color:#ff6ac1">&amp;lt;&lt;/span> j) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 左指针向右找到≥基准的元素
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">do&lt;/span> i&lt;span style="color:#ff6ac1">++&lt;/span>; &lt;span style="color:#ff6ac1">while&lt;/span>(a[i] &lt;span style="color:#ff6ac1">&amp;lt;&lt;/span> x);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 右指针向左找到≤基准的元素
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">do&lt;/span> j&lt;span style="color:#ff6ac1">--&lt;/span>; &lt;span style="color:#ff6ac1">while&lt;/span>(a[j] &lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> x);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 交换逆序元素
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">if&lt;/span>(i &lt;span style="color:#ff6ac1">&amp;lt;&lt;/span> j) swap(a[i], a[j]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 递归处理子数组
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> quick_sort(a, l, j); &lt;span style="color:#78787e">// 左子数组[l, j]
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> quick_sort(a, j&lt;span style="color:#ff6ac1">+&lt;/span>&lt;span style="color:#ff9f43">1&lt;/span>, r); &lt;span style="color:#78787e">// 右子数组[j+1, r]
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="分区过程详解以数组311142857为例">分区过程详解（以数组{3,11,14,2,8,5,7}为例）
+&lt;/h4>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>初始状态&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>l=0, r=6, x=a[3]=2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>i=-1, j=7
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[3, 11, 14, 2, 8, 5, 7]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第一轮扫描&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>i++&lt;/code>直到a[i]≥2 → i=0 (3≥2)&lt;/li>
+&lt;li>&lt;code>j--&lt;/code>直到a[j]≤2 → j=3 (2≤2)&lt;/li>
+&lt;li>交换a[0]和a[3] → [2, 11, 14, 3, 8, 5, 7]&lt;/li>
+&lt;li>继续扫描：i=1(11), j=2(14) → 交换 → [2, 14, 11, 3, 8, 5, 7]&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第二轮扫描&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>i→2(11), j→1(14) → i&amp;gt;j 循环结束&lt;/li>
+&lt;li>当前分区：[2] 和 [14,11,3,8,5,7]&lt;/li>
+&lt;li>j=1 (分区点)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>递归排序&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>quick_sort(a, &lt;span style="color:#ff9f43">0&lt;/span>, &lt;span style="color:#ff9f43">1&lt;/span>); &lt;span style="color:#78787e">// [2] (已有序)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>quick_sort(a, &lt;span style="color:#ff9f43">2&lt;/span>, &lt;span style="color:#ff9f43">6&lt;/span>); &lt;span style="color:#78787e">// 排序[14,11,3,8,5,7]
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>后续递归&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>右子数组选择基准x=a[4]=8&lt;/li>
+&lt;li>分区过程：
+&lt;ul>
+&lt;li>交换14↔7 → [7,11,3,8,5,14]&lt;/li>
+&lt;li>交换11↔5 → [7,5,3,8,11,14]&lt;/li>
+&lt;li>最终分区：[7,5,3] 和 [8,11,14]&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="算法特点">算法特点
+&lt;/h4>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>高效分区&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>双指针同时扫描，平均交换次数更少&lt;/li>
+&lt;li>&lt;code>do-while&lt;/code>确保至少移动一次指针，避免死循环&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>基准选择&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>中位数基准 (&lt;code>l+r&amp;gt;&amp;gt;1&lt;/code>) 避免已排序数组的最坏情况&lt;/li>
+&lt;li>无需随机化（已满足平均O(n log n)）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>边界处理&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>初始化&lt;code>i=l-1&lt;/code>, &lt;code>j=r+1&lt;/code>保证扫描全覆盖&lt;/li>
+&lt;li>递归使用&lt;code>j&lt;/code>和&lt;code>j+1&lt;/code>作为分割点，确保分区不重叠&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="时间复杂度分析">时间复杂度分析
+&lt;/h4>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>情况&lt;/th>
+&lt;th>时间复杂度&lt;/th>
+&lt;th>发生条件&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>最佳&lt;/td>
+&lt;td>O(n log n)&lt;/td>
+&lt;td>每次均匀分区&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>平均&lt;/td>
+&lt;td>O(n log n)&lt;/td>
+&lt;td>随机数据&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>最差&lt;/td>
+&lt;td>O(n²)&lt;/td>
+&lt;td>每次极不平衡分区&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>空间复杂度&lt;/td>
+&lt;td>O(log n)&lt;/td>
+&lt;td>递归栈深度&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="执行流程示意图">执行流程示意图
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>原始: [3,11,14,2,8,5,7]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>基准: 2 (index3)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>分区: [2] [14,11,3,8,5,7] // j=1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>右子数组: [14,11,3,8,5,7]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>基准: 8 (index4)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>分区: [7,5,3] [8,11,14] // j=4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>左子数组: [7,5,3]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>基准: 5 (index1)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>分区: [3] [5,7] // j=1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>最终合并: [2,3,5,7,8,11,14]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="注意事项">注意事项
+&lt;/h4>&lt;ol>
+&lt;li>&lt;strong>稳定性&lt;/strong>：快速排序是不稳定排序（等值元素可能交换位置）&lt;/li>
+&lt;li>&lt;strong>递归深度&lt;/strong>：最坏情况递归深度O(n)，可通过尾递归优化&lt;/li>
+&lt;li>&lt;strong>重复元素&lt;/strong>：当有大量重复元素时，可优化为三路快排&lt;/li>
+&lt;/ol></description></item><item><title>C++ 中怎么给 map 自定义比较规则</title><link>https://muo123.github.io/articles/c-%E4%B8%AD%E6%80%8E%E4%B9%88%E7%BB%99-map-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</link><pubDate>Sun, 22 Jun 2025 19:29:57 +0800</pubDate><guid>https://muo123.github.io/articles/c-%E4%B8%AD%E6%80%8E%E4%B9%88%E7%BB%99-map-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</guid><description>&lt;p>在 C++ 中，&lt;code>std::map&lt;/code> 默认使用 &lt;code>std::less&amp;lt;Key&amp;gt;&lt;/code> 进行排序（升序）。若需自定义排序规则，可通过以下三种方式实现：&lt;/p>
 &lt;h3 id="1-使用函数对象仿函数">1. 使用函数对象（仿函数）
 &lt;/h3>&lt;p>定义包含 &lt;code>operator()&lt;/code> 的结构体/类，实现严格弱序比较：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;map&amp;gt;&lt;/span>&lt;span style="color:#78787e">
