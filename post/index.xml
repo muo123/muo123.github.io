@@ -1,4 +1,112 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 雪国流明</title><link>https://muo123.github.io/post/</link><description>Recent content in Posts on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Sat, 21 Jun 2025 19:28:32 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>判断质数 C++ 实现</title><link>https://muo123.github.io/articles/%E5%88%A4%E6%96%AD%E8%B4%A8%E6%95%B0-c-%E5%AE%9E%E7%8E%B0/</link><pubDate>Sat, 21 Jun 2025 18:59:18 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%88%A4%E6%96%AD%E8%B4%A8%E6%95%B0-c-%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>要判断一个数是否为质数，可以遵循以下思路：质数是大于1且只能被1和自身整除的自然数。算法关键在于高效地检查该数是否有除1和自身外的其他因数。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 雪国流明</title><link>https://muo123.github.io/post/</link><description>Recent content in Posts on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Sun, 22 Jun 2025 19:31:53 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 中怎么给 map 自定义比较规则</title><link>https://muo123.github.io/articles/c-%E4%B8%AD%E6%80%8E%E4%B9%88%E7%BB%99-map-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</link><pubDate>Sun, 22 Jun 2025 19:29:57 +0800</pubDate><guid>https://muo123.github.io/articles/c-%E4%B8%AD%E6%80%8E%E4%B9%88%E7%BB%99-map-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</guid><description>&lt;p>在 C++ 中，&lt;code>std::map&lt;/code> 默认使用 &lt;code>std::less&amp;lt;Key&amp;gt;&lt;/code> 进行排序（升序）。若需自定义排序规则，可通过以下三种方式实现：&lt;/p>
+&lt;h3 id="1-使用函数对象仿函数">1. 使用函数对象（仿函数）
+&lt;/h3>&lt;p>定义包含 &lt;code>operator()&lt;/code> 的结构体/类，实现严格弱序比较：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;map&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;string&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">struct&lt;/span> &lt;span style="color:#f3f99d">CaseInsensitiveCompare&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#9aedfe">bool&lt;/span> &lt;span style="color:#57c7ff">operator&lt;/span>()(&lt;span style="color:#ff6ac1">const&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>string&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span> a, &lt;span style="color:#ff6ac1">const&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>string&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span> b) &lt;span style="color:#ff6ac1">const&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 不区分大小写比较
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">return&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>lexicographical_compare(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a.begin(), a.end(), b.begin(), b.end(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [](&lt;span style="color:#9aedfe">char&lt;/span> c1, &lt;span style="color:#9aedfe">char&lt;/span> c2) { &lt;span style="color:#ff6ac1">return&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>tolower(c1) &lt;span style="color:#ff6ac1">&amp;lt;&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>tolower(c2); }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>map&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>std&lt;span style="color:#ff6ac1">::&lt;/span>string, &lt;span style="color:#9aedfe">int&lt;/span>, CaseInsensitiveCompare&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> myMap;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myMap[&lt;span style="color:#5af78e">&amp;#34;Apple&amp;#34;&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myMap[&lt;span style="color:#5af78e">&amp;#34;banana&amp;#34;&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">2&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myMap[&lt;span style="color:#5af78e">&amp;#34;apple&amp;#34;&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">3&lt;/span>; &lt;span style="color:#78787e">// 覆盖 &amp;#34;Apple&amp;#34;（不区分大小写）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">for&lt;/span> (&lt;span style="color:#ff6ac1">const&lt;/span> &lt;span style="color:#ff6ac1">auto&lt;/span>&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span> &lt;span style="color:#ff5c57">kv&lt;/span> : myMap) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> kv.first &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> kv.second &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#39;\n&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 输出: apple: 3, banana: 2
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-使用函数指针适用于简单规则">2. 使用函数指针（适用于简单规则）
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;map&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">bool&lt;/span> &lt;span style="color:#57c7ff">reverseCompare&lt;/span>(&lt;span style="color:#9aedfe">int&lt;/span> a, &lt;span style="color:#9aedfe">int&lt;/span> b) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> a &lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> b; &lt;span style="color:#78787e">// 降序排列
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 模板参数传入函数指针类型，构造函数传入函数指针
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>map&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span>, std&lt;span style="color:#ff6ac1">::&lt;/span>string, &lt;span style="color:#ff6ac1">decltype&lt;/span>(&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span>reverseCompare)&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> myMap(reverseCompare);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myMap[&lt;span style="color:#ff9f43">1&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;one&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myMap[&lt;span style="color:#ff9f43">3&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;three&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myMap[&lt;span style="color:#ff9f43">2&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;two&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">for&lt;/span> (&lt;span style="color:#ff6ac1">const&lt;/span> &lt;span style="color:#ff6ac1">auto&lt;/span>&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span> &lt;span style="color:#ff5c57">kv&lt;/span> : myMap) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> kv.first &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> kv.second &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#39;\n&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 输出: 3: three, 2: two, 1: one
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3-使用-lambda-表达式c11-起">3. 使用 Lambda 表达式（C++11 起）
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;map&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;functional&amp;gt;&lt;/span>&lt;span style="color:#78787e"> &lt;/span>&lt;span style="color:#78787e">// 需包含 std::function
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">auto&lt;/span> comp &lt;span style="color:#ff6ac1">=&lt;/span> [](&lt;span style="color:#ff6ac1">const&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>string&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span> a, &lt;span style="color:#ff6ac1">const&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>string&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span> b) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> a.length() &lt;span style="color:#ff6ac1">&amp;lt;&lt;/span> b.length(); &lt;span style="color:#78787e">// 按字符串长度排序
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 使用 decltype 推导 Lambda 类型，构造时传入 Lambda 对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>map&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>std&lt;span style="color:#ff6ac1">::&lt;/span>string, &lt;span style="color:#9aedfe">int&lt;/span>, &lt;span style="color:#ff6ac1">decltype&lt;/span>(comp)&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> myMap(comp);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myMap[&lt;span style="color:#5af78e">&amp;#34;dog&amp;#34;&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myMap[&lt;span style="color:#5af78e">&amp;#34;elephant&amp;#34;&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">2&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myMap[&lt;span style="color:#5af78e">&amp;#34;cat&amp;#34;&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">3&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">for&lt;/span> (&lt;span style="color:#ff6ac1">const&lt;/span> &lt;span style="color:#ff6ac1">auto&lt;/span>&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span> &lt;span style="color:#ff5c57">kv&lt;/span> : myMap) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> kv.first &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> kv.second &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#39;\n&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 输出（按长度升序）:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#78787e">// cat: 3
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#78787e">// dog: 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#78787e">// elephant: 2
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="关键注意事项">关键注意事项：
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>严格弱序要求&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>必须满足：&lt;code>!comp(a, a)&lt;/code>（反自反）&lt;/li>
+&lt;li>若 &lt;code>comp(a, b) == true&lt;/code>，则 &lt;code>comp(b, a) == false&lt;/code>（非对称）&lt;/li>
+&lt;li>若 &lt;code>comp(a, b) &amp;amp;&amp;amp; comp(b, c)&lt;/code>，则 &lt;code>comp(a, c)&lt;/code>（传递性）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>自定义类型作为 Key&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">struct&lt;/span> &lt;span style="color:#f3f99d">Point&lt;/span> { &lt;span style="color:#9aedfe">int&lt;/span> x; &lt;span style="color:#9aedfe">int&lt;/span> y; };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">struct&lt;/span> &lt;span style="color:#f3f99d">PointCompare&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#9aedfe">bool&lt;/span> &lt;span style="color:#57c7ff">operator&lt;/span>()(&lt;span style="color:#ff6ac1">const&lt;/span> Point&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span> a, &lt;span style="color:#ff6ac1">const&lt;/span> Point&lt;span style="color:#ff6ac1">&amp;amp;&lt;/span> b) &lt;span style="color:#ff6ac1">const&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>tie(a.x, a.y) &lt;span style="color:#ff6ac1">&amp;lt;&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>tie(b.x, b.y); &lt;span style="color:#78787e">// 先比较x，后比较y
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>std&lt;span style="color:#ff6ac1">::&lt;/span>map&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>Point, &lt;span style="color:#9aedfe">int&lt;/span>, PointCompare&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> pointMap;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>性能考虑&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>比较函数应尽量简单高效（频繁调用）&lt;/li>
+&lt;li>避免在比较函数中修改状态（应为无状态的）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>与 &lt;code>unordered_map&lt;/code> 区别&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>std::map&lt;/code> 使用比较器确定红黑树中的顺序&lt;/li>
+&lt;li>&lt;code>std::unordered_map&lt;/code> 自定义排序需特化 &lt;code>std::hash&lt;/code> 并提供相等比较函数&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>通过自定义比较规则，可以灵活控制 &lt;code>std::map&lt;/code> 中元素的排序行为，适应不同场景需求。&lt;/p></description></item><item><title>判断质数 C++ 实现</title><link>https://muo123.github.io/articles/%E5%88%A4%E6%96%AD%E8%B4%A8%E6%95%B0-c-%E5%AE%9E%E7%8E%B0/</link><pubDate>Sat, 21 Jun 2025 18:59:18 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%88%A4%E6%96%AD%E8%B4%A8%E6%95%B0-c-%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>要判断一个数是否为质数，可以遵循以下思路：质数是大于1且只能被1和自身整除的自然数。算法关键在于高效地检查该数是否有除1和自身外的其他因数。&lt;/p>
 &lt;h3 id="算法思路">算法思路
 &lt;/h3>&lt;ol>
 &lt;li>
