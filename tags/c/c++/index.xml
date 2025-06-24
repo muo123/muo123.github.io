@@ -1,4 +1,228 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C/C++ on 雪国流明</title><link>https://muo123.github.io/tags/c/c++/</link><description>Recent content in C/C++ on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Sun, 22 Jun 2025 19:55:47 +0800</lastBuildDate><atom:link href="https://muo123.github.io/tags/c/c++/index.xml" rel="self" type="application/rss+xml"/><item><title>快速排序C++实现</title><link>https://muo123.github.io/articles/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fc-%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 22 Jun 2025 19:51:01 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fc-%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>快速排序（Quick Sort）是一种高效的排序算法，采用分治法（Divide and Conquer）策略。它的基本思想是：选择一个基准元素（pivot），通过一趟排序将待排序的数据分割成独立的两部分，其中一部分的所有元素都比基准元素小，另一部分的所有元素都比基准元素大，然后再按此方法对这两部分数据分别进行快速排序，整个过程递归进行，直到整个数据变成有序序列。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C/C++ on 雪国流明</title><link>https://muo123.github.io/tags/c/c++/</link><description>Recent content in C/C++ on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Tue, 24 Jun 2025 20:59:42 +0800</lastBuildDate><atom:link href="https://muo123.github.io/tags/c/c++/index.xml" rel="self" type="application/rss+xml"/><item><title>C++智能指针</title><link>https://muo123.github.io/articles/c-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</link><pubDate>Tue, 24 Jun 2025 20:44:29 +0800</pubDate><guid>https://muo123.github.io/articles/c-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</guid><description>&lt;h3 id="c-智能指针详解">C++ 智能指针详解
+&lt;/h3>&lt;p>C++ 智能指针是管理动态内存的现代化工具，通过自动内存释放避免内存泄漏。它们定义在 &lt;code>&amp;lt;memory&amp;gt;&lt;/code> 头文件中，遵循 RAII（资源获取即初始化）原则。以下是三种主要智能指针的详细说明和代码示例：&lt;/p>
+&lt;hr>
+&lt;h4 id="1-stdunique_ptr独占所有权指针">1. &lt;code>std::unique_ptr&lt;/code>（独占所有权指针）
+&lt;/h4>&lt;p>&lt;code>std::unique_ptr&lt;/code>是一种独占所有权的智能指针。同一时间只能有一个&lt;code>unique_ptr&lt;/code>指向一个给定的对象。当&lt;code>unique_ptr&lt;/code>被销毁（例如离开作用域）时，它所指向的对象也会被自动删除。
+&lt;strong>特性&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>独占资源所有权（不可复制）&lt;/li>
+&lt;li>支持移动语义（所有权可转移）&lt;/li>
+&lt;li>可管理数组（&lt;code>unique_ptr&amp;lt;T[]&amp;gt;&lt;/code>）&lt;/li>
+&lt;li>自定义删除器支持&lt;/li>
+&lt;li>零运行时开销（与裸指针性能相当）&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>代码示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;memory&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#ff6ac1">using&lt;/span> &lt;span style="color:#ff6ac1">namespace&lt;/span> std;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 创建 unique_ptr
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> unique_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span>&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> ptr1(&lt;span style="color:#ff6ac1">new&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span>(&lt;span style="color:#ff9f43">42&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#ff6ac1">*&lt;/span>ptr1 &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; &lt;span style="color:#78787e">// 输出: 42
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 移动所有权（转移后 ptr1 为空）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> unique_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span>&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> ptr2 &lt;span style="color:#ff6ac1">=&lt;/span> move(ptr1);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> (ptr1 &lt;span style="color:#ff6ac1">?&lt;/span> &lt;span style="color:#5af78e">&amp;#34;非空&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">:&lt;/span> &lt;span style="color:#5af78e">&amp;#34;空&amp;#34;&lt;/span>) &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; &lt;span style="color:#78787e">// 输出: 空
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 管理数组
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> unique_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span>[]&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> arr(&lt;span style="color:#ff6ac1">new&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span>[&lt;span style="color:#ff9f43">3&lt;/span>]{&lt;span style="color:#ff9f43">1&lt;/span>, &lt;span style="color:#ff9f43">2&lt;/span>, &lt;span style="color:#ff9f43">3&lt;/span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> arr[&lt;span style="color:#ff9f43">1&lt;/span>] &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; &lt;span style="color:#78787e">// 输出: 2
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 自定义删除器（示例：文件指针）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">auto&lt;/span> fileDeleter &lt;span style="color:#ff6ac1">=&lt;/span> [](FILE&lt;span style="color:#ff6ac1">*&lt;/span> f) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span>(f) fclose(f);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;文件已关闭&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unique_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>FILE, &lt;span style="color:#ff6ac1">decltype&lt;/span>(fileDeleter)&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> filePtr(fopen(&lt;span style="color:#5af78e">&amp;#34;test.txt&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;w&amp;#34;&lt;/span>), fileDeleter);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>; &lt;span style="color:#78787e">// 自动释放所有资源
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h4 id="2-stdshared_ptr共享所有权指针">2. &lt;code>std::shared_ptr&lt;/code>（共享所有权指针）
+&lt;/h4>&lt;p>&lt;code>std::shared_ptr&lt;/code>是一种共享所有权的智能指针。多个&lt;code>shared_ptr&lt;/code>可以指向同一个对象，并通过引用计数来管理对象的生命周期。当最后一个&lt;code>shared_ptr&lt;/code>被销毁时，对象才会被删除。
+&lt;strong>特性&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>多个指针共享同一对象&lt;/li>
+&lt;li>基于引用计数（自动归零时销毁对象）&lt;/li>
+&lt;li>支持自定义删除器&lt;/li>
+&lt;li>线程安全（引用计数原子操作）&lt;/li>
+&lt;li>使用 &lt;code>make_shared&lt;/code> 更高效（单次内存分配）&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>代码示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;memory&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#ff6ac1">using&lt;/span> &lt;span style="color:#ff6ac1">namespace&lt;/span> std;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">class&lt;/span> &lt;span style="color:#f3f99d">MyClass&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">public&lt;/span>&lt;span style="color:#ff6ac1">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> MyClass() { cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;构造函数&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">~&lt;/span>MyClass() { cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;析构函数&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#9aedfe">void&lt;/span> &lt;span style="color:#57c7ff">greet&lt;/span>() { cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Hello!&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 推荐创建方式
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> shared_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>MyClass&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> ptr1 &lt;span style="color:#ff6ac1">=&lt;/span> make_shared&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>MyClass&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ptr1&lt;span style="color:#ff6ac1">-&amp;gt;&lt;/span>greet(); &lt;span style="color:#78787e">// 输出: Hello!
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 共享所有权（引用计数+1）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> shared_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>MyClass&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> ptr2 &lt;span style="color:#ff6ac1">=&lt;/span> ptr1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;引用计数: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> ptr1.use_count() &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; &lt;span style="color:#78787e">// 输出: 2
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> } &lt;span style="color:#78787e">// ptr2 析构，引用计数-1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;引用计数: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> ptr1.use_count() &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; &lt;span style="color:#78787e">// 输出: 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 自定义删除器示例
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> shared_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span>&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> customDel(&lt;span style="color:#ff6ac1">new&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span>[&lt;span style="color:#ff9f43">5&lt;/span>], [](&lt;span style="color:#9aedfe">int&lt;/span>&lt;span style="color:#ff6ac1">*&lt;/span> p) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">delete&lt;/span>[] p;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;自定义释放数组&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>; &lt;span style="color:#78787e">// 自动释放所有资源（输出析构函数）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h4 id="3-stdweak_ptr弱引用指针">3. &lt;code>std::weak_ptr&lt;/code>（弱引用指针）
+&lt;/h4>&lt;p>&lt;code>std::weak_ptr&lt;/code>是一种不控制对象生命周期的智能指针，它指向一个由&lt;code>shared_ptr&lt;/code>管理的对象。&lt;code>weak_ptr&lt;/code>不会增加引用计数，因此它不会影响对象的生命周期。主要用于解决&lt;code>shared_ptr&lt;/code>的循环引用问题。
+&lt;strong>特性&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>解决 &lt;code>shared_ptr&lt;/code> 循环引用问题&lt;/li>
+&lt;li>不增加引用计数&lt;/li>
+&lt;li>需通过 &lt;code>lock()&lt;/code> 转为 &lt;code>shared_ptr&lt;/code> 访问对象&lt;/li>
+&lt;li>检查资源是否有效&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>代码示例（含循环引用解决方案）&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;memory&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#ff6ac1">using&lt;/span> &lt;span style="color:#ff6ac1">namespace&lt;/span> std;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">class&lt;/span> &lt;span style="color:#f3f99d">Node&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">public&lt;/span>&lt;span style="color:#ff6ac1">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> string name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> weak_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>Node&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> partner; &lt;span style="color:#78787e">// 关键：使用 weak_ptr 打破循环
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Node(string n) &lt;span style="color:#ff6ac1">:&lt;/span> name(move(n)) {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">~&lt;/span>Node() { cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> name &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34; 被销毁&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> shared_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>Node&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> alice &lt;span style="color:#ff6ac1">=&lt;/span> make_shared&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>Node&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span>(&lt;span style="color:#5af78e">&amp;#34;Alice&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> shared_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>Node&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> bob &lt;span style="color:#ff6ac1">=&lt;/span> make_shared&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>Node&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span>(&lt;span style="color:#5af78e">&amp;#34;Bob&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 建立双向关联（不会导致循环引用）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> alice&lt;span style="color:#ff6ac1">-&amp;gt;&lt;/span>partner &lt;span style="color:#ff6ac1">=&lt;/span> bob;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bob&lt;span style="color:#ff6ac1">-&amp;gt;&lt;/span>partner &lt;span style="color:#ff6ac1">=&lt;/span> alice;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 访问对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">if&lt;/span> (&lt;span style="color:#ff6ac1">auto&lt;/span> ptr &lt;span style="color:#ff6ac1">=&lt;/span> alice&lt;span style="color:#ff6ac1">-&amp;gt;&lt;/span>partner.lock()) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Alice 的伙伴: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> ptr&lt;span style="color:#ff6ac1">-&amp;gt;&lt;/span>name &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; &lt;span style="color:#78787e">// 输出: Bob
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Alice 引用计数: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> alice.use_count() &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> endl; &lt;span style="color:#78787e">// 输出: 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>; &lt;span style="color:#78787e">// 正确销毁两个对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="关键特性对比表">关键特性对比表
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>特性&lt;/th>
+&lt;th>&lt;code>unique_ptr&lt;/code>&lt;/th>
+&lt;th>&lt;code>shared_ptr&lt;/code>&lt;/th>
+&lt;th>&lt;code>weak_ptr&lt;/code>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>所有权&lt;/strong>&lt;/td>
+&lt;td>独占&lt;/td>
+&lt;td>共享&lt;/td>
+&lt;td>无所有权&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>复制语义&lt;/strong>&lt;/td>
+&lt;td>❌ 禁止&lt;/td>
+&lt;td>✅ 允许&lt;/td>
+&lt;td>✅ 允许&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>移动语义&lt;/strong>&lt;/td>
+&lt;td>✅ 支持&lt;/td>
+&lt;td>✅ 支持&lt;/td>
+&lt;td>✅ 支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>引用计数&lt;/strong>&lt;/td>
+&lt;td>无&lt;/td>
+&lt;td>✅ 有&lt;/td>
+&lt;td>不增加计数&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>释放时机&lt;/strong>&lt;/td>
+&lt;td>指针析构时&lt;/td>
+&lt;td>引用计数归零时&lt;/td>
+&lt;td>不管理释放&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>数组支持&lt;/strong>&lt;/td>
+&lt;td>&lt;code>unique_ptr&amp;lt;T[]&amp;gt;&lt;/code>&lt;/td>
+&lt;td>需自定义删除器&lt;/td>
+&lt;td>❌ 不支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>线程安全&lt;/strong>&lt;/td>
+&lt;td>非原子操作&lt;/td>
+&lt;td>引用计数原子操作&lt;/td>
+&lt;td>依赖关联的 shared_ptr&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>典型用途&lt;/strong>&lt;/td>
+&lt;td>独占资源管理&lt;/td>
+&lt;td>共享资源&lt;/td>
+&lt;td>打破循环引用&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="最佳实践">最佳实践
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>优先使用 &lt;code>make_shared&lt;/code>/&lt;code>make_unique&lt;/code>&lt;/strong>（C++14+）：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">auto&lt;/span> ptr &lt;span style="color:#ff6ac1">=&lt;/span> make_shared&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>MyClass&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span>(); &lt;span style="color:#78787e">// 替代 shared_ptr(new MyClass)
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>单次内存分配（提升性能）&lt;/li>
+&lt;li>避免裸指针异常导致的内存泄漏&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>避免混用智能指针和裸指针&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">int&lt;/span>&lt;span style="color:#ff6ac1">*&lt;/span> raw &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">new&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span>(&lt;span style="color:#ff9f43">10&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>shared_ptr&lt;span style="color:#ff6ac1">&amp;lt;&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span>&lt;span style="color:#ff6ac1">&amp;gt;&lt;/span> p1(raw);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// shared_ptr&amp;lt;int&amp;gt; p2(raw); // 灾难性错误：重复释放
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>循环引用解决方案&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>使用 &lt;code>weak_ptr&lt;/code> 替代 &lt;code>shared_ptr&lt;/code> 作为非拥有性引用&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>性能敏感场景&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>优先使用 &lt;code>unique_ptr&lt;/code>（零开销抽象）&lt;/li>
+&lt;li>避免频繁复制 &lt;code>shared_ptr&lt;/code>（原子操作开销）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>资源释放验证&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>在删除器中添加调试输出&lt;/li>
+&lt;li>使用 Valgrind 或 AddressSanitizer 检查内存泄漏&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>通过合理使用智能指针，可消除 90% 以上的内存管理错误，是现代 C++ 资源管理的核心工具。&lt;/p></description></item><item><title>快速排序C++实现</title><link>https://muo123.github.io/articles/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fc-%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 22 Jun 2025 19:51:01 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fc-%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>快速排序（Quick Sort）是一种高效的排序算法，采用分治法（Divide and Conquer）策略。它的基本思想是：选择一个基准元素（pivot），通过一趟排序将待排序的数据分割成独立的两部分，其中一部分的所有元素都比基准元素小，另一部分的所有元素都比基准元素大，然后再按此方法对这两部分数据分别进行快速排序，整个过程递归进行，直到整个数据变成有序序列。&lt;/p>
 &lt;h3 id="算法步骤">算法步骤：
 &lt;/h3>&lt;ol>
 &lt;li>
