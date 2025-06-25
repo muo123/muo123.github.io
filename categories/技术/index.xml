@@ -1,4 +1,177 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术 on 雪国流明</title><link>https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/</link><description>Recent content in 技术 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Tue, 24 Jun 2025 20:59:42 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>C++智能指针</title><link>https://muo123.github.io/articles/c-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</link><pubDate>Tue, 24 Jun 2025 20:44:29 +0800</pubDate><guid>https://muo123.github.io/articles/c-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</guid><description>&lt;h3 id="c-智能指针详解">C++ 智能指针详解
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术 on 雪国流明</title><link>https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/</link><description>Recent content in 技术 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Wed, 25 Jun 2025 21:16:21 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 输入输出</title><link>https://muo123.github.io/articles/c-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/</link><pubDate>Wed, 25 Jun 2025 20:47:13 +0800</pubDate><guid>https://muo123.github.io/articles/c-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/</guid><description>&lt;img src="https://muo123.github.io/images/C++%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.png" alt="Featured image of post C++ 输入输出" />&lt;p>在 C++ 中，输入输出（I/O）主要通过标准库 &lt;code>&amp;lt;iostream&amp;gt;&lt;/code> 和相关库实现。以下是详细说明及对比分析：&lt;/p>
+&lt;hr>
+&lt;h3 id="一核心组件">&lt;strong>一、核心组件&lt;/strong>
+&lt;/h3>&lt;h4 id="1-标准流对象">1. &lt;strong>标准流对象&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>&lt;code>cin&lt;/code>&lt;/strong>：标准输入流（&lt;code>istream&lt;/code> 类型），通常关联键盘。&lt;/li>
+&lt;li>&lt;strong>&lt;code>cout&lt;/code>&lt;/strong>：标准输出流（&lt;code>ostream&lt;/code> 类型），通常关联屏幕。&lt;/li>
+&lt;li>&lt;strong>&lt;code>cerr&lt;/code>&lt;/strong>：无缓冲的错误输出流，立即显示错误信息。&lt;/li>
+&lt;li>&lt;strong>&lt;code>clog&lt;/code>&lt;/strong>：带缓冲的错误输出流（效率更高）。&lt;/li>
+&lt;/ul>
+&lt;h4 id="2-操作符">2. &lt;strong>操作符&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>&lt;code>&amp;lt;&amp;lt;&lt;/code>&lt;/strong>：插入运算符（输出），如 &lt;code>cout &amp;lt;&amp;lt; data&lt;/code>。&lt;/li>
+&lt;li>&lt;strong>&lt;code>&amp;gt;&amp;gt;&lt;/code>&lt;/strong>：提取运算符（输入），如 &lt;code>cin &amp;gt;&amp;gt; variable&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="二基本-io-操作">&lt;strong>二、基本 I/O 操作&lt;/strong>
+&lt;/h3>&lt;h4 id="1-输出示例">1. &lt;strong>输出示例&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#9aedfe">int&lt;/span> num &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">42&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Value: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> num &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;&lt;/span>&lt;span style="color:#5af78e">\n&lt;/span>&lt;span style="color:#5af78e">&amp;#34;&lt;/span>; &lt;span style="color:#78787e">// 输出字符串和变量
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>cerr &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Error message!&lt;/span>&lt;span style="color:#5af78e">\n&lt;/span>&lt;span style="color:#5af78e">&amp;#34;&lt;/span>; &lt;span style="color:#78787e">// 错误输出
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2-输入示例">2. &lt;strong>输入示例&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#9aedfe">int&lt;/span> age;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Enter your age: &amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>cin &lt;span style="color:#ff6ac1">&amp;gt;&amp;gt;&lt;/span> age; &lt;span style="color:#78787e">// 从键盘读取整数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Age: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> age &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;&lt;/span>&lt;span style="color:#5af78e">\n&lt;/span>&lt;span style="color:#5af78e">&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="三格式化-io">&lt;strong>三、格式化 I/O&lt;/strong>
+&lt;/h3>&lt;p>使用 &lt;code>&amp;lt;iomanip&amp;gt;&lt;/code> 库控制格式：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iomanip&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#9aedfe">double&lt;/span> pi &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">3.1415926535&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 设置精度为2位小数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>fixed &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>setprecision(&lt;span style="color:#ff9f43">2&lt;/span>) &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> pi &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;&lt;/span>&lt;span style="color:#5af78e">\n&lt;/span>&lt;span style="color:#5af78e">&amp;#34;&lt;/span>; &lt;span style="color:#78787e">// 输出 3.14
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#78787e">// 设置宽度为10字符，右对齐
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>setw(&lt;span style="color:#ff9f43">10&lt;/span>) &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Hello&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;&lt;/span>&lt;span style="color:#5af78e">\n&lt;/span>&lt;span style="color:#5af78e">&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="四文件-io">&lt;strong>四、文件 I/O&lt;/strong>
+&lt;/h3>&lt;p>使用 &lt;code>&amp;lt;fstream&amp;gt;&lt;/code> 库操作文件：&lt;/p>
+&lt;h4 id="1-写入文件">1. &lt;strong>写入文件&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;fstream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>ofstream outfile(&lt;span style="color:#5af78e">&amp;#34;data.txt&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> outfile &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Hello, File!&lt;/span>&lt;span style="color:#5af78e">\n&lt;/span>&lt;span style="color:#5af78e">&amp;#34;&lt;/span>; &lt;span style="color:#78787e">// 写入数据
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> outfile.close();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2-读取文件">2. &lt;strong>读取文件&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;fstream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>ifstream infile(&lt;span style="color:#5af78e">&amp;#34;data.txt&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>string line;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">while&lt;/span> (std&lt;span style="color:#ff6ac1">::&lt;/span>getline(infile, line)) { &lt;span style="color:#78787e">// 逐行读取
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> line &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;&lt;/span>&lt;span style="color:#5af78e">\n&lt;/span>&lt;span style="color:#5af78e">&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> infile.close();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="五字符串流">&lt;strong>五、字符串流&lt;/strong>
+&lt;/h3>&lt;p>使用 &lt;code>&amp;lt;sstream&amp;gt;&lt;/code> 处理字符串：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;sstream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#57c7ff">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#ff6ac1">::&lt;/span>stringstream ss;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ss &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Price: &amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#ff9f43">99.9&lt;/span>; &lt;span style="color:#78787e">// 写入字符串流
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>string data &lt;span style="color:#ff6ac1">=&lt;/span> ss.str(); &lt;span style="color:#78787e">// 转换为字符串
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> data &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;&lt;/span>&lt;span style="color:#5af78e">\n&lt;/span>&lt;span style="color:#5af78e">&amp;#34;&lt;/span>; &lt;span style="color:#78787e">// 输出 &amp;#34;Price: 99.9&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">return&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="六对比分析">&lt;strong>六、对比分析&lt;/strong>
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>特性&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>控制台 I/O&lt;/strong> (&lt;code>cin&lt;/code>/&lt;code>cout&lt;/code>)&lt;/th>
+&lt;th>&lt;strong>文件 I/O&lt;/strong> (&lt;code>fstream&lt;/code>)&lt;/th>
+&lt;th>&lt;strong>字符串流&lt;/strong> (&lt;code>sstream&lt;/code>)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>用途&lt;/strong>&lt;/td>
+&lt;td>用户交互&lt;/td>
+&lt;td>读写磁盘文件&lt;/td>
+&lt;td>内存字符串处理&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>速度&lt;/strong>&lt;/td>
+&lt;td>中等&lt;/td>
+&lt;td>较慢（涉及磁盘操作）&lt;/td>
+&lt;td>快速（内存操作）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>缓冲机制&lt;/strong>&lt;/td>
+&lt;td>有缓冲（&lt;code>cout&lt;/code> 可刷新）&lt;/td>
+&lt;td>可控制缓冲&lt;/td>
+&lt;td>无外部缓冲&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>错误处理&lt;/strong>&lt;/td>
+&lt;td>&lt;code>cin.fail()&lt;/code> 检查输入错误&lt;/td>
+&lt;td>&lt;code>is_open()&lt;/code> 检查文件状态&lt;/td>
+&lt;td>类似标准流&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>适用场景&lt;/strong>&lt;/td>
+&lt;td>简单输入/输出&lt;/td>
+&lt;td>持久化存储&lt;/td>
+&lt;td>字符串解析/格式化&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>头文件&lt;/strong>&lt;/td>
+&lt;td>&lt;code>&amp;lt;iostream&amp;gt;&lt;/code>&lt;/td>
+&lt;td>&lt;code>&amp;lt;fstream&amp;gt;&lt;/code>&lt;/td>
+&lt;td>&lt;code>&amp;lt;sstream&amp;gt;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="七关键注意事项">&lt;strong>七、关键注意事项&lt;/strong>
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>输入验证&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">int&lt;/span> num;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">while&lt;/span> (&lt;span style="color:#ff6ac1">!&lt;/span>(std&lt;span style="color:#ff6ac1">::&lt;/span>cin &lt;span style="color:#ff6ac1">&amp;gt;&amp;gt;&lt;/span> num)) { &lt;span style="color:#78787e">// 检查输入是否有效
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>cin.clear(); &lt;span style="color:#78787e">// 清除错误标志
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>cin.ignore(&lt;span style="color:#ff9f43">1000&lt;/span>, &lt;span style="color:#5af78e">&amp;#39;\n&amp;#39;&lt;/span>); &lt;span style="color:#78787e">// 忽略错误输入
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> std&lt;span style="color:#ff6ac1">::&lt;/span>cout &lt;span style="color:#ff6ac1">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Invalid input! Try again: &amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>缓冲机制&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>cout&lt;/code> 默认缓冲，使用 &lt;code>std::endl&lt;/code> 刷新缓冲区（如 &lt;code>cout &amp;lt;&amp;lt; &amp;quot;Hi&amp;quot; &amp;lt;&amp;lt; endl&lt;/code>）。&lt;/li>
+&lt;li>&lt;code>cerr&lt;/code> 无缓冲，立即输出（适合错误信息）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>性能&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>减少 &lt;code>endl&lt;/code> 使用（频繁刷新降低性能），用 &lt;code>'\n'&lt;/code> 替代。&lt;/li>
+&lt;li>文件 I/O 比内存操作慢，避免频繁开关文件。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="八总结">&lt;strong>八、总结&lt;/strong>
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>控制台 I/O&lt;/strong>：适合交互式程序。&lt;/li>
+&lt;li>&lt;strong>文件 I/O&lt;/strong>：适合数据持久化。&lt;/li>
+&lt;li>&lt;strong>字符串流&lt;/strong>：高效处理字符串格式转换。&lt;/li>
+&lt;li>&lt;strong>选择建议&lt;/strong>：
+&lt;ul>
+&lt;li>简单交互 → &lt;code>cin&lt;/code>/&lt;code>cout&lt;/code>。&lt;/li>
+&lt;li>读写文件 → &lt;code>fstream&lt;/code>。&lt;/li>
+&lt;li>复杂字符串处理 → &lt;code>sstream&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>通过灵活组合这些工具，可高效处理 C++ 中的各类 I/O 需求。&lt;/p></description></item><item><title>C++智能指针</title><link>https://muo123.github.io/articles/c-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</link><pubDate>Tue, 24 Jun 2025 20:44:29 +0800</pubDate><guid>https://muo123.github.io/articles/c-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</guid><description>&lt;h3 id="c-智能指针详解">C++ 智能指针详解
 &lt;/h3>&lt;p>C++ 智能指针是管理动态内存的现代化工具，通过自动内存释放避免内存泄漏。它们定义在 &lt;code>&amp;lt;memory&amp;gt;&lt;/code> 头文件中，遵循 RAII（资源获取即初始化）原则。以下是三种主要智能指针的详细说明和代码示例：&lt;/p>
 &lt;hr>
 &lt;h4 id="1-stdunique_ptr独占所有权指针">1. &lt;code>std::unique_ptr&lt;/code>（独占所有权指针）
