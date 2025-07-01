@@ -1,4 +1,95 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 雪国流明</title><link>https://muo123.github.io/post/</link><description>Recent content in Posts on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Tue, 01 Jul 2025 19:22:44 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>OGSM 组织管理方式详解</title><link>https://muo123.github.io/articles/ogsm-%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Tue, 01 Jul 2025 19:17:46 +0800</pubDate><guid>https://muo123.github.io/articles/ogsm-%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><description>&lt;img src="https://muo123.github.io/images/OGSM.png" alt="Featured image of post OGSM 组织管理方式详解" />&lt;h1 id="ogsm组织管理方式详解">OGSM组织管理方式详解
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 雪国流明</title><link>https://muo123.github.io/post/</link><description>Recent content in Posts on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Tue, 01 Jul 2025 19:27:29 +0800</lastBuildDate><atom:link href="https://muo123.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>简单了解 Excel 公式</title><link>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-excel-%E5%85%AC%E5%BC%8F/</link><pubDate>Tue, 01 Jul 2025 19:24:40 +0800</pubDate><guid>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-excel-%E5%85%AC%E5%BC%8F/</guid><description>&lt;img src="https://muo123.github.io/images/Excel.png" alt="Featured image of post 简单了解 Excel 公式" />&lt;p>Excel 公式是用于计算、分析和处理数据的核心工具，由函数、运算符、单元格引用等组成。以下是详细分类和示例：&lt;/p>
+&lt;hr>
+&lt;h3 id="一公式基础结构">&lt;strong>一、公式基础结构&lt;/strong>
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>格式&lt;/strong>：以等号 &lt;code>=&lt;/code> 开头，例如 &lt;code>=A1+B1&lt;/code>。&lt;/li>
+&lt;li>&lt;strong>运算符&lt;/strong>：
+&lt;ul>
+&lt;li>算术：&lt;code>+&lt;/code>, &lt;code>-&lt;/code>, &lt;code>*&lt;/code>, &lt;code>/&lt;/code>, &lt;code>^&lt;/code>（幂）&lt;/li>
+&lt;li>比较：&lt;code>=&lt;/code>, &lt;code>&amp;gt;&lt;/code>, &lt;code>&amp;lt;&lt;/code>, &lt;code>&amp;lt;&amp;gt;&lt;/code>（不等于）&lt;/li>
+&lt;li>文本连接：&lt;code>&amp;amp;&lt;/code>（如 &lt;code>=A1&amp;amp;&amp;quot; &amp;quot;&amp;amp;B1&lt;/code>）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="二常用函数及示例">&lt;strong>二、常用函数及示例&lt;/strong>
+&lt;/h3>&lt;h4 id="1-数学与统计">1. &lt;strong>数学与统计&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>SUM&lt;/strong>：求和&lt;br>
+&lt;code>=SUM(A1:A10)&lt;/code> → 计算A1到A10的和。&lt;/li>
+&lt;li>&lt;strong>AVERAGE&lt;/strong>：平均值&lt;br>
+&lt;code>=AVERAGE(B2:B20)&lt;/code> → B2到B20的平均值。&lt;/li>
+&lt;li>&lt;strong>COUNT&lt;/strong> / &lt;strong>COUNTA&lt;/strong>：计数&lt;br>
+&lt;code>=COUNT(A1:A10)&lt;/code> → 统计数字单元格数量。&lt;/li>
+&lt;/ul>
+&lt;h4 id="2-逻辑函数">2. &lt;strong>逻辑函数&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>IF&lt;/strong>：条件判断&lt;br>
+&lt;code>=IF(C1&amp;gt;60, &amp;quot;及格&amp;quot;, &amp;quot;不及格&amp;quot;)&lt;/code> → 若C1&amp;gt;60返回“及格”。&lt;/li>
+&lt;li>&lt;strong>AND/OR&lt;/strong>：多条件判断&lt;br>
+&lt;code>=IF(AND(A1&amp;gt;50, B1&amp;lt;100), &amp;quot;合格&amp;quot;, &amp;quot;&amp;quot;)&lt;/code> → 同时满足A1&amp;gt;50和B1&amp;lt;100时返回“合格”。&lt;/li>
+&lt;/ul>
+&lt;h4 id="3-文本处理">3. &lt;strong>文本处理&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>CONCATENATE&lt;/strong>（或&lt;code>&amp;amp;&lt;/code>）：文本合并&lt;br>
+&lt;code>=A1&amp;amp;&amp;quot;-&amp;quot;&amp;amp;B1&lt;/code> → 合并A1和B1，用“-”连接。&lt;/li>
+&lt;li>&lt;strong>LEFT/RIGHT/MID&lt;/strong>：截取文本&lt;br>
+&lt;code>=LEFT(A1, 3)&lt;/code> → 取A1左侧3个字符。&lt;/li>
+&lt;/ul>
+&lt;h4 id="4-日期与时间">4. &lt;strong>日期与时间&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>TODAY/NOW&lt;/strong>：当前日期/时间&lt;br>
+&lt;code>=TODAY()&lt;/code> → 返回当前日期。&lt;/li>
+&lt;li>&lt;strong>DATEDIF&lt;/strong>：日期差&lt;br>
+&lt;code>=DATEDIF(A1, B1, &amp;quot;d&amp;quot;)&lt;/code> → 计算A1和B1之间的天数。&lt;/li>
+&lt;/ul>
+&lt;h4 id="5-查找与引用">5. &lt;strong>查找与引用&lt;/strong>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>VLOOKUP&lt;/strong>：垂直查找&lt;br>
+&lt;code>=VLOOKUP(&amp;quot;苹果&amp;quot;, A1:B10, 2, FALSE)&lt;/code> → 在A1:B10区域查找“苹果”并返回对应B列值。&lt;/li>
+&lt;li>&lt;strong>INDEX+MATCH&lt;/strong>：灵活查找&lt;br>
+&lt;code>=INDEX(B1:B10, MATCH(&amp;quot;苹果&amp;quot;, A1:A10, 0))&lt;/code> → 效果类似VLOOKUP但更灵活。&lt;/li>
+&lt;/ul>
+&lt;h4 id="6-数组公式需按-ctrlshiftenter">6. &lt;strong>数组公式&lt;/strong>（需按 &lt;code>Ctrl+Shift+Enter&lt;/code>）
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>SUMIFS&lt;/strong>：多条件求和&lt;br>
+&lt;code>=SUMIFS(C1:C10, A1:A10, &amp;quot;&amp;gt;50&amp;quot;, B1:B10, &amp;quot;&amp;lt;100&amp;quot;)&lt;/code> → 对A列&amp;gt;50且B列&amp;lt;100的C列求和。&lt;/li>
+&lt;li>&lt;strong>SUMPRODUCT&lt;/strong>：加权求和&lt;br>
+&lt;code>=SUMPRODUCT(A1:A10, B1:B10)&lt;/code> → A1:A10与B1:B10对应相乘后求和。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="三高级应用示例">&lt;strong>三、高级应用示例&lt;/strong>
+&lt;/h3>&lt;ol>
+&lt;li>&lt;strong>嵌套IF&lt;/strong>：多条件判断
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=IF(A1&amp;gt;90, &amp;#34;优&amp;#34;, IF(A1&amp;gt;60, &amp;#34;良&amp;#34;, &amp;#34;差&amp;#34;))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;strong>动态求和&lt;/strong>（INDIRECT）：跨表引用&lt;br>
+&lt;code>=SUM(INDIRECT(&amp;quot;Sheet2!A1:A10&amp;quot;))&lt;/code> → 汇总Sheet2的A1:A10。&lt;/li>
+&lt;li>&lt;strong>条件格式公式&lt;/strong>：标记高于平均的值&lt;br>
+&lt;code>=A1&amp;gt;AVERAGE(A$1:A$10)&lt;/code> → 应用于A1:A10的条件格式规则。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="四注意事项">&lt;strong>四、注意事项&lt;/strong>
+&lt;/h3>&lt;ol>
+&lt;li>&lt;strong>相对/绝对引用&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;code>A1&lt;/code>（相对引用）：公式拖动时行列会变。&lt;/li>
+&lt;li>&lt;code>$A$1&lt;/code>（绝对引用）：固定引用A1。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>错误处理&lt;/strong>：
+&lt;ul>
+&lt;li>使用 &lt;code>IFERROR&lt;/code> 屏蔽错误：&lt;br>
+&lt;code>=IFERROR(VLOOKUP(...), &amp;quot;未找到&amp;quot;)&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="五实际案例">&lt;strong>五、实际案例&lt;/strong>
+&lt;/h3>&lt;p>&lt;strong>场景&lt;/strong>：统计销售表中“产品A”在2023年的总销售额。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=SUMIFS(Sales_Amount, Product_Column, &amp;#34;产品A&amp;#34;, Date_Column, &amp;#34;&amp;gt;=2023-1-1&amp;#34;, Date_Column, &amp;#34;&amp;lt;=2023-12-31&amp;#34;)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>通过灵活组合函数和引用，Excel公式能解决从简单计算到复杂数据分析的各种需求。&lt;/p></description></item><item><title>OGSM 组织管理方式详解</title><link>https://muo123.github.io/articles/ogsm-%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Tue, 01 Jul 2025 19:17:46 +0800</pubDate><guid>https://muo123.github.io/articles/ogsm-%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><description>&lt;img src="https://muo123.github.io/images/OGSM.png" alt="Featured image of post OGSM 组织管理方式详解" />&lt;h1 id="ogsm组织管理方式详解">OGSM组织管理方式详解
 &lt;/h1>&lt;p>OGSM（Objectives, Goals, Strategies, Measures）是一种结构化、系统化的战略规划与执行管理工具，广泛应用于企业战略管理和组织绩效管理。下面我将详细介绍OGSM的各个模块，并提供相应示例。&lt;/p>
 &lt;h2 id="一ogsm概述">一、OGSM概述
 &lt;/h2>&lt;p>OGSM是一种将组织的愿景转化为可执行计划的框架，它通过四个关键要素将战略与执行紧密连接：&lt;/p>
