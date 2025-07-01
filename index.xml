@@ -1,4 +1,103 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>雪国流明</title><link>https://muo123.github.io/</link><description>Recent content on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Tue, 01 Jul 2025 19:27:29 +0800</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>简单了解 Excel 公式</title><link>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-excel-%E5%85%AC%E5%BC%8F/</link><pubDate>Tue, 01 Jul 2025 19:24:40 +0800</pubDate><guid>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-excel-%E5%85%AC%E5%BC%8F/</guid><description>&lt;img src="https://muo123.github.io/images/Excel.png" alt="Featured image of post 简单了解 Excel 公式" />&lt;p>Excel 公式是用于计算、分析和处理数据的核心工具，由函数、运算符、单元格引用等组成。以下是详细分类和示例：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>雪国流明</title><link>https://muo123.github.io/</link><description>Recent content on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Tue, 01 Jul 2025 19:33:22 +0800</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Excel常用字符串函数</title><link>https://muo123.github.io/articles/excel%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/</link><pubDate>Tue, 01 Jul 2025 19:28:38 +0800</pubDate><guid>https://muo123.github.io/articles/excel%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/</guid><description>&lt;img src="https://muo123.github.io/images/Excel%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0.png" alt="Featured image of post Excel常用字符串函数" />&lt;h1 id="excel-常用字符串函数详解">Excel 常用字符串函数详解
+&lt;/h1>&lt;p>Excel 提供了多种强大的字符串处理函数，以下是其中最常用的一些函数及其详细说明和示例：&lt;/p>
+&lt;h2 id="1-len-函数">1. LEN 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：返回文本字符串中的字符数（长度）&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;code>=LEN(text)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=LEN(&amp;#34;Excel&amp;#34;) → 返回 5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=LEN(&amp;#34;数据 分析&amp;#34;) → 返回 5 (空格也算一个字符)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="2-left-函数">2. LEFT 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：从文本字符串的左侧开始提取指定数量的字符&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;code>=LEFT(text, [num_chars])&lt;/code>&lt;/p>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=LEFT(&amp;#34;Microsoft&amp;#34;, 5) → 返回 &amp;#34;Micro&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=LEFT(A1, 3) → 返回A1单元格内容的前3个字符
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="3-right-函数">3. RIGHT 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：从文本字符串的右侧开始提取指定数量的字符&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;code>=RIGHT(text, [num_chars])&lt;/code>&lt;/p>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=RIGHT(&amp;#34;Excel&amp;#34;, 3) → 返回 &amp;#34;xel&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=RIGHT(B2, 2) → 返回B2单元格内容的最后2个字符
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="4-mid-函数">4. MID 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：从文本字符串的指定位置开始提取指定数量的字符&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;code>=MID(text, start_num, num_chars)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=MID(&amp;#34;abcdefg&amp;#34;, 3, 2) → 返回 &amp;#34;cd&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=MID(&amp;#34;2023-01-15&amp;#34;, 6, 2) → 返回 &amp;#34;01&amp;#34; (提取月份)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="5-find-和-search-函数">5. FIND 和 SEARCH 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：查找一个字符串在另一个字符串中的位置（区分大小写/不区分）&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>=FIND(find_text, within_text, [start_num])&lt;/code> (区分大小写)&lt;/li>
+&lt;li>&lt;code>=SEARCH(find_text, within_text, [start_num])&lt;/code> (不区分大小写)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=FIND(&amp;#34;n&amp;#34;, &amp;#34;Excel&amp;#34;) → 返回 4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=SEARCH(&amp;#34;e&amp;#34;, &amp;#34;Excel&amp;#34;) → 返回 1 (不区分大小写)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=FIND(&amp;#34;/&amp;#34;, A1) → 查找A1中&amp;#34;/&amp;#34;的位置
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="6-concatenate-和--运算符">6. CONCATENATE 和 &amp;amp; 运算符
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：将多个文本字符串合并为一个&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>=CONCATENATE(text1, [text2], ...)&lt;/code>&lt;/li>
+&lt;li>&lt;code>=text1 &amp;amp; text2 &amp;amp; ...&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=CONCATENATE(&amp;#34;Hello&amp;#34;, &amp;#34; &amp;#34;, &amp;#34;World&amp;#34;) → 返回 &amp;#34;Hello World&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=A1 &amp;amp; &amp;#34;-&amp;#34; &amp;amp; B1 → 将A1和B1用&amp;#34;-&amp;#34;连接
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="7-trim-函数">7. TRIM 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：删除文本中多余的空格（只保留单词之间的单个空格）&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;code>=TRIM(text)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=TRIM(&amp;#34; Excel 函数 &amp;#34;) → 返回 &amp;#34;Excel 函数&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="8-upper-lower-和-proper-函数">8. UPPER, LOWER 和 PROPER 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：转换文本大小写&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>=UPPER(text)&lt;/code> → 全部大写&lt;/li>
+&lt;li>&lt;code>=LOWER(text)&lt;/code> → 全部小写&lt;/li>
+&lt;li>&lt;code>=PROPER(text)&lt;/code> → 首字母大写&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=UPPER(&amp;#34;excel&amp;#34;) → 返回 &amp;#34;EXCEL&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=PROPER(&amp;#34;john smith&amp;#34;) → 返回 &amp;#34;John Smith&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="9-substitute-函数">9. SUBSTITUTE 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：替换文本中的特定字符串&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;code>=SUBSTITUTE(text, old_text, new_text, [instance_num])&lt;/code>&lt;/p>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=SUBSTITUTE(&amp;#34;a-b-c&amp;#34;, &amp;#34;-&amp;#34;, &amp;#34;/&amp;#34;) → 返回 &amp;#34;a/b/c&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=SUBSTITUTE(A1, &amp;#34; &amp;#34;, &amp;#34;&amp;#34;, 1) → 只替换A1中第一个空格
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="10-text-函数">10. TEXT 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：将数值转换为指定格式的文本&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;code>=TEXT(value, format_text)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=TEXT(1234.567, &amp;#34;$#,##0.00&amp;#34;) → 返回 &amp;#34;$1,234.57&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=TEXT(TODAY(), &amp;#34;yyyy-mm-dd&amp;#34;) → 返回当前日期格式化为&amp;#34;年-月-日&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="11-textjoin-函数-excel-2016">11. TEXTJOIN 函数 (Excel 2016+)
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：使用分隔符连接多个文本字符串，可选择忽略空值&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;code>=TEXTJOIN(delimiter, ignore_empty, text1, [text2], ...)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=TEXTJOIN(&amp;#34;-&amp;#34;, TRUE, &amp;#34;2023&amp;#34;, &amp;#34;01&amp;#34;, &amp;#34;15&amp;#34;) → 返回 &amp;#34;2023-01-15&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=TEXTJOIN(&amp;#34;,&amp;#34;, FALSE, A1:A5) → 用逗号连接A1到A5的内容
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="12-rept-函数">12. REPT 函数
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>：将文本重复指定次数&lt;/p>
+&lt;p>&lt;strong>语法&lt;/strong>：&lt;code>=REPT(text, number_times)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>=REPT(&amp;#34;*&amp;#34;, 5) → 返回 &amp;#34;*****&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=REPT(&amp;#34;-&amp;#34;, LEN(A1)) → 返回与A1内容长度相同的横线
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="实际应用示例">实际应用示例
+&lt;/h2>&lt;p>&lt;strong>示例1：从完整姓名中提取姓氏和名字&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>A1: &amp;#34;张 三&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=LEFT(A1, FIND(&amp;#34; &amp;#34;, A1)-1) → 返回 &amp;#34;张&amp;#34; (姓氏)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=MID(A1, FIND(&amp;#34; &amp;#34;, A1)+1, LEN(A1)) → 返回 &amp;#34;三&amp;#34; (名字)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>示例2：格式化电话号码&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>A1: &amp;#34;13812345678&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=CONCATENATE(LEFT(A1,3), &amp;#34;-&amp;#34;, MID(A1,4,4), &amp;#34;-&amp;#34;, RIGHT(A1,4)) → 返回 &amp;#34;138-1234-5678&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>示例3：清理不规范的文本数据&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>A1: &amp;#34; Excel 函数 &amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=TRIM(A1) → 返回 &amp;#34;Excel 函数&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=PROPER(TRIM(A1)) → 返回 &amp;#34;Excel 函数&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这些字符串函数可以单独使用，也可以组合使用来解决复杂的数据处理问题。&lt;/p></description></item><item><title>简单了解 Excel 公式</title><link>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-excel-%E5%85%AC%E5%BC%8F/</link><pubDate>Tue, 01 Jul 2025 19:24:40 +0800</pubDate><guid>https://muo123.github.io/articles/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-excel-%E5%85%AC%E5%BC%8F/</guid><description>&lt;img src="https://muo123.github.io/images/Excel%E5%85%AC%E5%BC%8F.png" alt="Featured image of post 简单了解 Excel 公式" />&lt;p>Excel 公式是用于计算、分析和处理数据的核心工具，由函数、运算符、单元格引用等组成。以下是详细分类和示例：&lt;/p>
 &lt;hr>
 &lt;h3 id="一公式基础结构">&lt;strong>一、公式基础结构&lt;/strong>
 &lt;/h3>&lt;ul>
