@@ -1,4 +1,366 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>雪国流明</title><link>https://muo123.github.io/</link><description>Recent content on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Tue, 08 Jul 2025 19:54:52 +0800</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>在 Windows 11 上使用 Docker 创建 Python 环境</title><link>https://muo123.github.io/articles/%E5%9C%A8-windows-11-%E4%B8%8A%E4%BD%BF%E7%94%A8-docker-%E5%88%9B%E5%BB%BA-python-%E7%8E%AF%E5%A2%83/</link><pubDate>Tue, 08 Jul 2025 19:50:03 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%9C%A8-windows-11-%E4%B8%8A%E4%BD%BF%E7%94%A8-docker-%E5%88%9B%E5%BB%BA-python-%E7%8E%AF%E5%A2%83/</guid><description>&lt;img src="https://muo123.github.io/images/Windows11%E4%BD%BF%E7%94%A8Docker%E5%88%9B%E5%BB%BAPython%E7%8E%AF%E5%A2%83.png" alt="Featured image of post 在 Windows 11 上使用 Docker 创建 Python 环境" />&lt;h1 id="在windows-11上使用docker创建python开发环境">在Windows 11上使用Docker创建Python开发环境
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>雪国流明</title><link>https://muo123.github.io/</link><description>Recent content on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Tue, 08 Jul 2025 19:59:02 +0800</lastBuildDate><atom:link href="https://muo123.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker Compose 文件详解</title><link>https://muo123.github.io/articles/docker-compose-%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link><pubDate>Tue, 08 Jul 2025 19:57:20 +0800</pubDate><guid>https://muo123.github.io/articles/docker-compose-%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h1 id="docker-compose-文件详解">Docker Compose 文件详解
+&lt;/h1>&lt;p>Docker Compose 是一个用于定义和运行多容器 Docker 应用程序的工具，通过 YAML 文件配置应用服务。下面详细介绍如何编写 &lt;code>docker-compose.yml&lt;/code> 文件来管理 Python 开发环境。&lt;/p>
+&lt;h2 id="基本结构">基本结构
+&lt;/h2>&lt;p>一个典型的 Python 开发环境 &lt;code>docker-compose.yml&lt;/code> 文件包含以下部分：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">version&lt;/span>: &lt;span style="color:#5af78e">&amp;#39;3.8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">web&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">build&lt;/span>: .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#5af78e">&amp;#34;5000:5000&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - .:/app
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - FLASK_ENV=development
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">command&lt;/span>: flask run --host=0.0.0.0 --port=5000
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="核心指令详解">核心指令详解
+&lt;/h2>&lt;h3 id="1-version">1. &lt;code>version&lt;/code>
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">version&lt;/span>: &lt;span style="color:#5af78e">&amp;#39;3.8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>指定使用的 Compose 文件格式版本&lt;/li>
+&lt;li>常用版本：&amp;lsquo;3.8&amp;rsquo;（最新稳定版）&lt;/li>
+&lt;li>不同版本支持的功能不同&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-services">2. &lt;code>services&lt;/code>
+&lt;/h3>&lt;p>定义要运行的各个容器服务。&lt;/p>
+&lt;h4 id="服务定义示例">服务定义示例：
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">web&lt;/span>: &lt;span style="color:#78787e"># 服务名称&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">build&lt;/span>: . &lt;span style="color:#78787e"># 使用当前目录的Dockerfile构建&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">image&lt;/span>: my-python-app &lt;span style="color:#78787e"># 可选，指定镜像名称&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">container_name&lt;/span>: my-app &lt;span style="color:#78787e"># 可选，指定容器名称&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3-build">3. &lt;code>build&lt;/code>
+&lt;/h3>&lt;p>指定构建镜像的配置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">build&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">context&lt;/span>: . &lt;span style="color:#78787e"># 构建上下文路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">dockerfile&lt;/span>: Dockerfile &lt;span style="color:#78787e"># 指定Dockerfile文件名&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">args&lt;/span>: &lt;span style="color:#78787e"># 构建参数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - PYTHON_VERSION=3.9
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="4-ports">4. &lt;code>ports&lt;/code>
+&lt;/h3>&lt;p>端口映射：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#5af78e">&amp;#34;5000:5000&amp;#34;&lt;/span> &lt;span style="color:#78787e"># 主机端口:容器端口&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#5af78e">&amp;#34;8000:8000&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>左侧为主机端口，右侧为容器端口&lt;/li>
+&lt;li>仅指定容器端口时，主机端口随机分配：&lt;code>&amp;quot;5000&amp;quot;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="5-volumes">5. &lt;code>volumes&lt;/code>
+&lt;/h3>&lt;p>数据卷挂载：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - .:/app &lt;span style="color:#78787e"># 主机路径:容器路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - /path/on/host:/path/in/container
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - data_volume:/data &lt;span style="color:#78787e"># 使用命名卷&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>开发时常用挂载项目目录实现代码热更新&lt;/li>
+&lt;li>命名卷需要在顶层 &lt;code>volumes&lt;/code> 部分声明&lt;/li>
+&lt;/ul>
+&lt;h3 id="6-environment">6. &lt;code>environment&lt;/code>
+&lt;/h3>&lt;p>环境变量设置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - FLASK_ENV=development
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - FLASK_DEBUG=1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - DATABASE_URL=postgres://user:pass@db:5432/mydb
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>或使用键值对格式：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">FLASK_ENV&lt;/span>: &lt;span style="color:#5af78e">&amp;#34;development&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">FLASK_DEBUG&lt;/span>: &lt;span style="color:#5af78e">&amp;#34;1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="7-command">7. &lt;code>command&lt;/code>
+&lt;/h3>&lt;p>覆盖容器启动命令：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">command&lt;/span>: flask run --host=0.0.0.0 --port=5000
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>或数组格式：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">command&lt;/span>: [&lt;span style="color:#5af78e">&amp;#34;flask&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;run&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;--host=0.0.0.0&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;--port=5000&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="高级配置">高级配置
+&lt;/h2>&lt;h3 id="1-依赖关系-depends_on">1. 依赖关系 (&lt;code>depends_on&lt;/code>)
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">web&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">depends_on&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - db
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - redis
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">db&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">image&lt;/span>: postgres:13
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">redis&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">image&lt;/span>: redis:6
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>控制服务启动顺序&lt;/li>
+&lt;li>不等待依赖服务&amp;quot;就绪&amp;quot;，只是&amp;quot;启动&amp;quot;&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-健康检查-healthcheck">2. 健康检查 (&lt;code>healthcheck&lt;/code>)
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">healthcheck&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">test&lt;/span>: [&lt;span style="color:#5af78e">&amp;#34;CMD&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;curl&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;-f&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;http://localhost:5000/health&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">interval&lt;/span>: 30s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">timeout&lt;/span>: 10s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">retries&lt;/span>: &lt;span style="color:#ff9f43">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">start_period&lt;/span>: 10s
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3-资源限制-resources">3. 资源限制 (&lt;code>resources&lt;/code>)
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">deploy&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">resources&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">limits&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">cpus&lt;/span>: &lt;span style="color:#5af78e">&amp;#39;0.50&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">memory&lt;/span>: 512M
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">reservations&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">memory&lt;/span>: 256M
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="4-网络配置-networks">4. 网络配置 (&lt;code>networks&lt;/code>)
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">web&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - frontend
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - backend
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">frontend&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">backend&lt;/span>:
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="完整-python-开发环境示例">完整 Python 开发环境示例
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">version&lt;/span>: &lt;span style="color:#5af78e">&amp;#39;3.8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">web&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">build&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">context&lt;/span>: .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">dockerfile&lt;/span>: Dockerfile
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">args&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - PYTHON_VERSION=3.9
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">image&lt;/span>: my-python-app
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">container_name&lt;/span>: python-web
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#5af78e">&amp;#34;5000:5000&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - .:/app
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - /app/.venv &lt;span style="color:#78787e"># 避免将虚拟环境挂载到主机&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - FLASK_ENV=development
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - FLASK_DEBUG=1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">depends_on&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - redis
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - db
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">restart&lt;/span>: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - app-network
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">db&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">image&lt;/span>: postgres:13
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">POSTGRES_USER&lt;/span>: devuser
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">POSTGRES_PASSWORD&lt;/span>: devpass
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">POSTGRES_DB&lt;/span>: devdb
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - postgres_data:/var/lib/postgresql/data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#5af78e">&amp;#34;5432:5432&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - app-network
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">redis&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">image&lt;/span>: redis:6
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#5af78e">&amp;#34;6379:6379&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - redis_data:/data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - app-network
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">postgres_data&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">redis_data&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">app-network&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">driver&lt;/span>: bridge
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="常用命令">常用命令
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 启动所有服务（后台运行）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker-compose up -d
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 查看服务状态&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker-compose ps
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 查看服务日志&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker-compose logs -f web
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 停止服务&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker-compose down
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 重建并启动服务&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker-compose up -d --build
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 进入运行中的容器&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker-compose &lt;span style="color:#ff5c57">exec&lt;/span> web bash
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 运行一次性命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker-compose run web python manage.py migrate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="开发环境优化技巧">开发环境优化技巧
+&lt;/h2>&lt;ol>
+&lt;li>&lt;strong>使用覆盖文件&lt;/strong>：创建 &lt;code>docker-compose.override.yml&lt;/code> 用于开发特定配置&lt;/li>
+&lt;li>&lt;strong>环境变量文件&lt;/strong>：使用 &lt;code>.env&lt;/code> 文件管理环境变量&lt;/li>
+&lt;li>&lt;strong>缓存依赖&lt;/strong>：对 &lt;code>pip&lt;/code> 缓存使用命名卷&lt;/li>
+&lt;li>&lt;strong>热重载&lt;/strong>：确保正确挂载代码目录并设置开发环境变量&lt;/li>
+&lt;li>&lt;strong>多阶段Compose&lt;/strong>：使用不同文件管理开发和生产配置&lt;/li>
+&lt;/ol>
+&lt;p>通过合理配置 &lt;code>docker-compose.yml&lt;/code>，你可以轻松管理包含多个服务的复杂 Python 开发环境，并确保团队成员使用完全相同的环境配置。&lt;/p></description></item><item><title>Dockfile 文件详解</title><link>https://muo123.github.io/articles/dockfile-%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link><pubDate>Tue, 08 Jul 2025 19:55:29 +0800</pubDate><guid>https://muo123.github.io/articles/dockfile-%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h1 id="dockerfile-编写详解">Dockerfile 编写详解
+&lt;/h1>&lt;p>Dockerfile 是一个文本文件，包含了一系列用于构建 Docker 镜像的指令。下面我将详细介绍如何编写一个高效的 Python 开发环境 Dockerfile。&lt;/p>
+&lt;h2 id="基本结构">基本结构
+&lt;/h2>&lt;p>一个典型的 Python 项目 Dockerfile 包含以下部分：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 1. 基础镜像&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">FROM&lt;/span>&lt;span style="color:#5af78e"> python:3.9-slim&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 2. 元数据 (可选)&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">LABEL&lt;/span> &lt;span style="color:#ff5c57">maintainer&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;your.email@example.com&amp;#34;&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">LABEL&lt;/span> &lt;span style="color:#ff5c57">version&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;1.0&amp;#34;&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">LABEL&lt;/span> &lt;span style="color:#ff5c57">description&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;Python development environment&amp;#34;&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 3. 环境变量设置&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">ENV&lt;/span> PYTHONDONTWRITEBYTECODE &lt;span style="color:#ff9f43">1&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">ENV&lt;/span> PYTHONUNBUFFERED &lt;span style="color:#ff9f43">1&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 4. 工作目录设置&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">WORKDIR&lt;/span>&lt;span style="color:#5af78e"> /app&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 5. 依赖安装 (先复制requirements文件，利用Docker缓存层)&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">COPY&lt;/span> requirements.txt .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">RUN&lt;/span> pip install --no-cache-dir -r requirements.txt&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 6. 复制项目文件&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">COPY&lt;/span> . .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 7. 暴露端口 (可选)&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">EXPOSE&lt;/span>&lt;span style="color:#5af78e"> 8000&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 8. 启动命令&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">CMD&lt;/span> [&lt;span style="color:#5af78e">&amp;#34;python&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;app.py&amp;#34;&lt;/span>]&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="指令详解">指令详解
+&lt;/h2>&lt;h3 id="1-from---指定基础镜像">1. FROM - 指定基础镜像
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">FROM&lt;/span>&lt;span style="color:#5af78e"> python:3.9-slim&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;code>python:3.9-slim&lt;/code> 是官方提供的轻量级 Python 镜像&lt;/li>
+&lt;li>其他常用变体：
+&lt;ul>
+&lt;li>&lt;code>python:3.9&lt;/code> - 完整版&lt;/li>
+&lt;li>&lt;code>python:3.9-alpine&lt;/code> - 更小的基于 Alpine Linux 的镜像&lt;/li>
+&lt;li>&lt;code>python:3.9-buster&lt;/code> - 基于 Debian Buster&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-label---添加元数据">2. LABEL - 添加元数据
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">LABEL&lt;/span> &lt;span style="color:#ff5c57">maintainer&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;your.email@example.com&amp;#34;&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">LABEL&lt;/span> &lt;span style="color:#ff5c57">version&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;1.0&amp;#34;&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>为镜像添加元信息，便于管理&lt;/li>
+&lt;li>可以使用多个 LABEL 指令或合并为一个：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">LABEL&lt;/span> &lt;span style="color:#ff5c57">maintainer&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;your.email@example.com&amp;#34;&lt;/span> &lt;span style="color:#5af78e">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#5af78e">&lt;/span> &lt;span style="color:#ff5c57">version&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;1.0&amp;#34;&lt;/span> &lt;span style="color:#5af78e">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#5af78e">&lt;/span> &lt;span style="color:#ff5c57">description&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;Python development environment&amp;#34;&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-env---设置环境变量">3. ENV - 设置环境变量
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">ENV&lt;/span> PYTHONDONTWRITEBYTECODE &lt;span style="color:#ff9f43">1&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">ENV&lt;/span> PYTHONUNBUFFERED &lt;span style="color:#ff9f43">1&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;code>PYTHONDONTWRITEBYTECODE=1&lt;/code>：防止 Python 将 pyc 文件写入磁盘&lt;/li>
+&lt;li>&lt;code>PYTHONUNBUFFERED=1&lt;/code>：确保 Python 输出直接发送到终端而不被缓冲&lt;/li>
+&lt;li>其他常用环境变量：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">ENV&lt;/span> &lt;span style="color:#ff5c57">FLASK_APP&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>app.py&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">ENV&lt;/span> &lt;span style="color:#ff5c57">FLASK_ENV&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>development
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-workdir---设置工作目录">4. WORKDIR - 设置工作目录
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">WORKDIR&lt;/span>&lt;span style="color:#5af78e"> /app&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>设置容器内的工作目录&lt;/li>
+&lt;li>如果目录不存在会自动创建&lt;/li>
+&lt;li>后续的 RUN、CMD、COPY 等指令都会在这个目录下执行&lt;/li>
+&lt;/ul>
+&lt;h3 id="5-copy-和-run---复制文件和安装依赖">5. COPY 和 RUN - 复制文件和安装依赖
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">COPY&lt;/span> requirements.txt .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">RUN&lt;/span> pip install --no-cache-dir -r requirements.txt&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;strong>最佳实践&lt;/strong>：先单独复制 requirements.txt 并安装依赖，这样可以更好地利用 Docker 的缓存层&lt;/li>
+&lt;li>&lt;code>--no-cache-dir&lt;/code>：告诉 pip 不要缓存下载的包，减小镜像大小&lt;/li>
+&lt;li>对于生产环境，可以添加 &lt;code>--no-deps&lt;/code> 只安装项目直接依赖&lt;/li>
+&lt;/ul>
+&lt;h3 id="6-copy---复制项目文件">6. COPY - 复制项目文件
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">COPY&lt;/span> . .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>第一个 &lt;code>.&lt;/code> 表示主机当前目录&lt;/li>
+&lt;li>第二个 &lt;code>.&lt;/code> 表示容器内的当前目录（由 WORKDIR 指定）&lt;/li>
+&lt;li>可以使用 &lt;code>.dockerignore&lt;/code> 文件排除不需要复制的文件和目录&lt;/li>
+&lt;/ul>
+&lt;h3 id="7-expose---声明端口">7. EXPOSE - 声明端口
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">EXPOSE&lt;/span>&lt;span style="color:#5af78e"> 8000&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>声明容器运行时监听的端口&lt;/li>
+&lt;li>这只是文档作用，实际端口映射需要在 &lt;code>docker run&lt;/code> 时用 &lt;code>-p&lt;/code> 参数指定&lt;/li>
+&lt;/ul>
+&lt;h3 id="8-cmd---指定容器启动命令">8. CMD - 指定容器启动命令
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">CMD&lt;/span> [&lt;span style="color:#5af78e">&amp;#34;python&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;app.py&amp;#34;&lt;/span>]&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>容器启动时执行的命令&lt;/li>
+&lt;li>使用 &lt;strong>exec 形式&lt;/strong>（JSON 数组格式）而不是 shell 形式&lt;/li>
+&lt;li>一个 Dockerfile 中只能有一个 CMD 指令&lt;/li>
+&lt;/ul>
+&lt;h2 id="高级用法">高级用法
+&lt;/h2>&lt;h3 id="多阶段构建">多阶段构建
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e"># 第一阶段：构建环境&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">FROM&lt;/span>&lt;span style="color:#5af78e"> python:3.9 as builder&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">WORKDIR&lt;/span>&lt;span style="color:#5af78e"> /app&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">COPY&lt;/span> requirements.txt .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">RUN&lt;/span> pip install --user -r requirements.txt&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 第二阶段：运行环境&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">FROM&lt;/span>&lt;span style="color:#5af78e"> python:3.9-slim&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">WORKDIR&lt;/span>&lt;span style="color:#5af78e"> /app&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 从builder阶段复制已安装的Python包&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">COPY&lt;/span> --from&lt;span style="color:#ff6ac1">=&lt;/span>builder /root/.local /root/.local&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">COPY&lt;/span> . .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 确保脚本能够找到用户安装的包&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">ENV&lt;/span> &lt;span style="color:#ff5c57">PATH&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>/root/.local/bin:&lt;span style="color:#ff5c57">$PATH&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">CMD&lt;/span> [&lt;span style="color:#5af78e">&amp;#34;python&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;app.py&amp;#34;&lt;/span>]&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="使用虚拟环境">使用虚拟环境
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">FROM&lt;/span>&lt;span style="color:#5af78e"> python:3.9-slim&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">RUN&lt;/span> python -m venv /opt/venv&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">ENV&lt;/span> &lt;span style="color:#ff5c57">PATH&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#5af78e">&amp;#34;/opt/venv/bin:&lt;/span>&lt;span style="color:#ff5c57">$PATH&lt;/span>&lt;span style="color:#5af78e">&amp;#34;&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">COPY&lt;/span> requirements.txt .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">RUN&lt;/span> pip install -r requirements.txt&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">COPY&lt;/span> . .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="针对开发环境的优化">针对开发环境的优化
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">FROM&lt;/span>&lt;span style="color:#5af78e"> python:3.9-slim&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 开发专用环境变量&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">ENV&lt;/span> &lt;span style="color:#ff5c57">FLASK_ENV&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>development
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">ENV&lt;/span> &lt;span style="color:#ff5c57">FLASK_DEBUG&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>&lt;span style="color:#ff9f43">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">WORKDIR&lt;/span>&lt;span style="color:#5af78e"> /app&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 安装开发依赖&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">COPY&lt;/span> requirements-dev.txt .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">RUN&lt;/span> pip install -r requirements-dev.txt&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">COPY&lt;/span> . .&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#78787e"># 使用flask run自动重载&lt;/span>&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">&lt;/span>&lt;span style="color:#ff6ac1">CMD&lt;/span> [&lt;span style="color:#5af78e">&amp;#34;flask&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;run&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;--host=0.0.0.0&amp;#34;&lt;/span>]&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="最佳实践">最佳实践
+&lt;/h2>&lt;ol>
+&lt;li>&lt;strong>使用特定版本标签&lt;/strong>：避免使用 &lt;code>latest&lt;/code> 标签&lt;/li>
+&lt;li>&lt;strong>最小化镜像&lt;/strong>：使用 &lt;code>-slim&lt;/code> 或 &lt;code>-alpine&lt;/code> 变体&lt;/li>
+&lt;li>&lt;strong>利用缓存&lt;/strong>：将不常变化的指令放在前面&lt;/li>
+&lt;li>&lt;strong>减少层数&lt;/strong>：合并 RUN 指令
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">RUN&lt;/span> apt-get update &lt;span style="color:#ff6ac1">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#5af78e">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#5af78e">&lt;/span> apt-get install -y --no-install-recommends &lt;span style="color:#5af78e">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#5af78e">&lt;/span> gcc &lt;span style="color:#5af78e">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#5af78e">&lt;/span> python3-dev &lt;span style="color:#ff6ac1">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#5af78e">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#5af78e">&lt;/span> rm -rf /var/lib/apt/lists/*&lt;span style="color:#ff5c57">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;strong>安全扫描&lt;/strong>：构建后使用 &lt;code>docker scan&lt;/code> 检查漏洞&lt;/li>
+&lt;li>&lt;strong>使用 .dockerignore&lt;/strong>：避免复制不必要的文件&lt;/li>
+&lt;/ol>
+&lt;p>通过以上详细的 Dockerfile 编写指南，你可以为 Python 项目创建高效、安全的开发环境容器。&lt;/p></description></item><item><title>在 Windows 11 上使用 Docker 创建 Python 环境</title><link>https://muo123.github.io/articles/%E5%9C%A8-windows-11-%E4%B8%8A%E4%BD%BF%E7%94%A8-docker-%E5%88%9B%E5%BB%BA-python-%E7%8E%AF%E5%A2%83/</link><pubDate>Tue, 08 Jul 2025 19:50:03 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%9C%A8-windows-11-%E4%B8%8A%E4%BD%BF%E7%94%A8-docker-%E5%88%9B%E5%BB%BA-python-%E7%8E%AF%E5%A2%83/</guid><description>&lt;img src="https://muo123.github.io/images/Windows11%E4%BD%BF%E7%94%A8Docker%E5%88%9B%E5%BB%BAPython%E7%8E%AF%E5%A2%83.png" alt="Featured image of post 在 Windows 11 上使用 Docker 创建 Python 环境" />&lt;h1 id="在windows-11上使用docker创建python开发环境">在Windows 11上使用Docker创建Python开发环境
 &lt;/h1>&lt;p>使用Docker创建Python开发环境可以确保开发环境的一致性，并避免&amp;quot;在我机器上能运行&amp;quot;的问题。以下是在Windows 11上设置Python开发环境的步骤：&lt;/p>
 &lt;h2 id="前提条件">前提条件
 &lt;/h2>&lt;ol>
