@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ubuntu on 雪国流明</title><link>https://muo123.github.io/tags/ubuntu/</link><description>Recent content in Ubuntu on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Wed, 09 Jul 2025 21:56:23 +0800</lastBuildDate><atom:link href="https://muo123.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml"/><item><title>在 Windows11 使用 Docker 创建 Ubuntu 容器</title><link>https://muo123.github.io/articles/%E5%9C%A8-windows11-%E4%BD%BF%E7%94%A8-docker-%E5%88%9B%E5%BB%BA-ubuntu-%E5%AE%B9%E5%99%A8/</link><pubDate>Wed, 09 Jul 2025 21:52:08 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%9C%A8-windows11-%E4%BD%BF%E7%94%A8-docker-%E5%88%9B%E5%BB%BA-ubuntu-%E5%AE%B9%E5%99%A8/</guid><description>&lt;img src="https://muo123.github.io/images/Docker%E5%88%9B%E5%BB%BAUbuntu%E5%AE%B9%E5%99%A8.jpg" alt="Featured image of post 在 Windows11 使用 Docker 创建 Ubuntu 容器" />&lt;p>在 Windows 系统上使用 Docker 创建 Ubuntu 容器的步骤如下：&lt;/p>
+&lt;hr>
+&lt;h3 id="1-确保-docker-环境就绪">1. 确保 Docker 环境就绪
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>安装 Docker Desktop&lt;/strong>&lt;br>
+下载地址：&lt;a class="link" href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener"
+>https://www.docker.com/products/docker-desktop&lt;/a>&lt;br>
+安装后启动 Docker Desktop（系统托盘出现鲸鱼图标即表示运行成功）。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>验证 Docker 安装&lt;/strong>&lt;br>
+打开 PowerShell 或 CMD，执行：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker --version &lt;span style="color:#78787e"># 查看 Docker 版本&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker run hello-world &lt;span style="color:#78787e"># 测试基础功能&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="2-拉取-ubuntu-镜像">2. 拉取 Ubuntu 镜像
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker pull ubuntu:latest &lt;span style="color:#78787e"># 下载最新版 Ubuntu 镜像&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="3-创建并运行-ubuntu-容器">3. 创建并运行 Ubuntu 容器
+&lt;/h3>&lt;h4 id="基础交互模式临时容器">基础交互模式（临时容器）
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run -it --name my_ubuntu ubuntu:latest
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;code>-it&lt;/code>：进入交互模式（分配伪终端）&lt;/li>
+&lt;li>&lt;code>--name my_ubuntu&lt;/code>：为容器命名（可自定义）&lt;/li>
+&lt;li>此时会直接进入容器的 Bash Shell&lt;/li>
+&lt;/ul>
+&lt;h4 id="后台运行模式长期容器">后台运行模式（长期容器）
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run -d --name my_ubuntu ubuntu:latest sleep infinity
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;code>-d&lt;/code>：容器在后台运行&lt;/li>
+&lt;li>&lt;code>sleep infinity&lt;/code>：保持容器持续运行（避免自动退出）&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="4-进入已运行的容器">4. 进入已运行的容器
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker &lt;span style="color:#ff5c57">exec&lt;/span> -it my_ubuntu /bin/bash
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>此命令会打开容器的 Bash Shell&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="5-常用容器操作命令">5. 常用容器操作命令
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>命令&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>docker ps&lt;/code>&lt;/td>
+&lt;td>查看运行中的容器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>docker ps -a&lt;/code>&lt;/td>
+&lt;td>查看所有容器（含已停止的）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>docker stop my_ubuntu&lt;/code>&lt;/td>
+&lt;td>停止容器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>docker start my_ubuntu&lt;/code>&lt;/td>
+&lt;td>启动已停止的容器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>docker rm my_ubuntu&lt;/code>&lt;/td>
+&lt;td>删除容器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>docker rmi ubuntu:latest&lt;/code>&lt;/td>
+&lt;td>删除镜像&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="6-高级用法示例">6. 高级用法示例
+&lt;/h3>&lt;h4 id="挂载主机目录到容器">挂载主机目录到容器
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run -it -v C:&lt;span style="color:#5af78e">\H&lt;/span>ostData:/container_data ubuntu:latest
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>将 Windows 的 &lt;code>C:\HostData&lt;/code> 映射到容器的 &lt;code>/container_data&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h4 id="端口映射">端口映射
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run -d -p 8080:80 --name web_server ubuntu
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>将容器的 80 端口映射到主机的 8080 端口&lt;/li>
+&lt;/ul>
+&lt;h4 id="保存容器修改为新镜像">保存容器修改为新镜像
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker commit my_ubuntu my_custom_ubuntu
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h3 id="常见问题解决">常见问题解决
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Docker 无法启动&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>确保已启用 WSL 2（Windows 10/11 必需）&lt;/li>
+&lt;li>在 PowerShell 管理员模式运行：
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>wsl --update
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl --set-default-version &lt;span style="color:#ff9f43">2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>权限不足错误&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>在 Docker Desktop 设置中启用 &lt;strong>WSL Integration&lt;/strong>&lt;/li>
+&lt;li>或以管理员身份运行 PowerShell&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>文件路径问题&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Windows 路径需转换为 Linux 风格（如 &lt;code>/c/HostData&lt;/code>）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;p>通过以上步骤，您已成功在 Windows 上运行 Ubuntu 容器。接下来可以在容器内安装软件（如 &lt;code>apt update &amp;amp;&amp;amp; apt install python3&lt;/code>）或部署应用。&lt;/p></description></item></channel></rss>
