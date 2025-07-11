@@ -1,4 +1,291 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术 on 雪国流明</title><link>https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/</link><description>Recent content in 技术 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Thu, 10 Jul 2025 19:30:48 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>Miniconda 使用指南及详细介绍</title><link>https://muo123.github.io/articles/miniconda-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E5%8F%8A%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</link><pubDate>Thu, 10 Jul 2025 19:26:38 +0800</pubDate><guid>https://muo123.github.io/articles/miniconda-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E5%8F%8A%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</guid><description>&lt;p>好的，我们来详细介绍一下 &lt;strong>Miniconda&lt;/strong> 以及它的使用。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术 on 雪国流明</title><link>https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/</link><description>Recent content in 技术 on 雪国流明</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>muo123</copyright><lastBuildDate>Fri, 11 Jul 2025 20:33:18 +0800</lastBuildDate><atom:link href="https://muo123.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>归并排序 C++ 实现</title><link>https://muo123.github.io/articles/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F-c-%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 11 Jul 2025 20:28:57 +0800</pubDate><guid>https://muo123.github.io/articles/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F-c-%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h3 id="归并排序算法详解">归并排序算法详解
+&lt;/h3>&lt;p>归并排序（Merge Sort）是一种基于分治策略的排序算法。其基本思想是将一个大问题分解成若干个小问题，分别解决小问题，然后将小问题的解合并起来得到原问题的解。&lt;/p>
+&lt;h4 id="定义">&lt;strong>定义&lt;/strong>
+&lt;/h4>&lt;p>归并排序（Merge Sort）是一种基于&lt;strong>分治法&lt;/strong>的稳定排序算法：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>时间复杂度&lt;/strong>：O(n log n)（最优、最差和平均情况相同）&lt;/li>
+&lt;li>&lt;strong>空间复杂度&lt;/strong>：O(n)（需要额外存储空间）&lt;/li>
+&lt;li>&lt;strong>稳定性&lt;/strong>：稳定排序（相等元素的相对位置不变）&lt;/li>
+&lt;/ol>
+&lt;h4 id="核心思路">&lt;strong>核心思路&lt;/strong>
+&lt;/h4>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>分治策略&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>分解&lt;/strong>：将数组递归地分成两半，直到子数组长度为1&lt;/li>
+&lt;li>&lt;strong>解决&lt;/strong>：单个元素的数组自然有序&lt;/li>
+&lt;li>&lt;strong>合并&lt;/strong>：将两个有序子数组合并成一个有序数组&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>合并操作&lt;/strong>（关键步骤）：&lt;/p>
+&lt;ul>
+&lt;li>使用三个指针分别跟踪：
+&lt;ul>
+&lt;li>左子数组起始位置&lt;/li>
+&lt;li>右子数组起始位置&lt;/li>
+&lt;li>临时数组的写入位置&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>比较左右子数组元素，将较小者放入临时数组&lt;/li>
+&lt;li>将剩余元素直接复制到临时数组末尾&lt;/li>
+&lt;li>将排序结果从临时数组复制回原数组&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="代码解释">&lt;strong>代码解释&lt;/strong>
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#include&lt;/span> &lt;span style="color:#78787e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#78787e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#ff6ac1">using&lt;/span> &lt;span style="color:#ff6ac1">namespace&lt;/span> std;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">#define N 1000010 &lt;/span>&lt;span style="color:#78787e">// 定义最大数组长度
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">int&lt;/span> q[N], tmp[N]; &lt;span style="color:#78787e">// q: 待排序数组, tmp: 临时存储空间
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9aedfe">void&lt;/span> &lt;span style="color:#57c7ff">merge_sort&lt;/span>(&lt;span style="color:#9aedfe">int&lt;/span> &lt;span style="color:#ff6ac1">*&lt;/span>q, &lt;span style="color:#9aedfe">int&lt;/span> l, &lt;span style="color:#9aedfe">int&lt;/span> r) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 递归终止条件：子数组长度 &amp;lt;= 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">if&lt;/span> (l &lt;span style="color:#ff6ac1">&amp;gt;=&lt;/span> r) &lt;span style="color:#ff6ac1">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 分治：计算中点（注意避免溢出）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span> mid &lt;span style="color:#ff6ac1">=&lt;/span> l &lt;span style="color:#ff6ac1">+&lt;/span> r &lt;span style="color:#ff6ac1">&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#ff9f43">1&lt;/span>; &lt;span style="color:#78787e">// 等价于 (l + r) / 2
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 递归分解
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> merge_sort(q, l, mid); &lt;span style="color:#78787e">// 排序左半部分
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> merge_sort(q, mid &lt;span style="color:#ff6ac1">+&lt;/span> &lt;span style="color:#ff9f43">1&lt;/span>, r); &lt;span style="color:#78787e">// 排序右半部分
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 合并操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span> i &lt;span style="color:#ff6ac1">=&lt;/span> l; &lt;span style="color:#78787e">// 左子数组起始指针
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span> j &lt;span style="color:#ff6ac1">=&lt;/span> mid &lt;span style="color:#ff6ac1">+&lt;/span> &lt;span style="color:#ff9f43">1&lt;/span>; &lt;span style="color:#78787e">// 右子数组起始指针
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#9aedfe">int&lt;/span> k &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>; &lt;span style="color:#78787e">// 临时数组指针
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 合并两个有序子数组
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">while&lt;/span> (i &lt;span style="color:#ff6ac1">&amp;lt;=&lt;/span> mid &lt;span style="color:#ff6ac1">&amp;amp;&amp;amp;&lt;/span> j &lt;span style="color:#ff6ac1">&amp;lt;=&lt;/span> r) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 稳定排序的关键：相等时取左子数组元素
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">if&lt;/span> (q[i] &lt;span style="color:#ff6ac1">&amp;lt;=&lt;/span> q[j]) tmp[k&lt;span style="color:#ff6ac1">++&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> q[i&lt;span style="color:#ff6ac1">++&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">else&lt;/span> tmp[k&lt;span style="color:#ff6ac1">++&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> q[j&lt;span style="color:#ff6ac1">++&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 处理剩余元素
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">while&lt;/span> (i &lt;span style="color:#ff6ac1">&amp;lt;=&lt;/span> mid) tmp[k&lt;span style="color:#ff6ac1">++&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> q[i&lt;span style="color:#ff6ac1">++&lt;/span>]; &lt;span style="color:#78787e">// 左子数组剩余
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">while&lt;/span> (j &lt;span style="color:#ff6ac1">&amp;lt;=&lt;/span> r) tmp[k&lt;span style="color:#ff6ac1">++&lt;/span>] &lt;span style="color:#ff6ac1">=&lt;/span> q[j&lt;span style="color:#ff6ac1">++&lt;/span>]; &lt;span style="color:#78787e">// 右子数组剩余
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 将排序结果复制回原数组
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff6ac1">for&lt;/span> (&lt;span style="color:#9aedfe">int&lt;/span> i &lt;span style="color:#ff6ac1">=&lt;/span> l, j &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>; i &lt;span style="color:#ff6ac1">&amp;lt;=&lt;/span> r; i&lt;span style="color:#ff6ac1">++&lt;/span>, j&lt;span style="color:#ff6ac1">++&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> q[i] &lt;span style="color:#ff6ac1">=&lt;/span> tmp[j];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="关键点解析">&lt;strong>关键点解析&lt;/strong>
+&lt;/h4>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>分治实现&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>通过递归不断将数组二分（&lt;code>l&lt;/code>到&lt;code>mid&lt;/code>和&lt;code>mid+1&lt;/code>到&lt;code>r&lt;/code>）&lt;/li>
+&lt;li>当子数组长度为1时终止递归（&lt;code>l &amp;gt;= r&lt;/code>）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>合并过程&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>双指针比较&lt;/strong>：同时遍历左右子数组，选择较小元素&lt;/li>
+&lt;li>&lt;strong>稳定性保证&lt;/strong>：&lt;code>q[i] &amp;lt;= q[j]&lt;/code>确保相等时左侧元素优先&lt;/li>
+&lt;li>&lt;strong>剩余元素处理&lt;/strong>：直接复制未遍历完的子数组&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>空间使用&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>需要额外O(n)空间的&lt;code>tmp&lt;/code>数组存储中间结果&lt;/li>
+&lt;li>结果需复制回原数组&lt;code>q&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="运行样例">&lt;strong>运行样例&lt;/strong>
+&lt;/h4>&lt;p>&lt;strong>输入数组&lt;/strong>：&lt;code>[3, 1, 4, 1, 5, 9, 2, 6]&lt;/code>&lt;br>
+&lt;strong>排序过程&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>1. 分解：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [3, 1, 4, 1] 和 [5, 9, 2, 6]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> → [3, 1], [4, 1], [5, 9], [2, 6]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> → [3], [1], [4], [1], [5], [9], [2], [6]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2. 合并：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [3] &amp;amp; [1] → [1, 3]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [4] &amp;amp; [1] → [1, 4]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [5] &amp;amp; [9] → [5, 9]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [2] &amp;amp; [6] → [2, 6]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> → [1, 3] &amp;amp; [1, 4] → [1, 1, 3, 4]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> → [5, 9] &amp;amp; [2, 6] → [2, 5, 6, 9]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> → [1,1,3,4] &amp;amp; [2,5,6,9] → [1,1,2,3,4,5,6,9]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>最终输出&lt;/strong>：&lt;code>[1, 1, 2, 3, 4, 5, 6, 9]&lt;/code>&lt;/p>
+&lt;h4 id="算法特点">&lt;strong>算法特点&lt;/strong>
+&lt;/h4>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>特点&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>稳定性&lt;/strong>&lt;/td>
+&lt;td>保持相等元素原始顺序&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>时间复杂度&lt;/strong>&lt;/td>
+&lt;td>始终O(n log n)，无最坏情况&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>空间占用&lt;/strong>&lt;/td>
+&lt;td>需额外O(n)空间&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>适用场景&lt;/strong>&lt;/td>
+&lt;td>大数据量、需要稳定排序的场景&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>&lt;strong>注&lt;/strong>：代码中&lt;code>mid = l + r &amp;gt;&amp;gt; 1&lt;/code>通过位运算优化除法，效果等同于&lt;code>(l + r) / 2&lt;/code>但效率更高。&lt;/p>&lt;/blockquote>
+&lt;h3 id="总结">总结
+&lt;/h3>&lt;p>归并排序通过分治思想，将问题规模不断缩小，然后合并有序子数组，从而完成整个数组的排序。其时间复杂度稳定为O(n log n)，但需要O(n)的额外空间。该算法适用于各种规模的数据，尤其在链表排序中具有优势（因为链表不需要额外空间进行合并）。&lt;/p></description></item><item><title>WPS JS宏功能以及使用指南</title><link>https://muo123.github.io/articles/wps-js%E5%AE%8F%E5%8A%9F%E8%83%BD%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 11 Jul 2025 20:24:56 +0800</pubDate><guid>https://muo123.github.io/articles/wps-js%E5%AE%8F%E5%8A%9F%E8%83%BD%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;img src="https://muo123.github.io/images/WPS-JS%E5%AE%8F%E5%8A%9F%E8%83%BD.png" alt="Featured image of post WPS JS宏功能以及使用指南" />&lt;h1 id="wps-js宏详细说明及常用表格函数介绍">WPS JS宏详细说明及常用表格函数介绍
+&lt;/h1>&lt;h2 id="一wps-js宏概述">一、WPS JS宏概述
+&lt;/h2>&lt;p>WPS JS宏是基于JavaScript语言的自动化脚本功能，允许用户在WPS Office（文字、表格、演示）中创建自定义功能，实现办公自动化。与传统的VBA宏不同，JS宏使用更现代的JavaScript语法，具有更好的跨平台兼容性。&lt;/p>
+&lt;h3 id="js宏的特点">JS宏的特点：
+&lt;/h3>&lt;ol>
+&lt;li>&lt;strong>基于JavaScript&lt;/strong>：使用标准的ES5/ES6语法&lt;/li>
+&lt;li>&lt;strong>跨平台&lt;/strong>：在Windows、Linux和Mac上都能运行&lt;/li>
+&lt;li>&lt;strong>安全性高&lt;/strong>：运行在沙箱环境中，不会直接访问系统资源&lt;/li>
+&lt;li>&lt;strong>易于分享&lt;/strong>：宏代码随文档保存，便于共享&lt;/li>
+&lt;/ol>
+&lt;h2 id="二js宏基础使用">二、JS宏基础使用
+&lt;/h2>&lt;h3 id="1-启用js宏">1. 启用JS宏
+&lt;/h3>&lt;p>在WPS Office中：&lt;/p>
+&lt;ul>
+&lt;li>点击&amp;quot;开发工具&amp;quot;选项卡&lt;/li>
+&lt;li>选择&amp;quot;JS宏&amp;quot;按钮&lt;/li>
+&lt;li>在弹出的编辑器中编写代码&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-基本结构">2. 基本结构
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">function&lt;/span> MyMacro() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 获取当前活动工作表
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff5c57">let&lt;/span> sheet &lt;span style="color:#ff6ac1">=&lt;/span> Application.ActiveSheet;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 在这里编写你的代码
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1&amp;#34;&lt;/span>).Value &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Hello WPS JS宏!&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="三常用表格函数">三、常用表格函数
+&lt;/h2>&lt;h3 id="1-工作簿和工作表操作">1. 工作簿和工作表操作
+&lt;/h3>&lt;h4 id="获取活动工作簿和工作表">获取活动工作簿和工作表
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">let&lt;/span> workbook &lt;span style="color:#ff6ac1">=&lt;/span> Application.ActiveWorkbook;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">let&lt;/span> sheet &lt;span style="color:#ff6ac1">=&lt;/span> Application.ActiveSheet;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="创建工作表">创建工作表
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">let&lt;/span> newSheet &lt;span style="color:#ff6ac1">=&lt;/span> workbook.Worksheets.Add();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>newSheet.Name &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;新工作表&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="删除工作表">删除工作表
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>workbook.Worksheets.Item(&lt;span style="color:#5af78e">&amp;#34;Sheet1&amp;#34;&lt;/span>).Delete();
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-单元格操作">2. 单元格操作
+&lt;/h3>&lt;h4 id="获取和设置单元格值">获取和设置单元格值
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// 获取A1单元格的值
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>&lt;span style="color:#ff5c57">let&lt;/span> value &lt;span style="color:#ff6ac1">=&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1&amp;#34;&lt;/span>).Value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// 设置A1单元格的值
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1&amp;#34;&lt;/span>).Value &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;新值&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// 设置多个单元格
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1:B10&amp;#34;&lt;/span>).Value &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;批量填充&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="单元格格式设置">单元格格式设置
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">let&lt;/span> range &lt;span style="color:#ff6ac1">=&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1:D1&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>range.Font.Bold &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">true&lt;/span>; &lt;span style="color:#78787e">// 加粗
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>range.Font.Color &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;#FF0000&amp;#34;&lt;/span>; &lt;span style="color:#78787e">// 红色
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>range.Interior.Color &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;#FFFF00&amp;#34;&lt;/span>; &lt;span style="color:#78787e">// 背景黄色
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>range.HorizontalAlignment &lt;span style="color:#ff6ac1">=&lt;/span> xlCenter; &lt;span style="color:#78787e">// 居中
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3-常用数据处理函数">3. 常用数据处理函数
+&lt;/h3>&lt;h4 id="查找数据">查找数据
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">let&lt;/span> searchRange &lt;span style="color:#ff6ac1">=&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1:A100&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">let&lt;/span> found &lt;span style="color:#ff6ac1">=&lt;/span> searchRange.Find(&lt;span style="color:#5af78e">&amp;#34;查找内容&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">if&lt;/span> (found) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> console.log(&lt;span style="color:#5af78e">&amp;#34;找到在：&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">+&lt;/span> found.Address());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="排序">排序
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">let&lt;/span> sortRange &lt;span style="color:#ff6ac1">=&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1:C100&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sortRange.Sort(sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1&amp;#34;&lt;/span>), xlAscending);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="筛选">筛选
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1:D100&amp;#34;&lt;/span>).AutoFilter(&lt;span style="color:#ff9f43">1&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;条件值&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="4-公式和函数">4. 公式和函数
+&lt;/h3>&lt;h4 id="插入公式">插入公式
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>sheet.Range(&lt;span style="color:#5af78e">&amp;#34;C1&amp;#34;&lt;/span>).Formula &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;=A1+B1&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="常用内置函数">常用内置函数
+&lt;/h4>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// SUM函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>sheet.Range(&lt;span style="color:#5af78e">&amp;#34;D1&amp;#34;&lt;/span>).Formula &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;=SUM(A1:C1)&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// VLOOKUP函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>sheet.Range(&lt;span style="color:#5af78e">&amp;#34;E1&amp;#34;&lt;/span>).Formula &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;=VLOOKUP(D1,A1:B100,2,FALSE)&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">// IF函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>sheet.Range(&lt;span style="color:#5af78e">&amp;#34;F1&amp;#34;&lt;/span>).Formula &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;=IF(A1&amp;gt;100,\&amp;#34;高\&amp;#34;,\&amp;#34;低\&amp;#34;)&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="5-数据验证">5. 数据验证
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">let&lt;/span> validationRange &lt;span style="color:#ff6ac1">=&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;G1:G10&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>validationRange.Validation.Add(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xlValidateList, &lt;span style="color:#78787e">// 验证类型：列表
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> xlValidAlertStop, &lt;span style="color:#78787e">// 警告样式
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> xlBetween, &lt;span style="color:#78787e">// 运算符
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#5af78e">&amp;#34;选项1,选项2,选项3&amp;#34;&lt;/span> &lt;span style="color:#78787e">// 列表值
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="四实用示例">四、实用示例
+&lt;/h2>&lt;h3 id="1-批量填充序号">1. 批量填充序号
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">function&lt;/span> fillSerialNumbers() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff5c57">let&lt;/span> sheet &lt;span style="color:#ff6ac1">=&lt;/span> Application.ActiveSheet;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff5c57">let&lt;/span> lastRow &lt;span style="color:#ff6ac1">=&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">+&lt;/span> sheet.Rows.Count).End(xlUp).Row;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">for&lt;/span> (&lt;span style="color:#ff5c57">let&lt;/span> i &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">1&lt;/span>; i &lt;span style="color:#ff6ac1">&amp;lt;=&lt;/span> lastRow; i&lt;span style="color:#ff6ac1">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">+&lt;/span> i).Value &lt;span style="color:#ff6ac1">=&lt;/span> i;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-数据汇总">2. 数据汇总
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">function&lt;/span> summarizeData() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff5c57">let&lt;/span> sheet &lt;span style="color:#ff6ac1">=&lt;/span> Application.ActiveSheet;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff5c57">let&lt;/span> dataRange &lt;span style="color:#ff6ac1">=&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1:B100&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff5c57">let&lt;/span> sum &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">for&lt;/span> (&lt;span style="color:#ff5c57">let&lt;/span> i &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff9f43">1&lt;/span>; i &lt;span style="color:#ff6ac1">&amp;lt;=&lt;/span> dataRange.Rows.Count; i&lt;span style="color:#ff6ac1">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sum &lt;span style="color:#ff6ac1">+=&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;B&amp;#34;&lt;/span> &lt;span style="color:#ff6ac1">+&lt;/span> i).Value &lt;span style="color:#ff6ac1">||&lt;/span> &lt;span style="color:#ff9f43">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;C1&amp;#34;&lt;/span>).Value &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;总计&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;D1&amp;#34;&lt;/span>).Value &lt;span style="color:#ff6ac1">=&lt;/span> sum;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3-创建表格">3. 创建表格
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">function&lt;/span> createTable() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff5c57">let&lt;/span> sheet &lt;span style="color:#ff6ac1">=&lt;/span> Application.ActiveSheet;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 添加表头
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1:D1&amp;#34;&lt;/span>).Value &lt;span style="color:#ff6ac1">=&lt;/span> [[&lt;span style="color:#5af78e">&amp;#34;姓名&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;年龄&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;部门&amp;#34;&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;工资&amp;#34;&lt;/span>]];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 添加数据
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff5c57">let&lt;/span> data &lt;span style="color:#ff6ac1">=&lt;/span> [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [&lt;span style="color:#5af78e">&amp;#34;张三&amp;#34;&lt;/span>, &lt;span style="color:#ff9f43">30&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;销售部&amp;#34;&lt;/span>, &lt;span style="color:#ff9f43">5000&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [&lt;span style="color:#5af78e">&amp;#34;李四&amp;#34;&lt;/span>, &lt;span style="color:#ff9f43">28&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;技术部&amp;#34;&lt;/span>, &lt;span style="color:#ff9f43">6000&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [&lt;span style="color:#5af78e">&amp;#34;王五&amp;#34;&lt;/span>, &lt;span style="color:#ff9f43">35&lt;/span>, &lt;span style="color:#5af78e">&amp;#34;管理部&amp;#34;&lt;/span>, &lt;span style="color:#ff9f43">7000&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A2:D4&amp;#34;&lt;/span>).Value &lt;span style="color:#ff6ac1">=&lt;/span> data;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#78787e">// 应用表格样式
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#78787e">&lt;/span> &lt;span style="color:#ff5c57">let&lt;/span> tableRange &lt;span style="color:#ff6ac1">=&lt;/span> sheet.Range(&lt;span style="color:#5af78e">&amp;#34;A1:D4&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff5c57">let&lt;/span> table &lt;span style="color:#ff6ac1">=&lt;/span> sheet.ListObjects.Add(xlSrcRange, tableRange, &lt;span style="color:#ff6ac1">null&lt;/span>, xlYes);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> table.TableStyle &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#5af78e">&amp;#34;TableStyleMedium2&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="五调试技巧">五、调试技巧
+&lt;/h2>&lt;ol>
+&lt;li>&lt;strong>使用console.log()&lt;/strong>：输出调试信息到控制台&lt;/li>
+&lt;li>&lt;strong>设置断点&lt;/strong>：在代码行号旁边点击设置断点&lt;/li>
+&lt;li>&lt;strong>单步执行&lt;/strong>：使用调试工具栏的按钮逐步执行代码&lt;/li>
+&lt;li>&lt;strong>查看变量&lt;/strong>：在调试过程中查看变量值&lt;/li>
+&lt;/ol>
+&lt;h2 id="六注意事项">六、注意事项
+&lt;/h2>&lt;ol>
+&lt;li>JS宏与VBA语法有差异，不能直接混用&lt;/li>
+&lt;li>部分Excel VBA功能在WPS JS宏中可能不可用&lt;/li>
+&lt;li>宏执行速度可能受数据量影响&lt;/li>
+&lt;li>复杂的操作建议分步执行和测试&lt;/li>
+&lt;/ol>
+&lt;p>通过掌握这些WPS JS宏的基础知识和常用表格函数，您可以大大提高办公效率，实现各种自动化处理任务。&lt;/p></description></item><item><title>Miniconda 使用指南及详细介绍</title><link>https://muo123.github.io/articles/miniconda-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E5%8F%8A%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</link><pubDate>Thu, 10 Jul 2025 19:26:38 +0800</pubDate><guid>https://muo123.github.io/articles/miniconda-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E5%8F%8A%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</guid><description>&lt;p>好的，我们来详细介绍一下 &lt;strong>Miniconda&lt;/strong> 以及它的使用。&lt;/p>
 &lt;h2 id="什么是-miniconda">什么是 Miniconda？
 &lt;/h2>&lt;ol>
 &lt;li>&lt;strong>核心概念：&lt;/strong> Miniconda 是 &lt;strong>Anaconda&lt;/strong> 的一个&lt;strong>精简版&lt;/strong>。Anaconda 是一个极其流行的 Python/R &lt;strong>数据科学平台&lt;/strong>，它包含了 Python/R 解释器、一个强大的包管理器 (&lt;code>conda&lt;/code> 和 &lt;code>pip&lt;/code>)，以及&lt;strong>超过 1500 个预装好的&lt;/strong>科学计算、数据分析和机器学习相关的库（如 NumPy, Pandas, Scikit-learn, Matplotlib, Jupyter 等）。&lt;/li>
